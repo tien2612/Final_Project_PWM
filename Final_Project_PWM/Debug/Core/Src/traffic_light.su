@@ -1,0 +1,4 @@
+traffic_light.c:45:6:helper_set_led_color	24	static
+traffic_light.c:62:6:set_led_color	24	static
+traffic_light.c:79:5:helper_get_led_color	32	static
+traffic_light.c:96:5:get_led_color	16	static
