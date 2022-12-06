@@ -367,20 +367,156 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0xca ./Core/Src/main.o
  .debug_macro   0x0000000000000000       0xa6 ./Core/Src/main.o
  .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
+ .group         0x0000000000000000        0xc ./Core/Src/sche_task.o
  .text          0x0000000000000000        0x0 ./Core/Src/sche_task.o
  .data          0x0000000000000000        0x0 ./Core/Src/sche_task.o
  .bss           0x0000000000000000        0x0 ./Core/Src/sche_task.o
- .debug_info    0x0000000000000000       0x21 ./Core/Src/sche_task.o
- .debug_abbrev  0x0000000000000000       0x13 ./Core/Src/sche_task.o
+ .bss.pedestrian_active
+                0x0000000000000000        0x4 ./Core/Src/sche_task.o
+ .data.time_left
+                0x0000000000000000        0x4 ./Core/Src/sche_task.o
+ .text.pedestrian_scramble
+                0x0000000000000000       0x70 ./Core/Src/sche_task.o
+ .debug_info    0x0000000000000000     0x10fc ./Core/Src/sche_task.o
+ .debug_abbrev  0x0000000000000000      0x1ec ./Core/Src/sche_task.o
  .debug_aranges
-                0x0000000000000000       0x18 ./Core/Src/sche_task.o
- .debug_macro   0x0000000000000000       0x11 ./Core/Src/sche_task.o
+                0x0000000000000000       0x20 ./Core/Src/sche_task.o
+ .debug_ranges  0x0000000000000000       0x10 ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000      0x332 ./Core/Src/sche_task.o
  .debug_macro   0x0000000000000000      0xa9c ./Core/Src/sche_task.o
- .debug_line    0x0000000000000000       0x38 ./Core/Src/sche_task.o
- .debug_str     0x0000000000000000     0x2d77 ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000       0x22 ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000       0x4c ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000       0x18 ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000       0x94 ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000       0x3c ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000       0x34 ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000       0x16 ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000       0x57 ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000       0x97 ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000      0x339 ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000       0xfd ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000       0x10 ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000       0x16 ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000       0x43 ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000       0x34 ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000       0x10 ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000       0x58 ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000       0x71 ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000       0x1c ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000      0x12a ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000       0x10 ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000       0x6a ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000       0x1c ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000       0x52 ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000       0x22 ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000       0x10 ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000       0x40 ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000       0xd5 ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000       0x1c ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000       0x3d ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000       0x16 ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000      0x145 ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000      0x21b ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000       0x2e ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000       0x22 ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000      0x103 ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000      0x1df ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000       0x1c ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000       0x22 ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000       0xbd ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000      0xd23 ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000     0xe09e ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000       0x6d ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000     0x3468 ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000       0x56 ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000      0x5be ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000      0x289 ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000      0x1cb ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000      0x114 ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000      0x1b2 ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000       0x27 ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000      0x136 ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000      0x1bc ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000       0x34 ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000       0x3c ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000       0x57 ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000       0x88 ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000      0x241 ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000      0x141 ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000      0x8d1 ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000      0x279 ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000       0x83 ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000       0xca ./Core/Src/sche_task.o
+ .debug_macro   0x0000000000000000       0xa6 ./Core/Src/sche_task.o
+ .debug_line    0x0000000000000000      0x8b4 ./Core/Src/sche_task.o
+ .debug_str     0x0000000000000000    0x87fc8 ./Core/Src/sche_task.o
  .comment       0x0000000000000000       0x54 ./Core/Src/sche_task.o
+ .debug_frame   0x0000000000000000       0x2c ./Core/Src/sche_task.o
  .ARM.attributes
-                0x0000000000000000       0x33 ./Core/Src/sche_task.o
+                0x0000000000000000       0x2d ./Core/Src/sche_task.o
  .group         0x0000000000000000        0xc ./Core/Src/scheduler.o
  .group         0x0000000000000000        0xc ./Core/Src/scheduler.o
  .group         0x0000000000000000        0xc ./Core/Src/scheduler.o
@@ -438,6 +574,9 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x3c ./Core/Src/scheduler.o
  .debug_macro   0x0000000000000000       0x34 ./Core/Src/scheduler.o
  .debug_macro   0x0000000000000000       0x16 ./Core/Src/scheduler.o
+ .debug_macro   0x0000000000000000       0x97 ./Core/Src/scheduler.o
+ .debug_macro   0x0000000000000000      0x339 ./Core/Src/scheduler.o
+ .debug_macro   0x0000000000000000       0xfd ./Core/Src/scheduler.o
  .debug_macro   0x0000000000000000       0x10 ./Core/Src/scheduler.o
  .debug_macro   0x0000000000000000       0x16 ./Core/Src/scheduler.o
  .debug_macro   0x0000000000000000       0x43 ./Core/Src/scheduler.o
@@ -3344,52 +3483,49 @@ LOAD c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .debug_ranges  0x0000000000000860      0x158 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.o
  .debug_ranges  0x00000000000009b8      0x220 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.o
 
-.debug_macro    0x0000000000000000     0x27d6
- .debug_macro   0x0000000000000000      0x327 ./Core/Src/main.o
- .debug_macro   0x0000000000000327       0x52 ./Core/Src/main.o
- .debug_macro   0x0000000000000379       0x18 ./Core/Src/main.o
- .debug_macro   0x0000000000000391       0x3c ./Core/Src/main.o
- .debug_macro   0x00000000000003cd       0x34 ./Core/Src/main.o
- .debug_macro   0x0000000000000401       0x16 ./Core/Src/main.o
- .debug_macro   0x0000000000000417       0x35 ./Core/Src/main.o
- .debug_macro   0x000000000000044c      0x333 ./Core/Src/main.o
- .debug_macro   0x000000000000077f       0x10 ./Core/Src/main.o
- .debug_macro   0x000000000000078f       0x16 ./Core/Src/main.o
- .debug_macro   0x00000000000007a5       0x43 ./Core/Src/main.o
- .debug_macro   0x00000000000007e8       0x34 ./Core/Src/main.o
- .debug_macro   0x000000000000081c       0x10 ./Core/Src/main.o
- .debug_macro   0x000000000000082c       0x58 ./Core/Src/main.o
- .debug_macro   0x0000000000000884       0x71 ./Core/Src/main.o
- .debug_macro   0x00000000000008f5       0x1c ./Core/Src/main.o
- .debug_macro   0x0000000000000911      0x12a ./Core/Src/main.o
- .debug_macro   0x0000000000000a3b       0x10 ./Core/Src/main.o
- .debug_macro   0x0000000000000a4b       0x1c ./Core/Src/main.o
- .debug_macro   0x0000000000000a67       0x52 ./Core/Src/main.o
- .debug_macro   0x0000000000000ab9       0x22 ./Core/Src/main.o
- .debug_macro   0x0000000000000adb       0x10 ./Core/Src/main.o
- .debug_macro   0x0000000000000aeb       0x40 ./Core/Src/main.o
- .debug_macro   0x0000000000000b2b       0xd5 ./Core/Src/main.o
- .debug_macro   0x0000000000000c00       0x1c ./Core/Src/main.o
- .debug_macro   0x0000000000000c1c       0x3d ./Core/Src/main.o
- .debug_macro   0x0000000000000c59       0x16 ./Core/Src/main.o
- .debug_macro   0x0000000000000c6f      0x145 ./Core/Src/main.o
- .debug_macro   0x0000000000000db4       0x28 ./Core/Src/main.o
- .debug_macro   0x0000000000000ddc      0x1df ./Core/Src/scheduler.o
- .debug_macro   0x0000000000000fbb       0x22 ./Core/Src/scheduler.o
- .debug_macro   0x0000000000000fdd       0x97 ./Core/Src/scheduler.o
- .debug_macro   0x0000000000001074      0x339 ./Core/Src/scheduler.o
- .debug_macro   0x00000000000013ad       0xfd ./Core/Src/scheduler.o
- .debug_macro   0x00000000000014aa      0x1b2 ./Core/Src/stm32f1xx_hal_msp.o
- .debug_macro   0x000000000000165c      0x1bc ./Core/Src/stm32f1xx_it.o
- .debug_macro   0x0000000000001818      0x1a3 ./Core/Src/system_stm32f1xx.o
- .debug_macro   0x00000000000019bb      0x1c7 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o
- .debug_macro   0x0000000000001b82      0x1a3 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.o
- .debug_macro   0x0000000000001d25      0x20e ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.o
- .debug_macro   0x0000000000001f33      0x203 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.o
- .debug_macro   0x0000000000002136      0x1b5 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.o
- .debug_macro   0x00000000000022eb      0x1a4 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.o
- .debug_macro   0x000000000000248f      0x1a3 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.o
- .debug_macro   0x0000000000002632      0x1a4 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.o
+.debug_macro    0x0000000000000000     0x230f
+ .debug_macro   0x0000000000000000      0x32d ./Core/Src/main.o
+ .debug_macro   0x000000000000032d       0x52 ./Core/Src/main.o
+ .debug_macro   0x000000000000037f       0x18 ./Core/Src/main.o
+ .debug_macro   0x0000000000000397       0x3c ./Core/Src/main.o
+ .debug_macro   0x00000000000003d3       0x34 ./Core/Src/main.o
+ .debug_macro   0x0000000000000407       0x16 ./Core/Src/main.o
+ .debug_macro   0x000000000000041d       0x35 ./Core/Src/main.o
+ .debug_macro   0x0000000000000452      0x333 ./Core/Src/main.o
+ .debug_macro   0x0000000000000785       0x10 ./Core/Src/main.o
+ .debug_macro   0x0000000000000795       0x16 ./Core/Src/main.o
+ .debug_macro   0x00000000000007ab       0x43 ./Core/Src/main.o
+ .debug_macro   0x00000000000007ee       0x34 ./Core/Src/main.o
+ .debug_macro   0x0000000000000822       0x10 ./Core/Src/main.o
+ .debug_macro   0x0000000000000832       0x58 ./Core/Src/main.o
+ .debug_macro   0x000000000000088a       0x71 ./Core/Src/main.o
+ .debug_macro   0x00000000000008fb       0x1c ./Core/Src/main.o
+ .debug_macro   0x0000000000000917      0x12a ./Core/Src/main.o
+ .debug_macro   0x0000000000000a41       0x10 ./Core/Src/main.o
+ .debug_macro   0x0000000000000a51       0x1c ./Core/Src/main.o
+ .debug_macro   0x0000000000000a6d       0x52 ./Core/Src/main.o
+ .debug_macro   0x0000000000000abf       0x22 ./Core/Src/main.o
+ .debug_macro   0x0000000000000ae1       0x10 ./Core/Src/main.o
+ .debug_macro   0x0000000000000af1       0x40 ./Core/Src/main.o
+ .debug_macro   0x0000000000000b31       0xd5 ./Core/Src/main.o
+ .debug_macro   0x0000000000000c06       0x1c ./Core/Src/main.o
+ .debug_macro   0x0000000000000c22       0x3d ./Core/Src/main.o
+ .debug_macro   0x0000000000000c5f       0x16 ./Core/Src/main.o
+ .debug_macro   0x0000000000000c75      0x145 ./Core/Src/main.o
+ .debug_macro   0x0000000000000dba       0x28 ./Core/Src/main.o
+ .debug_macro   0x0000000000000de2      0x1df ./Core/Src/scheduler.o
+ .debug_macro   0x0000000000000fc1       0x22 ./Core/Src/scheduler.o
+ .debug_macro   0x0000000000000fe3      0x1b2 ./Core/Src/stm32f1xx_hal_msp.o
+ .debug_macro   0x0000000000001195      0x1bc ./Core/Src/stm32f1xx_it.o
+ .debug_macro   0x0000000000001351      0x1a3 ./Core/Src/system_stm32f1xx.o
+ .debug_macro   0x00000000000014f4      0x1c7 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o
+ .debug_macro   0x00000000000016bb      0x1a3 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.o
+ .debug_macro   0x000000000000185e      0x20e ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.o
+ .debug_macro   0x0000000000001a6c      0x203 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.o
+ .debug_macro   0x0000000000001c6f      0x1b5 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.o
+ .debug_macro   0x0000000000001e24      0x1a4 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.o
+ .debug_macro   0x0000000000001fc8      0x1a3 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.o
+ .debug_macro   0x000000000000216b      0x1a4 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.o
 
 .debug_line     0x0000000000000000     0xc1bd
  .debug_line    0x0000000000000000      0xaa6 ./Core/Src/main.o
@@ -3407,33 +3543,33 @@ LOAD c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .debug_line    0x0000000000008f6a     0x1850 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.o
  .debug_line    0x000000000000a7ba     0x1a03 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.o
 
-.debug_str      0x0000000000000000    0x8af83
- .debug_str     0x0000000000000000    0x88315 ./Core/Src/main.o
-                                      0x88829 (size before relaxing)
- .debug_str     0x0000000000088315      0x14a ./Core/Src/scheduler.o
+.debug_str      0x0000000000000000    0x8af90
+ .debug_str     0x0000000000000000    0x88322 ./Core/Src/main.o
+                                      0x88836 (size before relaxing)
+ .debug_str     0x0000000000088322      0x14a ./Core/Src/scheduler.o
                                        0x854f (size before relaxing)
- .debug_str     0x000000000008845f       0xce ./Core/Src/stm32f1xx_hal_msp.o
+ .debug_str     0x000000000008846c       0xce ./Core/Src/stm32f1xx_hal_msp.o
                                       0x841bf (size before relaxing)
- .debug_str     0x000000000008852d       0xf2 ./Core/Src/stm32f1xx_it.o
+ .debug_str     0x000000000008853a       0xf2 ./Core/Src/stm32f1xx_it.o
                                       0x83cb7 (size before relaxing)
- .debug_str     0x000000000008861f       0x52 ./Core/Src/system_stm32f1xx.o
+ .debug_str     0x000000000008862c       0x52 ./Core/Src/system_stm32f1xx.o
                                       0x83463 (size before relaxing)
- .debug_str     0x0000000000088671       0x72 ./Core/Startup/startup_stm32f103rbtx.o
- .debug_str     0x00000000000886e3      0x304 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o
+ .debug_str     0x000000000008867e       0x72 ./Core/Startup/startup_stm32f103rbtx.o
+ .debug_str     0x00000000000886f0      0x304 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o
                                       0x83af4 (size before relaxing)
- .debug_str     0x00000000000889e7      0x300 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.o
+ .debug_str     0x00000000000889f4      0x300 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.o
                                       0x83afc (size before relaxing)
- .debug_str     0x0000000000088ce7      0x304 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.o
+ .debug_str     0x0000000000088cf4      0x304 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.o
                                       0x83827 (size before relaxing)
- .debug_str     0x0000000000088feb      0x507 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.o
+ .debug_str     0x0000000000088ff8      0x507 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.o
                                       0x839c6 (size before relaxing)
- .debug_str     0x00000000000894f2      0x243 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.o
+ .debug_str     0x00000000000894ff      0x243 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.o
                                       0x83860 (size before relaxing)
- .debug_str     0x0000000000089735      0xd73 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.o
+ .debug_str     0x0000000000089742      0xd73 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.o
                                       0x84832 (size before relaxing)
- .debug_str     0x000000000008a4a8      0x4ee ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.o
+ .debug_str     0x000000000008a4b5      0x4ee ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.o
                                       0x83fe3 (size before relaxing)
- .debug_str     0x000000000008a996      0x5ed ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.o
+ .debug_str     0x000000000008a9a3      0x5ed ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.o
                                       0x83e52 (size before relaxing)
 
 .comment        0x0000000000000000       0x53
