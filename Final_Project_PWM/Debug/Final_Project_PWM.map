@@ -880,7 +880,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x16 ./Core/Src/syscalls.o
  .debug_macro   0x0000000000000000       0xce ./Core/Src/syscalls.o
  .debug_line    0x0000000000000000      0x802 ./Core/Src/syscalls.o
- .debug_str     0x0000000000000000     0x8e8b ./Core/Src/syscalls.o
+ .debug_str     0x0000000000000000     0x8e99 ./Core/Src/syscalls.o
  .comment       0x0000000000000000       0x54 ./Core/Src/syscalls.o
  .debug_frame   0x0000000000000000      0x2ac ./Core/Src/syscalls.o
  .ARM.attributes
@@ -942,7 +942,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x6a ./Core/Src/sysmem.o
  .debug_macro   0x0000000000000000      0x1df ./Core/Src/sysmem.o
  .debug_line    0x0000000000000000      0x4f8 ./Core/Src/sysmem.o
- .debug_str     0x0000000000000000     0x625e ./Core/Src/sysmem.o
+ .debug_str     0x0000000000000000     0x626c ./Core/Src/sysmem.o
  .comment       0x0000000000000000       0x54 ./Core/Src/sysmem.o
  .debug_frame   0x0000000000000000       0x34 ./Core/Src/sysmem.o
  .ARM.attributes
@@ -1024,6 +1024,107 @@ Discarded input sections
  .debug_macro   0x0000000000000000      0x8d1 ./Core/Src/system_stm32f1xx.o
  .debug_macro   0x0000000000000000      0x279 ./Core/Src/system_stm32f1xx.o
  .debug_macro   0x0000000000000000       0x83 ./Core/Src/system_stm32f1xx.o
+ .group         0x0000000000000000        0xc ./Core/Src/traffic_light.o
+ .group         0x0000000000000000        0xc ./Core/Src/traffic_light.o
+ .group         0x0000000000000000        0xc ./Core/Src/traffic_light.o
+ .group         0x0000000000000000        0xc ./Core/Src/traffic_light.o
+ .group         0x0000000000000000        0xc ./Core/Src/traffic_light.o
+ .group         0x0000000000000000        0xc ./Core/Src/traffic_light.o
+ .group         0x0000000000000000        0xc ./Core/Src/traffic_light.o
+ .group         0x0000000000000000        0xc ./Core/Src/traffic_light.o
+ .group         0x0000000000000000        0xc ./Core/Src/traffic_light.o
+ .group         0x0000000000000000        0xc ./Core/Src/traffic_light.o
+ .group         0x0000000000000000        0xc ./Core/Src/traffic_light.o
+ .group         0x0000000000000000        0xc ./Core/Src/traffic_light.o
+ .group         0x0000000000000000        0xc ./Core/Src/traffic_light.o
+ .group         0x0000000000000000        0xc ./Core/Src/traffic_light.o
+ .group         0x0000000000000000        0xc ./Core/Src/traffic_light.o
+ .group         0x0000000000000000        0xc ./Core/Src/traffic_light.o
+ .group         0x0000000000000000        0xc ./Core/Src/traffic_light.o
+ .group         0x0000000000000000        0xc ./Core/Src/traffic_light.o
+ .group         0x0000000000000000        0xc ./Core/Src/traffic_light.o
+ .group         0x0000000000000000        0xc ./Core/Src/traffic_light.o
+ .group         0x0000000000000000        0xc ./Core/Src/traffic_light.o
+ .group         0x0000000000000000        0xc ./Core/Src/traffic_light.o
+ .group         0x0000000000000000        0xc ./Core/Src/traffic_light.o
+ .group         0x0000000000000000        0xc ./Core/Src/traffic_light.o
+ .group         0x0000000000000000        0xc ./Core/Src/traffic_light.o
+ .group         0x0000000000000000        0xc ./Core/Src/traffic_light.o
+ .group         0x0000000000000000        0xc ./Core/Src/traffic_light.o
+ .group         0x0000000000000000        0xc ./Core/Src/traffic_light.o
+ .group         0x0000000000000000        0xc ./Core/Src/traffic_light.o
+ .group         0x0000000000000000        0xc ./Core/Src/traffic_light.o
+ .group         0x0000000000000000        0xc ./Core/Src/traffic_light.o
+ .group         0x0000000000000000        0xc ./Core/Src/traffic_light.o
+ .group         0x0000000000000000        0xc ./Core/Src/traffic_light.o
+ .group         0x0000000000000000        0xc ./Core/Src/traffic_light.o
+ .group         0x0000000000000000        0xc ./Core/Src/traffic_light.o
+ .group         0x0000000000000000        0xc ./Core/Src/traffic_light.o
+ .group         0x0000000000000000        0xc ./Core/Src/traffic_light.o
+ .group         0x0000000000000000        0xc ./Core/Src/traffic_light.o
+ .group         0x0000000000000000        0xc ./Core/Src/traffic_light.o
+ .text          0x0000000000000000        0x0 ./Core/Src/traffic_light.o
+ .data          0x0000000000000000        0x0 ./Core/Src/traffic_light.o
+ .bss           0x0000000000000000        0x0 ./Core/Src/traffic_light.o
+ .text.helper_set_led_color
+                0x0000000000000000       0x66 ./Core/Src/traffic_light.o
+ .text.set_led_color
+                0x0000000000000000       0x70 ./Core/Src/traffic_light.o
+ .text.helper_get_led_color
+                0x0000000000000000       0x7c ./Core/Src/traffic_light.o
+ .text.get_led_color
+                0x0000000000000000       0x6c ./Core/Src/traffic_light.o
+ .debug_info    0x0000000000000000      0x405 ./Core/Src/traffic_light.o
+ .debug_abbrev  0x0000000000000000      0x18c ./Core/Src/traffic_light.o
+ .debug_aranges
+                0x0000000000000000       0x38 ./Core/Src/traffic_light.o
+ .debug_ranges  0x0000000000000000       0x28 ./Core/Src/traffic_light.o
+ .debug_macro   0x0000000000000000      0x1ca ./Core/Src/traffic_light.o
+ .debug_macro   0x0000000000000000      0xa9c ./Core/Src/traffic_light.o
+ .debug_macro   0x0000000000000000      0x21b ./Core/Src/traffic_light.o
+ .debug_macro   0x0000000000000000       0x2e ./Core/Src/traffic_light.o
+ .debug_macro   0x0000000000000000       0x22 ./Core/Src/traffic_light.o
+ .debug_macro   0x0000000000000000       0x22 ./Core/Src/traffic_light.o
+ .debug_macro   0x0000000000000000       0x8e ./Core/Src/traffic_light.o
+ .debug_macro   0x0000000000000000       0x51 ./Core/Src/traffic_light.o
+ .debug_macro   0x0000000000000000      0x103 ./Core/Src/traffic_light.o
+ .debug_macro   0x0000000000000000       0x6a ./Core/Src/traffic_light.o
+ .debug_macro   0x0000000000000000      0x1df ./Core/Src/traffic_light.o
+ .debug_macro   0x0000000000000000       0x1c ./Core/Src/traffic_light.o
+ .debug_macro   0x0000000000000000       0x22 ./Core/Src/traffic_light.o
+ .debug_macro   0x0000000000000000       0xc3 ./Core/Src/traffic_light.o
+ .debug_macro   0x0000000000000000      0xd23 ./Core/Src/traffic_light.o
+ .debug_macro   0x0000000000000000     0xe09e ./Core/Src/traffic_light.o
+ .debug_macro   0x0000000000000000       0x6d ./Core/Src/traffic_light.o
+ .debug_macro   0x0000000000000000     0x3468 ./Core/Src/traffic_light.o
+ .debug_macro   0x0000000000000000      0x174 ./Core/Src/traffic_light.o
+ .debug_macro   0x0000000000000000       0x5c ./Core/Src/traffic_light.o
+ .debug_macro   0x0000000000000000      0x5be ./Core/Src/traffic_light.o
+ .debug_macro   0x0000000000000000      0x289 ./Core/Src/traffic_light.o
+ .debug_macro   0x0000000000000000      0x1cb ./Core/Src/traffic_light.o
+ .debug_macro   0x0000000000000000      0x114 ./Core/Src/traffic_light.o
+ .debug_macro   0x0000000000000000      0x1b2 ./Core/Src/traffic_light.o
+ .debug_macro   0x0000000000000000       0x27 ./Core/Src/traffic_light.o
+ .debug_macro   0x0000000000000000      0x136 ./Core/Src/traffic_light.o
+ .debug_macro   0x0000000000000000      0x1bc ./Core/Src/traffic_light.o
+ .debug_macro   0x0000000000000000       0x34 ./Core/Src/traffic_light.o
+ .debug_macro   0x0000000000000000       0x3c ./Core/Src/traffic_light.o
+ .debug_macro   0x0000000000000000       0x57 ./Core/Src/traffic_light.o
+ .debug_macro   0x0000000000000000       0x88 ./Core/Src/traffic_light.o
+ .debug_macro   0x0000000000000000      0x241 ./Core/Src/traffic_light.o
+ .debug_macro   0x0000000000000000      0x141 ./Core/Src/traffic_light.o
+ .debug_macro   0x0000000000000000      0x8d1 ./Core/Src/traffic_light.o
+ .debug_macro   0x0000000000000000      0x279 ./Core/Src/traffic_light.o
+ .debug_macro   0x0000000000000000       0x83 ./Core/Src/traffic_light.o
+ .debug_macro   0x0000000000000000       0xca ./Core/Src/traffic_light.o
+ .debug_macro   0x0000000000000000       0xa6 ./Core/Src/traffic_light.o
+ .debug_macro   0x0000000000000000       0x2e ./Core/Src/traffic_light.o
+ .debug_line    0x0000000000000000      0x775 ./Core/Src/traffic_light.o
+ .debug_str     0x0000000000000000    0x83b28 ./Core/Src/traffic_light.o
+ .comment       0x0000000000000000       0x54 ./Core/Src/traffic_light.o
+ .debug_frame   0x0000000000000000       0xa8 ./Core/Src/traffic_light.o
+ .ARM.attributes
+                0x0000000000000000       0x2d ./Core/Src/traffic_light.o
  .text          0x0000000000000000       0x14 ./Core/Startup/startup_stm32f103rbtx.o
  .data          0x0000000000000000        0x0 ./Core/Startup/startup_stm32f103rbtx.o
  .bss           0x0000000000000000        0x0 ./Core/Startup/startup_stm32f103rbtx.o
@@ -2860,6 +2961,7 @@ LOAD ./Core/Src/stm32f1xx_it.o
 LOAD ./Core/Src/syscalls.o
 LOAD ./Core/Src/sysmem.o
 LOAD ./Core/Src/system_stm32f1xx.o
+LOAD ./Core/Src/traffic_light.o
 LOAD ./Core/Startup/startup_stm32f103rbtx.o
 LOAD ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o
 LOAD ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.o
