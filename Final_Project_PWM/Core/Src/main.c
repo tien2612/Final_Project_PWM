@@ -26,6 +26,7 @@
 #include "scheduler.h"
 #include "sche_task.h"
 #include "global.h"
+#include "input_processing.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -114,7 +115,7 @@ int main(void)
 
 
   find_new_min_task();
-
+  setTimer2(1000);
   while (1)
   {
 	  SCH_Dispatch_Tasks();
@@ -123,7 +124,8 @@ int main(void)
 	  SCH_Go_To_Sleep();
 	  // turn of LED for indicate while MCU is sleeping.
     /* USER CODE END WHILE */
-
+	  traffic_processing();
+	  fsm_simple_button_run();
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */

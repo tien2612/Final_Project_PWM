@@ -5,11 +5,14 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../Core/Src/displayUart.c \
 ../Core/Src/global.c \
+../Core/Src/input_processing.c \
 ../Core/Src/input_reading.c \
 ../Core/Src/main.c \
 ../Core/Src/sche_task.c \
 ../Core/Src/scheduler.c \
+../Core/Src/software_timer.c \
 ../Core/Src/stm32f1xx_hal_msp.c \
 ../Core/Src/stm32f1xx_it.c \
 ../Core/Src/syscalls.c \
@@ -18,11 +21,14 @@ C_SRCS += \
 ../Core/Src/traffic_light.c 
 
 OBJS += \
+./Core/Src/displayUart.o \
 ./Core/Src/global.o \
+./Core/Src/input_processing.o \
 ./Core/Src/input_reading.o \
 ./Core/Src/main.o \
 ./Core/Src/sche_task.o \
 ./Core/Src/scheduler.o \
+./Core/Src/software_timer.o \
 ./Core/Src/stm32f1xx_hal_msp.o \
 ./Core/Src/stm32f1xx_it.o \
 ./Core/Src/syscalls.o \
@@ -31,11 +37,14 @@ OBJS += \
 ./Core/Src/traffic_light.o 
 
 C_DEPS += \
+./Core/Src/displayUart.d \
 ./Core/Src/global.d \
+./Core/Src/input_processing.d \
 ./Core/Src/input_reading.d \
 ./Core/Src/main.d \
 ./Core/Src/sche_task.d \
 ./Core/Src/scheduler.d \
+./Core/Src/software_timer.d \
 ./Core/Src/stm32f1xx_hal_msp.d \
 ./Core/Src/stm32f1xx_it.d \
 ./Core/Src/syscalls.d \
