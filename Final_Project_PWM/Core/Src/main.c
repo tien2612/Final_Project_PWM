@@ -29,6 +29,7 @@
 #include "input_processing.h"
 #include "software_timer.h"
 #include "input_reading.h"
+#include "traffic_light.h"
 
 /* USER CODE END Includes */
 
@@ -118,7 +119,8 @@ int main(void)
 //  SCH_Init();
 //  SCH_Add_Task(fsm_simple_button_run, 0, 10);
 //  SCH_Add_Task(traffic_processing, 0, 1000);
-//  SCH_Add_Task(pedestrian_scramble, 20, 10);
+//  SCH_Add_Task(button_reading, 40, 10);
+//  SCH_Add_Task(pedestrian_scramble, 30, 10);
 //  find_new_min_task();
   setTimer2(1000);
   while (1)
@@ -128,10 +130,11 @@ int main(void)
 //	  // turn on LED for indicate when not in sleep mode
 //	  // SCH go to sleep, wait for any interrupt.
 //	  SCH_Go_To_Sleep();
-	 // turn of LED for indicate while MCU is sleeping.
+//	  turn of LED for indicate while MCU is sleeping.
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+	  //set_led_color(TRAFFIC_1_LED, RED_COLOR);
 	  fsm_simple_button_run();
 	  traffic_processing();
 	  pedestrian_scramble();
@@ -364,6 +367,18 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
+  /*Configure GPIO pin : te_Pin */
+  GPIO_InitStruct.Pin = te_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(te_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : PA8 */
+  GPIO_InitStruct.Pin = GPIO_PIN_8;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
   /*Configure GPIO pins : Traffic_Pedes_1_Pin Traffic_Pedes_2_Pin */
   GPIO_InitStruct.Pin = Traffic_Pedes_1_Pin|Traffic_Pedes_2_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
@@ -378,13 +393,14 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-
+int counter = 0;
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 	// timerRun()
 	if (htim->Instance == TIM2) {
 		//timestamp++; // increase timestamp by 10ms
 		timerRun();
 		SCH_Update();
+		button_reading();
 	}
 
 	if (htim->Instance == TIM3) {

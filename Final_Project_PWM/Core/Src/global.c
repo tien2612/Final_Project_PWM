@@ -16,9 +16,9 @@ int start = 0;
 int index_mode = 0;
 
 int CURRENT_STATE[2] = {0, 2};
-int SEG7_CLOCK[2] = {5000, 2000};
+int SEG7_CLOCK[2] = {10000, 3000};
 int led_seg_buffer[4] = {0};
-int LED_TIME[3] = {5000, 2000, 3000};
+int LED_TIME[3] = {10000, 3000, 7000};
 int TIMES_INC = 0;
 
 int man_red_time = 5;

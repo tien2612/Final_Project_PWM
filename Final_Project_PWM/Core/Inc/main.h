@@ -77,6 +77,8 @@ void Error_Handler(void);
 #define LD2_GPIO_Port GPIOA
 #define Traffic_1_1_Pin GPIO_PIN_0
 #define Traffic_1_1_GPIO_Port GPIOB
+#define te_Pin GPIO_PIN_9
+#define te_GPIO_Port GPIOC
 #define TMS_Pin GPIO_PIN_13
 #define TMS_GPIO_Port GPIOA
 #define TCK_Pin GPIO_PIN_14
