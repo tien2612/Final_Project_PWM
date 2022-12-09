@@ -1,0 +1,15 @@
+input_processing.c:20:5:WhichButtonIsPressed	8	static
+input_processing.c:28:6:clear_vertical	8	static
+input_processing.c:32:6:clear_horizontal	8	static
+input_processing.c:36:6:vertical_processing	8	static
+input_processing.c:53:6:horizontal_processing	8	static
+input_processing.c:70:6:state_update	16	static
+input_processing.c:91:6:check_state	8	static
+input_processing.c:103:6:update_clock	8	static
+input_processing.c:113:6:reset	4	static
+input_processing.c:123:6:restart	4	static
+input_processing.c:127:6:confirm_action	16	static
+input_processing.c:146:6:state_handle	4	static
+input_processing.c:168:6:traffic_processing	8	static
+input_processing.c:191:6:input_processing	8	static
+input_processing.c:221:6:fsm_simple_button_run	8	static

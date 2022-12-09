@@ -33,11 +33,11 @@ void set_led_color(int led, int color) {
 			break;
 		case TRAFFIC_2_LED:
 			helper_set_led_color(Traffic_2_1_GPIO_Port, Traffic_2_1_Pin,
-					Traffic_2_1_GPIO_Port, Traffic_2_2_Pin, color);
+					Traffic_2_2_GPIO_Port, Traffic_2_2_Pin, color);
 			break;
 		case PEDESTRIAN_LED:
-			helper_set_led_color(Traffic_1_1_GPIO_Port, Traffic_1_1_Pin,
-					Traffic_1_2_GPIO_Port, Traffic_1_2_Pin, color);
+			helper_set_led_color(Traffic_Pedes_1_GPIO_Port, Traffic_Pedes_1_Pin,
+					Traffic_Pedes_2_GPIO_Port, Traffic_Pedes_2_Pin, color);
 			break;
 	}
 }
@@ -62,13 +62,16 @@ int helper_get_led_color(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin1, GPIO_TypeDef *
 int get_led_color(int led) {
 	switch(led) {
 	case TRAFFIC_1_LED:
-		return helper_get_led_color(Traffic_1_1_GPIO_Port, Traffic_1_1_Pin, Traffic_1_2_GPIO_Port, Traffic_1_2_Pin);
+		return helper_get_led_color(Traffic_1_1_GPIO_Port, Traffic_1_1_Pin,
+				Traffic_1_2_GPIO_Port, Traffic_1_2_Pin);
 		break;
 	case TRAFFIC_2_LED:
-		return helper_get_led_color(Traffic_2_1_GPIO_Port, Traffic_2_1_Pin, Traffic_2_1_GPIO_Port, Traffic_2_2_Pin);
+		return helper_get_led_color(Traffic_2_1_GPIO_Port, Traffic_2_1_Pin,
+				Traffic_2_2_GPIO_Port, Traffic_2_2_Pin);
 		break;
 	case PEDESTRIAN_LED:
-		return helper_get_led_color(Traffic_Pedes_1_GPIO_Port, Traffic_Pedes_1_Pin, Traffic_Pedes_2_GPIO_Port, Traffic_Pedes_2_Pin);
+		return helper_get_led_color(Traffic_Pedes_1_GPIO_Port, Traffic_Pedes_1_Pin,
+				Traffic_Pedes_2_GPIO_Port, Traffic_Pedes_2_Pin);
 		break;
 	default:
 		return UNDEFINED_COLOR;
@@ -78,5 +81,21 @@ int get_led_color(int led) {
 	return UNDEFINED_COLOR;
 }
 
+void helper_clear_led(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin) {
+	GPIOx->BSRR = (uint32_t)GPIO_Pin << 16u;
+}
+void clear_led(int led) {
+	switch(led) {
+	case TRAFFIC_1_LED:
+		helper_clear_led(Traffic_1_1_GPIO_Port, Traffic_1_1_Pin);
+		break;
+	case TRAFFIC_2_LED:
+		helper_clear_led(Traffic_2_1_GPIO_Port, Traffic_2_1_Pin);
+		break;
+	case PEDESTRIAN_LED:
+		helper_clear_led(Traffic_Pedes_1_GPIO_Port, Traffic_Pedes_1_Pin);
+		break;
+	}
+}
 
 

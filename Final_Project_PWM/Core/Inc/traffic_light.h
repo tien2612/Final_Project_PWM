@@ -22,5 +22,5 @@
 
 void set_led_color(int led, int color);
 int get_led_color(int led);
-
+void clear_led(int led);
 #endif /* INC_TRAFFIC_LIGHT_H_ */
