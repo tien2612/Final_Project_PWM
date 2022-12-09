@@ -58,7 +58,7 @@ void pedestrian_scramble() {
 				extra_step += 0.3;
 				__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1, FREQ += extra_step * FREQ_STEP);
 				if (delay > extra_step * DELAY_STEP) HAL_Delay(delay -= extra_step * DELAY_STEP);
-				else if (delay >= extra_step * 10) HAL_Delay(delay = - extra_step * 20);
+				else if (delay > extra_step * 10) HAL_Delay(delay = - extra_step * 20);
 				else HAL_Delay(delay);
 			}
 

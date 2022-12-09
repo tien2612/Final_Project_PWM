@@ -134,10 +134,11 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  //set_led_color(TRAFFIC_1_LED, RED_COLOR);
+	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5,
+	  	  is_button_pressed(0));
 	  fsm_simple_button_run();
 	  traffic_processing();
-	  pedestrian_scramble();
+	  //pedestrian_scramble();
 
   }
   /* USER CODE END 3 */
