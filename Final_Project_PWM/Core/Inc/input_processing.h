@@ -9,6 +9,7 @@
 #define INC_INPUT_PROCESSING_H_
 
 void fsm_for_input_processing(void);
+void fsm_simple_button_run();
 void update7SEG(int index);
 void traffic_processing();
 void input_processing();

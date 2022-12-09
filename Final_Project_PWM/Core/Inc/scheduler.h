@@ -9,7 +9,7 @@
 #define INC_SCHEDULER_H_
 
 #include <stdint.h>
-
+#include "software_timer.h"
 
 typedef struct{
 	void (*pTask)(void);

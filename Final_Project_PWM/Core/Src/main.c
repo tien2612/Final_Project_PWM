@@ -28,6 +28,7 @@
 #include "global.h"
 #include "input_processing.h"
 #include "software_timer.h"
+#include "input_reading.h"
 
 /* USER CODE END Includes */
 
@@ -106,6 +107,7 @@ int main(void)
   MX_TIM2_Init();
   MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
+  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
   HAL_TIM_Base_Start_IT(&htim2);
   HAL_TIM_Base_Start_IT(&htim3);
 
@@ -113,24 +115,27 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  //SCH_Init();
-
-
-  find_new_min_task();
+//  SCH_Init();
+//  SCH_Add_Task(fsm_simple_button_run, 0, 10);
+//  SCH_Add_Task(traffic_processing, 0, 1000);
+//  SCH_Add_Task(pedestrian_scramble, 20, 10);
+//  find_new_min_task();
   setTimer2(1000);
   while (1)
   {
 
 //	  SCH_Dispatch_Tasks();
-	  // turn on LED for indicate when not in sleep mode
-	  // SCH go to sleep, wait for any interrupt.
+//	  // turn on LED for indicate when not in sleep mode
+//	  // SCH go to sleep, wait for any interrupt.
 //	  SCH_Go_To_Sleep();
-	  // turn of LED for indicate while MCU is sleeping.
+	 // turn of LED for indicate while MCU is sleeping.
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
 	  fsm_simple_button_run();
 	  traffic_processing();
+	  pedestrian_scramble();
+
   }
   /* USER CODE END 3 */
 }
@@ -325,10 +330,13 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, Traffic_2_2_Pin|LD2_Pin|Traffic_Pedes_2_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, Traffic_1_2_Pin|LD2_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, Traffic_2_1_Pin|Traffic_Pedes_1_Pin|Traffic_1_2_Pin|Traffic_1_1_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, Traffic_1_1_Pin|Traffic_2_2_Pin|Traffic_2_1_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOC, Traffic_Pedes_1_Pin|Traffic_Pedes_2_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : B1_Pin */
   GPIO_InitStruct.Pin = B1_Pin;
@@ -342,19 +350,26 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : Traffic_2_2_Pin LD2_Pin Traffic_Pedes_2_Pin */
-  GPIO_InitStruct.Pin = Traffic_2_2_Pin|LD2_Pin|Traffic_Pedes_2_Pin;
+  /*Configure GPIO pins : Traffic_1_2_Pin LD2_Pin */
+  GPIO_InitStruct.Pin = Traffic_1_2_Pin|LD2_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : Traffic_2_1_Pin Traffic_Pedes_1_Pin Traffic_1_2_Pin Traffic_1_1_Pin */
-  GPIO_InitStruct.Pin = Traffic_2_1_Pin|Traffic_Pedes_1_Pin|Traffic_1_2_Pin|Traffic_1_1_Pin;
+  /*Configure GPIO pins : Traffic_1_1_Pin Traffic_2_2_Pin Traffic_2_1_Pin */
+  GPIO_InitStruct.Pin = Traffic_1_1_Pin|Traffic_2_2_Pin|Traffic_2_1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : Traffic_Pedes_1_Pin Traffic_Pedes_2_Pin */
+  GPIO_InitStruct.Pin = Traffic_Pedes_1_Pin|Traffic_Pedes_2_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
   /* EXTI interrupt init*/
   HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0, 0);

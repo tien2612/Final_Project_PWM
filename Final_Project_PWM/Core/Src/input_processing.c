@@ -26,32 +26,24 @@ int WhichButtonIsPressed() {
 }
 
 void clear_vertical() {
-	HAL_GPIO_WritePin(Traffic_1_1_GPIO_Port, Traffic_1_1_Pin, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(Traffic_1_2_GPIO_Port, Traffic_1_2_Pin, GPIO_PIN_RESET);
+	clear_led(TRAFFIC_1_LED);
 }
 
 void clear_horizontal() {
-	HAL_GPIO_WritePin(Traffic_2_2_GPIO_Port, Traffic_2_2_Pin, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(Traffic_2_1_GPIO_Port, Traffic_2_1_Pin, GPIO_PIN_RESET);
+	clear_led(TRAFFIC_2_LED);
 }
 
 void vertical_processing() {
 	clear_vertical();
 	switch (CURRENT_STATE[0]) {
 	case 0:
-		HAL_GPIO_WritePin(Traffic_1_1_GPIO_Port, Traffic_1_1_Pin, GPIO_PIN_SET);
-		HAL_GPIO_WritePin(Traffic_1_2_GPIO_Port, Traffic_1_2_Pin, GPIO_PIN_RESET);
-		//set_led_color(TRAFFIC_1_LED, RED_COLOR);
+		set_led_color(TRAFFIC_1_LED, RED_COLOR);
 		break;
 	case 1:
-		HAL_GPIO_WritePin(Traffic_1_1_GPIO_Port, Traffic_1_1_Pin, GPIO_PIN_SET);
-		HAL_GPIO_WritePin(Traffic_1_2_GPIO_Port, Traffic_1_2_Pin, GPIO_PIN_SET);
-//		set_led_color(TRAFFIC_1_LED, AMBER_COLOR);
+		set_led_color(TRAFFIC_1_LED, AMBER_COLOR);
 		break;
 	case 2:
-		HAL_GPIO_WritePin(Traffic_1_1_GPIO_Port, Traffic_1_1_Pin, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin(Traffic_1_2_GPIO_Port, Traffic_1_2_Pin, GPIO_PIN_SET);
-		//set_led_color(TRAFFIC_1_LED, GREEN_COLOR);
+		set_led_color(TRAFFIC_1_LED, GREEN_COLOR);
 		break;
 	default:
 		break;
@@ -62,19 +54,13 @@ void horizontal_processing() {
 	clear_horizontal();
 	switch (CURRENT_STATE[1]) {
 	case 0:
-		HAL_GPIO_WritePin(Traffic_2_1_GPIO_Port, Traffic_2_1_Pin, GPIO_PIN_SET);
-		HAL_GPIO_WritePin(Traffic_2_2_GPIO_Port, Traffic_2_2_Pin, GPIO_PIN_RESET);
-		//set_led_color(TRAFFIC_2_LED, RED_COLOR);
+		set_led_color(TRAFFIC_2_LED, RED_COLOR);
 		break;
 	case 1:
-		HAL_GPIO_WritePin(Traffic_2_1_GPIO_Port, Traffic_2_1_Pin, GPIO_PIN_SET);
-		HAL_GPIO_WritePin(Traffic_2_2_GPIO_Port, Traffic_2_2_Pin, GPIO_PIN_SET);
-		//set_led_color(TRAFFIC_2_LED, AMBER_COLOR);
+		set_led_color(TRAFFIC_2_LED, AMBER_COLOR);
 		break;
 	case 2:
-		HAL_GPIO_WritePin(Traffic_2_1_GPIO_Port, Traffic_2_1_Pin, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin(Traffic_2_2_GPIO_Port, Traffic_2_2_Pin, GPIO_PIN_SET);
-		//set_led_color(TRAFFIC_2_LED, GREEN_COLOR);
+		set_led_color(TRAFFIC_2_LED, GREEN_COLOR);
 		break;
 	default:
 		break;
