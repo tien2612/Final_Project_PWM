@@ -27,6 +27,8 @@
 #include "sche_task.h"
 #include "global.h"
 #include "input_processing.h"
+#include "software_timer.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -118,15 +120,17 @@ int main(void)
   setTimer2(1000);
   while (1)
   {
-	  SCH_Dispatch_Tasks();
+
+//	  SCH_Dispatch_Tasks();
 	  // turn on LED for indicate when not in sleep mode
 	  // SCH go to sleep, wait for any interrupt.
-	  SCH_Go_To_Sleep();
+//	  SCH_Go_To_Sleep();
 	  // turn of LED for indicate while MCU is sleeping.
     /* USER CODE END WHILE */
-	  traffic_processing();
-	  fsm_simple_button_run();
+
     /* USER CODE BEGIN 3 */
+	  fsm_simple_button_run();
+	  traffic_processing();
   }
   /* USER CODE END 3 */
 }
@@ -321,10 +325,10 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, LD2_Pin|Traffic_Pedes_2_Pin|Traffic_1_1_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, Traffic_2_2_Pin|LD2_Pin|Traffic_Pedes_2_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, Traffic_Pedes_1_Pin|Traffic_1_2_Pin|Traffic_2_2_Pin|Traffic_2_1_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, Traffic_2_1_Pin|Traffic_Pedes_1_Pin|Traffic_1_2_Pin|Traffic_1_1_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : B1_Pin */
   GPIO_InitStruct.Pin = B1_Pin;
@@ -332,27 +336,21 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(B1_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : B_Pedes_Pin B_1_Pin B_2_Pin */
-  GPIO_InitStruct.Pin = B_Pedes_Pin|B_1_Pin|B_2_Pin;
+  /*Configure GPIO pins : B_Pedes_Pin B_1_Pin */
+  GPIO_InitStruct.Pin = B_Pedes_Pin|B_1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : LD2_Pin Traffic_Pedes_2_Pin Traffic_1_1_Pin */
-  GPIO_InitStruct.Pin = LD2_Pin|Traffic_Pedes_2_Pin|Traffic_1_1_Pin;
+  /*Configure GPIO pins : Traffic_2_2_Pin LD2_Pin Traffic_Pedes_2_Pin */
+  GPIO_InitStruct.Pin = Traffic_2_2_Pin|LD2_Pin|Traffic_Pedes_2_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : B_3_Pin */
-  GPIO_InitStruct.Pin = B_3_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(B_3_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : Traffic_Pedes_1_Pin Traffic_1_2_Pin Traffic_2_2_Pin Traffic_2_1_Pin */
-  GPIO_InitStruct.Pin = Traffic_Pedes_1_Pin|Traffic_1_2_Pin|Traffic_2_2_Pin|Traffic_2_1_Pin;
+  /*Configure GPIO pins : Traffic_2_1_Pin Traffic_Pedes_1_Pin Traffic_1_2_Pin Traffic_1_1_Pin */
+  GPIO_InitStruct.Pin = Traffic_2_1_Pin|Traffic_Pedes_1_Pin|Traffic_1_2_Pin|Traffic_1_1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -370,6 +368,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 	// timerRun()
 	if (htim->Instance == TIM2) {
 		//timestamp++; // increase timestamp by 10ms
+		timerRun();
 		SCH_Update();
 	}
 

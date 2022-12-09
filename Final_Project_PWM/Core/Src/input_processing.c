@@ -12,6 +12,7 @@
 #include "global.h"
 #include "software_timer.h"
 #include "displayuart.h"
+#include "traffic_light.h"
 
 enum ButtonState{BUTTON_RELEASED, BUTTON_PRESSED, BUTTON_PRESSED_MORE_THAN_1_SECOND} ;
 enum ButtonState buttonState = BUTTON_RELEASED;
@@ -25,29 +26,32 @@ int WhichButtonIsPressed() {
 }
 
 void clear_vertical() {
-	HAL_GPIO_WritePin(GPIOA, Traffic_1_1_Pin, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(GPIOB, Traffic_1_2_Pin, GPIO_PIN_SET);
-
+	HAL_GPIO_WritePin(Traffic_1_1_GPIO_Port, Traffic_1_1_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(Traffic_1_2_GPIO_Port, Traffic_1_2_Pin, GPIO_PIN_RESET);
 }
 
 void clear_horizontal() {
-	HAL_GPIO_WritePin(GPIOB, Traffic_2_1_Pin | Traffic_2_2_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(Traffic_2_2_GPIO_Port, Traffic_2_2_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(Traffic_2_1_GPIO_Port, Traffic_2_1_Pin, GPIO_PIN_RESET);
 }
 
 void vertical_processing() {
 	clear_vertical();
 	switch (CURRENT_STATE[0]) {
 	case 0:
-		HAL_GPIO_WritePin(GPIOA, Traffic_1_1_Pin, GPIO_PIN_SET);
-		HAL_GPIO_WritePin(GPIOB, Traffic_1_2_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(Traffic_1_1_GPIO_Port, Traffic_1_1_Pin, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(Traffic_1_2_GPIO_Port, Traffic_1_2_Pin, GPIO_PIN_RESET);
+		//set_led_color(TRAFFIC_1_LED, RED_COLOR);
 		break;
 	case 1:
-		HAL_GPIO_WritePin(GPIOA, Traffic_1_1_Pin, GPIO_PIN_SET);
-		HAL_GPIO_WritePin(GPIOB, Traffic_1_2_Pin, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(Traffic_1_1_GPIO_Port, Traffic_1_1_Pin, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(Traffic_1_2_GPIO_Port, Traffic_1_2_Pin, GPIO_PIN_SET);
+//		set_led_color(TRAFFIC_1_LED, AMBER_COLOR);
 		break;
 	case 2:
-		HAL_GPIO_WritePin(GPIOA, Traffic_1_1_Pin, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin(GPIOB, Traffic_1_2_Pin, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(Traffic_1_1_GPIO_Port, Traffic_1_1_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(Traffic_1_2_GPIO_Port, Traffic_1_2_Pin, GPIO_PIN_SET);
+		//set_led_color(TRAFFIC_1_LED, GREEN_COLOR);
 		break;
 	default:
 		break;
@@ -58,16 +62,19 @@ void horizontal_processing() {
 	clear_horizontal();
 	switch (CURRENT_STATE[1]) {
 	case 0:
-		HAL_GPIO_WritePin(GPIOB, Traffic_2_1_Pin, GPIO_PIN_SET);
-		HAL_GPIO_WritePin(GPIOB, Traffic_2_2_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(Traffic_2_1_GPIO_Port, Traffic_2_1_Pin, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(Traffic_2_2_GPIO_Port, Traffic_2_2_Pin, GPIO_PIN_RESET);
+		//set_led_color(TRAFFIC_2_LED, RED_COLOR);
 		break;
 	case 1:
-		HAL_GPIO_WritePin(GPIOB, Traffic_2_1_Pin, GPIO_PIN_SET);
-		HAL_GPIO_WritePin(GPIOB, Traffic_2_2_Pin, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(Traffic_2_1_GPIO_Port, Traffic_2_1_Pin, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(Traffic_2_2_GPIO_Port, Traffic_2_2_Pin, GPIO_PIN_SET);
+		//set_led_color(TRAFFIC_2_LED, AMBER_COLOR);
 		break;
 	case 2:
-		HAL_GPIO_WritePin(GPIOB, Traffic_2_1_Pin, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin(GPIOB, Traffic_2_2_Pin, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(Traffic_2_1_GPIO_Port, Traffic_2_1_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(Traffic_2_2_GPIO_Port, Traffic_2_2_Pin, GPIO_PIN_SET);
+		//set_led_color(TRAFFIC_2_LED, GREEN_COLOR);
 		break;
 	default:
 		break;
@@ -76,7 +83,19 @@ void horizontal_processing() {
 
 void state_update(int idx) {
 	if (idx == 0) {
-		CURRENT_STATE[idx] = (CURRENT_STATE[idx] + 1) % 3;
+		switch (CURRENT_STATE[idx]) {
+		case 0:
+			CURRENT_STATE[idx] = 2;
+			break;
+		case 1:
+			CURRENT_STATE[idx] = 0;
+			break;
+		case 2:
+			CURRENT_STATE[idx] = 1;
+			break;
+		default:
+			break;
+		}
 	} else {
 		CURRENT_STATE[idx] = (CURRENT_STATE[idx] - 1 + 3) % 3;
 	}
@@ -125,14 +144,11 @@ void confirm_action(int mode) {
 		return;
 	case 1: // Inc red time mode
 		LED_TIME[RED_STATUS] = LED_TIME[RED_STATUS] + (TIMES_INC * TIME_UNIT);
-		LED_TIME [GREEN_STATUS] = LED_TIME[GREEN_STATUS] + (TIMES_INC * TIME_UNIT);
 		break;
 	case 2: // Inc yellow time mode
-		LED_TIME[RED_STATUS] = LED_TIME[RED_STATUS] + (TIMES_INC * TIME_UNIT);
 		LED_TIME[YELLOW_STATUS] = LED_TIME[YELLOW_STATUS] + (TIMES_INC * TIME_UNIT);
 		break;
 	case 3: // Inc green time
-		LED_TIME[RED_STATUS] = LED_TIME[RED_STATUS] + (TIMES_INC * TIME_UNIT);
 		LED_TIME [GREEN_STATUS] = LED_TIME[GREEN_STATUS] + (TIMES_INC * TIME_UNIT);
 		break;
 	default:

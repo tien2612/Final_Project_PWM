@@ -11,8 +11,8 @@
 
 #define INIT 					0
 #define NORMAL_RED 				5
-#define NORMAL_GREEN 			2
-#define NORMAL_YELLOW 			3
+#define NORMAL_GREEN 			3
+#define NORMAL_YELLOW 			2
 #define MAN_RED 		4
 #define MAN_YELLOW 		5
 #define MAN_GREEN		6
