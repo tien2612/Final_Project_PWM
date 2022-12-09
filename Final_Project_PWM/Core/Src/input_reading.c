@@ -19,17 +19,17 @@
 #define BUTTON_IS_RELEASED GPIO_PIN_SET
 // FSM state for input processing
 // the buffer that the final result is stored after debouncing
-static GPIO_TypeDef *buttonPort[1] = {
-//		B_1_GPIO_Port,
-//		B_2_GPIO_Port,
-//		B_3_GPIO_Port,
+static GPIO_TypeDef *buttonPort[N0_OF_BUTTONS] = {
+		B_1_GPIO_Port,
+		B_2_GPIO_Port,
+		B_3_GPIO_Port,
 		B_Pedes_GPIO_Port
 };
 
-static uint16_t buttonPin[1] = {
-//		B_1_Pin,
-//		B_2_Pin,
-//		B_3_Pin,
+static uint16_t buttonPin[N0_OF_BUTTONS] = {
+		B_1_Pin,
+		B_2_Pin,
+		B_3_Pin,
 		B_Pedes_Pin
 };
 

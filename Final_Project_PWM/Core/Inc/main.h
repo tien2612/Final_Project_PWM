@@ -77,8 +77,6 @@ void Error_Handler(void);
 #define LD2_GPIO_Port GPIOA
 #define Traffic_1_1_Pin GPIO_PIN_0
 #define Traffic_1_1_GPIO_Port GPIOB
-#define te_Pin GPIO_PIN_9
-#define te_GPIO_Port GPIOC
 #define TMS_Pin GPIO_PIN_13
 #define TMS_GPIO_Port GPIOA
 #define TCK_Pin GPIO_PIN_14
@@ -87,6 +85,10 @@ void Error_Handler(void);
 #define Traffic_Pedes_1_GPIO_Port GPIOC
 #define Traffic_Pedes_2_Pin GPIO_PIN_11
 #define Traffic_Pedes_2_GPIO_Port GPIOC
+#define B_2_Pin GPIO_PIN_3
+#define B_2_GPIO_Port GPIOB
+#define B_3_Pin GPIO_PIN_4
+#define B_3_GPIO_Port GPIOB
 #define Traffic_2_2_Pin GPIO_PIN_8
 #define Traffic_2_2_GPIO_Port GPIOB
 #define Traffic_2_1_Pin GPIO_PIN_9

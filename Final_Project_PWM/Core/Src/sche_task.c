@@ -18,12 +18,20 @@ int FREQ = 10;
 int FREQ_STEP = 0;
 int DELAY_STEP = TIME_UNIT / 10;
 int time_allow_pedestrian = 0;
+int flag_button = 0;
 extern TIM_HandleTypeDef htim3;
 
 float extra_step = 1;
 
 void pedestrian_scramble() {
-		if (get_led_color(TRAFFIC_1_LED) == RED_COLOR) {
+		if (is_button_pressed(3)) {
+			if (get_led_color(TRAFFIC_1_LED) == RED_COLOR) {
+				pedestrian_active = 1;
+				flag_button = 1;
+			}
+		}
+
+		if (get_led_color(TRAFFIC_1_LED) == RED_COLOR && flag_button) {
 			pedestrian_active = 1;
 			/* Calculate number of step for increase frequency and decrease delay time */
 			FREQ_STEP = 120 / (SEG7_CLOCK[0] / TIME_UNIT);
@@ -34,7 +42,6 @@ void pedestrian_scramble() {
 			pedestrian_active = 0;
 			set_led_color(PEDESTRIAN_LED, RED_COLOR);
 		}
-	//}
 		if (pedestrian_active) {
 			set_led_color(PEDESTRIAN_LED, GREEN_COLOR);
 			/* Buzzer frequency */
@@ -62,5 +69,6 @@ void pedestrian_scramble() {
 			delay = TIME_UNIT;
 			FREQ = 10;
 			extra_step = 1;
+			flag_button = 0;
 		}
 }
