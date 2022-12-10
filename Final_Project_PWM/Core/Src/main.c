@@ -122,6 +122,7 @@ int main(void)
 //  SCH_Add_Task(button_reading, 40, 10);
 //  SCH_Add_Task(pedestrian_scramble, 30, 10);
 //  find_new_min_task();
+  setTimer1(500);
   setTimer2(1000);
   while (1)
   {
@@ -134,7 +135,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  //set_led_color(TRAFFIC_1_LED, RED_COLOR);
+	  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
 	  fsm_simple_button_run();
 	  traffic_processing();
 	  pedestrian_scramble();

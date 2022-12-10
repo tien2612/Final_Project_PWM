@@ -10,9 +10,9 @@
 
 
 #define INIT 					0
-#define NORMAL_RED 				10
-#define NORMAL_GREEN 			7
-#define NORMAL_YELLOW 			3
+#define NORMAL_RED 				10000
+#define NORMAL_GREEN 			7000
+#define NORMAL_YELLOW 			3000
 #define MAN_RED 		4
 #define MAN_YELLOW 		5
 #define MAN_GREEN		6
@@ -37,6 +37,8 @@
 #define MAN_GREEN_TIME	700
 #define MAN_YELLOW_TIME	500
 
+extern int toggle_flag;
+extern int t2;
 extern int index_mode;
 extern int time0;
 extern int time1;

@@ -9,7 +9,7 @@ input_processing.c:103:6:update_clock	8	static
 input_processing.c:113:6:reset	4	static
 input_processing.c:123:6:restart	4	static
 input_processing.c:127:6:confirm_action	16	static
-input_processing.c:146:6:state_handle	4	static
-input_processing.c:168:6:traffic_processing	8	static
-input_processing.c:191:6:input_processing	8	static
-input_processing.c:221:6:fsm_simple_button_run	8	static
+input_processing.c:146:6:state_handle	8	static
+input_processing.c:189:6:traffic_processing	8	static
+input_processing.c:212:6:input_processing	8	static
+input_processing.c:248:6:fsm_simple_button_run	8	static
