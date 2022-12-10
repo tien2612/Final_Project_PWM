@@ -122,6 +122,7 @@ int main(void)
 //  SCH_Add_Task(button_reading, 40, 10);
 //  SCH_Add_Task(pedestrian_scramble, 30, 10);
 //  find_new_min_task();
+  setTimer1(500);
   setTimer2(1000);
   while (1)
   {

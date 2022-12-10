@@ -13,7 +13,7 @@
 
 int status = 0;
 int start = 0;
-int index_mode = 0;
+int index_mode = -1;
 
 int CURRENT_STATE[2] = {0, 2};
 int SEG7_CLOCK[2] = {10000, 3000};
@@ -24,6 +24,7 @@ int TIMES_INC = 0;
 int man_red_time = 5;
 int man_amber_time = 2;
 int man_green_time = 3;
+int toggle_flag = 0;
 
 int temp_value = 0;
 int light_time = GREEN_TIME / 100;

@@ -37,6 +37,8 @@
 #define MAN_GREEN_TIME	700
 #define MAN_YELLOW_TIME	500
 
+extern int toggle_flag;
+extern int t2;
 extern int index_mode;
 extern int time0;
 extern int time1;

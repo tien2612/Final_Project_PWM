@@ -145,21 +145,60 @@ void confirm_action(int mode) {
 
 void state_handle() {
 	switch (index_mode) {
-	case 0:
+	case 0:							//RED MODE
+		if (timer1_flag == 1) {
+			if (toggle_flag == 0) {
+				clear_horizontal();
+				clear_vertical();
+				set_led_color(TRAFFIC_1_LED, RED_COLOR);
+				set_led_color(TRAFFIC_2_LED, RED_COLOR);
+				toggle_flag = 1;
+			} else {
+				clear_horizontal();
+				clear_vertical();
+				toggle_flag = 0;
+			}
+			setTimer1(500);
+		}
 		SEG7_CLOCK[VER_LED] = 0;
 		SEG7_CLOCK[HOR_LED] = 0;
 		break;
-	case 1:
+	case 1:							//YELLOW MODE
+		if (timer1_flag == 1) {
+			if (toggle_flag == 0) {
+				clear_horizontal();
+				clear_vertical();
+				set_led_color(TRAFFIC_1_LED, AMBER_COLOR);
+				set_led_color(TRAFFIC_2_LED, AMBER_COLOR);
+				toggle_flag = 1;
+			} else {
+				clear_horizontal();
+				clear_vertical();
+				toggle_flag = 0;
+			}
+			setTimer1(500);
+		}
 		SEG7_CLOCK[VER_LED] = 1 * TIME_UNIT;
-		SEG7_CLOCK[HOR_LED] = LED_TIME[0] + TIMES_INC * TIME_UNIT;
+		SEG7_CLOCK[HOR_LED] = 0;
 		break;
-	case 2:
+	case 2:							//GREEN MODE
+		if (timer1_flag == 1) {
+			if (toggle_flag == 0) {
+				clear_horizontal();
+				clear_vertical();
+				set_led_color(TRAFFIC_1_LED, GREEN_COLOR);
+				set_led_color(TRAFFIC_2_LED, GREEN_COLOR);
+				toggle_flag = 1;
+			} else {
+				clear_horizontal();
+				clear_vertical();
+				toggle_flag = 0;
+			}
+			setTimer1(500);
+		}
 		SEG7_CLOCK[VER_LED] = 2  * TIME_UNIT;
-		SEG7_CLOCK[HOR_LED] = LED_TIME[1] + TIMES_INC * TIME_UNIT;
+		SEG7_CLOCK[HOR_LED] = 0;
 		break;
-	case 3:
-		SEG7_CLOCK[VER_LED] = 3  * TIME_UNIT;
-		SEG7_CLOCK[HOR_LED] = LED_TIME[2] + TIMES_INC * TIME_UNIT;
 	default:
 		break;
 	}
@@ -192,8 +231,12 @@ void input_processing() {
 	// Switch button
 	if (is_button_pressed(0)) {
 		status = 2;
-		index_mode = (index_mode + 1) % 4;
+		index_mode = (index_mode + 1);
 		TIMES_INC = 0;
+		if (index_mode >= 3) {
+			status = 0;
+			index_mode = -1;
+		}
 	}
 
 	// Add button
@@ -207,7 +250,7 @@ void input_processing() {
 			confirm_action(index_mode);
 		}
 		TIMES_INC = 0;
-		index_mode = 0;
+		index_mode = -1;
 		restart();
 	}
 

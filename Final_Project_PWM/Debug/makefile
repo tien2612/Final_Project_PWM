@@ -64,8 +64,8 @@ all: main-build
 main-build: Final_Project_PWM.elf secondary-outputs
 
 # Tool invocations
-Final_Project_PWM.elf: $(OBJS) $(USER_OBJS) C:\Users\nguye\Documents\GitHub\Final_Project_PWM\Final_Project_PWM\STM32F103RBTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "Final_Project_PWM.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"C:\Users\nguye\Documents\GitHub\Final_Project_PWM\Final_Project_PWM\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Final_Project_PWM.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Final_Project_PWM.elf: $(OBJS) $(USER_OBJS) C:\Users\xanlo\Desktop\MCULAB\tutorial\Final_Project_PWM\Final_Project_PWM\STM32F103RBTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "Final_Project_PWM.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"C:\Users\xanlo\Desktop\MCULAB\tutorial\Final_Project_PWM\Final_Project_PWM\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Final_Project_PWM.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
