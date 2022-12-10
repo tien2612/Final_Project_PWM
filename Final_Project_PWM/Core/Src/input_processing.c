@@ -111,9 +111,9 @@ void update_clock() {
 }
 
 void reset() {
-	LED_TIME[RED_STATUS] = NORMAL_RED * TIME_UNIT;
-	LED_TIME[YELLOW_STATUS] = NORMAL_YELLOW * TIME_UNIT;
-	LED_TIME[GREEN_STATUS] = NORMAL_GREEN * TIME_UNIT;
+	LED_TIME[RED_STATUS] = NORMAL_RED ;
+	LED_TIME[YELLOW_STATUS] = NORMAL_YELLOW;
+	LED_TIME[GREEN_STATUS] = NORMAL_GREEN;
 	CURRENT_STATE[VER_LED] = RED_STATUS;
 	CURRENT_STATE[HOR_LED] = GREEN_STATUS;
 	SEG7_CLOCK[VER_LED] = LED_TIME[CURRENT_STATE[VER_LED]];
@@ -147,57 +147,39 @@ void state_handle() {
 	switch (index_mode) {
 	case 0:							//RED MODE
 		if (timer1_flag == 1) {
-			if (toggle_flag == 0) {
-				clear_horizontal();
-				clear_vertical();
-				set_led_color(TRAFFIC_1_LED, RED_COLOR);
-				set_led_color(TRAFFIC_2_LED, RED_COLOR);
-				toggle_flag = 1;
-			} else {
-				clear_horizontal();
-				clear_vertical();
-				toggle_flag = 0;
-			}
+			HAL_GPIO_WritePin(Traffic_1_2_GPIO_Port, Traffic_1_2_Pin, 0);
+			HAL_GPIO_TogglePin(Traffic_1_1_GPIO_Port, Traffic_1_1_Pin);
+			HAL_GPIO_WritePin(Traffic_2_2_GPIO_Port, Traffic_2_2_Pin, 0);
+			HAL_GPIO_TogglePin(Traffic_2_1_GPIO_Port, Traffic_2_1_Pin);
 			setTimer1(500);
 		}
-		SEG7_CLOCK[VER_LED] = 0;
+		SEG7_CLOCK[VER_LED] = LED_TIME[0] + TIMES_INC * TIME_UNIT;
 		SEG7_CLOCK[HOR_LED] = 0;
+		updateDisplay();
 		break;
 	case 1:							//YELLOW MODE
 		if (timer1_flag == 1) {
-			if (toggle_flag == 0) {
-				clear_horizontal();
-				clear_vertical();
-				set_led_color(TRAFFIC_1_LED, AMBER_COLOR);
-				set_led_color(TRAFFIC_2_LED, AMBER_COLOR);
-				toggle_flag = 1;
-			} else {
-				clear_horizontal();
-				clear_vertical();
-				toggle_flag = 0;
-			}
+			HAL_GPIO_TogglePin(Traffic_1_1_GPIO_Port, Traffic_1_1_Pin);
+			HAL_GPIO_TogglePin(Traffic_1_2_GPIO_Port, Traffic_1_2_Pin);
+			HAL_GPIO_TogglePin(Traffic_2_1_GPIO_Port, Traffic_2_1_Pin);
+			HAL_GPIO_TogglePin(Traffic_2_2_GPIO_Port, Traffic_2_2_Pin);
 			setTimer1(500);
 		}
-		SEG7_CLOCK[VER_LED] = 1 * TIME_UNIT;
+		SEG7_CLOCK[VER_LED] = LED_TIME[1] + TIMES_INC * TIME_UNIT;
 		SEG7_CLOCK[HOR_LED] = 0;
+		updateDisplay();
 		break;
 	case 2:							//GREEN MODE
 		if (timer1_flag == 1) {
-			if (toggle_flag == 0) {
-				clear_horizontal();
-				clear_vertical();
-				set_led_color(TRAFFIC_1_LED, GREEN_COLOR);
-				set_led_color(TRAFFIC_2_LED, GREEN_COLOR);
-				toggle_flag = 1;
-			} else {
-				clear_horizontal();
-				clear_vertical();
-				toggle_flag = 0;
-			}
+			HAL_GPIO_WritePin(Traffic_1_1_GPIO_Port, Traffic_1_1_Pin, 0);
+			HAL_GPIO_TogglePin(Traffic_1_2_GPIO_Port, Traffic_1_2_Pin);
+			HAL_GPIO_WritePin(Traffic_2_1_GPIO_Port, Traffic_2_1_Pin, 0);
+			HAL_GPIO_TogglePin(Traffic_2_2_GPIO_Port, Traffic_2_2_Pin);
 			setTimer1(500);
 		}
-		SEG7_CLOCK[VER_LED] = 2  * TIME_UNIT;
+		SEG7_CLOCK[VER_LED] = LED_TIME[2] + TIMES_INC * TIME_UNIT;
 		SEG7_CLOCK[HOR_LED] = 0;
+		updateDisplay();
 		break;
 	default:
 		break;
@@ -230,6 +212,8 @@ void traffic_processing() {
 void input_processing() {
 	// Switch button
 	if (is_button_pressed(0)) {
+		clear_vertical();
+		clear_horizontal();
 		status = 2;
 		index_mode = (index_mode + 1);
 		TIMES_INC = 0;

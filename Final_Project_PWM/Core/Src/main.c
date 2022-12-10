@@ -135,11 +135,10 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5,
-	  	  is_button_pressed(0));
+	  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
 	  fsm_simple_button_run();
 	  traffic_processing();
-	  //pedestrian_scramble();
+	  pedestrian_scramble();
 
   }
   /* USER CODE END 3 */
