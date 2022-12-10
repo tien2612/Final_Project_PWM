@@ -240,12 +240,12 @@ void input_processing() {
 	}
 
 	// Add button
-	if (is_button_pressed(1) && index_mode != 0) {
+	if (is_button_pressed(1) && index_mode != -1) {
 		TIMES_INC++;
 	}
 
 	// Confirm button
-	if (is_button_pressed(2) && index_mode != 0) {
+	if (is_button_pressed(2) && index_mode != -1) {
 		if (TIMES_INC != 0) {
 			confirm_action(index_mode);
 		}
