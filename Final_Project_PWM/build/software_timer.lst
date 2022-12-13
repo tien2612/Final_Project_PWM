@@ -1,0 +1,705 @@
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 6
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"software_timer.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.global	timer1_flag
+  16              		.section	.bss.timer1_flag,"aw",%nobits
+  17              		.align	2
+  20              	timer1_flag:
+  21 0000 00000000 		.space	4
+  22              		.global	timer2_flag
+  23              		.section	.bss.timer2_flag,"aw",%nobits
+  24              		.align	2
+  27              	timer2_flag:
+  28 0000 00000000 		.space	4
+  29              		.global	timer3_flag
+  30              		.section	.bss.timer3_flag,"aw",%nobits
+  31              		.align	2
+  34              	timer3_flag:
+  35 0000 00000000 		.space	4
+  36              		.global	timer4_flag
+  37              		.section	.bss.timer4_flag,"aw",%nobits
+  38              		.align	2
+  41              	timer4_flag:
+  42 0000 00000000 		.space	4
+  43              		.global	timer5_flag
+  44              		.section	.bss.timer5_flag,"aw",%nobits
+  45              		.align	2
+  48              	timer5_flag:
+  49 0000 00000000 		.space	4
+  50              		.global	timer1_counter
+  51              		.section	.bss.timer1_counter,"aw",%nobits
+  52              		.align	2
+  55              	timer1_counter:
+  56 0000 00000000 		.space	4
+  57              		.global	timer2_counter
+  58              		.section	.bss.timer2_counter,"aw",%nobits
+  59              		.align	2
+  62              	timer2_counter:
+  63 0000 00000000 		.space	4
+  64              		.global	timer3_counter
+  65              		.section	.bss.timer3_counter,"aw",%nobits
+  66              		.align	2
+  69              	timer3_counter:
+  70 0000 00000000 		.space	4
+  71              		.global	timer4_counter
+  72              		.section	.bss.timer4_counter,"aw",%nobits
+  73              		.align	2
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s 			page 2
+
+
+  76              	timer4_counter:
+  77 0000 00000000 		.space	4
+  78              		.global	timer5_counter
+  79              		.section	.bss.timer5_counter,"aw",%nobits
+  80              		.align	2
+  83              	timer5_counter:
+  84 0000 00000000 		.space	4
+  85              		.global	TIMER_CYCLE
+  86              		.section	.data.TIMER_CYCLE,"aw"
+  87              		.align	2
+  90              	TIMER_CYCLE:
+  91 0000 0A000000 		.word	10
+  92              		.section	.text.setTimer1,"ax",%progbits
+  93              		.align	1
+  94              		.global	setTimer1
+  95              		.arch armv7-m
+  96              		.syntax unified
+  97              		.thumb
+  98              		.thumb_func
+  99              		.fpu softvfp
+ 101              	setTimer1:
+ 102              	.LFB0:
+ 103              		.file 1 "./Core/Src/software_timer.c"
+   1:./Core/Src/software_timer.c **** /*
+   2:./Core/Src/software_timer.c ****  * software_timer.c
+   3:./Core/Src/software_timer.c ****  *
+   4:./Core/Src/software_timer.c ****  *  Created on: Sep 25, 2022
+   5:./Core/Src/software_timer.c ****  *      Author: Tien
+   6:./Core/Src/software_timer.c ****  */
+   7:./Core/Src/software_timer.c **** 
+   8:./Core/Src/software_timer.c **** #include "software_timer.h"
+   9:./Core/Src/software_timer.c **** 
+  10:./Core/Src/software_timer.c **** int timer1_flag = 0;
+  11:./Core/Src/software_timer.c **** int timer2_flag = 0;
+  12:./Core/Src/software_timer.c **** int timer3_flag = 0;
+  13:./Core/Src/software_timer.c **** int timer4_flag = 0;
+  14:./Core/Src/software_timer.c **** int timer5_flag = 0;
+  15:./Core/Src/software_timer.c **** int timer1_counter = 0;
+  16:./Core/Src/software_timer.c **** int timer2_counter = 0;
+  17:./Core/Src/software_timer.c **** int timer3_counter = 0;
+  18:./Core/Src/software_timer.c **** int timer4_counter = 0;
+  19:./Core/Src/software_timer.c **** int timer5_counter = 0;
+  20:./Core/Src/software_timer.c **** 
+  21:./Core/Src/software_timer.c **** int TIMER_CYCLE = 10; // 10ms
+  22:./Core/Src/software_timer.c **** void setTimer1(int duration) {
+ 104              		.loc 1 22 30
+ 105              		.cfi_startproc
+ 106              		@ args = 0, pretend = 0, frame = 8
+ 107              		@ frame_needed = 1, uses_anonymous_args = 0
+ 108              		@ link register save eliminated.
+ 109 0000 80B4     		push	{r7}
+ 110              		.cfi_def_cfa_offset 4
+ 111              		.cfi_offset 7, -4
+ 112 0002 83B0     		sub	sp, sp, #12
+ 113              		.cfi_def_cfa_offset 16
+ 114 0004 00AF     		add	r7, sp, #0
+ 115              		.cfi_def_cfa_register 7
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s 			page 3
+
+
+ 116 0006 7860     		str	r0, [r7, #4]
+  23:./Core/Src/software_timer.c **** 	timer1_counter = duration / TIMER_CYCLE;
+ 117              		.loc 1 23 28
+ 118 0008 074B     		ldr	r3, .L2
+ 119 000a 1B68     		ldr	r3, [r3]
+ 120 000c 7A68     		ldr	r2, [r7, #4]
+ 121 000e 92FBF3F3 		sdiv	r3, r2, r3
+ 122              		.loc 1 23 17
+ 123 0012 064A     		ldr	r2, .L2+4
+ 124 0014 1360     		str	r3, [r2]
+  24:./Core/Src/software_timer.c **** 	timer1_flag = 0;
+ 125              		.loc 1 24 14
+ 126 0016 064B     		ldr	r3, .L2+8
+ 127 0018 0022     		movs	r2, #0
+ 128 001a 1A60     		str	r2, [r3]
+  25:./Core/Src/software_timer.c **** }
+ 129              		.loc 1 25 1
+ 130 001c 00BF     		nop
+ 131 001e 0C37     		adds	r7, r7, #12
+ 132              		.cfi_def_cfa_offset 4
+ 133 0020 BD46     		mov	sp, r7
+ 134              		.cfi_def_cfa_register 13
+ 135              		@ sp needed
+ 136 0022 80BC     		pop	{r7}
+ 137              		.cfi_restore 7
+ 138              		.cfi_def_cfa_offset 0
+ 139 0024 7047     		bx	lr
+ 140              	.L3:
+ 141 0026 00BF     		.align	2
+ 142              	.L2:
+ 143 0028 00000000 		.word	TIMER_CYCLE
+ 144 002c 00000000 		.word	timer1_counter
+ 145 0030 00000000 		.word	timer1_flag
+ 146              		.cfi_endproc
+ 147              	.LFE0:
+ 149              		.section	.text.setTimer2,"ax",%progbits
+ 150              		.align	1
+ 151              		.global	setTimer2
+ 152              		.syntax unified
+ 153              		.thumb
+ 154              		.thumb_func
+ 155              		.fpu softvfp
+ 157              	setTimer2:
+ 158              	.LFB1:
+  26:./Core/Src/software_timer.c **** void setTimer2(int duration) {
+ 159              		.loc 1 26 30
+ 160              		.cfi_startproc
+ 161              		@ args = 0, pretend = 0, frame = 8
+ 162              		@ frame_needed = 1, uses_anonymous_args = 0
+ 163              		@ link register save eliminated.
+ 164 0000 80B4     		push	{r7}
+ 165              		.cfi_def_cfa_offset 4
+ 166              		.cfi_offset 7, -4
+ 167 0002 83B0     		sub	sp, sp, #12
+ 168              		.cfi_def_cfa_offset 16
+ 169 0004 00AF     		add	r7, sp, #0
+ 170              		.cfi_def_cfa_register 7
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s 			page 4
+
+
+ 171 0006 7860     		str	r0, [r7, #4]
+  27:./Core/Src/software_timer.c **** 	timer2_counter = duration / TIMER_CYCLE;
+ 172              		.loc 1 27 28
+ 173 0008 074B     		ldr	r3, .L5
+ 174 000a 1B68     		ldr	r3, [r3]
+ 175 000c 7A68     		ldr	r2, [r7, #4]
+ 176 000e 92FBF3F3 		sdiv	r3, r2, r3
+ 177              		.loc 1 27 17
+ 178 0012 064A     		ldr	r2, .L5+4
+ 179 0014 1360     		str	r3, [r2]
+  28:./Core/Src/software_timer.c **** 	timer2_flag = 0;
+ 180              		.loc 1 28 14
+ 181 0016 064B     		ldr	r3, .L5+8
+ 182 0018 0022     		movs	r2, #0
+ 183 001a 1A60     		str	r2, [r3]
+  29:./Core/Src/software_timer.c **** }
+ 184              		.loc 1 29 1
+ 185 001c 00BF     		nop
+ 186 001e 0C37     		adds	r7, r7, #12
+ 187              		.cfi_def_cfa_offset 4
+ 188 0020 BD46     		mov	sp, r7
+ 189              		.cfi_def_cfa_register 13
+ 190              		@ sp needed
+ 191 0022 80BC     		pop	{r7}
+ 192              		.cfi_restore 7
+ 193              		.cfi_def_cfa_offset 0
+ 194 0024 7047     		bx	lr
+ 195              	.L6:
+ 196 0026 00BF     		.align	2
+ 197              	.L5:
+ 198 0028 00000000 		.word	TIMER_CYCLE
+ 199 002c 00000000 		.word	timer2_counter
+ 200 0030 00000000 		.word	timer2_flag
+ 201              		.cfi_endproc
+ 202              	.LFE1:
+ 204              		.section	.text.setTimer3,"ax",%progbits
+ 205              		.align	1
+ 206              		.global	setTimer3
+ 207              		.syntax unified
+ 208              		.thumb
+ 209              		.thumb_func
+ 210              		.fpu softvfp
+ 212              	setTimer3:
+ 213              	.LFB2:
+  30:./Core/Src/software_timer.c **** void setTimer3(int duration) {
+ 214              		.loc 1 30 30
+ 215              		.cfi_startproc
+ 216              		@ args = 0, pretend = 0, frame = 8
+ 217              		@ frame_needed = 1, uses_anonymous_args = 0
+ 218              		@ link register save eliminated.
+ 219 0000 80B4     		push	{r7}
+ 220              		.cfi_def_cfa_offset 4
+ 221              		.cfi_offset 7, -4
+ 222 0002 83B0     		sub	sp, sp, #12
+ 223              		.cfi_def_cfa_offset 16
+ 224 0004 00AF     		add	r7, sp, #0
+ 225              		.cfi_def_cfa_register 7
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s 			page 5
+
+
+ 226 0006 7860     		str	r0, [r7, #4]
+  31:./Core/Src/software_timer.c **** 	timer3_counter = duration / TIMER_CYCLE;
+ 227              		.loc 1 31 28
+ 228 0008 074B     		ldr	r3, .L8
+ 229 000a 1B68     		ldr	r3, [r3]
+ 230 000c 7A68     		ldr	r2, [r7, #4]
+ 231 000e 92FBF3F3 		sdiv	r3, r2, r3
+ 232              		.loc 1 31 17
+ 233 0012 064A     		ldr	r2, .L8+4
+ 234 0014 1360     		str	r3, [r2]
+  32:./Core/Src/software_timer.c **** 	timer3_flag = 0;
+ 235              		.loc 1 32 14
+ 236 0016 064B     		ldr	r3, .L8+8
+ 237 0018 0022     		movs	r2, #0
+ 238 001a 1A60     		str	r2, [r3]
+  33:./Core/Src/software_timer.c **** }
+ 239              		.loc 1 33 1
+ 240 001c 00BF     		nop
+ 241 001e 0C37     		adds	r7, r7, #12
+ 242              		.cfi_def_cfa_offset 4
+ 243 0020 BD46     		mov	sp, r7
+ 244              		.cfi_def_cfa_register 13
+ 245              		@ sp needed
+ 246 0022 80BC     		pop	{r7}
+ 247              		.cfi_restore 7
+ 248              		.cfi_def_cfa_offset 0
+ 249 0024 7047     		bx	lr
+ 250              	.L9:
+ 251 0026 00BF     		.align	2
+ 252              	.L8:
+ 253 0028 00000000 		.word	TIMER_CYCLE
+ 254 002c 00000000 		.word	timer3_counter
+ 255 0030 00000000 		.word	timer3_flag
+ 256              		.cfi_endproc
+ 257              	.LFE2:
+ 259              		.section	.text.setTimer4,"ax",%progbits
+ 260              		.align	1
+ 261              		.global	setTimer4
+ 262              		.syntax unified
+ 263              		.thumb
+ 264              		.thumb_func
+ 265              		.fpu softvfp
+ 267              	setTimer4:
+ 268              	.LFB3:
+  34:./Core/Src/software_timer.c **** void setTimer4(int duration) {
+ 269              		.loc 1 34 30
+ 270              		.cfi_startproc
+ 271              		@ args = 0, pretend = 0, frame = 8
+ 272              		@ frame_needed = 1, uses_anonymous_args = 0
+ 273              		@ link register save eliminated.
+ 274 0000 80B4     		push	{r7}
+ 275              		.cfi_def_cfa_offset 4
+ 276              		.cfi_offset 7, -4
+ 277 0002 83B0     		sub	sp, sp, #12
+ 278              		.cfi_def_cfa_offset 16
+ 279 0004 00AF     		add	r7, sp, #0
+ 280              		.cfi_def_cfa_register 7
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s 			page 6
+
+
+ 281 0006 7860     		str	r0, [r7, #4]
+  35:./Core/Src/software_timer.c **** 	timer4_counter = duration / TIMER_CYCLE;
+ 282              		.loc 1 35 28
+ 283 0008 074B     		ldr	r3, .L11
+ 284 000a 1B68     		ldr	r3, [r3]
+ 285 000c 7A68     		ldr	r2, [r7, #4]
+ 286 000e 92FBF3F3 		sdiv	r3, r2, r3
+ 287              		.loc 1 35 17
+ 288 0012 064A     		ldr	r2, .L11+4
+ 289 0014 1360     		str	r3, [r2]
+  36:./Core/Src/software_timer.c **** 	timer4_flag = 0;
+ 290              		.loc 1 36 14
+ 291 0016 064B     		ldr	r3, .L11+8
+ 292 0018 0022     		movs	r2, #0
+ 293 001a 1A60     		str	r2, [r3]
+  37:./Core/Src/software_timer.c **** }
+ 294              		.loc 1 37 1
+ 295 001c 00BF     		nop
+ 296 001e 0C37     		adds	r7, r7, #12
+ 297              		.cfi_def_cfa_offset 4
+ 298 0020 BD46     		mov	sp, r7
+ 299              		.cfi_def_cfa_register 13
+ 300              		@ sp needed
+ 301 0022 80BC     		pop	{r7}
+ 302              		.cfi_restore 7
+ 303              		.cfi_def_cfa_offset 0
+ 304 0024 7047     		bx	lr
+ 305              	.L12:
+ 306 0026 00BF     		.align	2
+ 307              	.L11:
+ 308 0028 00000000 		.word	TIMER_CYCLE
+ 309 002c 00000000 		.word	timer4_counter
+ 310 0030 00000000 		.word	timer4_flag
+ 311              		.cfi_endproc
+ 312              	.LFE3:
+ 314              		.section	.text.setTimer5,"ax",%progbits
+ 315              		.align	1
+ 316              		.global	setTimer5
+ 317              		.syntax unified
+ 318              		.thumb
+ 319              		.thumb_func
+ 320              		.fpu softvfp
+ 322              	setTimer5:
+ 323              	.LFB4:
+  38:./Core/Src/software_timer.c **** 
+  39:./Core/Src/software_timer.c **** void setTimer5(int duration) {
+ 324              		.loc 1 39 30
+ 325              		.cfi_startproc
+ 326              		@ args = 0, pretend = 0, frame = 8
+ 327              		@ frame_needed = 1, uses_anonymous_args = 0
+ 328              		@ link register save eliminated.
+ 329 0000 80B4     		push	{r7}
+ 330              		.cfi_def_cfa_offset 4
+ 331              		.cfi_offset 7, -4
+ 332 0002 83B0     		sub	sp, sp, #12
+ 333              		.cfi_def_cfa_offset 16
+ 334 0004 00AF     		add	r7, sp, #0
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s 			page 7
+
+
+ 335              		.cfi_def_cfa_register 7
+ 336 0006 7860     		str	r0, [r7, #4]
+  40:./Core/Src/software_timer.c **** 	timer5_counter = duration / TIMER_CYCLE;
+ 337              		.loc 1 40 28
+ 338 0008 074B     		ldr	r3, .L14
+ 339 000a 1B68     		ldr	r3, [r3]
+ 340 000c 7A68     		ldr	r2, [r7, #4]
+ 341 000e 92FBF3F3 		sdiv	r3, r2, r3
+ 342              		.loc 1 40 17
+ 343 0012 064A     		ldr	r2, .L14+4
+ 344 0014 1360     		str	r3, [r2]
+  41:./Core/Src/software_timer.c **** 	timer5_flag = 0;
+ 345              		.loc 1 41 14
+ 346 0016 064B     		ldr	r3, .L14+8
+ 347 0018 0022     		movs	r2, #0
+ 348 001a 1A60     		str	r2, [r3]
+  42:./Core/Src/software_timer.c **** }
+ 349              		.loc 1 42 1
+ 350 001c 00BF     		nop
+ 351 001e 0C37     		adds	r7, r7, #12
+ 352              		.cfi_def_cfa_offset 4
+ 353 0020 BD46     		mov	sp, r7
+ 354              		.cfi_def_cfa_register 13
+ 355              		@ sp needed
+ 356 0022 80BC     		pop	{r7}
+ 357              		.cfi_restore 7
+ 358              		.cfi_def_cfa_offset 0
+ 359 0024 7047     		bx	lr
+ 360              	.L15:
+ 361 0026 00BF     		.align	2
+ 362              	.L14:
+ 363 0028 00000000 		.word	TIMER_CYCLE
+ 364 002c 00000000 		.word	timer5_counter
+ 365 0030 00000000 		.word	timer5_flag
+ 366              		.cfi_endproc
+ 367              	.LFE4:
+ 369              		.section	.text.timerRun,"ax",%progbits
+ 370              		.align	1
+ 371              		.global	timerRun
+ 372              		.syntax unified
+ 373              		.thumb
+ 374              		.thumb_func
+ 375              		.fpu softvfp
+ 377              	timerRun:
+ 378              	.LFB5:
+  43:./Core/Src/software_timer.c **** 
+  44:./Core/Src/software_timer.c **** void timerRun() {
+ 379              		.loc 1 44 17
+ 380              		.cfi_startproc
+ 381              		@ args = 0, pretend = 0, frame = 0
+ 382              		@ frame_needed = 1, uses_anonymous_args = 0
+ 383              		@ link register save eliminated.
+ 384 0000 80B4     		push	{r7}
+ 385              		.cfi_def_cfa_offset 4
+ 386              		.cfi_offset 7, -4
+ 387 0002 00AF     		add	r7, sp, #0
+ 388              		.cfi_def_cfa_register 7
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s 			page 8
+
+
+  45:./Core/Src/software_timer.c **** 	if (timer1_counter > 0) {
+ 389              		.loc 1 45 21
+ 390 0004 294B     		ldr	r3, .L23
+ 391 0006 1B68     		ldr	r3, [r3]
+ 392              		.loc 1 45 5
+ 393 0008 002B     		cmp	r3, #0
+ 394 000a 0BDD     		ble	.L17
+  46:./Core/Src/software_timer.c **** 		timer1_counter--;
+ 395              		.loc 1 46 17
+ 396 000c 274B     		ldr	r3, .L23
+ 397 000e 1B68     		ldr	r3, [r3]
+ 398 0010 013B     		subs	r3, r3, #1
+ 399 0012 264A     		ldr	r2, .L23
+ 400 0014 1360     		str	r3, [r2]
+  47:./Core/Src/software_timer.c **** 		if (timer1_counter <= 0) {
+ 401              		.loc 1 47 22
+ 402 0016 254B     		ldr	r3, .L23
+ 403 0018 1B68     		ldr	r3, [r3]
+ 404              		.loc 1 47 6
+ 405 001a 002B     		cmp	r3, #0
+ 406 001c 02DC     		bgt	.L17
+  48:./Core/Src/software_timer.c **** 			timer1_flag = 1;
+ 407              		.loc 1 48 16
+ 408 001e 244B     		ldr	r3, .L23+4
+ 409 0020 0122     		movs	r2, #1
+ 410 0022 1A60     		str	r2, [r3]
+ 411              	.L17:
+  49:./Core/Src/software_timer.c **** 		}
+  50:./Core/Src/software_timer.c **** 	}
+  51:./Core/Src/software_timer.c **** 	if (timer2_counter > 0) {
+ 412              		.loc 1 51 21
+ 413 0024 234B     		ldr	r3, .L23+8
+ 414 0026 1B68     		ldr	r3, [r3]
+ 415              		.loc 1 51 5
+ 416 0028 002B     		cmp	r3, #0
+ 417 002a 0BDD     		ble	.L18
+  52:./Core/Src/software_timer.c **** 		timer2_counter--;
+ 418              		.loc 1 52 17
+ 419 002c 214B     		ldr	r3, .L23+8
+ 420 002e 1B68     		ldr	r3, [r3]
+ 421 0030 013B     		subs	r3, r3, #1
+ 422 0032 204A     		ldr	r2, .L23+8
+ 423 0034 1360     		str	r3, [r2]
+  53:./Core/Src/software_timer.c **** 		if (timer2_counter <= 0) {
+ 424              		.loc 1 53 22
+ 425 0036 1F4B     		ldr	r3, .L23+8
+ 426 0038 1B68     		ldr	r3, [r3]
+ 427              		.loc 1 53 6
+ 428 003a 002B     		cmp	r3, #0
+ 429 003c 02DC     		bgt	.L18
+  54:./Core/Src/software_timer.c **** 			timer2_flag = 1;
+ 430              		.loc 1 54 16
+ 431 003e 1E4B     		ldr	r3, .L23+12
+ 432 0040 0122     		movs	r2, #1
+ 433 0042 1A60     		str	r2, [r3]
+ 434              	.L18:
+  55:./Core/Src/software_timer.c **** 		}
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s 			page 9
+
+
+  56:./Core/Src/software_timer.c **** 	}
+  57:./Core/Src/software_timer.c **** 	if (timer3_counter > 0) {
+ 435              		.loc 1 57 21
+ 436 0044 1D4B     		ldr	r3, .L23+16
+ 437 0046 1B68     		ldr	r3, [r3]
+ 438              		.loc 1 57 5
+ 439 0048 002B     		cmp	r3, #0
+ 440 004a 0BDD     		ble	.L19
+  58:./Core/Src/software_timer.c **** 		timer3_counter--;
+ 441              		.loc 1 58 17
+ 442 004c 1B4B     		ldr	r3, .L23+16
+ 443 004e 1B68     		ldr	r3, [r3]
+ 444 0050 013B     		subs	r3, r3, #1
+ 445 0052 1A4A     		ldr	r2, .L23+16
+ 446 0054 1360     		str	r3, [r2]
+  59:./Core/Src/software_timer.c **** 		if (timer3_counter <= 0) {
+ 447              		.loc 1 59 22
+ 448 0056 194B     		ldr	r3, .L23+16
+ 449 0058 1B68     		ldr	r3, [r3]
+ 450              		.loc 1 59 6
+ 451 005a 002B     		cmp	r3, #0
+ 452 005c 02DC     		bgt	.L19
+  60:./Core/Src/software_timer.c **** 			timer3_flag = 1;
+ 453              		.loc 1 60 16
+ 454 005e 184B     		ldr	r3, .L23+20
+ 455 0060 0122     		movs	r2, #1
+ 456 0062 1A60     		str	r2, [r3]
+ 457              	.L19:
+  61:./Core/Src/software_timer.c **** 		}
+  62:./Core/Src/software_timer.c **** 	}
+  63:./Core/Src/software_timer.c **** 	if (timer4_counter > 0) {
+ 458              		.loc 1 63 21
+ 459 0064 174B     		ldr	r3, .L23+24
+ 460 0066 1B68     		ldr	r3, [r3]
+ 461              		.loc 1 63 5
+ 462 0068 002B     		cmp	r3, #0
+ 463 006a 0BDD     		ble	.L20
+  64:./Core/Src/software_timer.c **** 		timer4_counter--;
+ 464              		.loc 1 64 17
+ 465 006c 154B     		ldr	r3, .L23+24
+ 466 006e 1B68     		ldr	r3, [r3]
+ 467 0070 013B     		subs	r3, r3, #1
+ 468 0072 144A     		ldr	r2, .L23+24
+ 469 0074 1360     		str	r3, [r2]
+  65:./Core/Src/software_timer.c **** 		if (timer4_counter <= 0) {
+ 470              		.loc 1 65 22
+ 471 0076 134B     		ldr	r3, .L23+24
+ 472 0078 1B68     		ldr	r3, [r3]
+ 473              		.loc 1 65 6
+ 474 007a 002B     		cmp	r3, #0
+ 475 007c 02DC     		bgt	.L20
+  66:./Core/Src/software_timer.c **** 			timer4_flag = 1;
+ 476              		.loc 1 66 16
+ 477 007e 124B     		ldr	r3, .L23+28
+ 478 0080 0122     		movs	r2, #1
+ 479 0082 1A60     		str	r2, [r3]
+ 480              	.L20:
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s 			page 10
+
+
+  67:./Core/Src/software_timer.c **** 		}
+  68:./Core/Src/software_timer.c **** 	}
+  69:./Core/Src/software_timer.c **** 	if (timer5_counter > 0) {
+ 481              		.loc 1 69 21
+ 482 0084 114B     		ldr	r3, .L23+32
+ 483 0086 1B68     		ldr	r3, [r3]
+ 484              		.loc 1 69 5
+ 485 0088 002B     		cmp	r3, #0
+ 486 008a 0BDD     		ble	.L22
+  70:./Core/Src/software_timer.c **** 		timer5_counter--;
+ 487              		.loc 1 70 17
+ 488 008c 0F4B     		ldr	r3, .L23+32
+ 489 008e 1B68     		ldr	r3, [r3]
+ 490 0090 013B     		subs	r3, r3, #1
+ 491 0092 0E4A     		ldr	r2, .L23+32
+ 492 0094 1360     		str	r3, [r2]
+  71:./Core/Src/software_timer.c **** 		if (timer5_counter <= 0) {
+ 493              		.loc 1 71 22
+ 494 0096 0D4B     		ldr	r3, .L23+32
+ 495 0098 1B68     		ldr	r3, [r3]
+ 496              		.loc 1 71 6
+ 497 009a 002B     		cmp	r3, #0
+ 498 009c 02DC     		bgt	.L22
+  72:./Core/Src/software_timer.c **** 			timer5_flag = 1;
+ 499              		.loc 1 72 16
+ 500 009e 0C4B     		ldr	r3, .L23+36
+ 501 00a0 0122     		movs	r2, #1
+ 502 00a2 1A60     		str	r2, [r3]
+ 503              	.L22:
+  73:./Core/Src/software_timer.c **** 		}
+  74:./Core/Src/software_timer.c **** 	}
+  75:./Core/Src/software_timer.c **** }
+ 504              		.loc 1 75 1
+ 505 00a4 00BF     		nop
+ 506 00a6 BD46     		mov	sp, r7
+ 507              		.cfi_def_cfa_register 13
+ 508              		@ sp needed
+ 509 00a8 80BC     		pop	{r7}
+ 510              		.cfi_restore 7
+ 511              		.cfi_def_cfa_offset 0
+ 512 00aa 7047     		bx	lr
+ 513              	.L24:
+ 514              		.align	2
+ 515              	.L23:
+ 516 00ac 00000000 		.word	timer1_counter
+ 517 00b0 00000000 		.word	timer1_flag
+ 518 00b4 00000000 		.word	timer2_counter
+ 519 00b8 00000000 		.word	timer2_flag
+ 520 00bc 00000000 		.word	timer3_counter
+ 521 00c0 00000000 		.word	timer3_flag
+ 522 00c4 00000000 		.word	timer4_counter
+ 523 00c8 00000000 		.word	timer4_flag
+ 524 00cc 00000000 		.word	timer5_counter
+ 525 00d0 00000000 		.word	timer5_flag
+ 526              		.cfi_endproc
+ 527              	.LFE5:
+ 529              		.section	.text.clearTimer1,"ax",%progbits
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s 			page 11
+
+
+ 530              		.align	1
+ 531              		.global	clearTimer1
+ 532              		.syntax unified
+ 533              		.thumb
+ 534              		.thumb_func
+ 535              		.fpu softvfp
+ 537              	clearTimer1:
+ 538              	.LFB6:
+  76:./Core/Src/software_timer.c **** 
+  77:./Core/Src/software_timer.c **** void clearTimer1() {
+ 539              		.loc 1 77 20
+ 540              		.cfi_startproc
+ 541              		@ args = 0, pretend = 0, frame = 0
+ 542              		@ frame_needed = 1, uses_anonymous_args = 0
+ 543              		@ link register save eliminated.
+ 544 0000 80B4     		push	{r7}
+ 545              		.cfi_def_cfa_offset 4
+ 546              		.cfi_offset 7, -4
+ 547 0002 00AF     		add	r7, sp, #0
+ 548              		.cfi_def_cfa_register 7
+  78:./Core/Src/software_timer.c **** 	timer1_counter = 0;
+ 549              		.loc 1 78 17
+ 550 0004 044B     		ldr	r3, .L26
+ 551 0006 0022     		movs	r2, #0
+ 552 0008 1A60     		str	r2, [r3]
+  79:./Core/Src/software_timer.c **** 	timer1_flag = 0;
+ 553              		.loc 1 79 14
+ 554 000a 044B     		ldr	r3, .L26+4
+ 555 000c 0022     		movs	r2, #0
+ 556 000e 1A60     		str	r2, [r3]
+  80:./Core/Src/software_timer.c **** }
+ 557              		.loc 1 80 1
+ 558 0010 00BF     		nop
+ 559 0012 BD46     		mov	sp, r7
+ 560              		.cfi_def_cfa_register 13
+ 561              		@ sp needed
+ 562 0014 80BC     		pop	{r7}
+ 563              		.cfi_restore 7
+ 564              		.cfi_def_cfa_offset 0
+ 565 0016 7047     		bx	lr
+ 566              	.L27:
+ 567              		.align	2
+ 568              	.L26:
+ 569 0018 00000000 		.word	timer1_counter
+ 570 001c 00000000 		.word	timer1_flag
+ 571              		.cfi_endproc
+ 572              	.LFE6:
+ 574              		.text
+ 575              	.Letext0:
+ 576              		.file 2 "Core/Inc/software_timer.h"
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s 			page 12
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 software_timer.c
+C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s:20     .bss.timer1_flag:0000000000000000 timer1_flag
+C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s:17     .bss.timer1_flag:0000000000000000 $d
+C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s:27     .bss.timer2_flag:0000000000000000 timer2_flag
+C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s:24     .bss.timer2_flag:0000000000000000 $d
+C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s:34     .bss.timer3_flag:0000000000000000 timer3_flag
+C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s:31     .bss.timer3_flag:0000000000000000 $d
+C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s:41     .bss.timer4_flag:0000000000000000 timer4_flag
+C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s:38     .bss.timer4_flag:0000000000000000 $d
+C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s:48     .bss.timer5_flag:0000000000000000 timer5_flag
+C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s:45     .bss.timer5_flag:0000000000000000 $d
+C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s:55     .bss.timer1_counter:0000000000000000 timer1_counter
+C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s:52     .bss.timer1_counter:0000000000000000 $d
+C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s:62     .bss.timer2_counter:0000000000000000 timer2_counter
+C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s:59     .bss.timer2_counter:0000000000000000 $d
+C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s:69     .bss.timer3_counter:0000000000000000 timer3_counter
+C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s:66     .bss.timer3_counter:0000000000000000 $d
+C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s:76     .bss.timer4_counter:0000000000000000 timer4_counter
+C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s:73     .bss.timer4_counter:0000000000000000 $d
+C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s:83     .bss.timer5_counter:0000000000000000 timer5_counter
+C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s:80     .bss.timer5_counter:0000000000000000 $d
+C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s:90     .data.TIMER_CYCLE:0000000000000000 TIMER_CYCLE
+C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s:87     .data.TIMER_CYCLE:0000000000000000 $d
+C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s:93     .text.setTimer1:0000000000000000 $t
+C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s:101    .text.setTimer1:0000000000000000 setTimer1
+C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s:143    .text.setTimer1:0000000000000028 $d
+C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s:150    .text.setTimer2:0000000000000000 $t
+C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s:157    .text.setTimer2:0000000000000000 setTimer2
+C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s:198    .text.setTimer2:0000000000000028 $d
+C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s:205    .text.setTimer3:0000000000000000 $t
+C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s:212    .text.setTimer3:0000000000000000 setTimer3
+C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s:253    .text.setTimer3:0000000000000028 $d
+C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s:260    .text.setTimer4:0000000000000000 $t
+C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s:267    .text.setTimer4:0000000000000000 setTimer4
+C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s:308    .text.setTimer4:0000000000000028 $d
+C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s:315    .text.setTimer5:0000000000000000 $t
+C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s:322    .text.setTimer5:0000000000000000 setTimer5
+C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s:363    .text.setTimer5:0000000000000028 $d
+C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s:370    .text.timerRun:0000000000000000 $t
+C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s:377    .text.timerRun:0000000000000000 timerRun
+C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s:516    .text.timerRun:00000000000000ac $d
+C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s:530    .text.clearTimer1:0000000000000000 $t
+C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s:537    .text.clearTimer1:0000000000000000 clearTimer1
+C:\Users\nguye\AppData\Local\Temp\cc4N0HGu.s:569    .text.clearTimer1:0000000000000018 $d
+                           .group:0000000000000000 wm4.0.e890922d021f7fff2fbf219cb2b38f03
+                           .group:0000000000000000 wm4.software_timer.h.9.85139a8d176fe1bcfcf1e8be0a353955
+
+NO UNDEFINED SYMBOLS

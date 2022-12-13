@@ -1408,21 +1408,21 @@ void state_handle() {
  8000d7a:	d116      	bne.n	8000daa <state_handle+0x52>
 			HAL_GPIO_WritePin(Traffic_1_2_GPIO_Port, Traffic_1_2_Pin, 0);
  8000d7c:	2200      	movs	r2, #0
- 8000d7e:	f44f 6180 	mov.w	r1, #1024	; 0x400
- 8000d82:	4841      	ldr	r0, [pc, #260]	; (8000e88 <state_handle+0x130>)
- 8000d84:	f001 fcbd 	bl	8002702 <HAL_GPIO_WritePin>
+ 8000d7e:	2108      	movs	r1, #8
+ 8000d80:	4841      	ldr	r0, [pc, #260]	; (8000e88 <state_handle+0x130>)
+ 8000d82:	f001 fcbe 	bl	8002702 <HAL_GPIO_WritePin>
 			HAL_GPIO_TogglePin(Traffic_1_1_GPIO_Port, Traffic_1_1_Pin);
- 8000d88:	2108      	movs	r1, #8
+ 8000d86:	f44f 6180 	mov.w	r1, #1024	; 0x400
  8000d8a:	4840      	ldr	r0, [pc, #256]	; (8000e8c <state_handle+0x134>)
  8000d8c:	f001 fcd1 	bl	8002732 <HAL_GPIO_TogglePin>
 			HAL_GPIO_WritePin(Traffic_2_2_GPIO_Port, Traffic_2_2_Pin, 0);
  8000d90:	2200      	movs	r2, #0
- 8000d92:	2120      	movs	r1, #32
- 8000d94:	483d      	ldr	r0, [pc, #244]	; (8000e8c <state_handle+0x134>)
+ 8000d92:	2110      	movs	r1, #16
+ 8000d94:	483c      	ldr	r0, [pc, #240]	; (8000e88 <state_handle+0x130>)
  8000d96:	f001 fcb4 	bl	8002702 <HAL_GPIO_WritePin>
 			HAL_GPIO_TogglePin(Traffic_2_1_GPIO_Port, Traffic_2_1_Pin);
- 8000d9a:	2110      	movs	r1, #16
- 8000d9c:	483b      	ldr	r0, [pc, #236]	; (8000e8c <state_handle+0x134>)
+ 8000d9a:	2120      	movs	r1, #32
+ 8000d9c:	483a      	ldr	r0, [pc, #232]	; (8000e88 <state_handle+0x130>)
  8000d9e:	f001 fcc8 	bl	8002732 <HAL_GPIO_TogglePin>
 			setTimer1(500);
  8000da2:	f44f 70fa 	mov.w	r0, #500	; 0x1f4
@@ -1451,20 +1451,20 @@ void state_handle() {
  8000dd0:	2b01      	cmp	r3, #1
  8000dd2:	d114      	bne.n	8000dfe <state_handle+0xa6>
 			HAL_GPIO_TogglePin(Traffic_1_1_GPIO_Port, Traffic_1_1_Pin);
- 8000dd4:	2108      	movs	r1, #8
- 8000dd6:	482d      	ldr	r0, [pc, #180]	; (8000e8c <state_handle+0x134>)
- 8000dd8:	f001 fcab 	bl	8002732 <HAL_GPIO_TogglePin>
+ 8000dd4:	f44f 6180 	mov.w	r1, #1024	; 0x400
+ 8000dd8:	482c      	ldr	r0, [pc, #176]	; (8000e8c <state_handle+0x134>)
+ 8000dda:	f001 fcaa 	bl	8002732 <HAL_GPIO_TogglePin>
 			HAL_GPIO_TogglePin(Traffic_1_2_GPIO_Port, Traffic_1_2_Pin);
- 8000ddc:	f44f 6180 	mov.w	r1, #1024	; 0x400
+ 8000dde:	2108      	movs	r1, #8
  8000de0:	4829      	ldr	r0, [pc, #164]	; (8000e88 <state_handle+0x130>)
  8000de2:	f001 fca6 	bl	8002732 <HAL_GPIO_TogglePin>
 			HAL_GPIO_TogglePin(Traffic_2_1_GPIO_Port, Traffic_2_1_Pin);
- 8000de6:	2110      	movs	r1, #16
- 8000de8:	4828      	ldr	r0, [pc, #160]	; (8000e8c <state_handle+0x134>)
+ 8000de6:	2120      	movs	r1, #32
+ 8000de8:	4827      	ldr	r0, [pc, #156]	; (8000e88 <state_handle+0x130>)
  8000dea:	f001 fca2 	bl	8002732 <HAL_GPIO_TogglePin>
 			HAL_GPIO_TogglePin(Traffic_2_2_GPIO_Port, Traffic_2_2_Pin);
- 8000dee:	2120      	movs	r1, #32
- 8000df0:	4826      	ldr	r0, [pc, #152]	; (8000e8c <state_handle+0x134>)
+ 8000dee:	2110      	movs	r1, #16
+ 8000df0:	4825      	ldr	r0, [pc, #148]	; (8000e88 <state_handle+0x130>)
  8000df2:	f001 fc9e 	bl	8002732 <HAL_GPIO_TogglePin>
 			setTimer1(500);
  8000df6:	f44f 70fa 	mov.w	r0, #500	; 0x1f4
@@ -1494,21 +1494,21 @@ void state_handle() {
  8000e26:	d116      	bne.n	8000e56 <state_handle+0xfe>
 			HAL_GPIO_WritePin(Traffic_1_1_GPIO_Port, Traffic_1_1_Pin, 0);
  8000e28:	2200      	movs	r2, #0
- 8000e2a:	2108      	movs	r1, #8
- 8000e2c:	4817      	ldr	r0, [pc, #92]	; (8000e8c <state_handle+0x134>)
- 8000e2e:	f001 fc68 	bl	8002702 <HAL_GPIO_WritePin>
+ 8000e2a:	f44f 6180 	mov.w	r1, #1024	; 0x400
+ 8000e2e:	4817      	ldr	r0, [pc, #92]	; (8000e8c <state_handle+0x134>)
+ 8000e30:	f001 fc67 	bl	8002702 <HAL_GPIO_WritePin>
 			HAL_GPIO_TogglePin(Traffic_1_2_GPIO_Port, Traffic_1_2_Pin);
- 8000e32:	f44f 6180 	mov.w	r1, #1024	; 0x400
+ 8000e34:	2108      	movs	r1, #8
  8000e36:	4814      	ldr	r0, [pc, #80]	; (8000e88 <state_handle+0x130>)
  8000e38:	f001 fc7b 	bl	8002732 <HAL_GPIO_TogglePin>
 			HAL_GPIO_WritePin(Traffic_2_1_GPIO_Port, Traffic_2_1_Pin, 0);
  8000e3c:	2200      	movs	r2, #0
- 8000e3e:	2110      	movs	r1, #16
- 8000e40:	4812      	ldr	r0, [pc, #72]	; (8000e8c <state_handle+0x134>)
+ 8000e3e:	2120      	movs	r1, #32
+ 8000e40:	4811      	ldr	r0, [pc, #68]	; (8000e88 <state_handle+0x130>)
  8000e42:	f001 fc5e 	bl	8002702 <HAL_GPIO_WritePin>
 			HAL_GPIO_TogglePin(Traffic_2_2_GPIO_Port, Traffic_2_2_Pin);
- 8000e46:	2120      	movs	r1, #32
- 8000e48:	4810      	ldr	r0, [pc, #64]	; (8000e8c <state_handle+0x134>)
+ 8000e46:	2110      	movs	r1, #16
+ 8000e48:	480f      	ldr	r0, [pc, #60]	; (8000e88 <state_handle+0x130>)
  8000e4a:	f001 fc72 	bl	8002732 <HAL_GPIO_TogglePin>
 			setTimer1(500);
  8000e4e:	f44f 70fa 	mov.w	r0, #500	; 0x1f4
@@ -1540,8 +1540,8 @@ void state_handle() {
  8000e7e:	bf00      	nop
  8000e80:	20000000 	.word	0x20000000
  8000e84:	20000138 	.word	0x20000138
- 8000e88:	40010800 	.word	0x40010800
- 8000e8c:	40010c00 	.word	0x40010c00
+ 8000e88:	40010c00 	.word	0x40010c00
+ 8000e8c:	40010800 	.word	0x40010800
  8000e90:	20000014 	.word	0x20000014
  8000e94:	200000e0 	.word	0x200000e0
  8000e98:	2000000c 	.word	0x2000000c
@@ -2579,14 +2579,14 @@ static void MX_GPIO_Init(void)
  80014ca:	683b      	ldr	r3, [r7, #0]
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, LD2_Pin|Traffic_Pedes_1_Pin|Traffic_1_2_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, LD2_Pin|Traffic_Pedes_2_Pin|Traffic_1_1_Pin, GPIO_PIN_RESET);
  80014cc:	2200      	movs	r2, #0
  80014ce:	f44f 61a4 	mov.w	r1, #1312	; 0x520
  80014d2:	482d      	ldr	r0, [pc, #180]	; (8001588 <MX_GPIO_Init+0x130>)
  80014d4:	f001 f915 	bl	8002702 <HAL_GPIO_WritePin>
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, Traffic_Pedes_2_Pin|Traffic_1_1_Pin|Traffic_2_1_Pin|Traffic_2_2_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, Traffic_Pedes_1_Pin|Traffic_1_2_Pin|Traffic_2_2_Pin|Traffic_2_1_Pin, GPIO_PIN_RESET);
  80014d8:	2200      	movs	r2, #0
  80014da:	f44f 6187 	mov.w	r1, #1080	; 0x438
  80014de:	482b      	ldr	r0, [pc, #172]	; (800158c <MX_GPIO_Init+0x134>)
@@ -2624,8 +2624,8 @@ static void MX_GPIO_Init(void)
  8001510:	481d      	ldr	r0, [pc, #116]	; (8001588 <MX_GPIO_Init+0x130>)
  8001512:	f000 ff5b 	bl	80023cc <HAL_GPIO_Init>
 
-  /*Configure GPIO pins : LD2_Pin Traffic_Pedes_1_Pin Traffic_1_2_Pin */
-  GPIO_InitStruct.Pin = LD2_Pin|Traffic_Pedes_1_Pin|Traffic_1_2_Pin;
+  /*Configure GPIO pins : LD2_Pin Traffic_Pedes_2_Pin Traffic_1_1_Pin */
+  GPIO_InitStruct.Pin = LD2_Pin|Traffic_Pedes_2_Pin|Traffic_1_1_Pin;
  8001516:	f44f 63a4 	mov.w	r3, #1312	; 0x520
  800151a:	613b      	str	r3, [r7, #16]
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
@@ -2659,8 +2659,8 @@ static void MX_GPIO_Init(void)
  8001546:	4811      	ldr	r0, [pc, #68]	; (800158c <MX_GPIO_Init+0x134>)
  8001548:	f000 ff40 	bl	80023cc <HAL_GPIO_Init>
 
-  /*Configure GPIO pins : Traffic_Pedes_2_Pin Traffic_1_1_Pin Traffic_2_1_Pin Traffic_2_2_Pin */
-  GPIO_InitStruct.Pin = Traffic_Pedes_2_Pin|Traffic_1_1_Pin|Traffic_2_1_Pin|Traffic_2_2_Pin;
+  /*Configure GPIO pins : Traffic_Pedes_1_Pin Traffic_1_2_Pin Traffic_2_2_Pin Traffic_2_1_Pin */
+  GPIO_InitStruct.Pin = Traffic_Pedes_1_Pin|Traffic_1_2_Pin|Traffic_2_2_Pin|Traffic_2_1_Pin;
  800154c:	f44f 6387 	mov.w	r3, #1080	; 0x438
  8001550:	613b      	str	r3, [r7, #16]
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
@@ -4252,9 +4252,9 @@ void set_led_color(int led, int color) {
 			helper_set_led_color(Traffic_1_1_GPIO_Port, Traffic_1_1_Pin,
  8001eb0:	683b      	ldr	r3, [r7, #0]
  8001eb2:	9300      	str	r3, [sp, #0]
- 8001eb4:	f44f 6380 	mov.w	r3, #1024	; 0x400
- 8001eb8:	4a0e      	ldr	r2, [pc, #56]	; (8001ef4 <set_led_color+0x68>)
- 8001eba:	2108      	movs	r1, #8
+ 8001eb4:	2308      	movs	r3, #8
+ 8001eb6:	4a0f      	ldr	r2, [pc, #60]	; (8001ef4 <set_led_color+0x68>)
+ 8001eb8:	f44f 6180 	mov.w	r1, #1024	; 0x400
  8001ebc:	480e      	ldr	r0, [pc, #56]	; (8001ef8 <set_led_color+0x6c>)
  8001ebe:	f7ff ffb1 	bl	8001e24 <helper_set_led_color>
 			break;
@@ -4262,19 +4262,19 @@ void set_led_color(int led, int color) {
 			helper_set_led_color(Traffic_2_1_GPIO_Port, Traffic_2_1_Pin,
  8001ec4:	683b      	ldr	r3, [r7, #0]
  8001ec6:	9300      	str	r3, [sp, #0]
- 8001ec8:	2320      	movs	r3, #32
- 8001eca:	4a0b      	ldr	r2, [pc, #44]	; (8001ef8 <set_led_color+0x6c>)
- 8001ecc:	2110      	movs	r1, #16
- 8001ece:	480a      	ldr	r0, [pc, #40]	; (8001ef8 <set_led_color+0x6c>)
+ 8001ec8:	2310      	movs	r3, #16
+ 8001eca:	4a0a      	ldr	r2, [pc, #40]	; (8001ef4 <set_led_color+0x68>)
+ 8001ecc:	2120      	movs	r1, #32
+ 8001ece:	4809      	ldr	r0, [pc, #36]	; (8001ef4 <set_led_color+0x68>)
  8001ed0:	f7ff ffa8 	bl	8001e24 <helper_set_led_color>
 			break;
  8001ed4:	e00a      	b.n	8001eec <set_led_color+0x60>
 			helper_set_led_color(Traffic_Pedes_1_GPIO_Port, Traffic_Pedes_1_Pin,
  8001ed6:	683b      	ldr	r3, [r7, #0]
  8001ed8:	9300      	str	r3, [sp, #0]
- 8001eda:	f44f 6380 	mov.w	r3, #1024	; 0x400
+ 8001eda:	f44f 7380 	mov.w	r3, #256	; 0x100
  8001ede:	4a06      	ldr	r2, [pc, #24]	; (8001ef8 <set_led_color+0x6c>)
- 8001ee0:	f44f 7180 	mov.w	r1, #256	; 0x100
+ 8001ee0:	f44f 6180 	mov.w	r1, #1024	; 0x400
  8001ee4:	4803      	ldr	r0, [pc, #12]	; (8001ef4 <set_led_color+0x68>)
  8001ee6:	f7ff ff9d 	bl	8001e24 <helper_set_led_color>
 			break;
@@ -4284,8 +4284,8 @@ void set_led_color(int led, int color) {
  8001eee:	3708      	adds	r7, #8
  8001ef0:	46bd      	mov	sp, r7
  8001ef2:	bd80      	pop	{r7, pc}
- 8001ef4:	40010800 	.word	0x40010800
- 8001ef8:	40010c00 	.word	0x40010c00
+ 8001ef4:	40010c00 	.word	0x40010c00
+ 8001ef8:	40010800 	.word	0x40010800
 
 08001efc <helper_get_led_color>:
 
@@ -4391,9 +4391,9 @@ int get_led_color(int led) {
  8001f98:	e01a      	b.n	8001fd0 <get_led_color+0x58>
 	case TRAFFIC_1_LED:
 		return helper_get_led_color(Traffic_1_1_GPIO_Port, Traffic_1_1_Pin,
- 8001f9a:	f44f 6380 	mov.w	r3, #1024	; 0x400
- 8001f9e:	4a0f      	ldr	r2, [pc, #60]	; (8001fdc <get_led_color+0x64>)
- 8001fa0:	2108      	movs	r1, #8
+ 8001f9a:	2308      	movs	r3, #8
+ 8001f9c:	4a0f      	ldr	r2, [pc, #60]	; (8001fdc <get_led_color+0x64>)
+ 8001f9e:	f44f 6180 	mov.w	r1, #1024	; 0x400
  8001fa2:	480f      	ldr	r0, [pc, #60]	; (8001fe0 <get_led_color+0x68>)
  8001fa4:	f7ff ffaa 	bl	8001efc <helper_get_led_color>
  8001fa8:	4603      	mov	r3, r0
@@ -4402,10 +4402,10 @@ int get_led_color(int led) {
 		break;
 	case TRAFFIC_2_LED:
 		return helper_get_led_color(Traffic_2_1_GPIO_Port, Traffic_2_1_Pin,
- 8001fac:	2320      	movs	r3, #32
- 8001fae:	4a0c      	ldr	r2, [pc, #48]	; (8001fe0 <get_led_color+0x68>)
- 8001fb0:	2110      	movs	r1, #16
- 8001fb2:	480b      	ldr	r0, [pc, #44]	; (8001fe0 <get_led_color+0x68>)
+ 8001fac:	2310      	movs	r3, #16
+ 8001fae:	4a0b      	ldr	r2, [pc, #44]	; (8001fdc <get_led_color+0x64>)
+ 8001fb0:	2120      	movs	r1, #32
+ 8001fb2:	480a      	ldr	r0, [pc, #40]	; (8001fdc <get_led_color+0x64>)
  8001fb4:	f7ff ffa2 	bl	8001efc <helper_get_led_color>
  8001fb8:	4603      	mov	r3, r0
  8001fba:	e00a      	b.n	8001fd2 <get_led_color+0x5a>
@@ -4413,9 +4413,9 @@ int get_led_color(int led) {
 		break;
 	case PEDESTRIAN_LED:
 		return helper_get_led_color(Traffic_Pedes_1_GPIO_Port, Traffic_Pedes_1_Pin,
- 8001fbc:	f44f 6380 	mov.w	r3, #1024	; 0x400
+ 8001fbc:	f44f 7380 	mov.w	r3, #256	; 0x100
  8001fc0:	4a07      	ldr	r2, [pc, #28]	; (8001fe0 <get_led_color+0x68>)
- 8001fc2:	f44f 7180 	mov.w	r1, #256	; 0x100
+ 8001fc2:	f44f 6180 	mov.w	r1, #1024	; 0x400
  8001fc6:	4805      	ldr	r0, [pc, #20]	; (8001fdc <get_led_color+0x64>)
  8001fc8:	f7ff ff98 	bl	8001efc <helper_get_led_color>
  8001fcc:	4603      	mov	r3, r0
@@ -4435,8 +4435,8 @@ int get_led_color(int led) {
  8001fd6:	46bd      	mov	sp, r7
  8001fd8:	bd80      	pop	{r7, pc}
  8001fda:	bf00      	nop
- 8001fdc:	40010800 	.word	0x40010800
- 8001fe0:	40010c00 	.word	0x40010c00
+ 8001fdc:	40010c00 	.word	0x40010c00
+ 8001fe0:	40010800 	.word	0x40010800
 
 08001fe4 <helper_clear_led>:
 
@@ -4469,49 +4469,48 @@ void clear_led(int led) {
 	switch(led) {
  800200c:	687b      	ldr	r3, [r7, #4]
  800200e:	2b2a      	cmp	r3, #42	; 0x2a
- 8002010:	d013      	beq.n	800203a <clear_led+0x36>
+ 8002010:	d014      	beq.n	800203c <clear_led+0x38>
  8002012:	687b      	ldr	r3, [r7, #4]
  8002014:	2b2a      	cmp	r3, #42	; 0x2a
- 8002016:	dc16      	bgt.n	8002046 <clear_led+0x42>
+ 8002016:	dc17      	bgt.n	8002048 <clear_led+0x44>
  8002018:	687b      	ldr	r3, [r7, #4]
  800201a:	2b28      	cmp	r3, #40	; 0x28
  800201c:	d003      	beq.n	8002026 <clear_led+0x22>
  800201e:	687b      	ldr	r3, [r7, #4]
  8002020:	2b29      	cmp	r3, #41	; 0x29
- 8002022:	d005      	beq.n	8002030 <clear_led+0x2c>
+ 8002022:	d006      	beq.n	8002032 <clear_led+0x2e>
 		break;
 	case PEDESTRIAN_LED:
 		helper_clear_led(Traffic_Pedes_1_GPIO_Port, Traffic_Pedes_1_Pin);
 		break;
 	}
 }
- 8002024:	e00f      	b.n	8002046 <clear_led+0x42>
+ 8002024:	e010      	b.n	8002048 <clear_led+0x44>
 		helper_clear_led(Traffic_1_1_GPIO_Port, Traffic_1_1_Pin);
- 8002026:	2108      	movs	r1, #8
- 8002028:	4809      	ldr	r0, [pc, #36]	; (8002050 <clear_led+0x4c>)
- 800202a:	f7ff ffdb 	bl	8001fe4 <helper_clear_led>
+ 8002026:	f44f 6180 	mov.w	r1, #1024	; 0x400
+ 800202a:	4809      	ldr	r0, [pc, #36]	; (8002050 <clear_led+0x4c>)
+ 800202c:	f7ff ffda 	bl	8001fe4 <helper_clear_led>
 		break;
- 800202e:	e00a      	b.n	8002046 <clear_led+0x42>
+ 8002030:	e00a      	b.n	8002048 <clear_led+0x44>
 		helper_clear_led(Traffic_2_1_GPIO_Port, Traffic_2_1_Pin);
- 8002030:	2110      	movs	r1, #16
- 8002032:	4807      	ldr	r0, [pc, #28]	; (8002050 <clear_led+0x4c>)
- 8002034:	f7ff ffd6 	bl	8001fe4 <helper_clear_led>
+ 8002032:	2120      	movs	r1, #32
+ 8002034:	4807      	ldr	r0, [pc, #28]	; (8002054 <clear_led+0x50>)
+ 8002036:	f7ff ffd5 	bl	8001fe4 <helper_clear_led>
 		break;
- 8002038:	e005      	b.n	8002046 <clear_led+0x42>
+ 800203a:	e005      	b.n	8002048 <clear_led+0x44>
 		helper_clear_led(Traffic_Pedes_1_GPIO_Port, Traffic_Pedes_1_Pin);
- 800203a:	f44f 7180 	mov.w	r1, #256	; 0x100
- 800203e:	4805      	ldr	r0, [pc, #20]	; (8002054 <clear_led+0x50>)
- 8002040:	f7ff ffd0 	bl	8001fe4 <helper_clear_led>
+ 800203c:	f44f 6180 	mov.w	r1, #1024	; 0x400
+ 8002040:	4804      	ldr	r0, [pc, #16]	; (8002054 <clear_led+0x50>)
+ 8002042:	f7ff ffcf 	bl	8001fe4 <helper_clear_led>
 		break;
- 8002044:	bf00      	nop
-}
  8002046:	bf00      	nop
- 8002048:	3708      	adds	r7, #8
- 800204a:	46bd      	mov	sp, r7
- 800204c:	bd80      	pop	{r7, pc}
- 800204e:	bf00      	nop
- 8002050:	40010c00 	.word	0x40010c00
- 8002054:	40010800 	.word	0x40010800
+}
+ 8002048:	bf00      	nop
+ 800204a:	3708      	adds	r7, #8
+ 800204c:	46bd      	mov	sp, r7
+ 800204e:	bd80      	pop	{r7, pc}
+ 8002050:	40010800 	.word	0x40010800
+ 8002054:	40010c00 	.word	0x40010c00
 
 08002058 <Reset_Handler>:
   .weak Reset_Handler

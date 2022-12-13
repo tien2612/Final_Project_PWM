@@ -1,0 +1,752 @@
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc6p7sf6.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 6
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"traffic_light.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.text.helper_set_led_color,"ax",%progbits
+  16              		.align	1
+  17              		.global	helper_set_led_color
+  18              		.arch armv7-m
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  22              		.fpu softvfp
+  24              	helper_set_led_color:
+  25              	.LFB65:
+  26              		.file 1 "./Core/Src/traffic_light.c"
+   1:./Core/Src/traffic_light.c **** /*
+   2:./Core/Src/traffic_light.c ****  * traffic_light.c
+   3:./Core/Src/traffic_light.c ****  *
+   4:./Core/Src/traffic_light.c ****  *  Created on: Dec 6, 2022
+   5:./Core/Src/traffic_light.c ****  *      Author: Tien
+   6:./Core/Src/traffic_light.c ****  */
+   7:./Core/Src/traffic_light.c **** 
+   8:./Core/Src/traffic_light.c **** 
+   9:./Core/Src/traffic_light.c **** #include "traffic_light.h"
+  10:./Core/Src/traffic_light.c **** 
+  11:./Core/Src/traffic_light.c **** void helper_set_led_color(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin1, GPIO_TypeDef *GPIOy, uint16_t GP
+  27              		.loc 1 11 120
+  28              		.cfi_startproc
+  29              		@ args = 4, pretend = 0, frame = 16
+  30              		@ frame_needed = 1, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32 0000 80B4     		push	{r7}
+  33              		.cfi_def_cfa_offset 4
+  34              		.cfi_offset 7, -4
+  35 0002 85B0     		sub	sp, sp, #20
+  36              		.cfi_def_cfa_offset 24
+  37 0004 00AF     		add	r7, sp, #0
+  38              		.cfi_def_cfa_register 7
+  39 0006 F860     		str	r0, [r7, #12]
+  40 0008 7A60     		str	r2, [r7, #4]
+  41 000a 1A46     		mov	r2, r3
+  42 000c 0B46     		mov	r3, r1	@ movhi
+  43 000e 7B81     		strh	r3, [r7, #10]	@ movhi
+  44 0010 1346     		mov	r3, r2	@ movhi
+  45 0012 3B81     		strh	r3, [r7, #8]	@ movhi
+  12:./Core/Src/traffic_light.c **** 	switch (COLOR) {
+  46              		.loc 1 12 2
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc6p7sf6.s 			page 2
+
+
+  47 0014 BB69     		ldr	r3, [r7, #24]
+  48 0016 202B     		cmp	r3, #32
+  49 0018 18D0     		beq	.L2
+  50 001a BB69     		ldr	r3, [r7, #24]
+  51 001c 202B     		cmp	r3, #32
+  52 001e 1DDC     		bgt	.L6
+  53 0020 BB69     		ldr	r3, [r7, #24]
+  54 0022 1E2B     		cmp	r3, #30
+  55 0024 03D0     		beq	.L4
+  56 0026 BB69     		ldr	r3, [r7, #24]
+  57 0028 1F2B     		cmp	r3, #31
+  58 002a 08D0     		beq	.L5
+  13:./Core/Src/traffic_light.c **** 		case RED_COLOR:
+  14:./Core/Src/traffic_light.c **** 			GPIOx->BSRR = GPIO_Pin1;
+  15:./Core/Src/traffic_light.c **** 			GPIOy->BSRR = (uint32_t)GPIO_Pin2 << 16u;
+  16:./Core/Src/traffic_light.c **** 			break;
+  17:./Core/Src/traffic_light.c **** 		case AMBER_COLOR:
+  18:./Core/Src/traffic_light.c **** 			GPIOx->BSRR = GPIO_Pin1;
+  19:./Core/Src/traffic_light.c **** 			GPIOy->BSRR = GPIO_Pin2;
+  20:./Core/Src/traffic_light.c **** 			break;
+  21:./Core/Src/traffic_light.c **** 		case GREEN_COLOR:
+  22:./Core/Src/traffic_light.c **** 			GPIOx->BSRR = (uint32_t)GPIO_Pin1 << 16u;
+  23:./Core/Src/traffic_light.c **** 			GPIOy->BSRR = GPIO_Pin2;
+  24:./Core/Src/traffic_light.c **** 			break;
+  25:./Core/Src/traffic_light.c **** 	}
+  26:./Core/Src/traffic_light.c **** }
+  59              		.loc 1 26 1
+  60 002c 16E0     		b	.L6
+  61              	.L4:
+  14:./Core/Src/traffic_light.c **** 			GPIOy->BSRR = (uint32_t)GPIO_Pin2 << 16u;
+  62              		.loc 1 14 16
+  63 002e 7A89     		ldrh	r2, [r7, #10]
+  64 0030 FB68     		ldr	r3, [r7, #12]
+  65 0032 1A61     		str	r2, [r3, #16]
+  15:./Core/Src/traffic_light.c **** 			break;
+  66              		.loc 1 15 18
+  67 0034 3B89     		ldrh	r3, [r7, #8]
+  15:./Core/Src/traffic_light.c **** 			break;
+  68              		.loc 1 15 38
+  69 0036 1A04     		lsls	r2, r3, #16
+  15:./Core/Src/traffic_light.c **** 			break;
+  70              		.loc 1 15 16
+  71 0038 7B68     		ldr	r3, [r7, #4]
+  72 003a 1A61     		str	r2, [r3, #16]
+  16:./Core/Src/traffic_light.c **** 		case AMBER_COLOR:
+  73              		.loc 1 16 4
+  74 003c 0EE0     		b	.L3
+  75              	.L5:
+  18:./Core/Src/traffic_light.c **** 			GPIOy->BSRR = GPIO_Pin2;
+  76              		.loc 1 18 16
+  77 003e 7A89     		ldrh	r2, [r7, #10]
+  78 0040 FB68     		ldr	r3, [r7, #12]
+  79 0042 1A61     		str	r2, [r3, #16]
+  19:./Core/Src/traffic_light.c **** 			break;
+  80              		.loc 1 19 16
+  81 0044 3A89     		ldrh	r2, [r7, #8]
+  82 0046 7B68     		ldr	r3, [r7, #4]
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc6p7sf6.s 			page 3
+
+
+  83 0048 1A61     		str	r2, [r3, #16]
+  20:./Core/Src/traffic_light.c **** 		case GREEN_COLOR:
+  84              		.loc 1 20 4
+  85 004a 07E0     		b	.L3
+  86              	.L2:
+  22:./Core/Src/traffic_light.c **** 			GPIOy->BSRR = GPIO_Pin2;
+  87              		.loc 1 22 18
+  88 004c 7B89     		ldrh	r3, [r7, #10]
+  22:./Core/Src/traffic_light.c **** 			GPIOy->BSRR = GPIO_Pin2;
+  89              		.loc 1 22 38
+  90 004e 1A04     		lsls	r2, r3, #16
+  22:./Core/Src/traffic_light.c **** 			GPIOy->BSRR = GPIO_Pin2;
+  91              		.loc 1 22 16
+  92 0050 FB68     		ldr	r3, [r7, #12]
+  93 0052 1A61     		str	r2, [r3, #16]
+  23:./Core/Src/traffic_light.c **** 			break;
+  94              		.loc 1 23 16
+  95 0054 3A89     		ldrh	r2, [r7, #8]
+  96 0056 7B68     		ldr	r3, [r7, #4]
+  97 0058 1A61     		str	r2, [r3, #16]
+  24:./Core/Src/traffic_light.c **** 	}
+  98              		.loc 1 24 4
+  99 005a 00BF     		nop
+ 100              	.L3:
+ 101              	.L6:
+ 102              		.loc 1 26 1
+ 103 005c 00BF     		nop
+ 104 005e 1437     		adds	r7, r7, #20
+ 105              		.cfi_def_cfa_offset 4
+ 106 0060 BD46     		mov	sp, r7
+ 107              		.cfi_def_cfa_register 13
+ 108              		@ sp needed
+ 109 0062 80BC     		pop	{r7}
+ 110              		.cfi_restore 7
+ 111              		.cfi_def_cfa_offset 0
+ 112 0064 7047     		bx	lr
+ 113              		.cfi_endproc
+ 114              	.LFE65:
+ 116              		.section	.text.set_led_color,"ax",%progbits
+ 117              		.align	1
+ 118              		.global	set_led_color
+ 119              		.syntax unified
+ 120              		.thumb
+ 121              		.thumb_func
+ 122              		.fpu softvfp
+ 124              	set_led_color:
+ 125              	.LFB66:
+  27:./Core/Src/traffic_light.c **** 
+  28:./Core/Src/traffic_light.c **** void set_led_color(int led, int color) {
+ 126              		.loc 1 28 40
+ 127              		.cfi_startproc
+ 128              		@ args = 0, pretend = 0, frame = 8
+ 129              		@ frame_needed = 1, uses_anonymous_args = 0
+ 130 0000 80B5     		push	{r7, lr}
+ 131              		.cfi_def_cfa_offset 8
+ 132              		.cfi_offset 7, -8
+ 133              		.cfi_offset 14, -4
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc6p7sf6.s 			page 4
+
+
+ 134 0002 84B0     		sub	sp, sp, #16
+ 135              		.cfi_def_cfa_offset 24
+ 136 0004 02AF     		add	r7, sp, #8
+ 137              		.cfi_def_cfa 7, 16
+ 138 0006 7860     		str	r0, [r7, #4]
+ 139 0008 3960     		str	r1, [r7]
+  29:./Core/Src/traffic_light.c **** 	switch (led) {
+ 140              		.loc 1 29 2
+ 141 000a 7B68     		ldr	r3, [r7, #4]
+ 142 000c 2A2B     		cmp	r3, #42
+ 143 000e 1CD0     		beq	.L8
+ 144 0010 7B68     		ldr	r3, [r7, #4]
+ 145 0012 2A2B     		cmp	r3, #42
+ 146 0014 24DC     		bgt	.L12
+ 147 0016 7B68     		ldr	r3, [r7, #4]
+ 148 0018 282B     		cmp	r3, #40
+ 149 001a 03D0     		beq	.L10
+ 150 001c 7B68     		ldr	r3, [r7, #4]
+ 151 001e 292B     		cmp	r3, #41
+ 152 0020 0AD0     		beq	.L11
+  30:./Core/Src/traffic_light.c **** 		case TRAFFIC_1_LED:
+  31:./Core/Src/traffic_light.c **** 			helper_set_led_color(Traffic_1_1_GPIO_Port, Traffic_1_1_Pin,
+  32:./Core/Src/traffic_light.c **** 					Traffic_1_2_GPIO_Port, Traffic_1_2_Pin, color);
+  33:./Core/Src/traffic_light.c **** 			break;
+  34:./Core/Src/traffic_light.c **** 		case TRAFFIC_2_LED:
+  35:./Core/Src/traffic_light.c **** 			helper_set_led_color(Traffic_2_1_GPIO_Port, Traffic_2_1_Pin,
+  36:./Core/Src/traffic_light.c **** 					Traffic_2_2_GPIO_Port, Traffic_2_2_Pin, color);
+  37:./Core/Src/traffic_light.c **** 			break;
+  38:./Core/Src/traffic_light.c **** 		case PEDESTRIAN_LED:
+  39:./Core/Src/traffic_light.c **** 			helper_set_led_color(Traffic_Pedes_1_GPIO_Port, Traffic_Pedes_1_Pin,
+  40:./Core/Src/traffic_light.c **** 					Traffic_Pedes_2_GPIO_Port, Traffic_Pedes_2_Pin, color);
+  41:./Core/Src/traffic_light.c **** 			break;
+  42:./Core/Src/traffic_light.c **** 	}
+  43:./Core/Src/traffic_light.c **** }
+ 153              		.loc 1 43 1
+ 154 0022 1DE0     		b	.L12
+ 155              	.L10:
+  31:./Core/Src/traffic_light.c **** 					Traffic_1_2_GPIO_Port, Traffic_1_2_Pin, color);
+ 156              		.loc 1 31 4
+ 157 0024 3B68     		ldr	r3, [r7]
+ 158 0026 0093     		str	r3, [sp]
+ 159 0028 0823     		movs	r3, #8
+ 160 002a 0F4A     		ldr	r2, .L13
+ 161 002c 4FF48061 		mov	r1, #1024
+ 162 0030 0E48     		ldr	r0, .L13+4
+ 163 0032 FFF7FEFF 		bl	helper_set_led_color
+  33:./Core/Src/traffic_light.c **** 		case TRAFFIC_2_LED:
+ 164              		.loc 1 33 4
+ 165 0036 13E0     		b	.L9
+ 166              	.L11:
+  35:./Core/Src/traffic_light.c **** 					Traffic_2_2_GPIO_Port, Traffic_2_2_Pin, color);
+ 167              		.loc 1 35 4
+ 168 0038 3B68     		ldr	r3, [r7]
+ 169 003a 0093     		str	r3, [sp]
+ 170 003c 1023     		movs	r3, #16
+ 171 003e 0A4A     		ldr	r2, .L13
+ 172 0040 2021     		movs	r1, #32
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc6p7sf6.s 			page 5
+
+
+ 173 0042 0948     		ldr	r0, .L13
+ 174 0044 FFF7FEFF 		bl	helper_set_led_color
+  37:./Core/Src/traffic_light.c **** 		case PEDESTRIAN_LED:
+ 175              		.loc 1 37 4
+ 176 0048 0AE0     		b	.L9
+ 177              	.L8:
+  39:./Core/Src/traffic_light.c **** 					Traffic_Pedes_2_GPIO_Port, Traffic_Pedes_2_Pin, color);
+ 178              		.loc 1 39 4
+ 179 004a 3B68     		ldr	r3, [r7]
+ 180 004c 0093     		str	r3, [sp]
+ 181 004e 4FF48073 		mov	r3, #256
+ 182 0052 064A     		ldr	r2, .L13+4
+ 183 0054 4FF48061 		mov	r1, #1024
+ 184 0058 0348     		ldr	r0, .L13
+ 185 005a FFF7FEFF 		bl	helper_set_led_color
+  41:./Core/Src/traffic_light.c **** 	}
+ 186              		.loc 1 41 4
+ 187 005e 00BF     		nop
+ 188              	.L9:
+ 189              	.L12:
+ 190              		.loc 1 43 1
+ 191 0060 00BF     		nop
+ 192 0062 0837     		adds	r7, r7, #8
+ 193              		.cfi_def_cfa_offset 8
+ 194 0064 BD46     		mov	sp, r7
+ 195              		.cfi_def_cfa_register 13
+ 196              		@ sp needed
+ 197 0066 80BD     		pop	{r7, pc}
+ 198              	.L14:
+ 199              		.align	2
+ 200              	.L13:
+ 201 0068 000C0140 		.word	1073810432
+ 202 006c 00080140 		.word	1073809408
+ 203              		.cfi_endproc
+ 204              	.LFE66:
+ 206              		.section	.text.helper_get_led_color,"ax",%progbits
+ 207              		.align	1
+ 208              		.global	helper_get_led_color
+ 209              		.syntax unified
+ 210              		.thumb
+ 211              		.thumb_func
+ 212              		.fpu softvfp
+ 214              	helper_get_led_color:
+ 215              	.LFB67:
+  44:./Core/Src/traffic_light.c **** 
+  45:./Core/Src/traffic_light.c **** int helper_get_led_color(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin1, GPIO_TypeDef *GPIOy, uint16_t GPI
+ 216              		.loc 1 45 108
+ 217              		.cfi_startproc
+ 218              		@ args = 0, pretend = 0, frame = 24
+ 219              		@ frame_needed = 1, uses_anonymous_args = 0
+ 220              		@ link register save eliminated.
+ 221 0000 80B4     		push	{r7}
+ 222              		.cfi_def_cfa_offset 4
+ 223              		.cfi_offset 7, -4
+ 224 0002 87B0     		sub	sp, sp, #28
+ 225              		.cfi_def_cfa_offset 32
+ 226 0004 00AF     		add	r7, sp, #0
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc6p7sf6.s 			page 6
+
+
+ 227              		.cfi_def_cfa_register 7
+ 228 0006 F860     		str	r0, [r7, #12]
+ 229 0008 7A60     		str	r2, [r7, #4]
+ 230 000a 1A46     		mov	r2, r3
+ 231 000c 0B46     		mov	r3, r1	@ movhi
+ 232 000e 7B81     		strh	r3, [r7, #10]	@ movhi
+ 233 0010 1346     		mov	r3, r2	@ movhi
+ 234 0012 3B81     		strh	r3, [r7, #8]	@ movhi
+  46:./Core/Src/traffic_light.c **** 	GPIO_PinState bitstatus1;
+  47:./Core/Src/traffic_light.c **** 	GPIO_PinState bitstatus2;
+  48:./Core/Src/traffic_light.c **** 
+  49:./Core/Src/traffic_light.c **** 	if ((GPIOx->IDR & GPIO_Pin1) != (uint32_t)GPIO_PIN_RESET) bitstatus1 = GPIO_PIN_SET;
+ 235              		.loc 1 49 12
+ 236 0014 FB68     		ldr	r3, [r7, #12]
+ 237 0016 9A68     		ldr	r2, [r3, #8]
+ 238              		.loc 1 49 18
+ 239 0018 7B89     		ldrh	r3, [r7, #10]
+ 240 001a 1340     		ands	r3, r3, r2
+ 241              		.loc 1 49 5
+ 242 001c 002B     		cmp	r3, #0
+ 243 001e 02D0     		beq	.L16
+ 244              		.loc 1 49 71 discriminator 1
+ 245 0020 0123     		movs	r3, #1
+ 246 0022 FB75     		strb	r3, [r7, #23]
+ 247 0024 01E0     		b	.L17
+ 248              	.L16:
+  50:./Core/Src/traffic_light.c **** 	else bitstatus1 = GPIO_PIN_RESET;
+ 249              		.loc 1 50 18
+ 250 0026 0023     		movs	r3, #0
+ 251 0028 FB75     		strb	r3, [r7, #23]
+ 252              	.L17:
+  51:./Core/Src/traffic_light.c **** 
+  52:./Core/Src/traffic_light.c **** 	if ((GPIOy->IDR & GPIO_Pin2) != (uint32_t)GPIO_PIN_RESET) bitstatus2 = GPIO_PIN_SET;
+ 253              		.loc 1 52 12
+ 254 002a 7B68     		ldr	r3, [r7, #4]
+ 255 002c 9A68     		ldr	r2, [r3, #8]
+ 256              		.loc 1 52 18
+ 257 002e 3B89     		ldrh	r3, [r7, #8]
+ 258 0030 1340     		ands	r3, r3, r2
+ 259              		.loc 1 52 5
+ 260 0032 002B     		cmp	r3, #0
+ 261 0034 02D0     		beq	.L18
+ 262              		.loc 1 52 71 discriminator 1
+ 263 0036 0123     		movs	r3, #1
+ 264 0038 BB75     		strb	r3, [r7, #22]
+ 265 003a 01E0     		b	.L19
+ 266              	.L18:
+  53:./Core/Src/traffic_light.c **** 	else bitstatus2 = GPIO_PIN_RESET;
+ 267              		.loc 1 53 18
+ 268 003c 0023     		movs	r3, #0
+ 269 003e BB75     		strb	r3, [r7, #22]
+ 270              	.L19:
+  54:./Core/Src/traffic_light.c **** 
+  55:./Core/Src/traffic_light.c **** 	if (!bitstatus1 && bitstatus2) return GREEN_COLOR;
+ 271              		.loc 1 55 5
+ 272 0040 FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 273 0042 002B     		cmp	r3, #0
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc6p7sf6.s 			page 7
+
+
+ 274 0044 04D1     		bne	.L20
+ 275              		.loc 1 55 18 discriminator 1
+ 276 0046 BB7D     		ldrb	r3, [r7, #22]	@ zero_extendqisi2
+ 277 0048 002B     		cmp	r3, #0
+ 278 004a 01D0     		beq	.L20
+ 279              		.loc 1 55 40 discriminator 2
+ 280 004c 2023     		movs	r3, #32
+ 281 004e 10E0     		b	.L21
+ 282              	.L20:
+  56:./Core/Src/traffic_light.c **** 	else if (bitstatus1 && !bitstatus2) return RED_COLOR;
+ 283              		.loc 1 56 10
+ 284 0050 FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 285 0052 002B     		cmp	r3, #0
+ 286 0054 04D0     		beq	.L22
+ 287              		.loc 1 56 22 discriminator 1
+ 288 0056 BB7D     		ldrb	r3, [r7, #22]	@ zero_extendqisi2
+ 289 0058 002B     		cmp	r3, #0
+ 290 005a 01D1     		bne	.L22
+ 291              		.loc 1 56 45 discriminator 2
+ 292 005c 1E23     		movs	r3, #30
+ 293 005e 08E0     		b	.L21
+ 294              	.L22:
+  57:./Core/Src/traffic_light.c **** 	else if (bitstatus1 && bitstatus2) return AMBER_COLOR;
+ 295              		.loc 1 57 10
+ 296 0060 FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 297 0062 002B     		cmp	r3, #0
+ 298 0064 04D0     		beq	.L23
+ 299              		.loc 1 57 22 discriminator 1
+ 300 0066 BB7D     		ldrb	r3, [r7, #22]	@ zero_extendqisi2
+ 301 0068 002B     		cmp	r3, #0
+ 302 006a 01D0     		beq	.L23
+ 303              		.loc 1 57 44 discriminator 2
+ 304 006c 1F23     		movs	r3, #31
+ 305 006e 00E0     		b	.L21
+ 306              	.L23:
+  58:./Core/Src/traffic_light.c **** 
+  59:./Core/Src/traffic_light.c **** 	return UNDEFINED_COLOR;
+ 307              		.loc 1 59 9
+ 308 0070 1D23     		movs	r3, #29
+ 309              	.L21:
+  60:./Core/Src/traffic_light.c **** }
+ 310              		.loc 1 60 1
+ 311 0072 1846     		mov	r0, r3
+ 312 0074 1C37     		adds	r7, r7, #28
+ 313              		.cfi_def_cfa_offset 4
+ 314 0076 BD46     		mov	sp, r7
+ 315              		.cfi_def_cfa_register 13
+ 316              		@ sp needed
+ 317 0078 80BC     		pop	{r7}
+ 318              		.cfi_restore 7
+ 319              		.cfi_def_cfa_offset 0
+ 320 007a 7047     		bx	lr
+ 321              		.cfi_endproc
+ 322              	.LFE67:
+ 324              		.section	.text.get_led_color,"ax",%progbits
+ 325              		.align	1
+ 326              		.global	get_led_color
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc6p7sf6.s 			page 8
+
+
+ 327              		.syntax unified
+ 328              		.thumb
+ 329              		.thumb_func
+ 330              		.fpu softvfp
+ 332              	get_led_color:
+ 333              	.LFB68:
+  61:./Core/Src/traffic_light.c **** 
+  62:./Core/Src/traffic_light.c **** int get_led_color(int led) {
+ 334              		.loc 1 62 28
+ 335              		.cfi_startproc
+ 336              		@ args = 0, pretend = 0, frame = 8
+ 337              		@ frame_needed = 1, uses_anonymous_args = 0
+ 338 0000 80B5     		push	{r7, lr}
+ 339              		.cfi_def_cfa_offset 8
+ 340              		.cfi_offset 7, -8
+ 341              		.cfi_offset 14, -4
+ 342 0002 82B0     		sub	sp, sp, #8
+ 343              		.cfi_def_cfa_offset 16
+ 344 0004 00AF     		add	r7, sp, #0
+ 345              		.cfi_def_cfa_register 7
+ 346 0006 7860     		str	r0, [r7, #4]
+  63:./Core/Src/traffic_light.c **** 	switch(led) {
+ 347              		.loc 1 63 2
+ 348 0008 7B68     		ldr	r3, [r7, #4]
+ 349 000a 2A2B     		cmp	r3, #42
+ 350 000c 1AD0     		beq	.L25
+ 351 000e 7B68     		ldr	r3, [r7, #4]
+ 352 0010 2A2B     		cmp	r3, #42
+ 353 0012 21DC     		bgt	.L26
+ 354 0014 7B68     		ldr	r3, [r7, #4]
+ 355 0016 282B     		cmp	r3, #40
+ 356 0018 03D0     		beq	.L27
+ 357 001a 7B68     		ldr	r3, [r7, #4]
+ 358 001c 292B     		cmp	r3, #41
+ 359 001e 09D0     		beq	.L28
+ 360 0020 1AE0     		b	.L26
+ 361              	.L27:
+  64:./Core/Src/traffic_light.c **** 	case TRAFFIC_1_LED:
+  65:./Core/Src/traffic_light.c **** 		return helper_get_led_color(Traffic_1_1_GPIO_Port, Traffic_1_1_Pin,
+ 362              		.loc 1 65 10
+ 363 0022 0823     		movs	r3, #8
+ 364 0024 0F4A     		ldr	r2, .L30
+ 365 0026 4FF48061 		mov	r1, #1024
+ 366 002a 0F48     		ldr	r0, .L30+4
+ 367 002c FFF7FEFF 		bl	helper_get_led_color
+ 368 0030 0346     		mov	r3, r0
+ 369 0032 12E0     		b	.L29
+ 370              	.L28:
+  66:./Core/Src/traffic_light.c **** 				Traffic_1_2_GPIO_Port, Traffic_1_2_Pin);
+  67:./Core/Src/traffic_light.c **** 		break;
+  68:./Core/Src/traffic_light.c **** 	case TRAFFIC_2_LED:
+  69:./Core/Src/traffic_light.c **** 		return helper_get_led_color(Traffic_2_1_GPIO_Port, Traffic_2_1_Pin,
+ 371              		.loc 1 69 10
+ 372 0034 1023     		movs	r3, #16
+ 373 0036 0B4A     		ldr	r2, .L30
+ 374 0038 2021     		movs	r1, #32
+ 375 003a 0A48     		ldr	r0, .L30
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc6p7sf6.s 			page 9
+
+
+ 376 003c FFF7FEFF 		bl	helper_get_led_color
+ 377 0040 0346     		mov	r3, r0
+ 378 0042 0AE0     		b	.L29
+ 379              	.L25:
+  70:./Core/Src/traffic_light.c **** 				Traffic_2_2_GPIO_Port, Traffic_2_2_Pin);
+  71:./Core/Src/traffic_light.c **** 		break;
+  72:./Core/Src/traffic_light.c **** 	case PEDESTRIAN_LED:
+  73:./Core/Src/traffic_light.c **** 		return helper_get_led_color(Traffic_Pedes_1_GPIO_Port, Traffic_Pedes_1_Pin,
+ 380              		.loc 1 73 10
+ 381 0044 4FF48073 		mov	r3, #256
+ 382 0048 074A     		ldr	r2, .L30+4
+ 383 004a 4FF48061 		mov	r1, #1024
+ 384 004e 0548     		ldr	r0, .L30
+ 385 0050 FFF7FEFF 		bl	helper_get_led_color
+ 386 0054 0346     		mov	r3, r0
+ 387 0056 00E0     		b	.L29
+ 388              	.L26:
+  74:./Core/Src/traffic_light.c **** 				Traffic_Pedes_2_GPIO_Port, Traffic_Pedes_2_Pin);
+  75:./Core/Src/traffic_light.c **** 		break;
+  76:./Core/Src/traffic_light.c **** 	default:
+  77:./Core/Src/traffic_light.c **** 		return UNDEFINED_COLOR;
+ 389              		.loc 1 77 10
+ 390 0058 1D23     		movs	r3, #29
+ 391              	.L29:
+  78:./Core/Src/traffic_light.c **** 		break;
+  79:./Core/Src/traffic_light.c **** 	}
+  80:./Core/Src/traffic_light.c **** 
+  81:./Core/Src/traffic_light.c **** 	return UNDEFINED_COLOR;
+  82:./Core/Src/traffic_light.c **** }
+ 392              		.loc 1 82 1
+ 393 005a 1846     		mov	r0, r3
+ 394 005c 0837     		adds	r7, r7, #8
+ 395              		.cfi_def_cfa_offset 8
+ 396 005e BD46     		mov	sp, r7
+ 397              		.cfi_def_cfa_register 13
+ 398              		@ sp needed
+ 399 0060 80BD     		pop	{r7, pc}
+ 400              	.L31:
+ 401 0062 00BF     		.align	2
+ 402              	.L30:
+ 403 0064 000C0140 		.word	1073810432
+ 404 0068 00080140 		.word	1073809408
+ 405              		.cfi_endproc
+ 406              	.LFE68:
+ 408              		.section	.text.helper_clear_led,"ax",%progbits
+ 409              		.align	1
+ 410              		.global	helper_clear_led
+ 411              		.syntax unified
+ 412              		.thumb
+ 413              		.thumb_func
+ 414              		.fpu softvfp
+ 416              	helper_clear_led:
+ 417              	.LFB69:
+  83:./Core/Src/traffic_light.c **** 
+  84:./Core/Src/traffic_light.c **** void helper_clear_led(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin) {
+ 418              		.loc 1 84 63
+ 419              		.cfi_startproc
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc6p7sf6.s 			page 10
+
+
+ 420              		@ args = 0, pretend = 0, frame = 8
+ 421              		@ frame_needed = 1, uses_anonymous_args = 0
+ 422              		@ link register save eliminated.
+ 423 0000 80B4     		push	{r7}
+ 424              		.cfi_def_cfa_offset 4
+ 425              		.cfi_offset 7, -4
+ 426 0002 83B0     		sub	sp, sp, #12
+ 427              		.cfi_def_cfa_offset 16
+ 428 0004 00AF     		add	r7, sp, #0
+ 429              		.cfi_def_cfa_register 7
+ 430 0006 7860     		str	r0, [r7, #4]
+ 431 0008 0B46     		mov	r3, r1
+ 432 000a 7B80     		strh	r3, [r7, #2]	@ movhi
+  85:./Core/Src/traffic_light.c **** 	GPIOx->BSRR = (uint32_t)GPIO_Pin << 16u;
+ 433              		.loc 1 85 16
+ 434 000c 7B88     		ldrh	r3, [r7, #2]
+ 435              		.loc 1 85 35
+ 436 000e 1A04     		lsls	r2, r3, #16
+ 437              		.loc 1 85 14
+ 438 0010 7B68     		ldr	r3, [r7, #4]
+ 439 0012 1A61     		str	r2, [r3, #16]
+  86:./Core/Src/traffic_light.c **** }
+ 440              		.loc 1 86 1
+ 441 0014 00BF     		nop
+ 442 0016 0C37     		adds	r7, r7, #12
+ 443              		.cfi_def_cfa_offset 4
+ 444 0018 BD46     		mov	sp, r7
+ 445              		.cfi_def_cfa_register 13
+ 446              		@ sp needed
+ 447 001a 80BC     		pop	{r7}
+ 448              		.cfi_restore 7
+ 449              		.cfi_def_cfa_offset 0
+ 450 001c 7047     		bx	lr
+ 451              		.cfi_endproc
+ 452              	.LFE69:
+ 454              		.section	.text.clear_led,"ax",%progbits
+ 455              		.align	1
+ 456              		.global	clear_led
+ 457              		.syntax unified
+ 458              		.thumb
+ 459              		.thumb_func
+ 460              		.fpu softvfp
+ 462              	clear_led:
+ 463              	.LFB70:
+  87:./Core/Src/traffic_light.c **** void clear_led(int led) {
+ 464              		.loc 1 87 25
+ 465              		.cfi_startproc
+ 466              		@ args = 0, pretend = 0, frame = 8
+ 467              		@ frame_needed = 1, uses_anonymous_args = 0
+ 468 0000 80B5     		push	{r7, lr}
+ 469              		.cfi_def_cfa_offset 8
+ 470              		.cfi_offset 7, -8
+ 471              		.cfi_offset 14, -4
+ 472 0002 82B0     		sub	sp, sp, #8
+ 473              		.cfi_def_cfa_offset 16
+ 474 0004 00AF     		add	r7, sp, #0
+ 475              		.cfi_def_cfa_register 7
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc6p7sf6.s 			page 11
+
+
+ 476 0006 7860     		str	r0, [r7, #4]
+  88:./Core/Src/traffic_light.c **** 	switch(led) {
+ 477              		.loc 1 88 2
+ 478 0008 7B68     		ldr	r3, [r7, #4]
+ 479 000a 2A2B     		cmp	r3, #42
+ 480 000c 14D0     		beq	.L34
+ 481 000e 7B68     		ldr	r3, [r7, #4]
+ 482 0010 2A2B     		cmp	r3, #42
+ 483 0012 17DC     		bgt	.L38
+ 484 0014 7B68     		ldr	r3, [r7, #4]
+ 485 0016 282B     		cmp	r3, #40
+ 486 0018 03D0     		beq	.L36
+ 487 001a 7B68     		ldr	r3, [r7, #4]
+ 488 001c 292B     		cmp	r3, #41
+ 489 001e 06D0     		beq	.L37
+  89:./Core/Src/traffic_light.c **** 	case TRAFFIC_1_LED:
+  90:./Core/Src/traffic_light.c **** 		helper_clear_led(Traffic_1_1_GPIO_Port, Traffic_1_1_Pin);
+  91:./Core/Src/traffic_light.c **** 		break;
+  92:./Core/Src/traffic_light.c **** 	case TRAFFIC_2_LED:
+  93:./Core/Src/traffic_light.c **** 		helper_clear_led(Traffic_2_1_GPIO_Port, Traffic_2_1_Pin);
+  94:./Core/Src/traffic_light.c **** 		break;
+  95:./Core/Src/traffic_light.c **** 	case PEDESTRIAN_LED:
+  96:./Core/Src/traffic_light.c **** 		helper_clear_led(Traffic_Pedes_1_GPIO_Port, Traffic_Pedes_1_Pin);
+  97:./Core/Src/traffic_light.c **** 		break;
+  98:./Core/Src/traffic_light.c **** 	}
+  99:./Core/Src/traffic_light.c **** }
+ 490              		.loc 1 99 1
+ 491 0020 10E0     		b	.L38
+ 492              	.L36:
+  90:./Core/Src/traffic_light.c **** 		break;
+ 493              		.loc 1 90 3
+ 494 0022 4FF48061 		mov	r1, #1024
+ 495 0026 0948     		ldr	r0, .L39
+ 496 0028 FFF7FEFF 		bl	helper_clear_led
+  91:./Core/Src/traffic_light.c **** 	case TRAFFIC_2_LED:
+ 497              		.loc 1 91 3
+ 498 002c 0AE0     		b	.L35
+ 499              	.L37:
+  93:./Core/Src/traffic_light.c **** 		break;
+ 500              		.loc 1 93 3
+ 501 002e 2021     		movs	r1, #32
+ 502 0030 0748     		ldr	r0, .L39+4
+ 503 0032 FFF7FEFF 		bl	helper_clear_led
+  94:./Core/Src/traffic_light.c **** 	case PEDESTRIAN_LED:
+ 504              		.loc 1 94 3
+ 505 0036 05E0     		b	.L35
+ 506              	.L34:
+  96:./Core/Src/traffic_light.c **** 		break;
+ 507              		.loc 1 96 3
+ 508 0038 4FF48061 		mov	r1, #1024
+ 509 003c 0448     		ldr	r0, .L39+4
+ 510 003e FFF7FEFF 		bl	helper_clear_led
+  97:./Core/Src/traffic_light.c **** 	}
+ 511              		.loc 1 97 3
+ 512 0042 00BF     		nop
+ 513              	.L35:
+ 514              	.L38:
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc6p7sf6.s 			page 12
+
+
+ 515              		.loc 1 99 1
+ 516 0044 00BF     		nop
+ 517 0046 0837     		adds	r7, r7, #8
+ 518              		.cfi_def_cfa_offset 8
+ 519 0048 BD46     		mov	sp, r7
+ 520              		.cfi_def_cfa_register 13
+ 521              		@ sp needed
+ 522 004a 80BD     		pop	{r7, pc}
+ 523              	.L40:
+ 524              		.align	2
+ 525              	.L39:
+ 526 004c 00080140 		.word	1073809408
+ 527 0050 000C0140 		.word	1073810432
+ 528              		.cfi_endproc
+ 529              	.LFE70:
+ 531              		.text
+ 532              	.Letext0:
+ 533              		.file 2 "c:\\st\\stm32cubeide_1.7.0\\stm32cubeide\\plugins\\com.st.stm32cube.ide.mcu.externaltools
+ 534              		.file 3 "c:\\st\\stm32cubeide_1.7.0\\stm32cubeide\\plugins\\com.st.stm32cube.ide.mcu.externaltools
+ 535              		.file 4 "Drivers/CMSIS/Include/core_cm3.h"
+ 536              		.file 5 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h"
+ 537              		.file 6 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
+ 538              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
+ 539              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
+ 540              		.file 9 "Core/Inc/global.h"
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc6p7sf6.s 			page 13
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 traffic_light.c
+C:\Users\nguye\AppData\Local\Temp\cc6p7sf6.s:16     .text.helper_set_led_color:0000000000000000 $t
+C:\Users\nguye\AppData\Local\Temp\cc6p7sf6.s:24     .text.helper_set_led_color:0000000000000000 helper_set_led_color
+C:\Users\nguye\AppData\Local\Temp\cc6p7sf6.s:117    .text.set_led_color:0000000000000000 $t
+C:\Users\nguye\AppData\Local\Temp\cc6p7sf6.s:124    .text.set_led_color:0000000000000000 set_led_color
+C:\Users\nguye\AppData\Local\Temp\cc6p7sf6.s:201    .text.set_led_color:0000000000000068 $d
+C:\Users\nguye\AppData\Local\Temp\cc6p7sf6.s:207    .text.helper_get_led_color:0000000000000000 $t
+C:\Users\nguye\AppData\Local\Temp\cc6p7sf6.s:214    .text.helper_get_led_color:0000000000000000 helper_get_led_color
+C:\Users\nguye\AppData\Local\Temp\cc6p7sf6.s:325    .text.get_led_color:0000000000000000 $t
+C:\Users\nguye\AppData\Local\Temp\cc6p7sf6.s:332    .text.get_led_color:0000000000000000 get_led_color
+C:\Users\nguye\AppData\Local\Temp\cc6p7sf6.s:403    .text.get_led_color:0000000000000064 $d
+C:\Users\nguye\AppData\Local\Temp\cc6p7sf6.s:409    .text.helper_clear_led:0000000000000000 $t
+C:\Users\nguye\AppData\Local\Temp\cc6p7sf6.s:416    .text.helper_clear_led:0000000000000000 helper_clear_led
+C:\Users\nguye\AppData\Local\Temp\cc6p7sf6.s:455    .text.clear_led:0000000000000000 $t
+C:\Users\nguye\AppData\Local\Temp\cc6p7sf6.s:462    .text.clear_led:0000000000000000 clear_led
+C:\Users\nguye\AppData\Local\Temp\cc6p7sf6.s:526    .text.clear_led:000000000000004c $d
+                           .group:0000000000000000 wm4.0.e890922d021f7fff2fbf219cb2b38f03
+                           .group:0000000000000000 wm4.stm32f1xx_hal_conf.h.21.185fa7e4004c86f1f34627ab1091dd60
+                           .group:0000000000000000 wm4.stm32f1xx.h.39.208bb8a61c892b7c37d899c49a031330
+                           .group:0000000000000000 wm4.stm32f103xb.h.38.ec967d5ad9d3269cb0788eebda048e38
+                           .group:0000000000000000 wm4._newlib_version.h.4.1ef4e12f167f8b69d7c30054be56050d
+                           .group:0000000000000000 wm4.features.h.33.318b64d71e0957639cfb30f1db1f7ec8
+                           .group:0000000000000000 wm4._default_types.h.15.247e5cd201eca3442cbf5404108c4935
+                           .group:0000000000000000 wm4._intsup.h.10.48bafbb683905c4daa4565a85aeeb264
+                           .group:0000000000000000 wm4._stdint.h.10.c24fa3af3bc1706662bb5593a907e841
+                           .group:0000000000000000 wm4.stdint.h.23.d53047a68f4a85177f80b422d52785ed
+                           .group:0000000000000000 wm4.cmsis_version.h.32.4d5822004c01a829a975260e854b5f8e
+                           .group:0000000000000000 wm4.core_cm3.h.66.fc46cac19810db8f98d67da7ef88f42c
+                           .group:0000000000000000 wm4.cmsis_gcc.h.26.225e4f5469716fdeef823d1102f5b23e
+                           .group:0000000000000000 wm4.core_cm3.h.127.f4474120f1a7524deb56f9d74ff175da
+                           .group:0000000000000000 wm4.stm32f103xb.h.573.10249aa7473ca93be896fed94046a725
+                           .group:0000000000000000 wm4.stm32f1xx.h.162.96b09079a093c34dbd7f0b85cbd0ddee
+                           .group:0000000000000000 wm4.stm32_hal_legacy.h.23.91ba5b544a4c2be2620a1e7ff0049e10
+                           .group:0000000000000000 wm4.stddef.h.39.144cf5ddcd53cbfdac30259dc1a6c87f
+                           .group:0000000000000000 wm4.stm32f1xx_hal_def.h.57.18d01ce1aa74e9fb44dbf16f821a574a
+                           .group:0000000000000000 wm4.stm32f1xx_hal_rcc.h.95.21591bbc513aaa813c0b8640c3b32517
+                           .group:0000000000000000 wm4.stm32f1xx_hal_rcc_ex.h.22.8763f99bc1e3e2dcf0febe9161d81b37
+                           .group:0000000000000000 wm4.stm32f1xx_hal_rcc.h.1202.f8e5f9e0cf4eef7840facf5396029056
+                           .group:0000000000000000 wm4.stm32f1xx_hal_gpio.h.22.fa638d688dcc57ca806fe6a7831b0d04
+                           .group:0000000000000000 wm4.stm32f1xx_hal_gpio_ex.h.22.51a50ef3512cd78017ce666a32d364bf
+                           .group:0000000000000000 wm4.stm32f1xx_hal_gpio.h.263.f5ebf2f545ade59412ab9261c8e35dc4
+                           .group:0000000000000000 wm4.stm32f1xx_hal_exti.h.22.e26491d042c8079c3ca67eca341af862
+                           .group:0000000000000000 wm4.stm32f1xx_hal_dma.h.22.3c14338534886827bf3aeaa2a7f412a1
+                           .group:0000000000000000 wm4.stm32f1xx_hal_dma_ex.h.22.001ac4d7f81ccbdcae49bd65c13858c8
+                           .group:0000000000000000 wm4.stm32f1xx_hal_dma.h.409.cafcd2cfe701091535636be537c18293
+                           .group:0000000000000000 wm4.stm32f1xx_hal_cortex.h.22.b5f4174bb6a50d95405567b8f50e0900
+                           .group:0000000000000000 wm4.stm32f1xx_hal_flash.h.22.5cea9a7210e6315b41724b47b5fdf203
+                           .group:0000000000000000 wm4.stm32f1xx_hal_flash_ex.h.22.d4e19c21f2a86fa2f8ec2c2d5f1ab2af
+                           .group:0000000000000000 wm4.stm32f1xx_hal_pwr.h.22.3438c476faafc3240bf146f143df3fcd
+                           .group:0000000000000000 wm4.stm32f1xx_hal_tim.h.22.a16e206564e97dbace9faae59a0d6008
+                           .group:0000000000000000 wm4.stm32f1xx_hal_uart.h.22.5f7992e497faa36aa98f09f7214f4dbb
+                           .group:0000000000000000 wm4.stm32f1xx_hal.h.88.91065c0692bed6019c34f1e9c00589fd
+                           .group:0000000000000000 wm4.main.h.63.92fcc8d3cbb1d835d8ee363312eb2117
+                           .group:0000000000000000 wm4.global.h.9.07cc41e1ed932596c8485394ac422e11
+                           .group:0000000000000000 wm4.traffic_light.h.14.ab1d9e8ae02845570467e9cf97ea0d9f
+
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc6p7sf6.s 			page 14
+
+
+NO UNDEFINED SYMBOLS

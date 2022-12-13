@@ -1,0 +1,861 @@
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccvJhNar.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 6
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"sche_task.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.global	pedestrian_active
+  16              		.section	.bss.pedestrian_active,"aw",%nobits
+  17              		.align	2
+  20              	pedestrian_active:
+  21 0000 00000000 		.space	4
+  22              		.global	delay
+  23              		.section	.data.delay,"aw"
+  24              		.align	2
+  27              	delay:
+  28 0000 E8030000 		.word	1000
+  29              		.global	FREQ
+  30              		.section	.data.FREQ,"aw"
+  31              		.align	2
+  34              	FREQ:
+  35 0000 0A000000 		.word	10
+  36              		.global	FREQ_STEP
+  37              		.section	.bss.FREQ_STEP,"aw",%nobits
+  38              		.align	2
+  41              	FREQ_STEP:
+  42 0000 00000000 		.space	4
+  43              		.global	DELAY_STEP
+  44              		.section	.data.DELAY_STEP,"aw"
+  45              		.align	2
+  48              	DELAY_STEP:
+  49 0000 64000000 		.word	100
+  50              		.global	time_allow_pedestrian
+  51              		.section	.bss.time_allow_pedestrian,"aw",%nobits
+  52              		.align	2
+  55              	time_allow_pedestrian:
+  56 0000 00000000 		.space	4
+  57              		.global	flag_button
+  58              		.section	.bss.flag_button,"aw",%nobits
+  59              		.align	2
+  62              	flag_button:
+  63 0000 00000000 		.space	4
+  64              		.global	trigger_pedestrian_func
+  65              		.section	.bss.trigger_pedestrian_func,"aw",%nobits
+  66              		.align	2
+  69              	trigger_pedestrian_func:
+  70 0000 00000000 		.space	4
+  71              		.global	pedestrian_wanna_go
+  72              		.section	.bss.pedestrian_wanna_go,"aw",%nobits
+  73              		.align	2
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccvJhNar.s 			page 2
+
+
+  76              	pedestrian_wanna_go:
+  77 0000 00000000 		.space	4
+  78              		.global	extra_step
+  79              		.section	.data.extra_step,"aw"
+  80              		.align	2
+  83              	extra_step:
+  84 0000 0000803F 		.word	1065353216
+  85              		.global	__aeabi_f2d
+  86              		.global	__aeabi_dadd
+  87              		.global	__aeabi_d2f
+  88              		.global	__aeabi_i2f
+  89              		.global	__aeabi_fmul
+  90              		.global	__aeabi_fcmpgt
+  91              		.global	__aeabi_fsub
+  92              		.global	__aeabi_f2iz
+  93              		.global	__aeabi_fadd
+  94              		.section	.text.pedestrian_scramble,"ax",%progbits
+  95              		.align	1
+  96              		.global	pedestrian_scramble
+  97              		.arch armv7-m
+  98              		.syntax unified
+  99              		.thumb
+ 100              		.thumb_func
+ 101              		.fpu softvfp
+ 103              	pedestrian_scramble:
+ 104              	.LFB68:
+ 105              		.file 1 "./Core/Src/sche_task.c"
+   1:./Core/Src/sche_task.c **** /*
+   2:./Core/Src/sche_task.c ****  * task.c
+   3:./Core/Src/sche_task.c ****  *
+   4:./Core/Src/sche_task.c ****  *  Created on: Nov 28, 2022
+   5:./Core/Src/sche_task.c ****  *      Author: Tien
+   6:./Core/Src/sche_task.c ****  */
+   7:./Core/Src/sche_task.c **** #include <stdio.h>
+   8:./Core/Src/sche_task.c **** #include "main.h"
+   9:./Core/Src/sche_task.c **** #include "sche_task.h"
+  10:./Core/Src/sche_task.c **** #include "global.h"
+  11:./Core/Src/sche_task.c **** #include "input_reading.h"
+  12:./Core/Src/sche_task.c **** #include "traffic_light.h"
+  13:./Core/Src/sche_task.c **** #include "software_timer.h"
+  14:./Core/Src/sche_task.c **** 
+  15:./Core/Src/sche_task.c **** int pedestrian_active = 0;
+  16:./Core/Src/sche_task.c **** int delay = TIME_UNIT;
+  17:./Core/Src/sche_task.c **** int FREQ = 10;
+  18:./Core/Src/sche_task.c **** int FREQ_STEP = 0;
+  19:./Core/Src/sche_task.c **** int DELAY_STEP = TIME_UNIT / 10;
+  20:./Core/Src/sche_task.c **** int time_allow_pedestrian = 0;
+  21:./Core/Src/sche_task.c **** int flag_button = 0;
+  22:./Core/Src/sche_task.c **** int trigger_pedestrian_func = 0;
+  23:./Core/Src/sche_task.c **** int pedestrian_wanna_go = 0;
+  24:./Core/Src/sche_task.c **** extern TIM_HandleTypeDef htim3;
+  25:./Core/Src/sche_task.c **** 
+  26:./Core/Src/sche_task.c **** float extra_step = 1;
+  27:./Core/Src/sche_task.c **** 
+  28:./Core/Src/sche_task.c **** void pedestrian_scramble() {
+ 106              		.loc 1 28 28
+ 107              		.cfi_startproc
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccvJhNar.s 			page 3
+
+
+ 108              		@ args = 0, pretend = 0, frame = 0
+ 109              		@ frame_needed = 1, uses_anonymous_args = 0
+ 110 0000 98B5     		push	{r3, r4, r7, lr}
+ 111              		.cfi_def_cfa_offset 16
+ 112              		.cfi_offset 3, -16
+ 113              		.cfi_offset 4, -12
+ 114              		.cfi_offset 7, -8
+ 115              		.cfi_offset 14, -4
+ 116 0002 00AF     		add	r7, sp, #0
+ 117              		.cfi_def_cfa_register 7
+  29:./Core/Src/sche_task.c **** 		if (is_button_pressed(3)) {
+ 118              		.loc 1 29 7
+ 119 0004 0320     		movs	r0, #3
+ 120 0006 FFF7FEFF 		bl	is_button_pressed
+ 121 000a 0346     		mov	r3, r0
+ 122              		.loc 1 29 6
+ 123 000c 002B     		cmp	r3, #0
+ 124 000e 0ED0     		beq	.L2
+  30:./Core/Src/sche_task.c **** 			pedestrian_wanna_go = 1;
+ 125              		.loc 1 30 24
+ 126 0010 A14B     		ldr	r3, .L23+16
+ 127 0012 0122     		movs	r2, #1
+ 128 0014 1A60     		str	r2, [r3]
+  31:./Core/Src/sche_task.c **** 			if (get_led_color(TRAFFIC_1_LED) == RED_COLOR) {
+ 129              		.loc 1 31 8
+ 130 0016 2820     		movs	r0, #40
+ 131 0018 FFF7FEFF 		bl	get_led_color
+ 132 001c 0346     		mov	r3, r0
+ 133              		.loc 1 31 7
+ 134 001e 1E2B     		cmp	r3, #30
+ 135 0020 05D1     		bne	.L2
+  32:./Core/Src/sche_task.c **** 				pedestrian_active = 1;
+ 136              		.loc 1 32 23
+ 137 0022 9E4B     		ldr	r3, .L23+20
+ 138 0024 0122     		movs	r2, #1
+ 139 0026 1A60     		str	r2, [r3]
+  33:./Core/Src/sche_task.c **** 				flag_button = 1;
+ 140              		.loc 1 33 17
+ 141 0028 9D4B     		ldr	r3, .L23+24
+ 142 002a 0122     		movs	r2, #1
+ 143 002c 1A60     		str	r2, [r3]
+ 144              	.L2:
+  34:./Core/Src/sche_task.c **** 			}
+  35:./Core/Src/sche_task.c **** 		}
+  36:./Core/Src/sche_task.c **** 
+  37:./Core/Src/sche_task.c **** 		if ( get_led_color(TRAFFIC_1_LED) == RED_COLOR && (flag_button || pedestrian_wanna_go) ) {
+ 145              		.loc 1 37 8
+ 146 002e 2820     		movs	r0, #40
+ 147 0030 FFF7FEFF 		bl	get_led_color
+ 148 0034 0346     		mov	r3, r0
+ 149              		.loc 1 37 6
+ 150 0036 1E2B     		cmp	r3, #30
+ 151 0038 2AD1     		bne	.L3
+ 152              		.loc 1 37 54 discriminator 1
+ 153 003a 994B     		ldr	r3, .L23+24
+ 154 003c 1B68     		ldr	r3, [r3]
+ 155              		.loc 1 37 50 discriminator 1
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccvJhNar.s 			page 4
+
+
+ 156 003e 002B     		cmp	r3, #0
+ 157 0040 03D1     		bne	.L4
+ 158              		.loc 1 37 66 discriminator 2
+ 159 0042 954B     		ldr	r3, .L23+16
+ 160 0044 1B68     		ldr	r3, [r3]
+ 161 0046 002B     		cmp	r3, #0
+ 162 0048 22D0     		beq	.L3
+ 163              	.L4:
+  38:./Core/Src/sche_task.c **** 			pedestrian_active = 1;
+ 164              		.loc 1 38 22
+ 165 004a 944B     		ldr	r3, .L23+20
+ 166 004c 0122     		movs	r2, #1
+ 167 004e 1A60     		str	r2, [r3]
+  39:./Core/Src/sche_task.c **** 			/* Calculate number of step for increase frequency and decrease delay time */
+  40:./Core/Src/sche_task.c **** 			FREQ_STEP = 120 / (SEG7_CLOCK[0] / TIME_UNIT);
+ 168              		.loc 1 40 33
+ 169 0050 944B     		ldr	r3, .L23+28
+ 170 0052 1B68     		ldr	r3, [r3]
+ 171              		.loc 1 40 37
+ 172 0054 944A     		ldr	r2, .L23+32
+ 173 0056 82FB0312 		smull	r1, r2, r2, r3
+ 174 005a 9211     		asrs	r2, r2, #6
+ 175 005c DB17     		asrs	r3, r3, #31
+ 176 005e D31A     		subs	r3, r2, r3
+ 177              		.loc 1 40 20
+ 178 0060 7822     		movs	r2, #120
+ 179 0062 92FBF3F3 		sdiv	r3, r2, r3
+ 180              		.loc 1 40 14
+ 181 0066 914A     		ldr	r2, .L23+36
+ 182 0068 1360     		str	r3, [r2]
+  41:./Core/Src/sche_task.c **** 			DELAY_STEP = 400 / (SEG7_CLOCK[0] / TIME_UNIT);
+ 183              		.loc 1 41 34
+ 184 006a 8E4B     		ldr	r3, .L23+28
+ 185 006c 1B68     		ldr	r3, [r3]
+ 186              		.loc 1 41 38
+ 187 006e 8E4A     		ldr	r2, .L23+32
+ 188 0070 82FB0312 		smull	r1, r2, r2, r3
+ 189 0074 9211     		asrs	r2, r2, #6
+ 190 0076 DB17     		asrs	r3, r3, #31
+ 191 0078 D31A     		subs	r3, r2, r3
+ 192              		.loc 1 41 21
+ 193 007a 4FF4C872 		mov	r2, #400
+ 194 007e 92FBF3F3 		sdiv	r3, r2, r3
+ 195              		.loc 1 41 15
+ 196 0082 8B4A     		ldr	r2, .L23+40
+ 197 0084 1360     		str	r3, [r2]
+  42:./Core/Src/sche_task.c **** 			time_allow_pedestrian = SEG7_CLOCK[0];
+ 198              		.loc 1 42 38
+ 199 0086 874B     		ldr	r3, .L23+28
+ 200 0088 1B68     		ldr	r3, [r3]
+ 201              		.loc 1 42 26
+ 202 008a 8A4A     		ldr	r2, .L23+44
+ 203 008c 1360     		str	r3, [r2]
+ 204 008e 06E0     		b	.L5
+ 205              	.L3:
+  43:./Core/Src/sche_task.c **** 		}
+  44:./Core/Src/sche_task.c **** 		else {
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccvJhNar.s 			page 5
+
+
+  45:./Core/Src/sche_task.c **** 			pedestrian_active = 0;
+ 206              		.loc 1 45 22
+ 207 0090 824B     		ldr	r3, .L23+20
+ 208 0092 0022     		movs	r2, #0
+ 209 0094 1A60     		str	r2, [r3]
+  46:./Core/Src/sche_task.c **** 			set_led_color(PEDESTRIAN_LED, RED_COLOR);
+ 210              		.loc 1 46 4
+ 211 0096 1E21     		movs	r1, #30
+ 212 0098 2A20     		movs	r0, #42
+ 213 009a FFF7FEFF 		bl	set_led_color
+ 214              	.L5:
+  47:./Core/Src/sche_task.c **** 		}
+  48:./Core/Src/sche_task.c **** 
+  49:./Core/Src/sche_task.c **** 		if (pedestrian_active) {
+ 215              		.loc 1 49 7
+ 216 009e 7F4B     		ldr	r3, .L23+20
+ 217 00a0 1B68     		ldr	r3, [r3]
+ 218              		.loc 1 49 6
+ 219 00a2 002B     		cmp	r3, #0
+ 220 00a4 00F04481 		beq	.L6
+  50:./Core/Src/sche_task.c **** 			set_led_color(PEDESTRIAN_LED, GREEN_COLOR);
+ 221              		.loc 1 50 4
+ 222 00a8 2021     		movs	r1, #32
+ 223 00aa 2A20     		movs	r0, #42
+ 224 00ac FFF7FEFF 		bl	set_led_color
+  51:./Core/Src/sche_task.c **** 			/* Buzzer frequency */
+  52:./Core/Src/sche_task.c **** 			__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1, 0);
+ 225              		.loc 1 52 4
+ 226 00b0 814B     		ldr	r3, .L23+48
+ 227 00b2 1B68     		ldr	r3, [r3]
+ 228 00b4 0022     		movs	r2, #0
+ 229 00b6 5A63     		str	r2, [r3, #52]
+  53:./Core/Src/sche_task.c **** 			HAL_Delay(delay);
+ 230              		.loc 1 53 4
+ 231 00b8 804B     		ldr	r3, .L23+52
+ 232 00ba 1B68     		ldr	r3, [r3]
+ 233 00bc 1846     		mov	r0, r3
+ 234 00be FFF7FEFF 		bl	HAL_Delay
+  54:./Core/Src/sche_task.c **** 
+  55:./Core/Src/sche_task.c **** 			/* If 2/3 time has passed, need more extra step*/
+  56:./Core/Src/sche_task.c **** 			if (SEG7_CLOCK[0] >= 2 * time_allow_pedestrian / 3) {
+ 235              		.loc 1 56 18
+ 236 00c2 784B     		ldr	r3, .L23+28
+ 237 00c4 1A68     		ldr	r2, [r3]
+ 238              		.loc 1 56 27
+ 239 00c6 7B4B     		ldr	r3, .L23+44
+ 240 00c8 1B68     		ldr	r3, [r3]
+ 241 00ca 5B00     		lsls	r3, r3, #1
+ 242              		.loc 1 56 51
+ 243 00cc 7C49     		ldr	r1, .L23+56
+ 244 00ce 81FB0301 		smull	r0, r1, r1, r3
+ 245 00d2 DB17     		asrs	r3, r3, #31
+ 246 00d4 CB1A     		subs	r3, r1, r3
+ 247              		.loc 1 56 7
+ 248 00d6 9A42     		cmp	r2, r3
+ 249 00d8 62DB     		blt	.L7
+  57:./Core/Src/sche_task.c **** 				extra_step += 0.09;
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccvJhNar.s 			page 6
+
+
+ 250              		.loc 1 57 16
+ 251 00da 7A4B     		ldr	r3, .L23+60
+ 252 00dc 1B68     		ldr	r3, [r3]	@ float
+ 253 00de 1846     		mov	r0, r3
+ 254 00e0 FFF7FEFF 		bl	__aeabi_f2d
+ 255              	.LVL0:
+ 256 00e4 68A3     		adr	r3, .L23
+ 257 00e6 D3E90023 		ldrd	r2, [r3]
+ 258 00ea FFF7FEFF 		bl	__aeabi_dadd
+ 259              	.LVL1:
+ 260 00ee 0246     		mov	r2, r0
+ 261 00f0 0B46     		mov	r3, r1
+ 262 00f2 1046     		mov	r0, r2
+ 263 00f4 1946     		mov	r1, r3
+ 264 00f6 FFF7FEFF 		bl	__aeabi_d2f
+ 265              	.LVL2:
+ 266 00fa 0346     		mov	r3, r0
+ 267 00fc 714A     		ldr	r2, .L23+60
+ 268 00fe 1360     		str	r3, [r2]	@ float
+  58:./Core/Src/sche_task.c **** 				__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1, FREQ += FREQ_STEP);
+ 269              		.loc 1 58 5
+ 270 0100 714B     		ldr	r3, .L23+64
+ 271 0102 1A68     		ldr	r2, [r3]
+ 272 0104 694B     		ldr	r3, .L23+36
+ 273 0106 1B68     		ldr	r3, [r3]
+ 274 0108 1344     		add	r3, r3, r2
+ 275 010a 6F4A     		ldr	r2, .L23+64
+ 276 010c 1360     		str	r3, [r2]
+ 277 010e 6E4B     		ldr	r3, .L23+64
+ 278 0110 1A68     		ldr	r2, [r3]
+ 279 0112 694B     		ldr	r3, .L23+48
+ 280 0114 1B68     		ldr	r3, [r3]
+ 281 0116 5A63     		str	r2, [r3, #52]
+  59:./Core/Src/sche_task.c **** 				if (delay > extra_step * DELAY_STEP) HAL_Delay(delay -= extra_step * DELAY_STEP);
+ 282              		.loc 1 59 15
+ 283 0118 684B     		ldr	r3, .L23+52
+ 284 011a 1B68     		ldr	r3, [r3]
+ 285 011c 1846     		mov	r0, r3
+ 286 011e FFF7FEFF 		bl	__aeabi_i2f
+ 287              	.LVL3:
+ 288 0122 0446     		mov	r4, r0
+ 289              		.loc 1 59 28
+ 290 0124 624B     		ldr	r3, .L23+40
+ 291 0126 1B68     		ldr	r3, [r3]
+ 292 0128 1846     		mov	r0, r3
+ 293 012a FFF7FEFF 		bl	__aeabi_i2f
+ 294              	.LVL4:
+ 295 012e 0246     		mov	r2, r0
+ 296 0130 644B     		ldr	r3, .L23+60
+ 297 0132 1B68     		ldr	r3, [r3]	@ float
+ 298 0134 1946     		mov	r1, r3
+ 299 0136 1046     		mov	r0, r2
+ 300 0138 FFF7FEFF 		bl	__aeabi_fmul
+ 301              	.LVL5:
+ 302 013c 0346     		mov	r3, r0
+ 303              		.loc 1 59 8
+ 304 013e 1946     		mov	r1, r3
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccvJhNar.s 			page 7
+
+
+ 305 0140 2046     		mov	r0, r4
+ 306 0142 FFF7FEFF 		bl	__aeabi_fcmpgt
+ 307              	.LVL6:
+ 308 0146 0346     		mov	r3, r0
+ 309 0148 002B     		cmp	r3, #0
+ 310 014a 23D0     		beq	.L19
+ 311              		.loc 1 59 58 discriminator 1
+ 312 014c 5B4B     		ldr	r3, .L23+52
+ 313 014e 1B68     		ldr	r3, [r3]
+ 314 0150 1846     		mov	r0, r3
+ 315 0152 FFF7FEFF 		bl	__aeabi_i2f
+ 316              	.LVL7:
+ 317 0156 0446     		mov	r4, r0
+ 318              		.loc 1 59 72 discriminator 1
+ 319 0158 554B     		ldr	r3, .L23+40
+ 320 015a 1B68     		ldr	r3, [r3]
+ 321 015c 1846     		mov	r0, r3
+ 322 015e FFF7FEFF 		bl	__aeabi_i2f
+ 323              	.LVL8:
+ 324 0162 0246     		mov	r2, r0
+ 325 0164 574B     		ldr	r3, .L23+60
+ 326 0166 1B68     		ldr	r3, [r3]	@ float
+ 327 0168 1946     		mov	r1, r3
+ 328 016a 1046     		mov	r0, r2
+ 329 016c FFF7FEFF 		bl	__aeabi_fmul
+ 330              	.LVL9:
+ 331 0170 0346     		mov	r3, r0
+ 332              		.loc 1 59 58 discriminator 1
+ 333 0172 1946     		mov	r1, r3
+ 334 0174 2046     		mov	r0, r4
+ 335 0176 FFF7FEFF 		bl	__aeabi_fsub
+ 336              	.LVL10:
+ 337 017a 0346     		mov	r3, r0
+ 338 017c 1846     		mov	r0, r3
+ 339 017e FFF7FEFF 		bl	__aeabi_f2iz
+ 340              	.LVL11:
+ 341 0182 0346     		mov	r3, r0
+ 342 0184 4D4A     		ldr	r2, .L23+52
+ 343 0186 1360     		str	r3, [r2]
+ 344 0188 4C4B     		ldr	r3, .L23+52
+ 345 018a 1B68     		ldr	r3, [r3]
+ 346              		.loc 1 59 42 discriminator 1
+ 347 018c 1846     		mov	r0, r3
+ 348 018e FFF7FEFF 		bl	HAL_Delay
+ 349 0192 C9E0     		b	.L10
+ 350              	.L19:
+  60:./Core/Src/sche_task.c **** 				else HAL_Delay(delay);
+ 351              		.loc 1 60 10
+ 352 0194 494B     		ldr	r3, .L23+52
+ 353 0196 1B68     		ldr	r3, [r3]
+ 354 0198 1846     		mov	r0, r3
+ 355 019a FFF7FEFF 		bl	HAL_Delay
+ 356 019e C3E0     		b	.L10
+ 357              	.L7:
+  61:./Core/Src/sche_task.c **** 			} else {
+  62:./Core/Src/sche_task.c **** 				extra_step += 0.3;
+ 358              		.loc 1 62 16
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccvJhNar.s 			page 8
+
+
+ 359 01a0 484B     		ldr	r3, .L23+60
+ 360 01a2 1B68     		ldr	r3, [r3]	@ float
+ 361 01a4 1846     		mov	r0, r3
+ 362 01a6 FFF7FEFF 		bl	__aeabi_f2d
+ 363              	.LVL12:
+ 364 01aa 39A3     		adr	r3, .L23+8
+ 365 01ac D3E90023 		ldrd	r2, [r3]
+ 366 01b0 FFF7FEFF 		bl	__aeabi_dadd
+ 367              	.LVL13:
+ 368 01b4 0246     		mov	r2, r0
+ 369 01b6 0B46     		mov	r3, r1
+ 370 01b8 1046     		mov	r0, r2
+ 371 01ba 1946     		mov	r1, r3
+ 372 01bc FFF7FEFF 		bl	__aeabi_d2f
+ 373              	.LVL14:
+ 374 01c0 0346     		mov	r3, r0
+ 375 01c2 404A     		ldr	r2, .L23+60
+ 376 01c4 1360     		str	r3, [r2]	@ float
+  63:./Core/Src/sche_task.c **** 				__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1, FREQ += extra_step * FREQ_STEP);
+ 377              		.loc 1 63 5
+ 378 01c6 404B     		ldr	r3, .L23+64
+ 379 01c8 1B68     		ldr	r3, [r3]
+ 380 01ca 1846     		mov	r0, r3
+ 381 01cc FFF7FEFF 		bl	__aeabi_i2f
+ 382              	.LVL15:
+ 383 01d0 0446     		mov	r4, r0
+ 384 01d2 364B     		ldr	r3, .L23+36
+ 385 01d4 1B68     		ldr	r3, [r3]
+ 386 01d6 1846     		mov	r0, r3
+ 387 01d8 FFF7FEFF 		bl	__aeabi_i2f
+ 388              	.LVL16:
+ 389 01dc 0246     		mov	r2, r0
+ 390 01de 394B     		ldr	r3, .L23+60
+ 391 01e0 1B68     		ldr	r3, [r3]	@ float
+ 392 01e2 1946     		mov	r1, r3
+ 393 01e4 1046     		mov	r0, r2
+ 394 01e6 FFF7FEFF 		bl	__aeabi_fmul
+ 395              	.LVL17:
+ 396 01ea 0346     		mov	r3, r0
+ 397 01ec 1946     		mov	r1, r3
+ 398 01ee 2046     		mov	r0, r4
+ 399 01f0 FFF7FEFF 		bl	__aeabi_fadd
+ 400              	.LVL18:
+ 401 01f4 0346     		mov	r3, r0
+ 402 01f6 1846     		mov	r0, r3
+ 403 01f8 FFF7FEFF 		bl	__aeabi_f2iz
+ 404              	.LVL19:
+ 405 01fc 0346     		mov	r3, r0
+ 406 01fe 324A     		ldr	r2, .L23+64
+ 407 0200 1360     		str	r3, [r2]
+ 408 0202 314B     		ldr	r3, .L23+64
+ 409 0204 1A68     		ldr	r2, [r3]
+ 410 0206 2C4B     		ldr	r3, .L23+48
+ 411 0208 1B68     		ldr	r3, [r3]
+ 412 020a 5A63     		str	r2, [r3, #52]
+  64:./Core/Src/sche_task.c **** 				if (delay > extra_step * DELAY_STEP) HAL_Delay(delay -= extra_step * DELAY_STEP);
+ 413              		.loc 1 64 15
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccvJhNar.s 			page 9
+
+
+ 414 020c 2B4B     		ldr	r3, .L23+52
+ 415 020e 1B68     		ldr	r3, [r3]
+ 416 0210 1846     		mov	r0, r3
+ 417 0212 FFF7FEFF 		bl	__aeabi_i2f
+ 418              	.LVL20:
+ 419 0216 0446     		mov	r4, r0
+ 420              		.loc 1 64 28
+ 421 0218 254B     		ldr	r3, .L23+40
+ 422 021a 1B68     		ldr	r3, [r3]
+ 423 021c 1846     		mov	r0, r3
+ 424 021e FFF7FEFF 		bl	__aeabi_i2f
+ 425              	.LVL21:
+ 426 0222 0246     		mov	r2, r0
+ 427 0224 274B     		ldr	r3, .L23+60
+ 428 0226 1B68     		ldr	r3, [r3]	@ float
+ 429 0228 1946     		mov	r1, r3
+ 430 022a 1046     		mov	r0, r2
+ 431 022c FFF7FEFF 		bl	__aeabi_fmul
+ 432              	.LVL22:
+ 433 0230 0346     		mov	r3, r0
+ 434              		.loc 1 64 8
+ 435 0232 1946     		mov	r1, r3
+ 436 0234 2046     		mov	r0, r4
+ 437 0236 FFF7FEFF 		bl	__aeabi_fcmpgt
+ 438              	.LVL23:
+ 439 023a 0346     		mov	r3, r0
+ 440 023c 002B     		cmp	r3, #0
+ 441 023e 45D0     		beq	.L20
+ 442              		.loc 1 64 58 discriminator 1
+ 443 0240 1E4B     		ldr	r3, .L23+52
+ 444 0242 1B68     		ldr	r3, [r3]
+ 445 0244 1846     		mov	r0, r3
+ 446 0246 FFF7FEFF 		bl	__aeabi_i2f
+ 447              	.LVL24:
+ 448 024a 0446     		mov	r4, r0
+ 449              		.loc 1 64 72 discriminator 1
+ 450 024c 184B     		ldr	r3, .L23+40
+ 451 024e 1B68     		ldr	r3, [r3]
+ 452 0250 1846     		mov	r0, r3
+ 453 0252 FFF7FEFF 		bl	__aeabi_i2f
+ 454              	.LVL25:
+ 455 0256 0246     		mov	r2, r0
+ 456 0258 1A4B     		ldr	r3, .L23+60
+ 457 025a 1B68     		ldr	r3, [r3]	@ float
+ 458 025c 1946     		mov	r1, r3
+ 459 025e 1046     		mov	r0, r2
+ 460 0260 FFF7FEFF 		bl	__aeabi_fmul
+ 461              	.LVL26:
+ 462 0264 0346     		mov	r3, r0
+ 463              		.loc 1 64 58 discriminator 1
+ 464 0266 1946     		mov	r1, r3
+ 465 0268 2046     		mov	r0, r4
+ 466 026a FFF7FEFF 		bl	__aeabi_fsub
+ 467              	.LVL27:
+ 468 026e 0346     		mov	r3, r0
+ 469 0270 1846     		mov	r0, r3
+ 470 0272 FFF7FEFF 		bl	__aeabi_f2iz
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccvJhNar.s 			page 10
+
+
+ 471              	.LVL28:
+ 472 0276 0346     		mov	r3, r0
+ 473 0278 104A     		ldr	r2, .L23+52
+ 474 027a 1360     		str	r3, [r2]
+ 475 027c 0F4B     		ldr	r3, .L23+52
+ 476 027e 1B68     		ldr	r3, [r3]
+ 477              		.loc 1 64 42 discriminator 1
+ 478 0280 1846     		mov	r0, r3
+ 479 0282 FFF7FEFF 		bl	HAL_Delay
+ 480 0286 4FE0     		b	.L10
+ 481              	.L24:
+ 482              		.align	3
+ 483              	.L23:
+ 484 0288 0AD7A370 		.word	1889785610
+ 485 028c 3D0AB73F 		.word	1068960317
+ 486 0290 33333333 		.word	858993459
+ 487 0294 3333D33F 		.word	1070805811
+ 488 0298 00000000 		.word	pedestrian_wanna_go
+ 489 029c 00000000 		.word	pedestrian_active
+ 490 02a0 00000000 		.word	flag_button
+ 491 02a4 00000000 		.word	SEG7_CLOCK
+ 492 02a8 D34D6210 		.word	274877907
+ 493 02ac 00000000 		.word	FREQ_STEP
+ 494 02b0 00000000 		.word	DELAY_STEP
+ 495 02b4 00000000 		.word	time_allow_pedestrian
+ 496 02b8 00000000 		.word	htim3
+ 497 02bc 00000000 		.word	delay
+ 498 02c0 56555555 		.word	1431655766
+ 499 02c4 00000000 		.word	extra_step
+ 500 02c8 00000000 		.word	FREQ
+ 501              	.L20:
+  65:./Core/Src/sche_task.c **** 				else if (delay > extra_step * 10) HAL_Delay(delay = - extra_step * 20);
+ 502              		.loc 1 65 20
+ 503 02cc 294B     		ldr	r3, .L25
+ 504 02ce 1B68     		ldr	r3, [r3]
+ 505 02d0 1846     		mov	r0, r3
+ 506 02d2 FFF7FEFF 		bl	__aeabi_i2f
+ 507              	.LVL29:
+ 508 02d6 0446     		mov	r4, r0
+ 509              		.loc 1 65 33
+ 510 02d8 274B     		ldr	r3, .L25+4
+ 511 02da 1B68     		ldr	r3, [r3]	@ float
+ 512 02dc 2749     		ldr	r1, .L25+8
+ 513 02de 1846     		mov	r0, r3
+ 514 02e0 FFF7FEFF 		bl	__aeabi_fmul
+ 515              	.LVL30:
+ 516 02e4 0346     		mov	r3, r0
+ 517              		.loc 1 65 13
+ 518 02e6 1946     		mov	r1, r3
+ 519 02e8 2046     		mov	r0, r4
+ 520 02ea FFF7FEFF 		bl	__aeabi_fcmpgt
+ 521              	.LVL31:
+ 522 02ee 0346     		mov	r3, r0
+ 523 02f0 002B     		cmp	r3, #0
+ 524 02f2 14D0     		beq	.L21
+ 525              		.loc 1 65 57 discriminator 1
+ 526 02f4 204B     		ldr	r3, .L25+4
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccvJhNar.s 			page 11
+
+
+ 527 02f6 1B68     		ldr	r3, [r3]	@ float
+ 528 02f8 83F00043 		eor	r3, r3, #-2147483648
+ 529              		.loc 1 65 70 discriminator 1
+ 530 02fc 2049     		ldr	r1, .L25+12
+ 531 02fe 1846     		mov	r0, r3
+ 532 0300 FFF7FEFF 		bl	__aeabi_fmul
+ 533              	.LVL32:
+ 534 0304 0346     		mov	r3, r0
+ 535              		.loc 1 65 55 discriminator 1
+ 536 0306 1846     		mov	r0, r3
+ 537 0308 FFF7FEFF 		bl	__aeabi_f2iz
+ 538              	.LVL33:
+ 539 030c 0346     		mov	r3, r0
+ 540 030e 194A     		ldr	r2, .L25
+ 541 0310 1360     		str	r3, [r2]
+ 542 0312 184B     		ldr	r3, .L25
+ 543 0314 1B68     		ldr	r3, [r3]
+ 544              		.loc 1 65 39 discriminator 1
+ 545 0316 1846     		mov	r0, r3
+ 546 0318 FFF7FEFF 		bl	HAL_Delay
+ 547 031c 04E0     		b	.L10
+ 548              	.L21:
+  66:./Core/Src/sche_task.c **** 				else HAL_Delay(delay);
+ 549              		.loc 1 66 10
+ 550 031e 154B     		ldr	r3, .L25
+ 551 0320 1B68     		ldr	r3, [r3]
+ 552 0322 1846     		mov	r0, r3
+ 553 0324 FFF7FEFF 		bl	HAL_Delay
+ 554              	.L10:
+  67:./Core/Src/sche_task.c **** 			}
+  68:./Core/Src/sche_task.c **** 			trigger_pedestrian_func = 1;
+ 555              		.loc 1 68 28
+ 556 0328 164B     		ldr	r3, .L25+16
+ 557 032a 0122     		movs	r2, #1
+ 558 032c 1A60     		str	r2, [r3]
+  69:./Core/Src/sche_task.c **** 
+  70:./Core/Src/sche_task.c **** 		} else {
+  71:./Core/Src/sche_task.c **** 			set_led_color(PEDESTRIAN_LED, RED_COLOR);
+  72:./Core/Src/sche_task.c **** 			__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1, 0);
+  73:./Core/Src/sche_task.c **** 			/* Reset delay & start freq */
+  74:./Core/Src/sche_task.c **** 			delay = TIME_UNIT;
+  75:./Core/Src/sche_task.c **** 			FREQ = 10;
+  76:./Core/Src/sche_task.c **** 			extra_step = 1;
+  77:./Core/Src/sche_task.c **** 			flag_button = 0;
+  78:./Core/Src/sche_task.c **** 			if (trigger_pedestrian_func) {
+  79:./Core/Src/sche_task.c **** 				pedestrian_wanna_go = 0;
+  80:./Core/Src/sche_task.c **** 				trigger_pedestrian_func = 0;
+  81:./Core/Src/sche_task.c **** 			}
+  82:./Core/Src/sche_task.c **** 		}
+  83:./Core/Src/sche_task.c **** }
+ 559              		.loc 1 83 1
+ 560 032e 1FE0     		b	.L22
+ 561              	.L6:
+  71:./Core/Src/sche_task.c **** 			__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1, 0);
+ 562              		.loc 1 71 4
+ 563 0330 1E21     		movs	r1, #30
+ 564 0332 2A20     		movs	r0, #42
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccvJhNar.s 			page 12
+
+
+ 565 0334 FFF7FEFF 		bl	set_led_color
+  72:./Core/Src/sche_task.c **** 			/* Reset delay & start freq */
+ 566              		.loc 1 72 4
+ 567 0338 134B     		ldr	r3, .L25+20
+ 568 033a 1B68     		ldr	r3, [r3]
+ 569 033c 0022     		movs	r2, #0
+ 570 033e 5A63     		str	r2, [r3, #52]
+  74:./Core/Src/sche_task.c **** 			FREQ = 10;
+ 571              		.loc 1 74 10
+ 572 0340 0C4B     		ldr	r3, .L25
+ 573 0342 4FF47A72 		mov	r2, #1000
+ 574 0346 1A60     		str	r2, [r3]
+  75:./Core/Src/sche_task.c **** 			extra_step = 1;
+ 575              		.loc 1 75 9
+ 576 0348 104B     		ldr	r3, .L25+24
+ 577 034a 0A22     		movs	r2, #10
+ 578 034c 1A60     		str	r2, [r3]
+  76:./Core/Src/sche_task.c **** 			flag_button = 0;
+ 579              		.loc 1 76 15
+ 580 034e 0A4B     		ldr	r3, .L25+4
+ 581 0350 4FF07E52 		mov	r2, #1065353216
+ 582 0354 1A60     		str	r2, [r3]	@ float
+  77:./Core/Src/sche_task.c **** 			if (trigger_pedestrian_func) {
+ 583              		.loc 1 77 16
+ 584 0356 0E4B     		ldr	r3, .L25+28
+ 585 0358 0022     		movs	r2, #0
+ 586 035a 1A60     		str	r2, [r3]
+  78:./Core/Src/sche_task.c **** 				pedestrian_wanna_go = 0;
+ 587              		.loc 1 78 8
+ 588 035c 094B     		ldr	r3, .L25+16
+ 589 035e 1B68     		ldr	r3, [r3]
+  78:./Core/Src/sche_task.c **** 				pedestrian_wanna_go = 0;
+ 590              		.loc 1 78 7
+ 591 0360 002B     		cmp	r3, #0
+ 592 0362 05D0     		beq	.L22
+  79:./Core/Src/sche_task.c **** 				trigger_pedestrian_func = 0;
+ 593              		.loc 1 79 25
+ 594 0364 0B4B     		ldr	r3, .L25+32
+ 595 0366 0022     		movs	r2, #0
+ 596 0368 1A60     		str	r2, [r3]
+  80:./Core/Src/sche_task.c **** 			}
+ 597              		.loc 1 80 29
+ 598 036a 064B     		ldr	r3, .L25+16
+ 599 036c 0022     		movs	r2, #0
+ 600 036e 1A60     		str	r2, [r3]
+ 601              	.L22:
+ 602              		.loc 1 83 1
+ 603 0370 00BF     		nop
+ 604 0372 98BD     		pop	{r3, r4, r7, pc}
+ 605              	.L26:
+ 606              		.align	2
+ 607              	.L25:
+ 608 0374 00000000 		.word	delay
+ 609 0378 00000000 		.word	extra_step
+ 610 037c 00002041 		.word	1092616192
+ 611 0380 0000A041 		.word	1101004800
+ 612 0384 00000000 		.word	trigger_pedestrian_func
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccvJhNar.s 			page 13
+
+
+ 613 0388 00000000 		.word	htim3
+ 614 038c 00000000 		.word	FREQ
+ 615 0390 00000000 		.word	flag_button
+ 616 0394 00000000 		.word	pedestrian_wanna_go
+ 617              		.cfi_endproc
+ 618              	.LFE68:
+ 620              		.text
+ 621              	.Letext0:
+ 622              		.file 2 "c:\\st\\stm32cubeide_1.7.0\\stm32cubeide\\plugins\\com.st.stm32cube.ide.mcu.externaltools
+ 623              		.file 3 "c:\\st\\stm32cubeide_1.7.0\\stm32cubeide\\plugins\\com.st.stm32cube.ide.mcu.externaltools
+ 624              		.file 4 "c:\\st\\stm32cubeide_1.7.0\\stm32cubeide\\plugins\\com.st.stm32cube.ide.mcu.externaltools
+ 625              		.file 5 "c:\\st\\stm32cubeide_1.7.0\\stm32cubeide\\plugins\\com.st.stm32cube.ide.mcu.externaltools
+ 626              		.file 6 "c:\\st\\stm32cubeide_1.7.0\\stm32cubeide\\plugins\\com.st.stm32cube.ide.mcu.externaltools
+ 627              		.file 7 "c:\\st\\stm32cubeide_1.7.0\\stm32cubeide\\plugins\\com.st.stm32cube.ide.mcu.externaltools
+ 628              		.file 8 "Drivers/CMSIS/Include/core_cm3.h"
+ 629              		.file 9 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h"
+ 630              		.file 10 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
+ 631              		.file 11 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ 632              		.file 12 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
+ 633              		.file 13 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h"
+ 634              		.file 14 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
+ 635              		.file 15 "Core/Inc/global.h"
+ 636              		.file 16 "Core/Inc/software_timer.h"
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccvJhNar.s 			page 14
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 sche_task.c
+C:\Users\nguye\AppData\Local\Temp\ccvJhNar.s:20     .bss.pedestrian_active:0000000000000000 pedestrian_active
+C:\Users\nguye\AppData\Local\Temp\ccvJhNar.s:17     .bss.pedestrian_active:0000000000000000 $d
+C:\Users\nguye\AppData\Local\Temp\ccvJhNar.s:27     .data.delay:0000000000000000 delay
+C:\Users\nguye\AppData\Local\Temp\ccvJhNar.s:24     .data.delay:0000000000000000 $d
+C:\Users\nguye\AppData\Local\Temp\ccvJhNar.s:34     .data.FREQ:0000000000000000 FREQ
+C:\Users\nguye\AppData\Local\Temp\ccvJhNar.s:31     .data.FREQ:0000000000000000 $d
+C:\Users\nguye\AppData\Local\Temp\ccvJhNar.s:41     .bss.FREQ_STEP:0000000000000000 FREQ_STEP
+C:\Users\nguye\AppData\Local\Temp\ccvJhNar.s:38     .bss.FREQ_STEP:0000000000000000 $d
+C:\Users\nguye\AppData\Local\Temp\ccvJhNar.s:48     .data.DELAY_STEP:0000000000000000 DELAY_STEP
+C:\Users\nguye\AppData\Local\Temp\ccvJhNar.s:45     .data.DELAY_STEP:0000000000000000 $d
+C:\Users\nguye\AppData\Local\Temp\ccvJhNar.s:55     .bss.time_allow_pedestrian:0000000000000000 time_allow_pedestrian
+C:\Users\nguye\AppData\Local\Temp\ccvJhNar.s:52     .bss.time_allow_pedestrian:0000000000000000 $d
+C:\Users\nguye\AppData\Local\Temp\ccvJhNar.s:62     .bss.flag_button:0000000000000000 flag_button
+C:\Users\nguye\AppData\Local\Temp\ccvJhNar.s:59     .bss.flag_button:0000000000000000 $d
+C:\Users\nguye\AppData\Local\Temp\ccvJhNar.s:69     .bss.trigger_pedestrian_func:0000000000000000 trigger_pedestrian_func
+C:\Users\nguye\AppData\Local\Temp\ccvJhNar.s:66     .bss.trigger_pedestrian_func:0000000000000000 $d
+C:\Users\nguye\AppData\Local\Temp\ccvJhNar.s:76     .bss.pedestrian_wanna_go:0000000000000000 pedestrian_wanna_go
+C:\Users\nguye\AppData\Local\Temp\ccvJhNar.s:73     .bss.pedestrian_wanna_go:0000000000000000 $d
+C:\Users\nguye\AppData\Local\Temp\ccvJhNar.s:83     .data.extra_step:0000000000000000 extra_step
+C:\Users\nguye\AppData\Local\Temp\ccvJhNar.s:80     .data.extra_step:0000000000000000 $d
+C:\Users\nguye\AppData\Local\Temp\ccvJhNar.s:95     .text.pedestrian_scramble:0000000000000000 $t
+C:\Users\nguye\AppData\Local\Temp\ccvJhNar.s:103    .text.pedestrian_scramble:0000000000000000 pedestrian_scramble
+C:\Users\nguye\AppData\Local\Temp\ccvJhNar.s:484    .text.pedestrian_scramble:0000000000000288 $d
+C:\Users\nguye\AppData\Local\Temp\ccvJhNar.s:503    .text.pedestrian_scramble:00000000000002cc $t
+C:\Users\nguye\AppData\Local\Temp\ccvJhNar.s:608    .text.pedestrian_scramble:0000000000000374 $d
+                           .group:0000000000000000 wm4.0.e890922d021f7fff2fbf219cb2b38f03
+                           .group:0000000000000000 wm4._newlib_version.h.4.1ef4e12f167f8b69d7c30054be56050d
+                           .group:0000000000000000 wm4.newlib.h.18.1c9fedb6b3cd797cff253cc0fd593ef2
+                           .group:0000000000000000 wm4.ieeefp.h.77.f33a4dce62116f6f5175ff8bae57a54c
+                           .group:0000000000000000 wm4.features.h.22.fad1cec3bc7ff06488171438dbdcfd02
+                           .group:0000000000000000 wm4.config.h.224.c701144a7b0518c6ee9b9b5465b79f81
+                           .group:0000000000000000 wm4._ansi.h.31.de524f58584151836e90d8620a16f8e8
+                           .group:0000000000000000 wm4.stdio.h.31.7c0e28c411445f3f9c5b11accf882760
+                           .group:0000000000000000 wm4._default_types.h.6.959254cf5f09734ea7516c89e8bb21bd
+                           .group:0000000000000000 wm4.stddef.h.181.c3f52a3b0f4c288bddb5dda1562858e2
+                           .group:0000000000000000 wm4.cdefs.h.49.6260d97adb8d27534cbdc0f868b8ea87
+                           .group:0000000000000000 wm4.stddef.h.39.b727a6c3269d9d6ef9fc646b721a8287
+                           .group:0000000000000000 wm4.stdarg.h.34.3a23a216c0c293b3d2ea2e89281481e6
+                           .group:0000000000000000 wm4._types.h.20.dd0d04dca3800a0d2a6129b87f3adbb2
+                           .group:0000000000000000 wm4.stddef.h.155.3588ebfdd1e8c7ede80509bb9c3b8009
+                           .group:0000000000000000 wm4._types.h.127.34941de1b2539d59d5cac00e0dd27a45
+                           .group:0000000000000000 wm4.reent.h.17.e292bf8b0bec6c96e131a54347145a30
+                           .group:0000000000000000 wm4.lock.h.2.1461d1fff82dffe8bfddc23307f6484f
+                           .group:0000000000000000 wm4.reent.h.77.dcd6129ff07fe81bd5636db29abe53b2
+                           .group:0000000000000000 wm4.types.h.40.8b6acba56cefbb11746718204edc8f5e
+                           .group:0000000000000000 wm4._stdint.h.10.c24fa3af3bc1706662bb5593a907e841
+                           .group:0000000000000000 wm4._endian.h.31.65a10590763c3dde1ac4a7f66d7d4891
+                           .group:0000000000000000 wm4.endian.h.9.49f3a4695c1b61e8a0808de3c4a106cb
+                           .group:0000000000000000 wm4._timeval.h.32.bec3221fa7a9bb0bdde696c9c57e47d2
+                           .group:0000000000000000 wm4.timespec.h.41.d855182eb0e690443ab8651bcedca6e1
+                           .group:0000000000000000 wm4.select.h.19.97ca6fd0c752a0f3b6719fd314d361e6
+                           .group:0000000000000000 wm4.types.h.51.5571ec98f267d17d3c670b7a3ba33afa
+                           .group:0000000000000000 wm4.sched.h.22.c60982713a5c428609783c78f9c78d95
+                           .group:0000000000000000 wm4._pthreadtypes.h.36.fcee9961c35163dde6267ef772ad1972
+                           .group:0000000000000000 wm4.stdio.h.2.4aa87247282eca6c8f36f9de33d8df1a
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccvJhNar.s 			page 15
+
+
+                           .group:0000000000000000 wm4.stdio.h.81.932d0c162786b883f622b8d05c120c78
+                           .group:0000000000000000 wm4.stm32f1xx_hal_conf.h.21.185fa7e4004c86f1f34627ab1091dd60
+                           .group:0000000000000000 wm4.stm32f1xx.h.39.208bb8a61c892b7c37d899c49a031330
+                           .group:0000000000000000 wm4.stm32f103xb.h.38.ec967d5ad9d3269cb0788eebda048e38
+                           .group:0000000000000000 wm4._intsup.h.10.48bafbb683905c4daa4565a85aeeb264
+                           .group:0000000000000000 wm4.stdint.h.23.d53047a68f4a85177f80b422d52785ed
+                           .group:0000000000000000 wm4.cmsis_version.h.32.4d5822004c01a829a975260e854b5f8e
+                           .group:0000000000000000 wm4.core_cm3.h.66.fc46cac19810db8f98d67da7ef88f42c
+                           .group:0000000000000000 wm4.cmsis_gcc.h.26.4f5798e999d5690b80e6ded3ecc94b37
+                           .group:0000000000000000 wm4.core_cm3.h.127.f4474120f1a7524deb56f9d74ff175da
+                           .group:0000000000000000 wm4.stm32f103xb.h.573.10249aa7473ca93be896fed94046a725
+                           .group:0000000000000000 wm4.stm32f1xx.h.162.96b09079a093c34dbd7f0b85cbd0ddee
+                           .group:0000000000000000 wm4.stm32_hal_legacy.h.23.91ba5b544a4c2be2620a1e7ff0049e10
+                           .group:0000000000000000 wm4.stm32f1xx_hal_def.h.57.41a4613fd5751fa2224a0bf945cee91b
+                           .group:0000000000000000 wm4.stm32f1xx_hal_rcc.h.95.21591bbc513aaa813c0b8640c3b32517
+                           .group:0000000000000000 wm4.stm32f1xx_hal_rcc_ex.h.22.8763f99bc1e3e2dcf0febe9161d81b37
+                           .group:0000000000000000 wm4.stm32f1xx_hal_rcc.h.1202.f8e5f9e0cf4eef7840facf5396029056
+                           .group:0000000000000000 wm4.stm32f1xx_hal_gpio.h.22.fa638d688dcc57ca806fe6a7831b0d04
+                           .group:0000000000000000 wm4.stm32f1xx_hal_gpio_ex.h.22.51a50ef3512cd78017ce666a32d364bf
+                           .group:0000000000000000 wm4.stm32f1xx_hal_gpio.h.263.f5ebf2f545ade59412ab9261c8e35dc4
+                           .group:0000000000000000 wm4.stm32f1xx_hal_exti.h.22.e26491d042c8079c3ca67eca341af862
+                           .group:0000000000000000 wm4.stm32f1xx_hal_dma.h.22.3c14338534886827bf3aeaa2a7f412a1
+                           .group:0000000000000000 wm4.stm32f1xx_hal_dma_ex.h.22.001ac4d7f81ccbdcae49bd65c13858c8
+                           .group:0000000000000000 wm4.stm32f1xx_hal_dma.h.409.cafcd2cfe701091535636be537c18293
+                           .group:0000000000000000 wm4.stm32f1xx_hal_cortex.h.22.b5f4174bb6a50d95405567b8f50e0900
+                           .group:0000000000000000 wm4.stm32f1xx_hal_flash.h.22.5cea9a7210e6315b41724b47b5fdf203
+                           .group:0000000000000000 wm4.stm32f1xx_hal_flash_ex.h.22.d4e19c21f2a86fa2f8ec2c2d5f1ab2af
+                           .group:0000000000000000 wm4.stm32f1xx_hal_pwr.h.22.3438c476faafc3240bf146f143df3fcd
+                           .group:0000000000000000 wm4.stm32f1xx_hal_tim.h.22.a16e206564e97dbace9faae59a0d6008
+                           .group:0000000000000000 wm4.stm32f1xx_hal_uart.h.22.5f7992e497faa36aa98f09f7214f4dbb
+                           .group:0000000000000000 wm4.stm32f1xx_hal.h.88.91065c0692bed6019c34f1e9c00589fd
+                           .group:0000000000000000 wm4.main.h.63.92fcc8d3cbb1d835d8ee363312eb2117
+                           .group:0000000000000000 wm4.global.h.9.07cc41e1ed932596c8485394ac422e11
+                           .group:0000000000000000 wm4.traffic_light.h.14.ab1d9e8ae02845570467e9cf97ea0d9f
+                           .group:0000000000000000 wm4.software_timer.h.9.85139a8d176fe1bcfcf1e8be0a353955
+
+UNDEFINED SYMBOLS
+__aeabi_f2d
+__aeabi_dadd
+__aeabi_d2f
+__aeabi_i2f
+__aeabi_fmul
+__aeabi_fcmpgt
+__aeabi_fsub
+__aeabi_f2iz
+__aeabi_fadd
+is_button_pressed
+get_led_color
+set_led_color
+HAL_Delay
+SEG7_CLOCK
+htim3

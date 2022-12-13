@@ -1,0 +1,1774 @@
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 6
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"input_processing.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.global	buttonState
+  16              		.section	.bss.buttonState,"aw",%nobits
+  19              	buttonState:
+  20 0000 00       		.space	1
+  21              		.section	.text.WhichButtonIsPressed,"ax",%progbits
+  22              		.align	1
+  23              		.global	WhichButtonIsPressed
+  24              		.arch armv7-m
+  25              		.syntax unified
+  26              		.thumb
+  27              		.thumb_func
+  28              		.fpu softvfp
+  30              	WhichButtonIsPressed:
+  31              	.LFB65:
+  32              		.file 1 "./Core/Src/input_processing.c"
+   1:./Core/Src/input_processing.c **** /*
+   2:./Core/Src/input_processing.c ****  * input_processing.c
+   3:./Core/Src/input_processing.c ****  *
+   4:./Core/Src/input_processing.c ****  *  Created on: Dec 8, 2022
+   5:./Core/Src/input_processing.c ****  *      Author: xanlo
+   6:./Core/Src/input_processing.c ****  */
+   7:./Core/Src/input_processing.c **** 
+   8:./Core/Src/input_processing.c **** 
+   9:./Core/Src/input_processing.c **** #include "main.h"
+  10:./Core/Src/input_processing.c **** #include "input_reading.h"
+  11:./Core/Src/input_processing.c **** #include "input_processing.h"
+  12:./Core/Src/input_processing.c **** #include "global.h"
+  13:./Core/Src/input_processing.c **** #include "software_timer.h"
+  14:./Core/Src/input_processing.c **** #include "displayuart.h"
+  15:./Core/Src/input_processing.c **** #include "traffic_light.h"
+  16:./Core/Src/input_processing.c **** 
+  17:./Core/Src/input_processing.c **** enum ButtonState{BUTTON_RELEASED, BUTTON_PRESSED, BUTTON_PRESSED_MORE_THAN_1_SECOND} ;
+  18:./Core/Src/input_processing.c **** enum ButtonState buttonState = BUTTON_RELEASED;
+  19:./Core/Src/input_processing.c **** 
+  20:./Core/Src/input_processing.c **** int WhichButtonIsPressed() {
+  33              		.loc 1 20 28
+  34              		.cfi_startproc
+  35              		@ args = 0, pretend = 0, frame = 0
+  36              		@ frame_needed = 1, uses_anonymous_args = 0
+  37 0000 80B5     		push	{r7, lr}
+  38              		.cfi_def_cfa_offset 8
+  39              		.cfi_offset 7, -8
+  40              		.cfi_offset 14, -4
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s 			page 2
+
+
+  41 0002 00AF     		add	r7, sp, #0
+  42              		.cfi_def_cfa_register 7
+  21:./Core/Src/input_processing.c **** 	if (is_button_pressed(0)) return 1;
+  43              		.loc 1 21 6
+  44 0004 0020     		movs	r0, #0
+  45 0006 FFF7FEFF 		bl	is_button_pressed
+  46 000a 0346     		mov	r3, r0
+  47              		.loc 1 21 5
+  48 000c 002B     		cmp	r3, #0
+  49 000e 01D0     		beq	.L2
+  50              		.loc 1 21 35 discriminator 1
+  51 0010 0123     		movs	r3, #1
+  52 0012 10E0     		b	.L3
+  53              	.L2:
+  22:./Core/Src/input_processing.c **** 	if (is_button_pressed(1)) return 2;
+  54              		.loc 1 22 6
+  55 0014 0120     		movs	r0, #1
+  56 0016 FFF7FEFF 		bl	is_button_pressed
+  57 001a 0346     		mov	r3, r0
+  58              		.loc 1 22 5
+  59 001c 002B     		cmp	r3, #0
+  60 001e 01D0     		beq	.L4
+  61              		.loc 1 22 35 discriminator 1
+  62 0020 0223     		movs	r3, #2
+  63 0022 08E0     		b	.L3
+  64              	.L4:
+  23:./Core/Src/input_processing.c **** 	if (is_button_pressed(2)) return 3;
+  65              		.loc 1 23 6
+  66 0024 0220     		movs	r0, #2
+  67 0026 FFF7FEFF 		bl	is_button_pressed
+  68 002a 0346     		mov	r3, r0
+  69              		.loc 1 23 5
+  70 002c 002B     		cmp	r3, #0
+  71 002e 01D0     		beq	.L5
+  72              		.loc 1 23 35 discriminator 1
+  73 0030 0323     		movs	r3, #3
+  74 0032 00E0     		b	.L3
+  75              	.L5:
+  24:./Core/Src/input_processing.c **** 
+  25:./Core/Src/input_processing.c **** 	return 0; // None of these buttons are pressed
+  76              		.loc 1 25 9
+  77 0034 0023     		movs	r3, #0
+  78              	.L3:
+  26:./Core/Src/input_processing.c **** }
+  79              		.loc 1 26 1
+  80 0036 1846     		mov	r0, r3
+  81 0038 80BD     		pop	{r7, pc}
+  82              		.cfi_endproc
+  83              	.LFE65:
+  85              		.section	.text.clear_vertical,"ax",%progbits
+  86              		.align	1
+  87              		.global	clear_vertical
+  88              		.syntax unified
+  89              		.thumb
+  90              		.thumb_func
+  91              		.fpu softvfp
+  93              	clear_vertical:
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s 			page 3
+
+
+  94              	.LFB66:
+  27:./Core/Src/input_processing.c **** 
+  28:./Core/Src/input_processing.c **** void clear_vertical() {
+  95              		.loc 1 28 23
+  96              		.cfi_startproc
+  97              		@ args = 0, pretend = 0, frame = 0
+  98              		@ frame_needed = 1, uses_anonymous_args = 0
+  99 0000 80B5     		push	{r7, lr}
+ 100              		.cfi_def_cfa_offset 8
+ 101              		.cfi_offset 7, -8
+ 102              		.cfi_offset 14, -4
+ 103 0002 00AF     		add	r7, sp, #0
+ 104              		.cfi_def_cfa_register 7
+  29:./Core/Src/input_processing.c **** 	clear_led(TRAFFIC_1_LED);
+ 105              		.loc 1 29 2
+ 106 0004 2820     		movs	r0, #40
+ 107 0006 FFF7FEFF 		bl	clear_led
+  30:./Core/Src/input_processing.c **** }
+ 108              		.loc 1 30 1
+ 109 000a 00BF     		nop
+ 110 000c 80BD     		pop	{r7, pc}
+ 111              		.cfi_endproc
+ 112              	.LFE66:
+ 114              		.section	.text.clear_horizontal,"ax",%progbits
+ 115              		.align	1
+ 116              		.global	clear_horizontal
+ 117              		.syntax unified
+ 118              		.thumb
+ 119              		.thumb_func
+ 120              		.fpu softvfp
+ 122              	clear_horizontal:
+ 123              	.LFB67:
+  31:./Core/Src/input_processing.c **** 
+  32:./Core/Src/input_processing.c **** void clear_horizontal() {
+ 124              		.loc 1 32 25
+ 125              		.cfi_startproc
+ 126              		@ args = 0, pretend = 0, frame = 0
+ 127              		@ frame_needed = 1, uses_anonymous_args = 0
+ 128 0000 80B5     		push	{r7, lr}
+ 129              		.cfi_def_cfa_offset 8
+ 130              		.cfi_offset 7, -8
+ 131              		.cfi_offset 14, -4
+ 132 0002 00AF     		add	r7, sp, #0
+ 133              		.cfi_def_cfa_register 7
+  33:./Core/Src/input_processing.c **** 	clear_led(TRAFFIC_2_LED);
+ 134              		.loc 1 33 2
+ 135 0004 2920     		movs	r0, #41
+ 136 0006 FFF7FEFF 		bl	clear_led
+  34:./Core/Src/input_processing.c **** }
+ 137              		.loc 1 34 1
+ 138 000a 00BF     		nop
+ 139 000c 80BD     		pop	{r7, pc}
+ 140              		.cfi_endproc
+ 141              	.LFE67:
+ 143              		.section	.text.vertical_processing,"ax",%progbits
+ 144              		.align	1
+ 145              		.global	vertical_processing
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s 			page 4
+
+
+ 146              		.syntax unified
+ 147              		.thumb
+ 148              		.thumb_func
+ 149              		.fpu softvfp
+ 151              	vertical_processing:
+ 152              	.LFB68:
+  35:./Core/Src/input_processing.c **** 
+  36:./Core/Src/input_processing.c **** void vertical_processing() {
+ 153              		.loc 1 36 28
+ 154              		.cfi_startproc
+ 155              		@ args = 0, pretend = 0, frame = 0
+ 156              		@ frame_needed = 1, uses_anonymous_args = 0
+ 157 0000 80B5     		push	{r7, lr}
+ 158              		.cfi_def_cfa_offset 8
+ 159              		.cfi_offset 7, -8
+ 160              		.cfi_offset 14, -4
+ 161 0002 00AF     		add	r7, sp, #0
+ 162              		.cfi_def_cfa_register 7
+  37:./Core/Src/input_processing.c **** 	clear_vertical();
+ 163              		.loc 1 37 2
+ 164 0004 FFF7FEFF 		bl	clear_vertical
+  38:./Core/Src/input_processing.c **** 	switch (CURRENT_STATE[0]) {
+ 165              		.loc 1 38 23
+ 166 0008 0E4B     		ldr	r3, .L15
+ 167 000a 1B68     		ldr	r3, [r3]
+ 168              		.loc 1 38 2
+ 169 000c 022B     		cmp	r3, #2
+ 170 000e 10D0     		beq	.L9
+ 171 0010 022B     		cmp	r3, #2
+ 172 0012 13DC     		bgt	.L14
+ 173 0014 002B     		cmp	r3, #0
+ 174 0016 02D0     		beq	.L11
+ 175 0018 012B     		cmp	r3, #1
+ 176 001a 05D0     		beq	.L12
+  39:./Core/Src/input_processing.c **** 	case 0:
+  40:./Core/Src/input_processing.c **** 		set_led_color(TRAFFIC_1_LED, RED_COLOR);
+  41:./Core/Src/input_processing.c **** 		break;
+  42:./Core/Src/input_processing.c **** 	case 1:
+  43:./Core/Src/input_processing.c **** 		set_led_color(TRAFFIC_1_LED, AMBER_COLOR);
+  44:./Core/Src/input_processing.c **** 		break;
+  45:./Core/Src/input_processing.c **** 	case 2:
+  46:./Core/Src/input_processing.c **** 		set_led_color(TRAFFIC_1_LED, GREEN_COLOR);
+  47:./Core/Src/input_processing.c **** 		break;
+  48:./Core/Src/input_processing.c **** 	default:
+  49:./Core/Src/input_processing.c **** 		break;
+ 177              		.loc 1 49 3
+ 178 001c 0EE0     		b	.L14
+ 179              	.L11:
+  40:./Core/Src/input_processing.c **** 		break;
+ 180              		.loc 1 40 3
+ 181 001e 1E21     		movs	r1, #30
+ 182 0020 2820     		movs	r0, #40
+ 183 0022 FFF7FEFF 		bl	set_led_color
+  41:./Core/Src/input_processing.c **** 	case 1:
+ 184              		.loc 1 41 3
+ 185 0026 0AE0     		b	.L13
+ 186              	.L12:
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s 			page 5
+
+
+  43:./Core/Src/input_processing.c **** 		break;
+ 187              		.loc 1 43 3
+ 188 0028 1F21     		movs	r1, #31
+ 189 002a 2820     		movs	r0, #40
+ 190 002c FFF7FEFF 		bl	set_led_color
+  44:./Core/Src/input_processing.c **** 	case 2:
+ 191              		.loc 1 44 3
+ 192 0030 05E0     		b	.L13
+ 193              	.L9:
+  46:./Core/Src/input_processing.c **** 		break;
+ 194              		.loc 1 46 3
+ 195 0032 2021     		movs	r1, #32
+ 196 0034 2820     		movs	r0, #40
+ 197 0036 FFF7FEFF 		bl	set_led_color
+  47:./Core/Src/input_processing.c **** 	default:
+ 198              		.loc 1 47 3
+ 199 003a 00E0     		b	.L13
+ 200              	.L14:
+ 201              		.loc 1 49 3
+ 202 003c 00BF     		nop
+ 203              	.L13:
+  50:./Core/Src/input_processing.c **** 	}
+  51:./Core/Src/input_processing.c **** }
+ 204              		.loc 1 51 1
+ 205 003e 00BF     		nop
+ 206 0040 80BD     		pop	{r7, pc}
+ 207              	.L16:
+ 208 0042 00BF     		.align	2
+ 209              	.L15:
+ 210 0044 00000000 		.word	CURRENT_STATE
+ 211              		.cfi_endproc
+ 212              	.LFE68:
+ 214              		.section	.text.horizontal_processing,"ax",%progbits
+ 215              		.align	1
+ 216              		.global	horizontal_processing
+ 217              		.syntax unified
+ 218              		.thumb
+ 219              		.thumb_func
+ 220              		.fpu softvfp
+ 222              	horizontal_processing:
+ 223              	.LFB69:
+  52:./Core/Src/input_processing.c **** 
+  53:./Core/Src/input_processing.c **** void horizontal_processing() {
+ 224              		.loc 1 53 30
+ 225              		.cfi_startproc
+ 226              		@ args = 0, pretend = 0, frame = 0
+ 227              		@ frame_needed = 1, uses_anonymous_args = 0
+ 228 0000 80B5     		push	{r7, lr}
+ 229              		.cfi_def_cfa_offset 8
+ 230              		.cfi_offset 7, -8
+ 231              		.cfi_offset 14, -4
+ 232 0002 00AF     		add	r7, sp, #0
+ 233              		.cfi_def_cfa_register 7
+  54:./Core/Src/input_processing.c **** 	clear_horizontal();
+ 234              		.loc 1 54 2
+ 235 0004 FFF7FEFF 		bl	clear_horizontal
+  55:./Core/Src/input_processing.c **** 	switch (CURRENT_STATE[1]) {
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s 			page 6
+
+
+ 236              		.loc 1 55 23
+ 237 0008 0E4B     		ldr	r3, .L24
+ 238 000a 5B68     		ldr	r3, [r3, #4]
+ 239              		.loc 1 55 2
+ 240 000c 022B     		cmp	r3, #2
+ 241 000e 10D0     		beq	.L18
+ 242 0010 022B     		cmp	r3, #2
+ 243 0012 13DC     		bgt	.L23
+ 244 0014 002B     		cmp	r3, #0
+ 245 0016 02D0     		beq	.L20
+ 246 0018 012B     		cmp	r3, #1
+ 247 001a 05D0     		beq	.L21
+  56:./Core/Src/input_processing.c **** 	case 0:
+  57:./Core/Src/input_processing.c **** 		set_led_color(TRAFFIC_2_LED, RED_COLOR);
+  58:./Core/Src/input_processing.c **** 		break;
+  59:./Core/Src/input_processing.c **** 	case 1:
+  60:./Core/Src/input_processing.c **** 		set_led_color(TRAFFIC_2_LED, AMBER_COLOR);
+  61:./Core/Src/input_processing.c **** 		break;
+  62:./Core/Src/input_processing.c **** 	case 2:
+  63:./Core/Src/input_processing.c **** 		set_led_color(TRAFFIC_2_LED, GREEN_COLOR);
+  64:./Core/Src/input_processing.c **** 		break;
+  65:./Core/Src/input_processing.c **** 	default:
+  66:./Core/Src/input_processing.c **** 		break;
+ 248              		.loc 1 66 3
+ 249 001c 0EE0     		b	.L23
+ 250              	.L20:
+  57:./Core/Src/input_processing.c **** 		break;
+ 251              		.loc 1 57 3
+ 252 001e 1E21     		movs	r1, #30
+ 253 0020 2920     		movs	r0, #41
+ 254 0022 FFF7FEFF 		bl	set_led_color
+  58:./Core/Src/input_processing.c **** 	case 1:
+ 255              		.loc 1 58 3
+ 256 0026 0AE0     		b	.L22
+ 257              	.L21:
+  60:./Core/Src/input_processing.c **** 		break;
+ 258              		.loc 1 60 3
+ 259 0028 1F21     		movs	r1, #31
+ 260 002a 2920     		movs	r0, #41
+ 261 002c FFF7FEFF 		bl	set_led_color
+  61:./Core/Src/input_processing.c **** 	case 2:
+ 262              		.loc 1 61 3
+ 263 0030 05E0     		b	.L22
+ 264              	.L18:
+  63:./Core/Src/input_processing.c **** 		break;
+ 265              		.loc 1 63 3
+ 266 0032 2021     		movs	r1, #32
+ 267 0034 2920     		movs	r0, #41
+ 268 0036 FFF7FEFF 		bl	set_led_color
+  64:./Core/Src/input_processing.c **** 	default:
+ 269              		.loc 1 64 3
+ 270 003a 00E0     		b	.L22
+ 271              	.L23:
+ 272              		.loc 1 66 3
+ 273 003c 00BF     		nop
+ 274              	.L22:
+  67:./Core/Src/input_processing.c **** 	}
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s 			page 7
+
+
+  68:./Core/Src/input_processing.c **** }
+ 275              		.loc 1 68 1
+ 276 003e 00BF     		nop
+ 277 0040 80BD     		pop	{r7, pc}
+ 278              	.L25:
+ 279 0042 00BF     		.align	2
+ 280              	.L24:
+ 281 0044 00000000 		.word	CURRENT_STATE
+ 282              		.cfi_endproc
+ 283              	.LFE69:
+ 285              		.section	.text.state_update,"ax",%progbits
+ 286              		.align	1
+ 287              		.global	state_update
+ 288              		.syntax unified
+ 289              		.thumb
+ 290              		.thumb_func
+ 291              		.fpu softvfp
+ 293              	state_update:
+ 294              	.LFB70:
+  69:./Core/Src/input_processing.c **** 
+  70:./Core/Src/input_processing.c **** void state_update(int idx) {
+ 295              		.loc 1 70 28
+ 296              		.cfi_startproc
+ 297              		@ args = 0, pretend = 0, frame = 8
+ 298              		@ frame_needed = 1, uses_anonymous_args = 0
+ 299              		@ link register save eliminated.
+ 300 0000 80B4     		push	{r7}
+ 301              		.cfi_def_cfa_offset 4
+ 302              		.cfi_offset 7, -4
+ 303 0002 83B0     		sub	sp, sp, #12
+ 304              		.cfi_def_cfa_offset 16
+ 305 0004 00AF     		add	r7, sp, #0
+ 306              		.cfi_def_cfa_register 7
+ 307 0006 7860     		str	r0, [r7, #4]
+  71:./Core/Src/input_processing.c **** 	if (idx == 0) {
+ 308              		.loc 1 71 5
+ 309 0008 7B68     		ldr	r3, [r7, #4]
+ 310 000a 002B     		cmp	r3, #0
+ 311 000c 1ED1     		bne	.L27
+  72:./Core/Src/input_processing.c **** 		switch (CURRENT_STATE[idx]) {
+ 312              		.loc 1 72 24
+ 313 000e 214A     		ldr	r2, .L35
+ 314 0010 7B68     		ldr	r3, [r7, #4]
+ 315 0012 52F82330 		ldr	r3, [r2, r3, lsl #2]
+ 316              		.loc 1 72 3
+ 317 0016 022B     		cmp	r3, #2
+ 318 0018 12D0     		beq	.L28
+ 319 001a 022B     		cmp	r3, #2
+ 320 001c 29DC     		bgt	.L34
+ 321 001e 002B     		cmp	r3, #0
+ 322 0020 02D0     		beq	.L30
+ 323 0022 012B     		cmp	r3, #1
+ 324 0024 06D0     		beq	.L31
+  73:./Core/Src/input_processing.c **** 		case 0:
+  74:./Core/Src/input_processing.c **** 			CURRENT_STATE[idx] = 2;
+  75:./Core/Src/input_processing.c **** 			break;
+  76:./Core/Src/input_processing.c **** 		case 1:
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s 			page 8
+
+
+  77:./Core/Src/input_processing.c **** 			CURRENT_STATE[idx] = 0;
+  78:./Core/Src/input_processing.c **** 			break;
+  79:./Core/Src/input_processing.c **** 		case 2:
+  80:./Core/Src/input_processing.c **** 			CURRENT_STATE[idx] = 1;
+  81:./Core/Src/input_processing.c **** 			break;
+  82:./Core/Src/input_processing.c **** 		default:
+  83:./Core/Src/input_processing.c **** 			break;
+ 325              		.loc 1 83 4
+ 326 0026 24E0     		b	.L34
+ 327              	.L30:
+  74:./Core/Src/input_processing.c **** 			break;
+ 328              		.loc 1 74 23
+ 329 0028 1A4A     		ldr	r2, .L35
+ 330 002a 7B68     		ldr	r3, [r7, #4]
+ 331 002c 0221     		movs	r1, #2
+ 332 002e 42F82310 		str	r1, [r2, r3, lsl #2]
+  75:./Core/Src/input_processing.c **** 		case 1:
+ 333              		.loc 1 75 4
+ 334 0032 1FE0     		b	.L33
+ 335              	.L31:
+  77:./Core/Src/input_processing.c **** 			break;
+ 336              		.loc 1 77 23
+ 337 0034 174A     		ldr	r2, .L35
+ 338 0036 7B68     		ldr	r3, [r7, #4]
+ 339 0038 0021     		movs	r1, #0
+ 340 003a 42F82310 		str	r1, [r2, r3, lsl #2]
+  78:./Core/Src/input_processing.c **** 		case 2:
+ 341              		.loc 1 78 4
+ 342 003e 19E0     		b	.L33
+ 343              	.L28:
+  80:./Core/Src/input_processing.c **** 			break;
+ 344              		.loc 1 80 23
+ 345 0040 144A     		ldr	r2, .L35
+ 346 0042 7B68     		ldr	r3, [r7, #4]
+ 347 0044 0121     		movs	r1, #1
+ 348 0046 42F82310 		str	r1, [r2, r3, lsl #2]
+  81:./Core/Src/input_processing.c **** 		default:
+ 349              		.loc 1 81 4
+ 350 004a 13E0     		b	.L33
+ 351              	.L27:
+  84:./Core/Src/input_processing.c **** 		}
+  85:./Core/Src/input_processing.c **** 	} else {
+  86:./Core/Src/input_processing.c **** 		CURRENT_STATE[idx] = (CURRENT_STATE[idx] - 1 + 3) % 3;
+ 352              		.loc 1 86 38
+ 353 004c 114A     		ldr	r2, .L35
+ 354 004e 7B68     		ldr	r3, [r7, #4]
+ 355 0050 52F82330 		ldr	r3, [r2, r3, lsl #2]
+ 356              		.loc 1 86 48
+ 357 0054 991C     		adds	r1, r3, #2
+ 358              		.loc 1 86 53
+ 359 0056 104B     		ldr	r3, .L35+4
+ 360 0058 83FB0132 		smull	r3, r2, r3, r1
+ 361 005c CB17     		asrs	r3, r1, #31
+ 362 005e D21A     		subs	r2, r2, r3
+ 363 0060 1346     		mov	r3, r2
+ 364 0062 5B00     		lsls	r3, r3, #1
+ 365 0064 1344     		add	r3, r3, r2
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s 			page 9
+
+
+ 366 0066 CA1A     		subs	r2, r1, r3
+ 367              		.loc 1 86 22
+ 368 0068 0A49     		ldr	r1, .L35
+ 369 006a 7B68     		ldr	r3, [r7, #4]
+ 370 006c 41F82320 		str	r2, [r1, r3, lsl #2]
+ 371 0070 00E0     		b	.L33
+ 372              	.L34:
+  83:./Core/Src/input_processing.c **** 		}
+ 373              		.loc 1 83 4
+ 374 0072 00BF     		nop
+ 375              	.L33:
+  87:./Core/Src/input_processing.c **** 	}
+  88:./Core/Src/input_processing.c **** 	SEG7_CLOCK[idx] = LED_TIME[CURRENT_STATE[idx]];
+ 376              		.loc 1 88 42
+ 377 0074 074A     		ldr	r2, .L35
+ 378 0076 7B68     		ldr	r3, [r7, #4]
+ 379 0078 52F82330 		ldr	r3, [r2, r3, lsl #2]
+ 380              		.loc 1 88 28
+ 381 007c 074A     		ldr	r2, .L35+8
+ 382 007e 52F82320 		ldr	r2, [r2, r3, lsl #2]
+ 383              		.loc 1 88 18
+ 384 0082 0749     		ldr	r1, .L35+12
+ 385 0084 7B68     		ldr	r3, [r7, #4]
+ 386 0086 41F82320 		str	r2, [r1, r3, lsl #2]
+  89:./Core/Src/input_processing.c **** }
+ 387              		.loc 1 89 1
+ 388 008a 00BF     		nop
+ 389 008c 0C37     		adds	r7, r7, #12
+ 390              		.cfi_def_cfa_offset 4
+ 391 008e BD46     		mov	sp, r7
+ 392              		.cfi_def_cfa_register 13
+ 393              		@ sp needed
+ 394 0090 80BC     		pop	{r7}
+ 395              		.cfi_restore 7
+ 396              		.cfi_def_cfa_offset 0
+ 397 0092 7047     		bx	lr
+ 398              	.L36:
+ 399              		.align	2
+ 400              	.L35:
+ 401 0094 00000000 		.word	CURRENT_STATE
+ 402 0098 56555555 		.word	1431655766
+ 403 009c 00000000 		.word	LED_TIME
+ 404 00a0 00000000 		.word	SEG7_CLOCK
+ 405              		.cfi_endproc
+ 406              	.LFE70:
+ 408              		.section	.text.check_state,"ax",%progbits
+ 409              		.align	1
+ 410              		.global	check_state
+ 411              		.syntax unified
+ 412              		.thumb
+ 413              		.thumb_func
+ 414              		.fpu softvfp
+ 416              	check_state:
+ 417              	.LFB71:
+  90:./Core/Src/input_processing.c **** 
+  91:./Core/Src/input_processing.c **** void check_state() {
+ 418              		.loc 1 91 20
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s 			page 10
+
+
+ 419              		.cfi_startproc
+ 420              		@ args = 0, pretend = 0, frame = 0
+ 421              		@ frame_needed = 1, uses_anonymous_args = 0
+ 422 0000 80B5     		push	{r7, lr}
+ 423              		.cfi_def_cfa_offset 8
+ 424              		.cfi_offset 7, -8
+ 425              		.cfi_offset 14, -4
+ 426 0002 00AF     		add	r7, sp, #0
+ 427              		.cfi_def_cfa_register 7
+  92:./Core/Src/input_processing.c **** 	if (SEG7_CLOCK[VER_LED] <= 0) {
+ 428              		.loc 1 92 16
+ 429 0004 094B     		ldr	r3, .L41
+ 430 0006 1B68     		ldr	r3, [r3]
+ 431              		.loc 1 92 5
+ 432 0008 002B     		cmp	r3, #0
+ 433 000a 04DC     		bgt	.L38
+  93:./Core/Src/input_processing.c **** 		state_update(VER_LED);
+ 434              		.loc 1 93 3
+ 435 000c 0020     		movs	r0, #0
+ 436 000e FFF7FEFF 		bl	state_update
+  94:./Core/Src/input_processing.c **** 		vertical_processing();
+ 437              		.loc 1 94 3
+ 438 0012 FFF7FEFF 		bl	vertical_processing
+ 439              	.L38:
+  95:./Core/Src/input_processing.c **** 	}
+  96:./Core/Src/input_processing.c **** 
+  97:./Core/Src/input_processing.c **** 	if (SEG7_CLOCK[HOR_LED] <= 0) {
+ 440              		.loc 1 97 16
+ 441 0016 054B     		ldr	r3, .L41
+ 442 0018 5B68     		ldr	r3, [r3, #4]
+ 443              		.loc 1 97 5
+ 444 001a 002B     		cmp	r3, #0
+ 445 001c 04DC     		bgt	.L40
+  98:./Core/Src/input_processing.c **** 		state_update(HOR_LED);
+ 446              		.loc 1 98 3
+ 447 001e 0120     		movs	r0, #1
+ 448 0020 FFF7FEFF 		bl	state_update
+  99:./Core/Src/input_processing.c **** 		horizontal_processing();
+ 449              		.loc 1 99 3
+ 450 0024 FFF7FEFF 		bl	horizontal_processing
+ 451              	.L40:
+ 100:./Core/Src/input_processing.c **** 	}
+ 101:./Core/Src/input_processing.c **** }
+ 452              		.loc 1 101 1
+ 453 0028 00BF     		nop
+ 454 002a 80BD     		pop	{r7, pc}
+ 455              	.L42:
+ 456              		.align	2
+ 457              	.L41:
+ 458 002c 00000000 		.word	SEG7_CLOCK
+ 459              		.cfi_endproc
+ 460              	.LFE71:
+ 462              		.section	.text.update_clock,"ax",%progbits
+ 463              		.align	1
+ 464              		.global	update_clock
+ 465              		.syntax unified
+ 466              		.thumb
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s 			page 11
+
+
+ 467              		.thumb_func
+ 468              		.fpu softvfp
+ 470              	update_clock:
+ 471              	.LFB72:
+ 102:./Core/Src/input_processing.c **** 
+ 103:./Core/Src/input_processing.c **** void update_clock() {
+ 472              		.loc 1 103 21
+ 473              		.cfi_startproc
+ 474              		@ args = 0, pretend = 0, frame = 0
+ 475              		@ frame_needed = 1, uses_anonymous_args = 0
+ 476 0000 80B5     		push	{r7, lr}
+ 477              		.cfi_def_cfa_offset 8
+ 478              		.cfi_offset 7, -8
+ 479              		.cfi_offset 14, -4
+ 480 0002 00AF     		add	r7, sp, #0
+ 481              		.cfi_def_cfa_register 7
+ 104:./Core/Src/input_processing.c **** 	if (timer2_flag == 1) {
+ 482              		.loc 1 104 18
+ 483 0004 0C4B     		ldr	r3, .L46
+ 484 0006 1B68     		ldr	r3, [r3]
+ 485              		.loc 1 104 5
+ 486 0008 012B     		cmp	r3, #1
+ 487 000a 13D1     		bne	.L45
+ 105:./Core/Src/input_processing.c **** 		SEG7_CLOCK[VER_LED] = SEG7_CLOCK[VER_LED] - TIME_UNIT;
+ 488              		.loc 1 105 35
+ 489 000c 0B4B     		ldr	r3, .L46+4
+ 490 000e 1B68     		ldr	r3, [r3]
+ 491              		.loc 1 105 45
+ 492 0010 A3F57A73 		sub	r3, r3, #1000
+ 493              		.loc 1 105 23
+ 494 0014 094A     		ldr	r2, .L46+4
+ 495 0016 1360     		str	r3, [r2]
+ 106:./Core/Src/input_processing.c **** 		SEG7_CLOCK[HOR_LED] = SEG7_CLOCK[HOR_LED] - TIME_UNIT;
+ 496              		.loc 1 106 35
+ 497 0018 084B     		ldr	r3, .L46+4
+ 498 001a 5B68     		ldr	r3, [r3, #4]
+ 499              		.loc 1 106 45
+ 500 001c A3F57A73 		sub	r3, r3, #1000
+ 501              		.loc 1 106 23
+ 502 0020 064A     		ldr	r2, .L46+4
+ 503 0022 5360     		str	r3, [r2, #4]
+ 107:./Core/Src/input_processing.c **** 		check_state();
+ 504              		.loc 1 107 3
+ 505 0024 FFF7FEFF 		bl	check_state
+ 108:./Core/Src/input_processing.c **** 		updateDisplay();
+ 506              		.loc 1 108 3
+ 507 0028 FFF7FEFF 		bl	updateDisplay
+ 109:./Core/Src/input_processing.c **** 		setTimer2(1000);
+ 508              		.loc 1 109 3
+ 509 002c 4FF47A70 		mov	r0, #1000
+ 510 0030 FFF7FEFF 		bl	setTimer2
+ 511              	.L45:
+ 110:./Core/Src/input_processing.c **** 	}
+ 111:./Core/Src/input_processing.c **** }
+ 512              		.loc 1 111 1
+ 513 0034 00BF     		nop
+ 514 0036 80BD     		pop	{r7, pc}
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s 			page 12
+
+
+ 515              	.L47:
+ 516              		.align	2
+ 517              	.L46:
+ 518 0038 00000000 		.word	timer2_flag
+ 519 003c 00000000 		.word	SEG7_CLOCK
+ 520              		.cfi_endproc
+ 521              	.LFE72:
+ 523              		.section	.text.reset,"ax",%progbits
+ 524              		.align	1
+ 525              		.global	reset
+ 526              		.syntax unified
+ 527              		.thumb
+ 528              		.thumb_func
+ 529              		.fpu softvfp
+ 531              	reset:
+ 532              	.LFB73:
+ 112:./Core/Src/input_processing.c **** 
+ 113:./Core/Src/input_processing.c **** void reset() {
+ 533              		.loc 1 113 14
+ 534              		.cfi_startproc
+ 535              		@ args = 0, pretend = 0, frame = 0
+ 536              		@ frame_needed = 1, uses_anonymous_args = 0
+ 537              		@ link register save eliminated.
+ 538 0000 80B4     		push	{r7}
+ 539              		.cfi_def_cfa_offset 4
+ 540              		.cfi_offset 7, -4
+ 541 0002 00AF     		add	r7, sp, #0
+ 542              		.cfi_def_cfa_register 7
+ 114:./Core/Src/input_processing.c **** 	LED_TIME[RED_STATUS] = NORMAL_RED ;
+ 543              		.loc 1 114 23
+ 544 0004 114B     		ldr	r3, .L49
+ 545 0006 42F21072 		movw	r2, #10000
+ 546 000a 1A60     		str	r2, [r3]
+ 115:./Core/Src/input_processing.c **** 	LED_TIME[YELLOW_STATUS] = NORMAL_YELLOW;
+ 547              		.loc 1 115 26
+ 548 000c 0F4B     		ldr	r3, .L49
+ 549 000e 40F6B832 		movw	r2, #3000
+ 550 0012 5A60     		str	r2, [r3, #4]
+ 116:./Core/Src/input_processing.c **** 	LED_TIME[GREEN_STATUS] = NORMAL_GREEN;
+ 551              		.loc 1 116 25
+ 552 0014 0D4B     		ldr	r3, .L49
+ 553 0016 41F65832 		movw	r2, #7000
+ 554 001a 9A60     		str	r2, [r3, #8]
+ 117:./Core/Src/input_processing.c **** 	CURRENT_STATE[VER_LED] = RED_STATUS;
+ 555              		.loc 1 117 25
+ 556 001c 0C4B     		ldr	r3, .L49+4
+ 557 001e 0022     		movs	r2, #0
+ 558 0020 1A60     		str	r2, [r3]
+ 118:./Core/Src/input_processing.c **** 	CURRENT_STATE[HOR_LED] = GREEN_STATUS;
+ 559              		.loc 1 118 25
+ 560 0022 0B4B     		ldr	r3, .L49+4
+ 561 0024 0222     		movs	r2, #2
+ 562 0026 5A60     		str	r2, [r3, #4]
+ 119:./Core/Src/input_processing.c **** 	SEG7_CLOCK[VER_LED] = LED_TIME[CURRENT_STATE[VER_LED]];
+ 563              		.loc 1 119 46
+ 564 0028 094B     		ldr	r3, .L49+4
+ 565 002a 1B68     		ldr	r3, [r3]
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s 			page 13
+
+
+ 566              		.loc 1 119 32
+ 567 002c 074A     		ldr	r2, .L49
+ 568 002e 52F82330 		ldr	r3, [r2, r3, lsl #2]
+ 569              		.loc 1 119 22
+ 570 0032 084A     		ldr	r2, .L49+8
+ 571 0034 1360     		str	r3, [r2]
+ 120:./Core/Src/input_processing.c **** 	SEG7_CLOCK[HOR_LED] = LED_TIME[CURRENT_STATE[HOR_LED]];
+ 572              		.loc 1 120 46
+ 573 0036 064B     		ldr	r3, .L49+4
+ 574 0038 5B68     		ldr	r3, [r3, #4]
+ 575              		.loc 1 120 32
+ 576 003a 044A     		ldr	r2, .L49
+ 577 003c 52F82330 		ldr	r3, [r2, r3, lsl #2]
+ 578              		.loc 1 120 22
+ 579 0040 044A     		ldr	r2, .L49+8
+ 580 0042 5360     		str	r3, [r2, #4]
+ 121:./Core/Src/input_processing.c **** }
+ 581              		.loc 1 121 1
+ 582 0044 00BF     		nop
+ 583 0046 BD46     		mov	sp, r7
+ 584              		.cfi_def_cfa_register 13
+ 585              		@ sp needed
+ 586 0048 80BC     		pop	{r7}
+ 587              		.cfi_restore 7
+ 588              		.cfi_def_cfa_offset 0
+ 589 004a 7047     		bx	lr
+ 590              	.L50:
+ 591              		.align	2
+ 592              	.L49:
+ 593 004c 00000000 		.word	LED_TIME
+ 594 0050 00000000 		.word	CURRENT_STATE
+ 595 0054 00000000 		.word	SEG7_CLOCK
+ 596              		.cfi_endproc
+ 597              	.LFE73:
+ 599              		.section	.text.restart,"ax",%progbits
+ 600              		.align	1
+ 601              		.global	restart
+ 602              		.syntax unified
+ 603              		.thumb
+ 604              		.thumb_func
+ 605              		.fpu softvfp
+ 607              	restart:
+ 608              	.LFB74:
+ 122:./Core/Src/input_processing.c **** 
+ 123:./Core/Src/input_processing.c **** void restart(){
+ 609              		.loc 1 123 15
+ 610              		.cfi_startproc
+ 611              		@ args = 0, pretend = 0, frame = 0
+ 612              		@ frame_needed = 1, uses_anonymous_args = 0
+ 613              		@ link register save eliminated.
+ 614 0000 80B4     		push	{r7}
+ 615              		.cfi_def_cfa_offset 4
+ 616              		.cfi_offset 7, -4
+ 617 0002 00AF     		add	r7, sp, #0
+ 618              		.cfi_def_cfa_register 7
+ 124:./Core/Src/input_processing.c **** 	status = 0;
+ 619              		.loc 1 124 9
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s 			page 14
+
+
+ 620 0004 034B     		ldr	r3, .L52
+ 621 0006 0022     		movs	r2, #0
+ 622 0008 1A60     		str	r2, [r3]
+ 125:./Core/Src/input_processing.c **** }
+ 623              		.loc 1 125 1
+ 624 000a 00BF     		nop
+ 625 000c BD46     		mov	sp, r7
+ 626              		.cfi_def_cfa_register 13
+ 627              		@ sp needed
+ 628 000e 80BC     		pop	{r7}
+ 629              		.cfi_restore 7
+ 630              		.cfi_def_cfa_offset 0
+ 631 0010 7047     		bx	lr
+ 632              	.L53:
+ 633 0012 00BF     		.align	2
+ 634              	.L52:
+ 635 0014 00000000 		.word	status
+ 636              		.cfi_endproc
+ 637              	.LFE74:
+ 639              		.section	.text.confirm_action,"ax",%progbits
+ 640              		.align	1
+ 641              		.global	confirm_action
+ 642              		.syntax unified
+ 643              		.thumb
+ 644              		.thumb_func
+ 645              		.fpu softvfp
+ 647              	confirm_action:
+ 648              	.LFB75:
+ 126:./Core/Src/input_processing.c **** 
+ 127:./Core/Src/input_processing.c **** void confirm_action(int mode) {
+ 649              		.loc 1 127 31
+ 650              		.cfi_startproc
+ 651              		@ args = 0, pretend = 0, frame = 8
+ 652              		@ frame_needed = 1, uses_anonymous_args = 0
+ 653              		@ link register save eliminated.
+ 654 0000 80B4     		push	{r7}
+ 655              		.cfi_def_cfa_offset 4
+ 656              		.cfi_offset 7, -4
+ 657 0002 83B0     		sub	sp, sp, #12
+ 658              		.cfi_def_cfa_offset 16
+ 659 0004 00AF     		add	r7, sp, #0
+ 660              		.cfi_def_cfa_register 7
+ 661 0006 7860     		str	r0, [r7, #4]
+ 662 0008 7B68     		ldr	r3, [r7, #4]
+ 663 000a 032B     		cmp	r3, #3
+ 664 000c 2ED8     		bhi	.L62
+ 665 000e 01A2     		adr	r2, .L57
+ 666 0010 52F823F0 		ldr	pc, [r2, r3, lsl #2]
+ 667              		.p2align 2
+ 668              	.L57:
+ 669 0014 6D000000 		.word	.L62+1
+ 670 0018 25000000 		.word	.L59+1
+ 671 001c 3D000000 		.word	.L58+1
+ 672 0020 55000000 		.word	.L56+1
+ 673              		.p2align 1
+ 674              	.L59:
+ 128:./Core/Src/input_processing.c **** 	switch (mode) {
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s 			page 15
+
+
+ 129:./Core/Src/input_processing.c **** 	case 0: //Normal mode -> do nothing
+ 130:./Core/Src/input_processing.c **** 		return;
+ 131:./Core/Src/input_processing.c **** 	case 1: // Inc red time mode
+ 132:./Core/Src/input_processing.c **** 		LED_TIME[RED_STATUS] = LED_TIME[RED_STATUS] + (TIMES_INC * TIME_UNIT);
+ 675              		.loc 1 132 34
+ 676 0024 144B     		ldr	r3, .L63
+ 677 0026 1A68     		ldr	r2, [r3]
+ 678              		.loc 1 132 60
+ 679 0028 144B     		ldr	r3, .L63+4
+ 680 002a 1B68     		ldr	r3, [r3]
+ 681 002c 4FF47A71 		mov	r1, #1000
+ 682 0030 01FB03F3 		mul	r3, r1, r3
+ 683              		.loc 1 132 47
+ 684 0034 1344     		add	r3, r3, r2
+ 685              		.loc 1 132 24
+ 686 0036 104A     		ldr	r2, .L63
+ 687 0038 1360     		str	r3, [r2]
+ 133:./Core/Src/input_processing.c **** 		break;
+ 688              		.loc 1 133 3
+ 689 003a 18E0     		b	.L54
+ 690              	.L58:
+ 134:./Core/Src/input_processing.c **** 	case 2: // Inc yellow time mode
+ 135:./Core/Src/input_processing.c **** 		LED_TIME[YELLOW_STATUS] = LED_TIME[YELLOW_STATUS] + (TIMES_INC * TIME_UNIT);
+ 691              		.loc 1 135 37
+ 692 003c 0E4B     		ldr	r3, .L63
+ 693 003e 5A68     		ldr	r2, [r3, #4]
+ 694              		.loc 1 135 66
+ 695 0040 0E4B     		ldr	r3, .L63+4
+ 696 0042 1B68     		ldr	r3, [r3]
+ 697 0044 4FF47A71 		mov	r1, #1000
+ 698 0048 01FB03F3 		mul	r3, r1, r3
+ 699              		.loc 1 135 53
+ 700 004c 1344     		add	r3, r3, r2
+ 701              		.loc 1 135 27
+ 702 004e 0A4A     		ldr	r2, .L63
+ 703 0050 5360     		str	r3, [r2, #4]
+ 136:./Core/Src/input_processing.c **** 		break;
+ 704              		.loc 1 136 3
+ 705 0052 0CE0     		b	.L54
+ 706              	.L56:
+ 137:./Core/Src/input_processing.c **** 	case 3: // Inc green time
+ 138:./Core/Src/input_processing.c **** 		LED_TIME [GREEN_STATUS] = LED_TIME[GREEN_STATUS] + (TIMES_INC * TIME_UNIT);
+ 707              		.loc 1 138 37
+ 708 0054 084B     		ldr	r3, .L63
+ 709 0056 9A68     		ldr	r2, [r3, #8]
+ 710              		.loc 1 138 65
+ 711 0058 084B     		ldr	r3, .L63+4
+ 712 005a 1B68     		ldr	r3, [r3]
+ 713 005c 4FF47A71 		mov	r1, #1000
+ 714 0060 01FB03F3 		mul	r3, r1, r3
+ 715              		.loc 1 138 52
+ 716 0064 1344     		add	r3, r3, r2
+ 717              		.loc 1 138 27
+ 718 0066 044A     		ldr	r2, .L63
+ 719 0068 9360     		str	r3, [r2, #8]
+ 139:./Core/Src/input_processing.c **** 		break;
+ 720              		.loc 1 139 3
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s 			page 16
+
+
+ 721 006a 00E0     		b	.L54
+ 722              	.L62:
+ 140:./Core/Src/input_processing.c **** 	default:
+ 141:./Core/Src/input_processing.c **** 		break;
+ 723              		.loc 1 141 3
+ 724 006c 00BF     		nop
+ 725              	.L54:
+ 142:./Core/Src/input_processing.c **** 	}
+ 143:./Core/Src/input_processing.c **** 
+ 144:./Core/Src/input_processing.c **** }
+ 726              		.loc 1 144 1
+ 727 006e 0C37     		adds	r7, r7, #12
+ 728              		.cfi_def_cfa_offset 4
+ 729 0070 BD46     		mov	sp, r7
+ 730              		.cfi_def_cfa_register 13
+ 731              		@ sp needed
+ 732 0072 80BC     		pop	{r7}
+ 733              		.cfi_restore 7
+ 734              		.cfi_def_cfa_offset 0
+ 735 0074 7047     		bx	lr
+ 736              	.L64:
+ 737 0076 00BF     		.align	2
+ 738              	.L63:
+ 739 0078 00000000 		.word	LED_TIME
+ 740 007c 00000000 		.word	TIMES_INC
+ 741              		.cfi_endproc
+ 742              	.LFE75:
+ 744              		.section	.text.state_handle,"ax",%progbits
+ 745              		.align	1
+ 746              		.global	state_handle
+ 747              		.syntax unified
+ 748              		.thumb
+ 749              		.thumb_func
+ 750              		.fpu softvfp
+ 752              	state_handle:
+ 753              	.LFB76:
+ 145:./Core/Src/input_processing.c **** 
+ 146:./Core/Src/input_processing.c **** void state_handle() {
+ 754              		.loc 1 146 21
+ 755              		.cfi_startproc
+ 756              		@ args = 0, pretend = 0, frame = 0
+ 757              		@ frame_needed = 1, uses_anonymous_args = 0
+ 758 0000 80B5     		push	{r7, lr}
+ 759              		.cfi_def_cfa_offset 8
+ 760              		.cfi_offset 7, -8
+ 761              		.cfi_offset 14, -4
+ 762 0002 00AF     		add	r7, sp, #0
+ 763              		.cfi_def_cfa_register 7
+ 147:./Core/Src/input_processing.c **** 	switch (index_mode) {
+ 764              		.loc 1 147 2
+ 765 0004 484B     		ldr	r3, .L75
+ 766 0006 1B68     		ldr	r3, [r3]
+ 767 0008 022B     		cmp	r3, #2
+ 768 000a 5DD0     		beq	.L66
+ 769 000c 022B     		cmp	r3, #2
+ 770 000e 00F38780 		bgt	.L74
+ 771 0012 002B     		cmp	r3, #0
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s 			page 17
+
+
+ 772 0014 02D0     		beq	.L68
+ 773 0016 012B     		cmp	r3, #1
+ 774 0018 2CD0     		beq	.L69
+ 148:./Core/Src/input_processing.c **** 	case 0:							//RED MODE
+ 149:./Core/Src/input_processing.c **** 		if (timer1_flag == 1) {
+ 150:./Core/Src/input_processing.c **** 			HAL_GPIO_WritePin(Traffic_1_2_GPIO_Port, Traffic_1_2_Pin, 0);
+ 151:./Core/Src/input_processing.c **** 			HAL_GPIO_TogglePin(Traffic_1_1_GPIO_Port, Traffic_1_1_Pin);
+ 152:./Core/Src/input_processing.c **** 			HAL_GPIO_WritePin(Traffic_2_2_GPIO_Port, Traffic_2_2_Pin, 0);
+ 153:./Core/Src/input_processing.c **** 			HAL_GPIO_TogglePin(Traffic_2_1_GPIO_Port, Traffic_2_1_Pin);
+ 154:./Core/Src/input_processing.c **** 			setTimer1(500);
+ 155:./Core/Src/input_processing.c **** 		}
+ 156:./Core/Src/input_processing.c **** 		SEG7_CLOCK[VER_LED] = LED_TIME[0] + TIMES_INC * TIME_UNIT;
+ 157:./Core/Src/input_processing.c **** 		SEG7_CLOCK[HOR_LED] = 0;
+ 158:./Core/Src/input_processing.c **** 		updateDisplay();
+ 159:./Core/Src/input_processing.c **** 		break;
+ 160:./Core/Src/input_processing.c **** 	case 1:							//YELLOW MODE
+ 161:./Core/Src/input_processing.c **** 		if (timer1_flag == 1) {
+ 162:./Core/Src/input_processing.c **** 			HAL_GPIO_TogglePin(Traffic_1_1_GPIO_Port, Traffic_1_1_Pin);
+ 163:./Core/Src/input_processing.c **** 			HAL_GPIO_TogglePin(Traffic_1_2_GPIO_Port, Traffic_1_2_Pin);
+ 164:./Core/Src/input_processing.c **** 			HAL_GPIO_TogglePin(Traffic_2_1_GPIO_Port, Traffic_2_1_Pin);
+ 165:./Core/Src/input_processing.c **** 			HAL_GPIO_TogglePin(Traffic_2_2_GPIO_Port, Traffic_2_2_Pin);
+ 166:./Core/Src/input_processing.c **** 			setTimer1(500);
+ 167:./Core/Src/input_processing.c **** 		}
+ 168:./Core/Src/input_processing.c **** 		SEG7_CLOCK[VER_LED] = LED_TIME[1] + TIMES_INC * TIME_UNIT;
+ 169:./Core/Src/input_processing.c **** 		SEG7_CLOCK[HOR_LED] = 0;
+ 170:./Core/Src/input_processing.c **** 		updateDisplay();
+ 171:./Core/Src/input_processing.c **** 		break;
+ 172:./Core/Src/input_processing.c **** 	case 2:							//GREEN MODE
+ 173:./Core/Src/input_processing.c **** 		if (timer1_flag == 1) {
+ 174:./Core/Src/input_processing.c **** 			HAL_GPIO_WritePin(Traffic_1_1_GPIO_Port, Traffic_1_1_Pin, 0);
+ 175:./Core/Src/input_processing.c **** 			HAL_GPIO_TogglePin(Traffic_1_2_GPIO_Port, Traffic_1_2_Pin);
+ 176:./Core/Src/input_processing.c **** 			HAL_GPIO_WritePin(Traffic_2_1_GPIO_Port, Traffic_2_1_Pin, 0);
+ 177:./Core/Src/input_processing.c **** 			HAL_GPIO_TogglePin(Traffic_2_2_GPIO_Port, Traffic_2_2_Pin);
+ 178:./Core/Src/input_processing.c **** 			setTimer1(500);
+ 179:./Core/Src/input_processing.c **** 		}
+ 180:./Core/Src/input_processing.c **** 		SEG7_CLOCK[VER_LED] = LED_TIME[2] + TIMES_INC * TIME_UNIT;
+ 181:./Core/Src/input_processing.c **** 		SEG7_CLOCK[HOR_LED] = 0;
+ 182:./Core/Src/input_processing.c **** 		updateDisplay();
+ 183:./Core/Src/input_processing.c **** 		break;
+ 184:./Core/Src/input_processing.c **** 	default:
+ 185:./Core/Src/input_processing.c **** 		break;
+ 775              		.loc 1 185 3
+ 776 001a 81E0     		b	.L74
+ 777              	.L68:
+ 149:./Core/Src/input_processing.c **** 			HAL_GPIO_WritePin(Traffic_1_2_GPIO_Port, Traffic_1_2_Pin, 0);
+ 778              		.loc 1 149 19
+ 779 001c 434B     		ldr	r3, .L75+4
+ 780 001e 1B68     		ldr	r3, [r3]
+ 149:./Core/Src/input_processing.c **** 			HAL_GPIO_WritePin(Traffic_1_2_GPIO_Port, Traffic_1_2_Pin, 0);
+ 781              		.loc 1 149 6
+ 782 0020 012B     		cmp	r3, #1
+ 783 0022 16D1     		bne	.L70
+ 150:./Core/Src/input_processing.c **** 			HAL_GPIO_TogglePin(Traffic_1_1_GPIO_Port, Traffic_1_1_Pin);
+ 784              		.loc 1 150 4
+ 785 0024 0022     		movs	r2, #0
+ 786 0026 0821     		movs	r1, #8
+ 787 0028 4148     		ldr	r0, .L75+8
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s 			page 18
+
+
+ 788 002a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 151:./Core/Src/input_processing.c **** 			HAL_GPIO_WritePin(Traffic_2_2_GPIO_Port, Traffic_2_2_Pin, 0);
+ 789              		.loc 1 151 4
+ 790 002e 4FF48061 		mov	r1, #1024
+ 791 0032 4048     		ldr	r0, .L75+12
+ 792 0034 FFF7FEFF 		bl	HAL_GPIO_TogglePin
+ 152:./Core/Src/input_processing.c **** 			HAL_GPIO_TogglePin(Traffic_2_1_GPIO_Port, Traffic_2_1_Pin);
+ 793              		.loc 1 152 4
+ 794 0038 0022     		movs	r2, #0
+ 795 003a 1021     		movs	r1, #16
+ 796 003c 3C48     		ldr	r0, .L75+8
+ 797 003e FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 153:./Core/Src/input_processing.c **** 			setTimer1(500);
+ 798              		.loc 1 153 4
+ 799 0042 2021     		movs	r1, #32
+ 800 0044 3A48     		ldr	r0, .L75+8
+ 801 0046 FFF7FEFF 		bl	HAL_GPIO_TogglePin
+ 154:./Core/Src/input_processing.c **** 		}
+ 802              		.loc 1 154 4
+ 803 004a 4FF4FA70 		mov	r0, #500
+ 804 004e FFF7FEFF 		bl	setTimer1
+ 805              	.L70:
+ 156:./Core/Src/input_processing.c **** 		SEG7_CLOCK[HOR_LED] = 0;
+ 806              		.loc 1 156 33
+ 807 0052 394B     		ldr	r3, .L75+16
+ 808 0054 1A68     		ldr	r2, [r3]
+ 156:./Core/Src/input_processing.c **** 		SEG7_CLOCK[HOR_LED] = 0;
+ 809              		.loc 1 156 49
+ 810 0056 394B     		ldr	r3, .L75+20
+ 811 0058 1B68     		ldr	r3, [r3]
+ 812 005a 4FF47A71 		mov	r1, #1000
+ 813 005e 01FB03F3 		mul	r3, r1, r3
+ 156:./Core/Src/input_processing.c **** 		SEG7_CLOCK[HOR_LED] = 0;
+ 814              		.loc 1 156 37
+ 815 0062 1344     		add	r3, r3, r2
+ 156:./Core/Src/input_processing.c **** 		SEG7_CLOCK[HOR_LED] = 0;
+ 816              		.loc 1 156 23
+ 817 0064 364A     		ldr	r2, .L75+24
+ 818 0066 1360     		str	r3, [r2]
+ 157:./Core/Src/input_processing.c **** 		updateDisplay();
+ 819              		.loc 1 157 23
+ 820 0068 354B     		ldr	r3, .L75+24
+ 821 006a 0022     		movs	r2, #0
+ 822 006c 5A60     		str	r2, [r3, #4]
+ 158:./Core/Src/input_processing.c **** 		break;
+ 823              		.loc 1 158 3
+ 824 006e FFF7FEFF 		bl	updateDisplay
+ 159:./Core/Src/input_processing.c **** 	case 1:							//YELLOW MODE
+ 825              		.loc 1 159 3
+ 826 0072 56E0     		b	.L71
+ 827              	.L69:
+ 161:./Core/Src/input_processing.c **** 			HAL_GPIO_TogglePin(Traffic_1_1_GPIO_Port, Traffic_1_1_Pin);
+ 828              		.loc 1 161 19
+ 829 0074 2D4B     		ldr	r3, .L75+4
+ 830 0076 1B68     		ldr	r3, [r3]
+ 161:./Core/Src/input_processing.c **** 			HAL_GPIO_TogglePin(Traffic_1_1_GPIO_Port, Traffic_1_1_Pin);
+ 831              		.loc 1 161 6
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s 			page 19
+
+
+ 832 0078 012B     		cmp	r3, #1
+ 833 007a 14D1     		bne	.L72
+ 162:./Core/Src/input_processing.c **** 			HAL_GPIO_TogglePin(Traffic_1_2_GPIO_Port, Traffic_1_2_Pin);
+ 834              		.loc 1 162 4
+ 835 007c 4FF48061 		mov	r1, #1024
+ 836 0080 2C48     		ldr	r0, .L75+12
+ 837 0082 FFF7FEFF 		bl	HAL_GPIO_TogglePin
+ 163:./Core/Src/input_processing.c **** 			HAL_GPIO_TogglePin(Traffic_2_1_GPIO_Port, Traffic_2_1_Pin);
+ 838              		.loc 1 163 4
+ 839 0086 0821     		movs	r1, #8
+ 840 0088 2948     		ldr	r0, .L75+8
+ 841 008a FFF7FEFF 		bl	HAL_GPIO_TogglePin
+ 164:./Core/Src/input_processing.c **** 			HAL_GPIO_TogglePin(Traffic_2_2_GPIO_Port, Traffic_2_2_Pin);
+ 842              		.loc 1 164 4
+ 843 008e 2021     		movs	r1, #32
+ 844 0090 2748     		ldr	r0, .L75+8
+ 845 0092 FFF7FEFF 		bl	HAL_GPIO_TogglePin
+ 165:./Core/Src/input_processing.c **** 			setTimer1(500);
+ 846              		.loc 1 165 4
+ 847 0096 1021     		movs	r1, #16
+ 848 0098 2548     		ldr	r0, .L75+8
+ 849 009a FFF7FEFF 		bl	HAL_GPIO_TogglePin
+ 166:./Core/Src/input_processing.c **** 		}
+ 850              		.loc 1 166 4
+ 851 009e 4FF4FA70 		mov	r0, #500
+ 852 00a2 FFF7FEFF 		bl	setTimer1
+ 853              	.L72:
+ 168:./Core/Src/input_processing.c **** 		SEG7_CLOCK[HOR_LED] = 0;
+ 854              		.loc 1 168 33
+ 855 00a6 244B     		ldr	r3, .L75+16
+ 856 00a8 5A68     		ldr	r2, [r3, #4]
+ 168:./Core/Src/input_processing.c **** 		SEG7_CLOCK[HOR_LED] = 0;
+ 857              		.loc 1 168 49
+ 858 00aa 244B     		ldr	r3, .L75+20
+ 859 00ac 1B68     		ldr	r3, [r3]
+ 860 00ae 4FF47A71 		mov	r1, #1000
+ 861 00b2 01FB03F3 		mul	r3, r1, r3
+ 168:./Core/Src/input_processing.c **** 		SEG7_CLOCK[HOR_LED] = 0;
+ 862              		.loc 1 168 37
+ 863 00b6 1344     		add	r3, r3, r2
+ 168:./Core/Src/input_processing.c **** 		SEG7_CLOCK[HOR_LED] = 0;
+ 864              		.loc 1 168 23
+ 865 00b8 214A     		ldr	r2, .L75+24
+ 866 00ba 1360     		str	r3, [r2]
+ 169:./Core/Src/input_processing.c **** 		updateDisplay();
+ 867              		.loc 1 169 23
+ 868 00bc 204B     		ldr	r3, .L75+24
+ 869 00be 0022     		movs	r2, #0
+ 870 00c0 5A60     		str	r2, [r3, #4]
+ 170:./Core/Src/input_processing.c **** 		break;
+ 871              		.loc 1 170 3
+ 872 00c2 FFF7FEFF 		bl	updateDisplay
+ 171:./Core/Src/input_processing.c **** 	case 2:							//GREEN MODE
+ 873              		.loc 1 171 3
+ 874 00c6 2CE0     		b	.L71
+ 875              	.L66:
+ 173:./Core/Src/input_processing.c **** 			HAL_GPIO_WritePin(Traffic_1_1_GPIO_Port, Traffic_1_1_Pin, 0);
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s 			page 20
+
+
+ 876              		.loc 1 173 19
+ 877 00c8 184B     		ldr	r3, .L75+4
+ 878 00ca 1B68     		ldr	r3, [r3]
+ 173:./Core/Src/input_processing.c **** 			HAL_GPIO_WritePin(Traffic_1_1_GPIO_Port, Traffic_1_1_Pin, 0);
+ 879              		.loc 1 173 6
+ 880 00cc 012B     		cmp	r3, #1
+ 881 00ce 16D1     		bne	.L73
+ 174:./Core/Src/input_processing.c **** 			HAL_GPIO_TogglePin(Traffic_1_2_GPIO_Port, Traffic_1_2_Pin);
+ 882              		.loc 1 174 4
+ 883 00d0 0022     		movs	r2, #0
+ 884 00d2 4FF48061 		mov	r1, #1024
+ 885 00d6 1748     		ldr	r0, .L75+12
+ 886 00d8 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 175:./Core/Src/input_processing.c **** 			HAL_GPIO_WritePin(Traffic_2_1_GPIO_Port, Traffic_2_1_Pin, 0);
+ 887              		.loc 1 175 4
+ 888 00dc 0821     		movs	r1, #8
+ 889 00de 1448     		ldr	r0, .L75+8
+ 890 00e0 FFF7FEFF 		bl	HAL_GPIO_TogglePin
+ 176:./Core/Src/input_processing.c **** 			HAL_GPIO_TogglePin(Traffic_2_2_GPIO_Port, Traffic_2_2_Pin);
+ 891              		.loc 1 176 4
+ 892 00e4 0022     		movs	r2, #0
+ 893 00e6 2021     		movs	r1, #32
+ 894 00e8 1148     		ldr	r0, .L75+8
+ 895 00ea FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 177:./Core/Src/input_processing.c **** 			setTimer1(500);
+ 896              		.loc 1 177 4
+ 897 00ee 1021     		movs	r1, #16
+ 898 00f0 0F48     		ldr	r0, .L75+8
+ 899 00f2 FFF7FEFF 		bl	HAL_GPIO_TogglePin
+ 178:./Core/Src/input_processing.c **** 		}
+ 900              		.loc 1 178 4
+ 901 00f6 4FF4FA70 		mov	r0, #500
+ 902 00fa FFF7FEFF 		bl	setTimer1
+ 903              	.L73:
+ 180:./Core/Src/input_processing.c **** 		SEG7_CLOCK[HOR_LED] = 0;
+ 904              		.loc 1 180 33
+ 905 00fe 0E4B     		ldr	r3, .L75+16
+ 906 0100 9A68     		ldr	r2, [r3, #8]
+ 180:./Core/Src/input_processing.c **** 		SEG7_CLOCK[HOR_LED] = 0;
+ 907              		.loc 1 180 49
+ 908 0102 0E4B     		ldr	r3, .L75+20
+ 909 0104 1B68     		ldr	r3, [r3]
+ 910 0106 4FF47A71 		mov	r1, #1000
+ 911 010a 01FB03F3 		mul	r3, r1, r3
+ 180:./Core/Src/input_processing.c **** 		SEG7_CLOCK[HOR_LED] = 0;
+ 912              		.loc 1 180 37
+ 913 010e 1344     		add	r3, r3, r2
+ 180:./Core/Src/input_processing.c **** 		SEG7_CLOCK[HOR_LED] = 0;
+ 914              		.loc 1 180 23
+ 915 0110 0B4A     		ldr	r2, .L75+24
+ 916 0112 1360     		str	r3, [r2]
+ 181:./Core/Src/input_processing.c **** 		updateDisplay();
+ 917              		.loc 1 181 23
+ 918 0114 0A4B     		ldr	r3, .L75+24
+ 919 0116 0022     		movs	r2, #0
+ 920 0118 5A60     		str	r2, [r3, #4]
+ 182:./Core/Src/input_processing.c **** 		break;
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s 			page 21
+
+
+ 921              		.loc 1 182 3
+ 922 011a FFF7FEFF 		bl	updateDisplay
+ 183:./Core/Src/input_processing.c **** 	default:
+ 923              		.loc 1 183 3
+ 924 011e 00E0     		b	.L71
+ 925              	.L74:
+ 926              		.loc 1 185 3
+ 927 0120 00BF     		nop
+ 928              	.L71:
+ 186:./Core/Src/input_processing.c **** 	}
+ 187:./Core/Src/input_processing.c **** }
+ 929              		.loc 1 187 1
+ 930 0122 00BF     		nop
+ 931 0124 80BD     		pop	{r7, pc}
+ 932              	.L76:
+ 933 0126 00BF     		.align	2
+ 934              	.L75:
+ 935 0128 00000000 		.word	index_mode
+ 936 012c 00000000 		.word	timer1_flag
+ 937 0130 000C0140 		.word	1073810432
+ 938 0134 00080140 		.word	1073809408
+ 939 0138 00000000 		.word	LED_TIME
+ 940 013c 00000000 		.word	TIMES_INC
+ 941 0140 00000000 		.word	SEG7_CLOCK
+ 942              		.cfi_endproc
+ 943              	.LFE76:
+ 945              		.section	.text.traffic_processing,"ax",%progbits
+ 946              		.align	1
+ 947              		.global	traffic_processing
+ 948              		.syntax unified
+ 949              		.thumb
+ 950              		.thumb_func
+ 951              		.fpu softvfp
+ 953              	traffic_processing:
+ 954              	.LFB77:
+ 188:./Core/Src/input_processing.c **** 
+ 189:./Core/Src/input_processing.c **** void traffic_processing() {
+ 955              		.loc 1 189 27
+ 956              		.cfi_startproc
+ 957              		@ args = 0, pretend = 0, frame = 0
+ 958              		@ frame_needed = 1, uses_anonymous_args = 0
+ 959 0000 80B5     		push	{r7, lr}
+ 960              		.cfi_def_cfa_offset 8
+ 961              		.cfi_offset 7, -8
+ 962              		.cfi_offset 14, -4
+ 963 0002 00AF     		add	r7, sp, #0
+ 964              		.cfi_def_cfa_register 7
+ 190:./Core/Src/input_processing.c **** 	switch (status) {
+ 965              		.loc 1 190 2
+ 966 0004 184B     		ldr	r3, .L84
+ 967 0006 1B68     		ldr	r3, [r3]
+ 968 0008 022B     		cmp	r3, #2
+ 969 000a 27D0     		beq	.L78
+ 970 000c 022B     		cmp	r3, #2
+ 971 000e 28DC     		bgt	.L83
+ 972 0010 002B     		cmp	r3, #0
+ 973 0012 02D0     		beq	.L80
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s 			page 22
+
+
+ 974 0014 012B     		cmp	r3, #1
+ 975 0016 1ED0     		beq	.L81
+ 191:./Core/Src/input_processing.c **** 	case 0: //INIT
+ 192:./Core/Src/input_processing.c **** 		CURRENT_STATE[VER_LED] = RED_STATUS;
+ 193:./Core/Src/input_processing.c **** 		CURRENT_STATE[HOR_LED] = GREEN_STATUS;
+ 194:./Core/Src/input_processing.c **** 		SEG7_CLOCK[VER_LED] = LED_TIME[CURRENT_STATE[VER_LED]];
+ 195:./Core/Src/input_processing.c **** 		SEG7_CLOCK[HOR_LED] = LED_TIME[CURRENT_STATE[HOR_LED]];
+ 196:./Core/Src/input_processing.c **** 		updateDisplay();
+ 197:./Core/Src/input_processing.c **** 		vertical_processing();
+ 198:./Core/Src/input_processing.c **** 		horizontal_processing();
+ 199:./Core/Src/input_processing.c **** 		status = 1;
+ 200:./Core/Src/input_processing.c **** 		break;
+ 201:./Core/Src/input_processing.c **** 	case 1: // Normal state
+ 202:./Core/Src/input_processing.c **** 		update_clock();
+ 203:./Core/Src/input_processing.c **** 		break;
+ 204:./Core/Src/input_processing.c **** 	case 2: // Modify state
+ 205:./Core/Src/input_processing.c **** 		state_handle();
+ 206:./Core/Src/input_processing.c **** 		break;
+ 207:./Core/Src/input_processing.c **** 	default:
+ 208:./Core/Src/input_processing.c **** 		break;
+ 976              		.loc 1 208 3
+ 977 0018 23E0     		b	.L83
+ 978              	.L80:
+ 192:./Core/Src/input_processing.c **** 		CURRENT_STATE[HOR_LED] = GREEN_STATUS;
+ 979              		.loc 1 192 26
+ 980 001a 144B     		ldr	r3, .L84+4
+ 981 001c 0022     		movs	r2, #0
+ 982 001e 1A60     		str	r2, [r3]
+ 193:./Core/Src/input_processing.c **** 		SEG7_CLOCK[VER_LED] = LED_TIME[CURRENT_STATE[VER_LED]];
+ 983              		.loc 1 193 26
+ 984 0020 124B     		ldr	r3, .L84+4
+ 985 0022 0222     		movs	r2, #2
+ 986 0024 5A60     		str	r2, [r3, #4]
+ 194:./Core/Src/input_processing.c **** 		SEG7_CLOCK[HOR_LED] = LED_TIME[CURRENT_STATE[HOR_LED]];
+ 987              		.loc 1 194 47
+ 988 0026 114B     		ldr	r3, .L84+4
+ 989 0028 1B68     		ldr	r3, [r3]
+ 194:./Core/Src/input_processing.c **** 		SEG7_CLOCK[HOR_LED] = LED_TIME[CURRENT_STATE[HOR_LED]];
+ 990              		.loc 1 194 33
+ 991 002a 114A     		ldr	r2, .L84+8
+ 992 002c 52F82330 		ldr	r3, [r2, r3, lsl #2]
+ 194:./Core/Src/input_processing.c **** 		SEG7_CLOCK[HOR_LED] = LED_TIME[CURRENT_STATE[HOR_LED]];
+ 993              		.loc 1 194 23
+ 994 0030 104A     		ldr	r2, .L84+12
+ 995 0032 1360     		str	r3, [r2]
+ 195:./Core/Src/input_processing.c **** 		updateDisplay();
+ 996              		.loc 1 195 47
+ 997 0034 0D4B     		ldr	r3, .L84+4
+ 998 0036 5B68     		ldr	r3, [r3, #4]
+ 195:./Core/Src/input_processing.c **** 		updateDisplay();
+ 999              		.loc 1 195 33
+ 1000 0038 0D4A     		ldr	r2, .L84+8
+ 1001 003a 52F82330 		ldr	r3, [r2, r3, lsl #2]
+ 195:./Core/Src/input_processing.c **** 		updateDisplay();
+ 1002              		.loc 1 195 23
+ 1003 003e 0D4A     		ldr	r2, .L84+12
+ 1004 0040 5360     		str	r3, [r2, #4]
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s 			page 23
+
+
+ 196:./Core/Src/input_processing.c **** 		vertical_processing();
+ 1005              		.loc 1 196 3
+ 1006 0042 FFF7FEFF 		bl	updateDisplay
+ 197:./Core/Src/input_processing.c **** 		horizontal_processing();
+ 1007              		.loc 1 197 3
+ 1008 0046 FFF7FEFF 		bl	vertical_processing
+ 198:./Core/Src/input_processing.c **** 		status = 1;
+ 1009              		.loc 1 198 3
+ 1010 004a FFF7FEFF 		bl	horizontal_processing
+ 199:./Core/Src/input_processing.c **** 		break;
+ 1011              		.loc 1 199 10
+ 1012 004e 064B     		ldr	r3, .L84
+ 1013 0050 0122     		movs	r2, #1
+ 1014 0052 1A60     		str	r2, [r3]
+ 200:./Core/Src/input_processing.c **** 	case 1: // Normal state
+ 1015              		.loc 1 200 3
+ 1016 0054 06E0     		b	.L82
+ 1017              	.L81:
+ 202:./Core/Src/input_processing.c **** 		break;
+ 1018              		.loc 1 202 3
+ 1019 0056 FFF7FEFF 		bl	update_clock
+ 203:./Core/Src/input_processing.c **** 	case 2: // Modify state
+ 1020              		.loc 1 203 3
+ 1021 005a 03E0     		b	.L82
+ 1022              	.L78:
+ 205:./Core/Src/input_processing.c **** 		break;
+ 1023              		.loc 1 205 3
+ 1024 005c FFF7FEFF 		bl	state_handle
+ 206:./Core/Src/input_processing.c **** 	default:
+ 1025              		.loc 1 206 3
+ 1026 0060 00E0     		b	.L82
+ 1027              	.L83:
+ 1028              		.loc 1 208 3
+ 1029 0062 00BF     		nop
+ 1030              	.L82:
+ 209:./Core/Src/input_processing.c **** 	}
+ 210:./Core/Src/input_processing.c **** }
+ 1031              		.loc 1 210 1
+ 1032 0064 00BF     		nop
+ 1033 0066 80BD     		pop	{r7, pc}
+ 1034              	.L85:
+ 1035              		.align	2
+ 1036              	.L84:
+ 1037 0068 00000000 		.word	status
+ 1038 006c 00000000 		.word	CURRENT_STATE
+ 1039 0070 00000000 		.word	LED_TIME
+ 1040 0074 00000000 		.word	SEG7_CLOCK
+ 1041              		.cfi_endproc
+ 1042              	.LFE77:
+ 1044              		.section	.text.input_processing,"ax",%progbits
+ 1045              		.align	1
+ 1046              		.global	input_processing
+ 1047              		.syntax unified
+ 1048              		.thumb
+ 1049              		.thumb_func
+ 1050              		.fpu softvfp
+ 1052              	input_processing:
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s 			page 24
+
+
+ 1053              	.LFB78:
+ 211:./Core/Src/input_processing.c **** 
+ 212:./Core/Src/input_processing.c **** void input_processing() {
+ 1054              		.loc 1 212 25
+ 1055              		.cfi_startproc
+ 1056              		@ args = 0, pretend = 0, frame = 0
+ 1057              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1058 0000 80B5     		push	{r7, lr}
+ 1059              		.cfi_def_cfa_offset 8
+ 1060              		.cfi_offset 7, -8
+ 1061              		.cfi_offset 14, -4
+ 1062 0002 00AF     		add	r7, sp, #0
+ 1063              		.cfi_def_cfa_register 7
+ 213:./Core/Src/input_processing.c **** 	// Switch button
+ 214:./Core/Src/input_processing.c **** 	if (is_button_pressed(0)) {
+ 1064              		.loc 1 214 6
+ 1065 0004 0020     		movs	r0, #0
+ 1066 0006 FFF7FEFF 		bl	is_button_pressed
+ 1067 000a 0346     		mov	r3, r0
+ 1068              		.loc 1 214 5
+ 1069 000c 002B     		cmp	r3, #0
+ 1070 000e 19D0     		beq	.L87
+ 215:./Core/Src/input_processing.c **** 		clear_vertical();
+ 1071              		.loc 1 215 3
+ 1072 0010 FFF7FEFF 		bl	clear_vertical
+ 216:./Core/Src/input_processing.c **** 		clear_horizontal();
+ 1073              		.loc 1 216 3
+ 1074 0014 FFF7FEFF 		bl	clear_horizontal
+ 217:./Core/Src/input_processing.c **** 		status = 2;
+ 1075              		.loc 1 217 10
+ 1076 0018 264B     		ldr	r3, .L93
+ 1077 001a 0222     		movs	r2, #2
+ 1078 001c 1A60     		str	r2, [r3]
+ 218:./Core/Src/input_processing.c **** 		index_mode = (index_mode + 1);
+ 1079              		.loc 1 218 28
+ 1080 001e 264B     		ldr	r3, .L93+4
+ 1081 0020 1B68     		ldr	r3, [r3]
+ 1082 0022 0133     		adds	r3, r3, #1
+ 1083              		.loc 1 218 14
+ 1084 0024 244A     		ldr	r2, .L93+4
+ 1085 0026 1360     		str	r3, [r2]
+ 219:./Core/Src/input_processing.c **** 		TIMES_INC = 0;
+ 1086              		.loc 1 219 13
+ 1087 0028 244B     		ldr	r3, .L93+8
+ 1088 002a 0022     		movs	r2, #0
+ 1089 002c 1A60     		str	r2, [r3]
+ 220:./Core/Src/input_processing.c **** 		if (index_mode >= 3) {
+ 1090              		.loc 1 220 18
+ 1091 002e 224B     		ldr	r3, .L93+4
+ 1092 0030 1B68     		ldr	r3, [r3]
+ 1093              		.loc 1 220 6
+ 1094 0032 022B     		cmp	r3, #2
+ 1095 0034 06DD     		ble	.L87
+ 221:./Core/Src/input_processing.c **** 			status = 0;
+ 1096              		.loc 1 221 11
+ 1097 0036 1F4B     		ldr	r3, .L93
+ 1098 0038 0022     		movs	r2, #0
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s 			page 25
+
+
+ 1099 003a 1A60     		str	r2, [r3]
+ 222:./Core/Src/input_processing.c **** 			index_mode = -1;
+ 1100              		.loc 1 222 15
+ 1101 003c 1E4B     		ldr	r3, .L93+4
+ 1102 003e 4FF0FF32 		mov	r2, #-1
+ 1103 0042 1A60     		str	r2, [r3]
+ 1104              	.L87:
+ 223:./Core/Src/input_processing.c **** 		}
+ 224:./Core/Src/input_processing.c **** 	}
+ 225:./Core/Src/input_processing.c **** 
+ 226:./Core/Src/input_processing.c **** 	// Add button
+ 227:./Core/Src/input_processing.c **** 	if (is_button_pressed(1) && index_mode != -1) {
+ 1105              		.loc 1 227 6
+ 1106 0044 0120     		movs	r0, #1
+ 1107 0046 FFF7FEFF 		bl	is_button_pressed
+ 1108 004a 0346     		mov	r3, r0
+ 1109              		.loc 1 227 5
+ 1110 004c 002B     		cmp	r3, #0
+ 1111 004e 09D0     		beq	.L88
+ 1112              		.loc 1 227 41 discriminator 1
+ 1113 0050 194B     		ldr	r3, .L93+4
+ 1114 0052 1B68     		ldr	r3, [r3]
+ 1115              		.loc 1 227 27 discriminator 1
+ 1116 0054 B3F1FF3F 		cmp	r3, #-1
+ 1117 0058 04D0     		beq	.L88
+ 228:./Core/Src/input_processing.c **** 		TIMES_INC++;
+ 1118              		.loc 1 228 12
+ 1119 005a 184B     		ldr	r3, .L93+8
+ 1120 005c 1B68     		ldr	r3, [r3]
+ 1121 005e 0133     		adds	r3, r3, #1
+ 1122 0060 164A     		ldr	r2, .L93+8
+ 1123 0062 1360     		str	r3, [r2]
+ 1124              	.L88:
+ 229:./Core/Src/input_processing.c **** 	}
+ 230:./Core/Src/input_processing.c **** 
+ 231:./Core/Src/input_processing.c **** 	// Confirm button
+ 232:./Core/Src/input_processing.c **** 	if (is_button_pressed(2) && index_mode != -1) {
+ 1125              		.loc 1 232 6
+ 1126 0064 0220     		movs	r0, #2
+ 1127 0066 FFF7FEFF 		bl	is_button_pressed
+ 1128 006a 0346     		mov	r3, r0
+ 1129              		.loc 1 232 5
+ 1130 006c 002B     		cmp	r3, #0
+ 1131 006e 16D0     		beq	.L89
+ 1132              		.loc 1 232 41 discriminator 1
+ 1133 0070 114B     		ldr	r3, .L93+4
+ 1134 0072 1B68     		ldr	r3, [r3]
+ 1135              		.loc 1 232 27 discriminator 1
+ 1136 0074 B3F1FF3F 		cmp	r3, #-1
+ 1137 0078 11D0     		beq	.L89
+ 233:./Core/Src/input_processing.c **** 		if (TIMES_INC != 0) {
+ 1138              		.loc 1 233 17
+ 1139 007a 104B     		ldr	r3, .L93+8
+ 1140 007c 1B68     		ldr	r3, [r3]
+ 1141              		.loc 1 233 6
+ 1142 007e 002B     		cmp	r3, #0
+ 1143 0080 04D0     		beq	.L90
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s 			page 26
+
+
+ 234:./Core/Src/input_processing.c **** 			confirm_action(index_mode);
+ 1144              		.loc 1 234 4
+ 1145 0082 0D4B     		ldr	r3, .L93+4
+ 1146 0084 1B68     		ldr	r3, [r3]
+ 1147 0086 1846     		mov	r0, r3
+ 1148 0088 FFF7FEFF 		bl	confirm_action
+ 1149              	.L90:
+ 235:./Core/Src/input_processing.c **** 		}
+ 236:./Core/Src/input_processing.c **** 		TIMES_INC = 0;
+ 1150              		.loc 1 236 13
+ 1151 008c 0B4B     		ldr	r3, .L93+8
+ 1152 008e 0022     		movs	r2, #0
+ 1153 0090 1A60     		str	r2, [r3]
+ 237:./Core/Src/input_processing.c **** 		index_mode = -1;
+ 1154              		.loc 1 237 14
+ 1155 0092 094B     		ldr	r3, .L93+4
+ 1156 0094 4FF0FF32 		mov	r2, #-1
+ 1157 0098 1A60     		str	r2, [r3]
+ 238:./Core/Src/input_processing.c **** 		restart();
+ 1158              		.loc 1 238 3
+ 1159 009a FFF7FEFF 		bl	restart
+ 1160              	.L89:
+ 239:./Core/Src/input_processing.c **** 	}
+ 240:./Core/Src/input_processing.c **** 
+ 241:./Core/Src/input_processing.c **** 	// RESET when start
+ 242:./Core/Src/input_processing.c **** 	if (start == 0) {
+ 1161              		.loc 1 242 12
+ 1162 009e 084B     		ldr	r3, .L93+12
+ 1163 00a0 1B68     		ldr	r3, [r3]
+ 1164              		.loc 1 242 5
+ 1165 00a2 002B     		cmp	r3, #0
+ 1166 00a4 04D1     		bne	.L92
+ 243:./Core/Src/input_processing.c **** 		reset();
+ 1167              		.loc 1 243 3
+ 1168 00a6 FFF7FEFF 		bl	reset
+ 244:./Core/Src/input_processing.c **** 		start = 1;
+ 1169              		.loc 1 244 9
+ 1170 00aa 054B     		ldr	r3, .L93+12
+ 1171 00ac 0122     		movs	r2, #1
+ 1172 00ae 1A60     		str	r2, [r3]
+ 1173              	.L92:
+ 245:./Core/Src/input_processing.c **** 	}
+ 246:./Core/Src/input_processing.c **** }
+ 1174              		.loc 1 246 1
+ 1175 00b0 00BF     		nop
+ 1176 00b2 80BD     		pop	{r7, pc}
+ 1177              	.L94:
+ 1178              		.align	2
+ 1179              	.L93:
+ 1180 00b4 00000000 		.word	status
+ 1181 00b8 00000000 		.word	index_mode
+ 1182 00bc 00000000 		.word	TIMES_INC
+ 1183 00c0 00000000 		.word	start
+ 1184              		.cfi_endproc
+ 1185              	.LFE78:
+ 1187              		.section	.text.fsm_simple_button_run,"ax",%progbits
+ 1188              		.align	1
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s 			page 27
+
+
+ 1189              		.global	fsm_simple_button_run
+ 1190              		.syntax unified
+ 1191              		.thumb
+ 1192              		.thumb_func
+ 1193              		.fpu softvfp
+ 1195              	fsm_simple_button_run:
+ 1196              	.LFB79:
+ 247:./Core/Src/input_processing.c **** 
+ 248:./Core/Src/input_processing.c **** void fsm_simple_button_run() {
+ 1197              		.loc 1 248 30
+ 1198              		.cfi_startproc
+ 1199              		@ args = 0, pretend = 0, frame = 0
+ 1200              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1201 0000 80B5     		push	{r7, lr}
+ 1202              		.cfi_def_cfa_offset 8
+ 1203              		.cfi_offset 7, -8
+ 1204              		.cfi_offset 14, -4
+ 1205 0002 00AF     		add	r7, sp, #0
+ 1206              		.cfi_def_cfa_register 7
+ 249:./Core/Src/input_processing.c **** 	switch (buttonState) {
+ 1207              		.loc 1 249 2
+ 1208 0004 0D4B     		ldr	r3, .L101
+ 1209 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1210 0008 002B     		cmp	r3, #0
+ 1211 000a 02D0     		beq	.L96
+ 1212 000c 012B     		cmp	r3, #1
+ 1213 000e 0AD0     		beq	.L97
+ 250:./Core/Src/input_processing.c **** 	case BUTTON_RELEASED:
+ 251:./Core/Src/input_processing.c **** 		if (WhichButtonIsPressed()) {
+ 252:./Core/Src/input_processing.c **** 			buttonState = BUTTON_PRESSED;
+ 253:./Core/Src/input_processing.c **** 			input_processing();
+ 254:./Core/Src/input_processing.c **** 		}
+ 255:./Core/Src/input_processing.c **** 	case BUTTON_PRESSED:
+ 256:./Core/Src/input_processing.c **** 		if (!WhichButtonIsPressed()) {
+ 257:./Core/Src/input_processing.c **** 			buttonState = BUTTON_RELEASED;
+ 258:./Core/Src/input_processing.c **** 		}
+ 259:./Core/Src/input_processing.c **** 	default:
+ 260:./Core/Src/input_processing.c **** 		break;
+ 1214              		.loc 1 260 3
+ 1215 0010 11E0     		b	.L100
+ 1216              	.L96:
+ 251:./Core/Src/input_processing.c **** 			buttonState = BUTTON_PRESSED;
+ 1217              		.loc 1 251 7
+ 1218 0012 FFF7FEFF 		bl	WhichButtonIsPressed
+ 1219 0016 0346     		mov	r3, r0
+ 251:./Core/Src/input_processing.c **** 			buttonState = BUTTON_PRESSED;
+ 1220              		.loc 1 251 6
+ 1221 0018 002B     		cmp	r3, #0
+ 1222 001a 04D0     		beq	.L97
+ 252:./Core/Src/input_processing.c **** 			input_processing();
+ 1223              		.loc 1 252 16
+ 1224 001c 074B     		ldr	r3, .L101
+ 1225 001e 0122     		movs	r2, #1
+ 1226 0020 1A70     		strb	r2, [r3]
+ 253:./Core/Src/input_processing.c **** 		}
+ 1227              		.loc 1 253 4
+ 1228 0022 FFF7FEFF 		bl	input_processing
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s 			page 28
+
+
+ 1229              	.L97:
+ 256:./Core/Src/input_processing.c **** 			buttonState = BUTTON_RELEASED;
+ 1230              		.loc 1 256 8
+ 1231 0026 FFF7FEFF 		bl	WhichButtonIsPressed
+ 1232 002a 0346     		mov	r3, r0
+ 256:./Core/Src/input_processing.c **** 			buttonState = BUTTON_RELEASED;
+ 1233              		.loc 1 256 6
+ 1234 002c 002B     		cmp	r3, #0
+ 1235 002e 02D1     		bne	.L100
+ 257:./Core/Src/input_processing.c **** 		}
+ 1236              		.loc 1 257 16
+ 1237 0030 024B     		ldr	r3, .L101
+ 1238 0032 0022     		movs	r2, #0
+ 1239 0034 1A70     		strb	r2, [r3]
+ 1240              	.L100:
+ 1241              		.loc 1 260 3
+ 1242 0036 00BF     		nop
+ 261:./Core/Src/input_processing.c **** 	}
+ 262:./Core/Src/input_processing.c **** }
+ 1243              		.loc 1 262 1
+ 1244 0038 00BF     		nop
+ 1245 003a 80BD     		pop	{r7, pc}
+ 1246              	.L102:
+ 1247              		.align	2
+ 1248              	.L101:
+ 1249 003c 00000000 		.word	buttonState
+ 1250              		.cfi_endproc
+ 1251              	.LFE79:
+ 1253              		.text
+ 1254              	.Letext0:
+ 1255              		.file 2 "c:\\st\\stm32cubeide_1.7.0\\stm32cubeide\\plugins\\com.st.stm32cube.ide.mcu.externaltools
+ 1256              		.file 3 "c:\\st\\stm32cubeide_1.7.0\\stm32cubeide\\plugins\\com.st.stm32cube.ide.mcu.externaltools
+ 1257              		.file 4 "Drivers/CMSIS/Include/core_cm3.h"
+ 1258              		.file 5 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h"
+ 1259              		.file 6 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
+ 1260              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
+ 1261              		.file 8 "Core/Inc/global.h"
+ 1262              		.file 9 "Core/Inc/software_timer.h"
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s 			page 29
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 input_processing.c
+C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s:19     .bss.buttonState:0000000000000000 buttonState
+C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s:20     .bss.buttonState:0000000000000000 $d
+C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s:22     .text.WhichButtonIsPressed:0000000000000000 $t
+C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s:30     .text.WhichButtonIsPressed:0000000000000000 WhichButtonIsPressed
+C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s:86     .text.clear_vertical:0000000000000000 $t
+C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s:93     .text.clear_vertical:0000000000000000 clear_vertical
+C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s:115    .text.clear_horizontal:0000000000000000 $t
+C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s:122    .text.clear_horizontal:0000000000000000 clear_horizontal
+C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s:144    .text.vertical_processing:0000000000000000 $t
+C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s:151    .text.vertical_processing:0000000000000000 vertical_processing
+C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s:210    .text.vertical_processing:0000000000000044 $d
+C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s:215    .text.horizontal_processing:0000000000000000 $t
+C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s:222    .text.horizontal_processing:0000000000000000 horizontal_processing
+C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s:281    .text.horizontal_processing:0000000000000044 $d
+C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s:286    .text.state_update:0000000000000000 $t
+C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s:293    .text.state_update:0000000000000000 state_update
+C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s:401    .text.state_update:0000000000000094 $d
+C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s:409    .text.check_state:0000000000000000 $t
+C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s:416    .text.check_state:0000000000000000 check_state
+C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s:458    .text.check_state:000000000000002c $d
+C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s:463    .text.update_clock:0000000000000000 $t
+C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s:470    .text.update_clock:0000000000000000 update_clock
+C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s:518    .text.update_clock:0000000000000038 $d
+C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s:524    .text.reset:0000000000000000 $t
+C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s:531    .text.reset:0000000000000000 reset
+C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s:593    .text.reset:000000000000004c $d
+C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s:600    .text.restart:0000000000000000 $t
+C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s:607    .text.restart:0000000000000000 restart
+C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s:635    .text.restart:0000000000000014 $d
+C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s:640    .text.confirm_action:0000000000000000 $t
+C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s:647    .text.confirm_action:0000000000000000 confirm_action
+C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s:669    .text.confirm_action:0000000000000014 $d
+C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s:673    .text.confirm_action:0000000000000024 $t
+C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s:739    .text.confirm_action:0000000000000078 $d
+C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s:745    .text.state_handle:0000000000000000 $t
+C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s:752    .text.state_handle:0000000000000000 state_handle
+C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s:935    .text.state_handle:0000000000000128 $d
+C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s:946    .text.traffic_processing:0000000000000000 $t
+C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s:953    .text.traffic_processing:0000000000000000 traffic_processing
+C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s:1037   .text.traffic_processing:0000000000000068 $d
+C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s:1045   .text.input_processing:0000000000000000 $t
+C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s:1052   .text.input_processing:0000000000000000 input_processing
+C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s:1180   .text.input_processing:00000000000000b4 $d
+C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s:1188   .text.fsm_simple_button_run:0000000000000000 $t
+C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s:1195   .text.fsm_simple_button_run:0000000000000000 fsm_simple_button_run
+C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s:1249   .text.fsm_simple_button_run:000000000000003c $d
+                           .group:0000000000000000 wm4.0.e890922d021f7fff2fbf219cb2b38f03
+                           .group:0000000000000000 wm4.stm32f1xx_hal_conf.h.21.185fa7e4004c86f1f34627ab1091dd60
+                           .group:0000000000000000 wm4.stm32f1xx.h.39.208bb8a61c892b7c37d899c49a031330
+                           .group:0000000000000000 wm4.stm32f103xb.h.38.ec967d5ad9d3269cb0788eebda048e38
+                           .group:0000000000000000 wm4._newlib_version.h.4.1ef4e12f167f8b69d7c30054be56050d
+                           .group:0000000000000000 wm4.features.h.33.318b64d71e0957639cfb30f1db1f7ec8
+                           .group:0000000000000000 wm4._default_types.h.15.247e5cd201eca3442cbf5404108c4935
+                           .group:0000000000000000 wm4._intsup.h.10.48bafbb683905c4daa4565a85aeeb264
+                           .group:0000000000000000 wm4._stdint.h.10.c24fa3af3bc1706662bb5593a907e841
+ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccPsXNTX.s 			page 30
+
+
+                           .group:0000000000000000 wm4.stdint.h.23.d53047a68f4a85177f80b422d52785ed
+                           .group:0000000000000000 wm4.cmsis_version.h.32.4d5822004c01a829a975260e854b5f8e
+                           .group:0000000000000000 wm4.core_cm3.h.66.fc46cac19810db8f98d67da7ef88f42c
+                           .group:0000000000000000 wm4.cmsis_gcc.h.26.225e4f5469716fdeef823d1102f5b23e
+                           .group:0000000000000000 wm4.core_cm3.h.127.f4474120f1a7524deb56f9d74ff175da
+                           .group:0000000000000000 wm4.stm32f103xb.h.573.10249aa7473ca93be896fed94046a725
+                           .group:0000000000000000 wm4.stm32f1xx.h.162.96b09079a093c34dbd7f0b85cbd0ddee
+                           .group:0000000000000000 wm4.stm32_hal_legacy.h.23.91ba5b544a4c2be2620a1e7ff0049e10
+                           .group:0000000000000000 wm4.stddef.h.39.144cf5ddcd53cbfdac30259dc1a6c87f
+                           .group:0000000000000000 wm4.stm32f1xx_hal_def.h.57.18d01ce1aa74e9fb44dbf16f821a574a
+                           .group:0000000000000000 wm4.stm32f1xx_hal_rcc.h.95.21591bbc513aaa813c0b8640c3b32517
+                           .group:0000000000000000 wm4.stm32f1xx_hal_rcc_ex.h.22.8763f99bc1e3e2dcf0febe9161d81b37
+                           .group:0000000000000000 wm4.stm32f1xx_hal_rcc.h.1202.f8e5f9e0cf4eef7840facf5396029056
+                           .group:0000000000000000 wm4.stm32f1xx_hal_gpio.h.22.fa638d688dcc57ca806fe6a7831b0d04
+                           .group:0000000000000000 wm4.stm32f1xx_hal_gpio_ex.h.22.51a50ef3512cd78017ce666a32d364bf
+                           .group:0000000000000000 wm4.stm32f1xx_hal_gpio.h.263.f5ebf2f545ade59412ab9261c8e35dc4
+                           .group:0000000000000000 wm4.stm32f1xx_hal_exti.h.22.e26491d042c8079c3ca67eca341af862
+                           .group:0000000000000000 wm4.stm32f1xx_hal_dma.h.22.3c14338534886827bf3aeaa2a7f412a1
+                           .group:0000000000000000 wm4.stm32f1xx_hal_dma_ex.h.22.001ac4d7f81ccbdcae49bd65c13858c8
+                           .group:0000000000000000 wm4.stm32f1xx_hal_dma.h.409.cafcd2cfe701091535636be537c18293
+                           .group:0000000000000000 wm4.stm32f1xx_hal_cortex.h.22.b5f4174bb6a50d95405567b8f50e0900
+                           .group:0000000000000000 wm4.stm32f1xx_hal_flash.h.22.5cea9a7210e6315b41724b47b5fdf203
+                           .group:0000000000000000 wm4.stm32f1xx_hal_flash_ex.h.22.d4e19c21f2a86fa2f8ec2c2d5f1ab2af
+                           .group:0000000000000000 wm4.stm32f1xx_hal_pwr.h.22.3438c476faafc3240bf146f143df3fcd
+                           .group:0000000000000000 wm4.stm32f1xx_hal_tim.h.22.a16e206564e97dbace9faae59a0d6008
+                           .group:0000000000000000 wm4.stm32f1xx_hal_uart.h.22.5f7992e497faa36aa98f09f7214f4dbb
+                           .group:0000000000000000 wm4.stm32f1xx_hal.h.88.91065c0692bed6019c34f1e9c00589fd
+                           .group:0000000000000000 wm4.main.h.63.92fcc8d3cbb1d835d8ee363312eb2117
+                           .group:0000000000000000 wm4.global.h.9.07cc41e1ed932596c8485394ac422e11
+                           .group:0000000000000000 wm4.software_timer.h.9.85139a8d176fe1bcfcf1e8be0a353955
+                           .group:0000000000000000 wm4.traffic_light.h.14.ab1d9e8ae02845570467e9cf97ea0d9f
+
+UNDEFINED SYMBOLS
+is_button_pressed
+clear_led
+set_led_color
+CURRENT_STATE
+LED_TIME
+SEG7_CLOCK
+updateDisplay
+setTimer2
+timer2_flag
+status
+TIMES_INC
+HAL_GPIO_WritePin
+HAL_GPIO_TogglePin
+setTimer1
+index_mode
+timer1_flag
+start
