@@ -30,6 +30,7 @@
 #include "software_timer.h"
 #include "input_reading.h"
 #include "traffic_light.h"
+#include "displayUart.h"
 
 /* USER CODE END Includes */
 
@@ -124,6 +125,8 @@ int main(void)
 //  find_new_min_task();
   setTimer1(500);
   setTimer2(1000);
+  setTimer3(10);
+
   while (1)
   {
 
@@ -135,6 +138,10 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+	  if (timer3_flag == 1) {
+		updateDisplay();
+		setTimer3(200);
+	  }
 	  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
 	  fsm_simple_button_run();
 	  traffic_processing();

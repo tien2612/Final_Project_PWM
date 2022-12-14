@@ -67,10 +67,6 @@ void Error_Handler(void);
 #define B_Pedes_GPIO_Port GPIOA
 #define B_1_Pin GPIO_PIN_1
 #define B_1_GPIO_Port GPIOA
-#define USART_TX_Pin GPIO_PIN_2
-#define USART_TX_GPIO_Port GPIOA
-#define USART_RX_Pin GPIO_PIN_3
-#define USART_RX_GPIO_Port GPIOA
 #define B_2_Pin GPIO_PIN_4
 #define B_2_GPIO_Port GPIOA
 #define LD2_Pin GPIO_PIN_5
