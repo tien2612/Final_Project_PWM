@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 1
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\cckuiswV.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 1
   30:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c **** 
   31:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c **** #ifdef HAL_RCC_MODULE_ENABLED
   32:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c **** 
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 2
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\cckuiswV.s 			page 2
 
 
   33:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c **** /** @defgroup RCCEx RCCEx
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 1
   87:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   *         contains the configuration information for the Extended Peripherals clocks(RTC clock).
   88:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   *
   89:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   * @note   Care must be taken when HAL_RCCEx_PeriphCLKConfig() is used to select
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 3
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\cckuiswV.s 			page 3
 
 
   90:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   *         the RTC clock source; in this case the Backup domain will be reset in
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 1
   57 001e FB75     		strb	r3, [r7, #23]
  114:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c **** 
  115:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****     /* check for RTC Parameters used to output RTCCLK */
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 4
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\cckuiswV.s 			page 4
 
 
  116:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****     assert_param(IS_RCC_RTCCLKSOURCE(PeriphClkInit->RTCClockSelection));
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 1
  133:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****       tickstart = HAL_GetTick();
   95              		.loc 1 133 19
   96 0060 FFF7FEFF 		bl	HAL_GetTick
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 5
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\cckuiswV.s 			page 5
 
 
   97 0064 3861     		str	r0, [r7, #16]
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 1
  136 009a 03F44073 		and	r3, r3, #768
  137              		.loc 1 146 35 discriminator 1
  138 009e FA68     		ldr	r2, [r7, #12]
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 6
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\cckuiswV.s 			page 6
 
 
  139 00a0 9A42     		cmp	r2, r3
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 1
  174 00d6 0246     		mov	r2, r0
  175              		.loc 1 165 30
  176 00d8 3B69     		ldr	r3, [r7, #16]
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 7
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\cckuiswV.s 			page 7
 
 
  177 00da D31A     		subs	r3, r2, r3
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 1
  180:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c **** 
  181:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   /*------------------------------ ADC clock Configuration ------------------*/
  182:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   if (((PeriphClkInit->PeriphClockSelection) & RCC_PERIPHCLK_ADC) == RCC_PERIPHCLK_ADC)
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 8
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\cckuiswV.s 			page 8
 
 
  215              		.loc 1 182 22
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 1
  219:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c **** 
  220:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   /* Check if PLL I2S need to be enabled */
  221:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   if (pllactive == 1)
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 9
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\cckuiswV.s 			page 9
 
 
  222:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   {
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 1
  234 0136 7B68     		ldr	r3, [r7, #4]
  235 0138 1B68     		ldr	r3, [r3]
  236              		.loc 1 274 46
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 10
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\cckuiswV.s 			page 10
 
 
  237 013a 03F01003 		and	r3, r3, #16
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 1
  287:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c **** /**
  288:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   * @brief  Get the PeriphClkInit according to the internal
  289:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   * RCC configuration registers.
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 11
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\cckuiswV.s 			page 11
 
 
  290:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   * @param  PeriphClkInit pointer to an RCC_PeriphCLKInitTypeDef structure that
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 1
  308:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   PeriphClkInit->AdcClockSelection = __HAL_RCC_GET_ADC_SOURCE();
  317              		.loc 1 308 38
  318 002e 0B4B     		ldr	r3, .L16
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 12
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\cckuiswV.s 			page 12
 
 
  319 0030 5B68     		ldr	r3, [r3, #4]
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 1
  342              		.cfi_def_cfa_register 13
  343              		@ sp needed
  344 0058 80BC     		pop	{r7}
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 13
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\cckuiswV.s 			page 13
 
 
  345              		.cfi_restore 7
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 1
  368:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   @endif
  369:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   @if STM32F107xC
  370:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   *            @arg @ref RCC_PERIPHCLK_I2S2 I2S2 peripheral clock
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 14
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\cckuiswV.s 			page 14
 
 
  371:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   *            @arg @ref RCC_PERIPHCLK_I2S3 I2S3 peripheral clock
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 1
  393 001a 0023     		movs	r3, #0
  394 001c 7B62     		str	r3, [r7, #36]
  395              		.loc 1 401 26
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 15
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\cckuiswV.s 			page 15
 
 
  396 001e 0023     		movs	r3, #0
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 1
  432:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****           if (HAL_IS_BIT_SET(RCC->CFGR2, RCC_CFGR2_PREDIV1SRC))
  433:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****           {
  434:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****             /* PLL2 selected as Prediv1 source */
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 16
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\cckuiswV.s 			page 16
 
 
  435:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****             /* PLLCLK = PLL2CLK / PREDIV1 * PLLMUL with PLL2CLK = HSE/PREDIV2 * PLL2MUL */
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 1
  489:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****           frequency = (pllclk * 2) / 3;
  490:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****         }
  491:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c **** #endif
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 17
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\cckuiswV.s 			page 17
 
 
  492:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****       }
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 1
  546:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****     }
  547:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c **** #endif /* STM32F103xE || STM32F103xG || STM32F105xC || STM32F107xC */
  548:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****     case RCC_PERIPHCLK_RTC:
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 18
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\cckuiswV.s 			page 18
 
 
  549:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****     {
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 1
  436 005e FB69     		ldr	r3, [r7, #28]
  437 0060 9B0C     		lsrs	r3, r3, #18
  438 0062 03F00F03 		and	r3, r3, #15
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 19
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\cckuiswV.s 			page 19
 
 
  421:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****         if ((temp_reg & RCC_CFGR_PLLSRC) != RCC_PLLSOURCE_HSI_DIV2)
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 1
  480 00ae 3B6A     		ldr	r3, [r7, #32]
  481 00b0 334A     		ldr	r2, .L35+12
  482 00b2 02FB03F3 		mul	r3, r2, r3
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 20
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\cckuiswV.s 			page 20
 
 
  483 00b6 FB62     		str	r3, [r7, #44]
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 1
  524 00f4 002B     		cmp	r3, #0
  525 00f6 03D0     		beq	.L28
  556:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****       }
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 21
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\cckuiswV.s 			page 21
 
 
  526              		.loc 1 556 19
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 1
  569              	.L22:
  576:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****       break;
  570              		.loc 1 576 19
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 22
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\cckuiswV.s 			page 22
 
 
  571 0142 FFF7FEFF 		bl	HAL_RCC_GetPCLK2Freq
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 1
  613 0174 00000000 		.word	.LC0
  614 0178 00100240 		.word	1073876992
  615 017c 00127A00 		.word	8000000
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 23
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\cckuiswV.s 			page 23
 
 
  616 0180 00093D00 		.word	4000000
@@ -1336,21 +1336,21 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 1
  629              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
  630              		.file 9 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h"
  631              		.file 10 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s 			page 24
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\cckuiswV.s 			page 24
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 stm32f1xx_hal_rcc_ex.c
-C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s:16     .text.HAL_RCCEx_PeriphCLKConfig:0000000000000000 $t
-C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s:24     .text.HAL_RCCEx_PeriphCLKConfig:0000000000000000 HAL_RCCEx_PeriphCLKConfig
-C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s:265    .text.HAL_RCCEx_PeriphCLKConfig:0000000000000160 $d
-C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s:272    .text.HAL_RCCEx_GetPeriphCLKConfig:0000000000000000 $t
-C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s:279    .text.HAL_RCCEx_GetPeriphCLKConfig:0000000000000000 HAL_RCCEx_GetPeriphCLKConfig
-C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s:351    .text.HAL_RCCEx_GetPeriphCLKConfig:000000000000005c $d
-C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s:356    .rodata:0000000000000000 $d
-C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s:361    .text.HAL_RCCEx_GetPeriphCLKFreq:0000000000000000 $t
-C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s:368    .text.HAL_RCCEx_GetPeriphCLKFreq:0000000000000000 HAL_RCCEx_GetPeriphCLKFreq
-C:\Users\nguye\AppData\Local\Temp\ccEe4eS3.s:613    .text.HAL_RCCEx_GetPeriphCLKFreq:0000000000000174 $d
+C:\Users\xanlo\AppData\Local\Temp\cckuiswV.s:16     .text.HAL_RCCEx_PeriphCLKConfig:0000000000000000 $t
+C:\Users\xanlo\AppData\Local\Temp\cckuiswV.s:24     .text.HAL_RCCEx_PeriphCLKConfig:0000000000000000 HAL_RCCEx_PeriphCLKConfig
+C:\Users\xanlo\AppData\Local\Temp\cckuiswV.s:265    .text.HAL_RCCEx_PeriphCLKConfig:0000000000000160 $d
+C:\Users\xanlo\AppData\Local\Temp\cckuiswV.s:272    .text.HAL_RCCEx_GetPeriphCLKConfig:0000000000000000 $t
+C:\Users\xanlo\AppData\Local\Temp\cckuiswV.s:279    .text.HAL_RCCEx_GetPeriphCLKConfig:0000000000000000 HAL_RCCEx_GetPeriphCLKConfig
+C:\Users\xanlo\AppData\Local\Temp\cckuiswV.s:351    .text.HAL_RCCEx_GetPeriphCLKConfig:000000000000005c $d
+C:\Users\xanlo\AppData\Local\Temp\cckuiswV.s:356    .rodata:0000000000000000 $d
+C:\Users\xanlo\AppData\Local\Temp\cckuiswV.s:361    .text.HAL_RCCEx_GetPeriphCLKFreq:0000000000000000 $t
+C:\Users\xanlo\AppData\Local\Temp\cckuiswV.s:368    .text.HAL_RCCEx_GetPeriphCLKFreq:0000000000000000 HAL_RCCEx_GetPeriphCLKFreq
+C:\Users\xanlo\AppData\Local\Temp\cckuiswV.s:613    .text.HAL_RCCEx_GetPeriphCLKFreq:0000000000000174 $d
                            .group:0000000000000000 wm4.0.e890922d021f7fff2fbf219cb2b38f03
                            .group:0000000000000000 wm4.stm32f1xx_hal_conf.h.21.185fa7e4004c86f1f34627ab1091dd60
                            .group:0000000000000000 wm4.stm32f1xx.h.39.208bb8a61c892b7c37d899c49a031330

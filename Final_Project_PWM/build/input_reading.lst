@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s 			page 1
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccxpDwM3.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s 			page 1
   69              		.section	.text.button_reading,"ax",%progbits
   70              		.align	1
   71              		.global	button_reading
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s 			page 2
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccxpDwM3.s 			page 2
 
 
   72              		.arch armv7-m
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s 			page 1
   47:./Core/Src/input_reading.c **** 
   48:./Core/Src/input_reading.c **** void button_reading(void) {
   81              		.loc 1 48 27
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s 			page 3
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccxpDwM3.s 			page 3
 
 
   82              		.cfi_startproc
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s 			page 1
  131 0046 7B68     		ldr	r3, [r7, #4]
  132 0048 1344     		add	r3, r3, r2
  133 004a 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s 			page 4
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccxpDwM3.s 			page 4
 
 
  134              		.loc 1 53 56
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s 			page 1
  181 0098 7B68     		ldr	r3, [r7, #4]
  182 009a 22F81310 		strh	r1, [r2, r3, lsl #1]	@ movhi
  183 009e 09E0     		b	.L6
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s 			page 5
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccxpDwM3.s 			page 5
 
 
  184              	.L5:
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s 			page 1
  223              		.loc 1 75 32
  224 00e2 184A     		ldr	r2, .L9+32
  225 00e4 7B68     		ldr	r3, [r7, #4]
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s 			page 6
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccxpDwM3.s 			page 6
 
 
  226 00e6 0021     		movs	r1, #0
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s 			page 1
  271 0134 00000000 		.word	buttonBuffer
  272 0138 00000000 		.word	counterForButtonPressOneQuarterSecond
  273 013c 00000000 		.word	AllowToExecuteAfterASecondPressed
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s 			page 7
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccxpDwM3.s 			page 7
 
 
  274 0140 00000000 		.word	flagForButtonPressOneQuarterSecond
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s 			page 1
  325 0026 0C37     		adds	r7, r7, #12
  326              		.cfi_def_cfa_offset 4
  327 0028 BD46     		mov	sp, r7
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s 			page 8
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccxpDwM3.s 			page 8
 
 
  328              		.cfi_def_cfa_register 13
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s 			page 1
  379 001c 0CBF     		ite	eq
  380 001e 0123     		moveq	r3, #1
  381 0020 0023     		movne	r3, #0
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s 			page 9
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccxpDwM3.s 			page 9
 
 
  382 0022 DBB2     		uxtb	r3, r3
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s 			page 1
   97:./Core/Src/input_reading.c **** 	return (flagForButtonPressOneQuarterSecond[index] == 1) ;
  434              		.loc 1 97 44
  435 0014 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s 			page 10
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccxpDwM3.s 			page 10
 
 
  436 0016 064A     		ldr	r2, .L24
@@ -578,39 +578,39 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s 			page 1
  470              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
  471              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
  472              		.file 9 "Core/Inc/global.h"
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s 			page 11
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccxpDwM3.s 			page 11
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 input_reading.c
-C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s:16     .data.buttonPort:0000000000000000 $d
-C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s:19     .data.buttonPort:0000000000000000 buttonPort
-C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s:25     .data.buttonPin:0000000000000000 $d
-C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s:28     .data.buttonPin:0000000000000000 buttonPin
-C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s:34     .bss.buttonBuffer:0000000000000000 $d
-C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s:37     .bss.buttonBuffer:0000000000000000 buttonBuffer
-C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s:40     .bss.debounceButtonBuffer1:0000000000000000 $d
-C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s:43     .bss.debounceButtonBuffer1:0000000000000000 debounceButtonBuffer1
-C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s:46     .bss.debounceButtonBuffer2:0000000000000000 $d
-C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s:49     .bss.debounceButtonBuffer2:0000000000000000 debounceButtonBuffer2
-C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s:52     .bss.flagForButtonPress1s:0000000000000000 $d
-C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s:55     .bss.flagForButtonPress1s:0000000000000000 flagForButtonPress1s
-C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s:58     .bss.counterForButtonPress1s:0000000000000000 $d
-C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s:61     .bss.counterForButtonPress1s:0000000000000000 counterForButtonPress1s
-C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s:64     .bss.counterForButtonPressOneQuarterSecond:0000000000000000 $d
-C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s:67     .bss.counterForButtonPressOneQuarterSecond:0000000000000000 counterForButtonPressOneQuarterSecond
-C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s:70     .text.button_reading:0000000000000000 $t
-C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s:78     .text.button_reading:0000000000000000 button_reading
-C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s:267    .text.button_reading:0000000000000124 $d
-C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s:281    .text.is_button_pressed:0000000000000000 $t
-C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s:288    .text.is_button_pressed:0000000000000000 is_button_pressed
-C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s:337    .text.is_button_pressed:0000000000000030 $d
-C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s:342    .text.is_button_pressed_1s:0000000000000000 $t
-C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s:349    .text.is_button_pressed_1s:0000000000000000 is_button_pressed_1s
-C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s:398    .text.is_button_pressed_1s:0000000000000030 $d
-C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s:403    .text.is_button_pressed_one_quarter_second:0000000000000000 $t
-C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s:410    .text.is_button_pressed_one_quarter_second:0000000000000000 is_button_pressed_one_quarter_second
-C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s:459    .text.is_button_pressed_one_quarter_second:0000000000000030 $d
+C:\Users\xanlo\AppData\Local\Temp\ccxpDwM3.s:16     .data.buttonPort:0000000000000000 $d
+C:\Users\xanlo\AppData\Local\Temp\ccxpDwM3.s:19     .data.buttonPort:0000000000000000 buttonPort
+C:\Users\xanlo\AppData\Local\Temp\ccxpDwM3.s:25     .data.buttonPin:0000000000000000 $d
+C:\Users\xanlo\AppData\Local\Temp\ccxpDwM3.s:28     .data.buttonPin:0000000000000000 buttonPin
+C:\Users\xanlo\AppData\Local\Temp\ccxpDwM3.s:34     .bss.buttonBuffer:0000000000000000 $d
+C:\Users\xanlo\AppData\Local\Temp\ccxpDwM3.s:37     .bss.buttonBuffer:0000000000000000 buttonBuffer
+C:\Users\xanlo\AppData\Local\Temp\ccxpDwM3.s:40     .bss.debounceButtonBuffer1:0000000000000000 $d
+C:\Users\xanlo\AppData\Local\Temp\ccxpDwM3.s:43     .bss.debounceButtonBuffer1:0000000000000000 debounceButtonBuffer1
+C:\Users\xanlo\AppData\Local\Temp\ccxpDwM3.s:46     .bss.debounceButtonBuffer2:0000000000000000 $d
+C:\Users\xanlo\AppData\Local\Temp\ccxpDwM3.s:49     .bss.debounceButtonBuffer2:0000000000000000 debounceButtonBuffer2
+C:\Users\xanlo\AppData\Local\Temp\ccxpDwM3.s:52     .bss.flagForButtonPress1s:0000000000000000 $d
+C:\Users\xanlo\AppData\Local\Temp\ccxpDwM3.s:55     .bss.flagForButtonPress1s:0000000000000000 flagForButtonPress1s
+C:\Users\xanlo\AppData\Local\Temp\ccxpDwM3.s:58     .bss.counterForButtonPress1s:0000000000000000 $d
+C:\Users\xanlo\AppData\Local\Temp\ccxpDwM3.s:61     .bss.counterForButtonPress1s:0000000000000000 counterForButtonPress1s
+C:\Users\xanlo\AppData\Local\Temp\ccxpDwM3.s:64     .bss.counterForButtonPressOneQuarterSecond:0000000000000000 $d
+C:\Users\xanlo\AppData\Local\Temp\ccxpDwM3.s:67     .bss.counterForButtonPressOneQuarterSecond:0000000000000000 counterForButtonPressOneQuarterSecond
+C:\Users\xanlo\AppData\Local\Temp\ccxpDwM3.s:70     .text.button_reading:0000000000000000 $t
+C:\Users\xanlo\AppData\Local\Temp\ccxpDwM3.s:78     .text.button_reading:0000000000000000 button_reading
+C:\Users\xanlo\AppData\Local\Temp\ccxpDwM3.s:267    .text.button_reading:0000000000000124 $d
+C:\Users\xanlo\AppData\Local\Temp\ccxpDwM3.s:281    .text.is_button_pressed:0000000000000000 $t
+C:\Users\xanlo\AppData\Local\Temp\ccxpDwM3.s:288    .text.is_button_pressed:0000000000000000 is_button_pressed
+C:\Users\xanlo\AppData\Local\Temp\ccxpDwM3.s:337    .text.is_button_pressed:0000000000000030 $d
+C:\Users\xanlo\AppData\Local\Temp\ccxpDwM3.s:342    .text.is_button_pressed_1s:0000000000000000 $t
+C:\Users\xanlo\AppData\Local\Temp\ccxpDwM3.s:349    .text.is_button_pressed_1s:0000000000000000 is_button_pressed_1s
+C:\Users\xanlo\AppData\Local\Temp\ccxpDwM3.s:398    .text.is_button_pressed_1s:0000000000000030 $d
+C:\Users\xanlo\AppData\Local\Temp\ccxpDwM3.s:403    .text.is_button_pressed_one_quarter_second:0000000000000000 $t
+C:\Users\xanlo\AppData\Local\Temp\ccxpDwM3.s:410    .text.is_button_pressed_one_quarter_second:0000000000000000 is_button_pressed_one_quarter_second
+C:\Users\xanlo\AppData\Local\Temp\ccxpDwM3.s:459    .text.is_button_pressed_one_quarter_second:0000000000000030 $d
                            .group:0000000000000000 wm4.0.e890922d021f7fff2fbf219cb2b38f03
                            .group:0000000000000000 wm4.stm32f1xx_hal_conf.h.21.185fa7e4004c86f1f34627ab1091dd60
                            .group:0000000000000000 wm4.stm32f1xx.h.39.208bb8a61c892b7c37d899c49a031330
@@ -638,7 +638,7 @@ C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s:459    .text.is_button_pressed_one_
                            .group:0000000000000000 wm4.stm32f1xx_hal_gpio.h.263.f5ebf2f545ade59412ab9261c8e35dc4
                            .group:0000000000000000 wm4.stm32f1xx_hal_exti.h.22.e26491d042c8079c3ca67eca341af862
                            .group:0000000000000000 wm4.stm32f1xx_hal_dma.h.22.3c14338534886827bf3aeaa2a7f412a1
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s 			page 12
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccxpDwM3.s 			page 12
 
 
                            .group:0000000000000000 wm4.stm32f1xx_hal_dma_ex.h.22.001ac4d7f81ccbdcae49bd65c13858c8
@@ -650,7 +650,7 @@ C:\Users\nguye\AppData\Local\Temp\ccu9wudp.s:459    .text.is_button_pressed_one_
                            .group:0000000000000000 wm4.stm32f1xx_hal_tim.h.22.a16e206564e97dbace9faae59a0d6008
                            .group:0000000000000000 wm4.stm32f1xx_hal_uart.h.22.5f7992e497faa36aa98f09f7214f4dbb
                            .group:0000000000000000 wm4.stm32f1xx_hal.h.88.91065c0692bed6019c34f1e9c00589fd
-                           .group:0000000000000000 wm4.main.h.63.92fcc8d3cbb1d835d8ee363312eb2117
+                           .group:0000000000000000 wm4.main.h.63.d4f8a4d7b478ddd0ed8a349f4df0d070
                            .group:0000000000000000 wm4.global.h.9.07cc41e1ed932596c8485394ac422e11
 
 UNDEFINED SYMBOLS

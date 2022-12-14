@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
   30:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****       (+) Configure the clock source(s) for peripherals whose clocks are not
   31:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****           derived from the System clock (I2S, RTC, ADC, USB OTG FS)
   32:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c **** 
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 2
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 2
 
 
   33:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****                       ##### RCC Limitations #####
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
   87:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****   */
   88:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c **** 
   89:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c **** #define MCO1_CLK_ENABLE()     __HAL_RCC_GPIOA_CLK_ENABLE()
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 3
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 3
 
 
   90:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c **** #define MCO1_GPIO_PORT        GPIOA
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  144:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****           is generated if enabled. The interrupt is linked to the Cortex-M3 NMI
  145:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****           (Non-Maskable Interrupt) exception vector.
  146:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c **** 
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 4
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 4
 
 
  147:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****       (#) MCO1 (microcontroller clock output), used to output SYSCLK, HSI,
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  201:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****   */
  202:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c **** HAL_StatusTypeDef HAL_RCC_DeInit(void)
  203:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c **** {
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 5
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 5
 
 
   27              		.loc 1 203 1
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
   66 002e 1B68     		ldr	r3, [r3]
   67 0030 03F00203 		and	r3, r3, #2
  213:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****   {
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 6
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 6
 
 
   68              		.loc 1 213 9
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  103 006c 2D4B     		ldr	r3, .L12
  104 006e 5B68     		ldr	r3, [r3, #4]
  105 0070 03F00C03 		and	r3, r3, #12
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 7
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 7
 
 
  231:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****   {
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  257:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****     if ((HAL_GetTick() - tickstart) > PLL_TIMEOUT_VALUE)
  138              		.loc 1 257 10
  139 00a6 FFF7FEFF 		bl	HAL_GetTick
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 8
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 8
 
 
  140 00aa 0246     		mov	r2, r0
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  174              		.loc 1 275 10
  175 00de FFF7FEFF 		bl	HAL_GetTick
  176 00e2 0246     		mov	r2, r0
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 9
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 9
 
 
  177              		.loc 1 275 24
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  305:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****   /* Clear PLL3ON bit */
  306:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****   CLEAR_BIT(RCC->CR, RCC_CR_PLL3ON);
  307:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c **** 
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 10
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 10
 
 
  308:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****   /* Wait till PLL3 is disabled */
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  232              		.align	1
  233              		.global	HAL_RCC_OscConfig
  234              		.syntax unified
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 11
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 11
 
 
  235              		.thumb
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  359:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****   assert_param(IS_RCC_OSCILLATORTYPE(RCC_OscInitStruct->OscillatorType));
  360:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c **** 
  361:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****   /*------------------------------- HSE Configuration ------------------------*/
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 12
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 12
 
 
  362:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****   if (((RCC_OscInitStruct->OscillatorType) & RCC_OSCILLATORTYPE_HSE) == RCC_OSCILLATORTYPE_HSE)
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  373:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****         return HAL_ERROR;
  305              		.loc 1 373 16
  306 005a 0123     		movs	r3, #1
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 13
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 13
 
 
  307 005c 46E2     		b	.L16
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  355 00b8 1360     		str	r3, [r2]
  356 00ba 0BE0     		b	.L22
  357              	.L24:
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 14
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 14
 
 
  358              		.loc 1 379 7 discriminator 6
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  397 00f8 1B68     		ldr	r3, [r3]
  398 00fa 03F40033 		and	r3, r3, #131072
  389:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****         {
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 15
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 15
 
 
  399              		.loc 1 389 15
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  409:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****         }
  410:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****       }
  411:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****     }
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 16
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 16
 
 
  412:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****   }
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  475              		.loc 1 425 58 discriminator 1
  476 016e 012B     		cmp	r3, #1
  477 0170 01D0     		beq	.L33
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 17
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 17
 
 
  426:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****       {
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  508              		.loc 1 448 15
  509 01a0 08E0     		b	.L35
  510              	.L36:
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 18
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 18
 
 
  449:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****         {
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  465:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****         tickstart = HAL_GetTick();
  547              		.loc 1 465 21
  548 01dc FFF7FEFF 		bl	HAL_GetTick
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 19
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 19
 
 
  549 01e0 3861     		str	r0, [r7, #16]
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  485:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****     if (RCC_OscInitStruct->LSIState != RCC_LSI_OFF)
  582              		.loc 1 485 26
  583 020e 7B68     		ldr	r3, [r7, #4]
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 20
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 20
 
 
  584 0210 9B69     		ldr	r3, [r3, #24]
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  618              		.loc 1 503 7
  619 0242 0120     		movs	r0, #1
  620 0244 FFF7FEFF 		bl	RCC_Delay
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 21
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 21
 
 
  621 0248 1CE0     		b	.L39
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  658 0282 E9D1     		bne	.L44
  659              	.L39:
  519:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****         }
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 22
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 22
 
 
  520:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****       }
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  538:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c **** 
  539:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****     if (HAL_IS_BIT_CLR(PWR->CR, PWR_CR_DBP))
  696              		.loc 1 539 9
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 23
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 23
 
 
  697 02be 8E4B     		ldr	r3, .L75+4
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  553:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****       }
  554:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****     }
  555:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c **** 
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 24
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 24
 
 
  556:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****     /* Set the new LSE configuration -----------------------------------------*/
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  788 035a 664A     		ldr	r2, .L75
  789 035c 23F00103 		bic	r3, r3, #1
  790 0360 1362     		str	r3, [r2, #32]
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 25
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 25
 
 
  791 0362 644B     		ldr	r3, .L75
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  831              	.L54:
  570:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****         }
  571:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****       }
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 26
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 26
 
 
  572:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****     }
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  864              		.loc 1 591 7
  865 03d2 484B     		ldr	r3, .L75
  866 03d4 DB69     		ldr	r3, [r3, #28]
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 27
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 27
 
 
  867 03d6 474A     		ldr	r2, .L75
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  641:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****         __HAL_RCC_HSE_PREDIV2_CONFIG(RCC_OscInitStruct->PLL2.HSEPrediv2Value);
  642:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c **** 
  643:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****         /* Configure the main PLL2 multiplication factors. */
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 28
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 28
 
 
  644:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****         __HAL_RCC_PLL2_CONFIG(RCC_OscInitStruct->PLL2.PLL2MUL);
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  878              		.loc 1 691 9
  879 03e8 424B     		ldr	r3, .L75
  880 03ea 5B68     		ldr	r3, [r3, #4]
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 29
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 29
 
 
  881 03ec 03F00C03 		and	r3, r3, #12
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  915 041c 354B     		ldr	r3, .L75
  916 041e 1B68     		ldr	r3, [r3]
  917 0420 03F00073 		and	r3, r3, #33554432
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 30
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 30
 
 
  706:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****         {
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  733:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****                              RCC_OscInitStruct->PLL.PLLMUL);
  734:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****         /* Enable the main PLL. */
  735:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****         __HAL_RCC_PLL_ENABLE();
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 31
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 31
 
 
  949              		.loc 1 735 9
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  984 048e 1A60     		str	r2, [r3]
  753:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c **** 
  754:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****         /* Get Start Tick */
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 32
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 32
 
 
  755:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****         tickstart = HAL_GetTick();
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  1019              		.loc 1 772 16
  1020 04c0 0123     		movs	r3, #1
  1021 04c2 13E0     		b	.L16
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 33
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 33
 
 
  1022              	.L70:
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  1059              		.cfi_def_cfa_register 13
  1060              		@ sp needed
  1061 04f2 80BD     		pop	{r7, pc}
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 34
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 34
 
 
  1062              	.L76:
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  1092              		.cfi_def_cfa_register 7
  1093 0006 7860     		str	r0, [r7, #4]
  1094 0008 3960     		str	r1, [r7]
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 35
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 35
 
 
  815:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****   uint32_t tickstart;
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  1123              		.loc 1 840 8
  1124 003a 3A68     		ldr	r2, [r7]
  1125 003c 9A42     		cmp	r2, r3
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 36
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 36
 
 
  1126 003e 01D0     		beq	.L80
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  859:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****       MODIFY_REG(RCC->CFGR, RCC_CFGR_PPRE2, (RCC_HCLK_DIV16 << 3));
  1162              		.loc 1 859 7
  1163 0074 534B     		ldr	r3, .L93+4
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 37
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 37
 
 
  1164 0076 5B68     		ldr	r3, [r3, #4]
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  878:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****         return HAL_ERROR;
  1200              		.loc 1 878 16
  1201 00b2 0123     		movs	r3, #1
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 38
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 38
 
 
  1202 00b4 7FE0     		b	.L79
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  1235 00e2 23F00302 		bic	r2, r3, #3
  1236 00e6 7B68     		ldr	r3, [r7, #4]
  1237 00e8 5B68     		ldr	r3, [r3, #4]
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 39
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 39
 
 
  1238 00ea 3649     		ldr	r1, .L93+4
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  914:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****   /* Decreasing the number of wait states because of lower CPU frequency */
  915:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****   if (FLatency < __HAL_FLASH_GET_LATENCY())
  1274              		.loc 1 915 18
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 40
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 40
 
 
  1275 0120 274B     		ldr	r3, .L93
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  1311 015c 194B     		ldr	r3, .L93+4
  1312 015e 5B68     		ldr	r3, [r3, #4]
  1313 0160 23F4E062 		bic	r2, r3, #1792
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 41
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 41
 
 
  1314 0164 7B68     		ldr	r3, [r7, #4]
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  946:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****   /* Configure the source of time base considering new system clocks settings*/
  947:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****   HAL_InitTick(uwTickPrio);
  1356              		.loc 1 947 3
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 42
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 42
 
 
  1357 01aa 094B     		ldr	r3, .L93+16
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  968:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****   * @{
  969:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****   */
  970:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c **** 
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 43
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 43
 
 
  971:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c **** /**
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  1413 0016 9A60     		str	r2, [r3, #8]
  1414 0018 DA60     		str	r2, [r3, #12]
 1005:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c **** 
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 44
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 44
 
 
 1006:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****   /* Check the parameters */
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  1447 0052 5B68     		ldr	r3, [r3, #4]
  1448 0054 23F0E062 		bic	r2, r3, #117440512
  1449 0058 0349     		ldr	r1, .L96
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 45
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 45
 
 
  1450 005a BB68     		ldr	r3, [r7, #8]
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  1492 0006 0122     		movs	r2, #1
  1493 0008 1A60     		str	r2, [r3]
 1042:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c **** }
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 46
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 46
 
 
  1494              		.loc 1 1042 1
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  1541              		.cfi_restore 7
  1542              		.cfi_def_cfa_offset 0
  1543 0010 7047     		bx	lr
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 47
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 47
 
 
  1544              	.L103:
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
 1083:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c **** {
  1566              		.loc 1 1083 1
  1567              		.cfi_startproc
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 48
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 48
 
 
  1568              		@ args = 0, pretend = 0, frame = 40
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  1603 002a 224B     		ldr	r3, .L113+4
  1604              		.loc 1 1102 10
  1605 002c 5B68     		ldr	r3, [r3, #4]
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 49
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 49
 
 
  1606 002e FB61     		str	r3, [r7, #28]
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  1642              		.loc 1 1120 79
  1643 0068 5B0C     		lsrs	r3, r3, #17
  1644 006a 03F00103 		and	r3, r3, #1
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 50
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 50
 
 
  1645              		.loc 1 1120 36
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
 1153:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****       }
 1154:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****       sysclockfreq = pllclk;
  1667              		.loc 1 1154 20
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 51
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 51
 
 
  1668 0096 7B6A     		ldr	r3, [r7, #36]
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
 1166:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c **** 
 1167:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c **** /**
 1168:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****   * @brief  Returns the HCLK frequency
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 52
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 52
 
 
 1169:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****   * @note   Each time HCLK changes, this function must be called to update the
@@ -3118,7 +3118,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
 1186:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****   */
 1187:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c **** uint32_t HAL_RCC_GetPCLK1Freq(void)
 1188:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c **** {
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 53
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 53
 
 
  1752              		.loc 1 1188 1
@@ -3178,7 +3178,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
 1200:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c **** {
  1797              		.loc 1 1200 1
  1798              		.cfi_startproc
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 54
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 54
 
 
  1799              		@ args = 0, pretend = 0, frame = 0
@@ -3238,7 +3238,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  1842              		.loc 1 1213 1
  1843              		.cfi_startproc
  1844              		@ args = 0, pretend = 0, frame = 8
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 55
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 55
 
 
  1845              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -3298,7 +3298,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
 1232:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****   {
 1233:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****     RCC_OscInitStruct->HSEState = RCC_HSE_ON;
  1881              		.loc 1 1233 33
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 56
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 56
 
 
  1882 0034 7B68     		ldr	r3, [r7, #4]
@@ -3358,7 +3358,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  1918              		.loc 1 1251 59
  1919 006a 254B     		ldr	r3, .L140
  1920 006c 1B68     		ldr	r3, [r3]
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 57
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 57
 
 
  1921              		.loc 1 1251 44
@@ -3418,7 +3418,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
 1267:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****   /* Get the LSI configuration -----------------------------------------------*/
 1268:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****   if ((RCC->CSR & RCC_CSR_LSION) == RCC_CSR_LSION)
  1960              		.loc 1 1268 11
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 58
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 58
 
 
  1961 00a6 164B     		ldr	r3, .L140
@@ -3478,7 +3478,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
 1286:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****   }
 1287:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****   RCC_OscInitStruct->PLL.PLLSource = (uint32_t)(RCC->CFGR & RCC_CFGR_PLLSRC);
  1998              		.loc 1 1287 52
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 59
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 59
 
 
  1999 00dc 084B     		ldr	r3, .L140
@@ -3538,7 +3538,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  2040              	HAL_RCC_GetClockConfig:
  2041              	.LFB76:
 1303:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c **** 
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 60
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 60
 
 
 1304:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c **** /**
@@ -3598,7 +3598,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  2074 0024 7B68     		ldr	r3, [r7, #4]
  2075 0026 9A60     		str	r2, [r3, #8]
 1326:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c **** 
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 61
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 61
 
 
 1327:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****   /* Get the APB1 configuration ----------------------------------------------*/
@@ -3658,7 +3658,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  2116 005c 00200240 		.word	1073881088
  2117              		.cfi_endproc
  2118              	.LFE76:
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 62
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 62
 
 
  2120              		.section	.text.HAL_RCC_NMI_IRQHandler,"ax",%progbits
@@ -3718,7 +3718,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  2157              	.L149:
  2158 001e 00BF     		.align	2
  2159              	.L148:
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 63
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 63
 
 
  2160 0020 00100240 		.word	1073876992
@@ -3778,7 +3778,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
 1371:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****   }
 1372:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****   while (Delay --);
  2204              		.loc 1 1372 16 discriminator 1
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 64
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 64
 
 
  2205              		.thumb
@@ -3838,7 +3838,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
 1381:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****   /* NOTE : This function Should not be modified, when the callback is needed,
 1382:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****     the HAL_RCC_CSSCallback could be implemented in the user file
 1383:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ****     */
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 65
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 65
 
 
 1384:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c **** }
@@ -3866,58 +3866,58 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 1
  2275              		.file 10 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h"
  2276              		.file 11 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
  2277              		.file 12 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 66
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 66
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 stm32f1xx_hal_rcc.c
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:16     .text.HAL_RCC_DeInit:0000000000000000 $t
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:24     .text.HAL_RCC_DeInit:0000000000000000 HAL_RCC_DeInit
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:224    .text.HAL_RCC_DeInit:0000000000000124 $d
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:232    .text.HAL_RCC_OscConfig:0000000000000000 $t
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:239    .text.HAL_RCC_OscConfig:0000000000000000 HAL_RCC_OscConfig
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:2172   .text.RCC_Delay:0000000000000000 RCC_Delay
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:648    .text.HAL_RCC_OscConfig:000000000000026c $d
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:653    .text.HAL_RCC_OscConfig:0000000000000278 $t
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:1065   .text.HAL_RCC_OscConfig:00000000000004f4 $d
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:1072   .text.HAL_RCC_ClockConfig:0000000000000000 $t
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:1079   .text.HAL_RCC_ClockConfig:0000000000000000 HAL_RCC_ClockConfig
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:1564   .text.HAL_RCC_GetSysClockFreq:0000000000000000 HAL_RCC_GetSysClockFreq
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:1375   .text.HAL_RCC_ClockConfig:00000000000001c0 $d
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:1384   .text.HAL_RCC_MCOConfig:0000000000000000 $t
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:1391   .text.HAL_RCC_MCOConfig:0000000000000000 HAL_RCC_MCOConfig
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:1464   .text.HAL_RCC_MCOConfig:0000000000000068 $d
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:1470   .text.HAL_RCC_EnableCSS:0000000000000000 $t
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:1477   .text.HAL_RCC_EnableCSS:0000000000000000 HAL_RCC_EnableCSS
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:1506   .text.HAL_RCC_EnableCSS:0000000000000014 $d
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:1511   .text.HAL_RCC_DisableCSS:0000000000000000 $t
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:1518   .text.HAL_RCC_DisableCSS:0000000000000000 HAL_RCC_DisableCSS
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:1547   .text.HAL_RCC_DisableCSS:0000000000000014 $d
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:1552   .rodata:0000000000000000 $d
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:1557   .text.HAL_RCC_GetSysClockFreq:0000000000000000 $t
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:1696   .text.HAL_RCC_GetSysClockFreq:00000000000000b0 $d
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:1704   .text.HAL_RCC_GetHCLKFreq:0000000000000000 $t
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:1711   .text.HAL_RCC_GetHCLKFreq:0000000000000000 HAL_RCC_GetHCLKFreq
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:1738   .text.HAL_RCC_GetHCLKFreq:0000000000000010 $d
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:1743   .text.HAL_RCC_GetPCLK1Freq:0000000000000000 $t
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:1750   .text.HAL_RCC_GetPCLK1Freq:0000000000000000 HAL_RCC_GetPCLK1Freq
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:1782   .text.HAL_RCC_GetPCLK1Freq:0000000000000020 $d
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:1788   .text.HAL_RCC_GetPCLK2Freq:0000000000000000 $t
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:1795   .text.HAL_RCC_GetPCLK2Freq:0000000000000000 HAL_RCC_GetPCLK2Freq
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:1827   .text.HAL_RCC_GetPCLK2Freq:0000000000000020 $d
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:1833   .text.HAL_RCC_GetOscConfig:0000000000000000 $t
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:1840   .text.HAL_RCC_GetOscConfig:0000000000000000 HAL_RCC_GetOscConfig
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:2028   .text.HAL_RCC_GetOscConfig:0000000000000100 $d
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:2033   .text.HAL_RCC_GetClockConfig:0000000000000000 $t
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:2040   .text.HAL_RCC_GetClockConfig:0000000000000000 HAL_RCC_GetClockConfig
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:2115   .text.HAL_RCC_GetClockConfig:0000000000000058 $d
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:2121   .text.HAL_RCC_NMI_IRQHandler:0000000000000000 $t
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:2128   .text.HAL_RCC_NMI_IRQHandler:0000000000000000 HAL_RCC_NMI_IRQHandler
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:2241   .text.HAL_RCC_CSSCallback:0000000000000000 HAL_RCC_CSSCallback
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:2160   .text.HAL_RCC_NMI_IRQHandler:0000000000000020 $d
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:2166   .text.RCC_Delay:0000000000000000 $t
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:2228   .text.RCC_Delay:0000000000000034 $d
-C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:2234   .text.HAL_RCC_CSSCallback:0000000000000000 $t
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:16     .text.HAL_RCC_DeInit:0000000000000000 $t
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:24     .text.HAL_RCC_DeInit:0000000000000000 HAL_RCC_DeInit
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:224    .text.HAL_RCC_DeInit:0000000000000124 $d
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:232    .text.HAL_RCC_OscConfig:0000000000000000 $t
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:239    .text.HAL_RCC_OscConfig:0000000000000000 HAL_RCC_OscConfig
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:2172   .text.RCC_Delay:0000000000000000 RCC_Delay
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:648    .text.HAL_RCC_OscConfig:000000000000026c $d
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:653    .text.HAL_RCC_OscConfig:0000000000000278 $t
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:1065   .text.HAL_RCC_OscConfig:00000000000004f4 $d
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:1072   .text.HAL_RCC_ClockConfig:0000000000000000 $t
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:1079   .text.HAL_RCC_ClockConfig:0000000000000000 HAL_RCC_ClockConfig
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:1564   .text.HAL_RCC_GetSysClockFreq:0000000000000000 HAL_RCC_GetSysClockFreq
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:1375   .text.HAL_RCC_ClockConfig:00000000000001c0 $d
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:1384   .text.HAL_RCC_MCOConfig:0000000000000000 $t
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:1391   .text.HAL_RCC_MCOConfig:0000000000000000 HAL_RCC_MCOConfig
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:1464   .text.HAL_RCC_MCOConfig:0000000000000068 $d
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:1470   .text.HAL_RCC_EnableCSS:0000000000000000 $t
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:1477   .text.HAL_RCC_EnableCSS:0000000000000000 HAL_RCC_EnableCSS
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:1506   .text.HAL_RCC_EnableCSS:0000000000000014 $d
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:1511   .text.HAL_RCC_DisableCSS:0000000000000000 $t
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:1518   .text.HAL_RCC_DisableCSS:0000000000000000 HAL_RCC_DisableCSS
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:1547   .text.HAL_RCC_DisableCSS:0000000000000014 $d
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:1552   .rodata:0000000000000000 $d
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:1557   .text.HAL_RCC_GetSysClockFreq:0000000000000000 $t
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:1696   .text.HAL_RCC_GetSysClockFreq:00000000000000b0 $d
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:1704   .text.HAL_RCC_GetHCLKFreq:0000000000000000 $t
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:1711   .text.HAL_RCC_GetHCLKFreq:0000000000000000 HAL_RCC_GetHCLKFreq
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:1738   .text.HAL_RCC_GetHCLKFreq:0000000000000010 $d
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:1743   .text.HAL_RCC_GetPCLK1Freq:0000000000000000 $t
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:1750   .text.HAL_RCC_GetPCLK1Freq:0000000000000000 HAL_RCC_GetPCLK1Freq
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:1782   .text.HAL_RCC_GetPCLK1Freq:0000000000000020 $d
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:1788   .text.HAL_RCC_GetPCLK2Freq:0000000000000000 $t
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:1795   .text.HAL_RCC_GetPCLK2Freq:0000000000000000 HAL_RCC_GetPCLK2Freq
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:1827   .text.HAL_RCC_GetPCLK2Freq:0000000000000020 $d
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:1833   .text.HAL_RCC_GetOscConfig:0000000000000000 $t
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:1840   .text.HAL_RCC_GetOscConfig:0000000000000000 HAL_RCC_GetOscConfig
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:2028   .text.HAL_RCC_GetOscConfig:0000000000000100 $d
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:2033   .text.HAL_RCC_GetClockConfig:0000000000000000 $t
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:2040   .text.HAL_RCC_GetClockConfig:0000000000000000 HAL_RCC_GetClockConfig
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:2115   .text.HAL_RCC_GetClockConfig:0000000000000058 $d
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:2121   .text.HAL_RCC_NMI_IRQHandler:0000000000000000 $t
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:2128   .text.HAL_RCC_NMI_IRQHandler:0000000000000000 HAL_RCC_NMI_IRQHandler
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:2241   .text.HAL_RCC_CSSCallback:0000000000000000 HAL_RCC_CSSCallback
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:2160   .text.HAL_RCC_NMI_IRQHandler:0000000000000020 $d
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:2166   .text.RCC_Delay:0000000000000000 $t
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:2228   .text.RCC_Delay:0000000000000034 $d
+C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s:2234   .text.HAL_RCC_CSSCallback:0000000000000000 $t
                            .group:0000000000000000 wm4.0.e890922d021f7fff2fbf219cb2b38f03
                            .group:0000000000000000 wm4.stm32f1xx_hal_conf.h.21.185fa7e4004c86f1f34627ab1091dd60
                            .group:0000000000000000 wm4.stm32f1xx.h.39.208bb8a61c892b7c37d899c49a031330
@@ -3926,7 +3926,7 @@ C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s:2234   .text.HAL_RCC_CSSCallback:00
                            .group:0000000000000000 wm4.features.h.33.318b64d71e0957639cfb30f1db1f7ec8
                            .group:0000000000000000 wm4._default_types.h.15.247e5cd201eca3442cbf5404108c4935
                            .group:0000000000000000 wm4._intsup.h.10.48bafbb683905c4daa4565a85aeeb264
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\ccSF1mrm.s 			page 67
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccAC63Fm.s 			page 67
 
 
                            .group:0000000000000000 wm4._stdint.h.10.c24fa3af3bc1706662bb5593a907e841
