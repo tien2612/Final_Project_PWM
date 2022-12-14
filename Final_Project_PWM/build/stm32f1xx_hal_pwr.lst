@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
   31:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c ****   */
   32:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c **** 
   33:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c **** /** @defgroup PWR PWR
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 2
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 2
 
 
   34:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c ****   * @brief    PWR HAL module driver
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
   88:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c **** /**
   89:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c ****   * @}
   90:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c ****   */
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 3
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 3
 
 
   91:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c **** 
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
   49 000a BD46     		mov	sp, r7
   50              		.cfi_def_cfa_register 13
   51              		@ sp needed
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 4
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 4
 
 
   52 000c 80BC     		pop	{r7}
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
   72              		@ frame_needed = 1, uses_anonymous_args = 0
   73              		@ link register save eliminated.
   74 0000 80B4     		push	{r7}
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 5
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 5
 
 
   75              		.cfi_def_cfa_offset 4
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
  118              		.cfi_startproc
  119              		@ args = 0, pretend = 0, frame = 0
  120              		@ frame_needed = 1, uses_anonymous_args = 0
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 6
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 6
 
 
  121              		@ link register save eliminated.
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
  164              		.cfi_def_cfa_offset 4
  165              		.cfi_offset 7, -4
  166 0002 00AF     		add	r7, sp, #0
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 7
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 7
 
 
  167              		.cfi_def_cfa_register 7
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
  208:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c ****           line16 and can generate an interrupt if enabled. This is done through
  209:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c ****           __HAL_PVD_EXTI_ENABLE_IT() macro.
  210:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c ****       (+) The PVD is stopped in Standby mode.
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 8
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 8
 
 
  211:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c **** 
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
  265:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c ****           (++) WFI entry mode, Any EXTI Line (Internal or External) configured in Interrupt mode wi
  266:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c ****           (++) WFE entry mode, Any EXTI Line (Internal or External) configured in Event mode.
  267:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c **** 
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 9
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 9
 
 
  268:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c ****    *** Standby mode ***
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
  203              		@ link register save eliminated.
  204 0000 80B4     		push	{r7}
  205              		.cfi_def_cfa_offset 4
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 10
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 10
 
 
  206              		.cfi_offset 7, -4
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
  245              		.loc 1 332 17
  246 004a 7B68     		ldr	r3, [r7, #4]
  247 004c 5B68     		ldr	r3, [r3, #4]
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 11
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 11
 
 
  248              		.loc 1 332 24
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
  288 0090 9360     		str	r3, [r2, #8]
  289              	.L14:
  347:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c ****   }
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 12
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 12
 
 
  348:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c ****   
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
  360:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c **** {
  334              		.loc 1 360 1
  335              		.cfi_startproc
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 13
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 13
 
 
  336              		@ args = 0, pretend = 0, frame = 0
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
  382              		.cfi_offset 7, -4
  383 0002 00AF     		add	r7, sp, #0
  384              		.cfi_def_cfa_register 7
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 14
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 14
 
 
  371:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c ****   /* Disable the power voltage detector */
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
  428 0006 7860     		str	r0, [r7, #4]
  429 0008 7B68     		ldr	r3, [r7, #4]
  430 000a FB60     		str	r3, [r7, #12]
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 15
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 15
 
 
  431              	.LBB6:
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
   52:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __NO_RETURN
   53:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __NO_RETURN                            __attribute__((__noreturn__))
   54:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 16
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 16
 
 
   55:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __USED
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
  109:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
  110:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __ALIGNED
  111:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __ALIGNED(x)                           __attribute__((aligned(x)))
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 17
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 17
 
 
  112:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
  166:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __TZ_get_CONTROL_NS(void)
  167:Drivers/CMSIS/Include/cmsis_gcc.h **** {
  168:Drivers/CMSIS/Include/cmsis_gcc.h ****   uint32_t result;
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 18
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 18
 
 
  169:Drivers/CMSIS/Include/cmsis_gcc.h **** 
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
  223:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MRS %0, apsr" : "=r" (result) );
  224:Drivers/CMSIS/Include/cmsis_gcc.h ****   return(result);
  225:Drivers/CMSIS/Include/cmsis_gcc.h **** }
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 19
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 19
 
 
  226:Drivers/CMSIS/Include/cmsis_gcc.h **** 
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
  280:Drivers/CMSIS/Include/cmsis_gcc.h **** }
  281:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  282:Drivers/CMSIS/Include/cmsis_gcc.h **** 
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 20
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 20
 
 
  283:Drivers/CMSIS/Include/cmsis_gcc.h **** #if (defined (__ARM_FEATURE_CMSE ) && (__ARM_FEATURE_CMSE == 3))
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
  337:Drivers/CMSIS/Include/cmsis_gcc.h **** #if (defined (__ARM_FEATURE_CMSE ) && (__ARM_FEATURE_CMSE == 3))
  338:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
  339:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Set Main Stack Pointer (non-secure)
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 21
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 21
 
 
  340:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Assigns the given value to the non-secure Main Stack Pointer (MSP) when in secure state.
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
  394:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Returns the current state of the non-secure priority mask bit from the Priority Mask Reg
  395:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return               Priority Mask value
  396:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 22
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 22
 
 
  397:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __TZ_get_PRIMASK_NS(void)
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
  451:Drivers/CMSIS/Include/cmsis_gcc.h **** {
  452:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("cpsid f" : : : "memory");
  453:Drivers/CMSIS/Include/cmsis_gcc.h **** }
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 23
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 23
 
 
  454:Drivers/CMSIS/Include/cmsis_gcc.h **** 
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
  508:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  509:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  510:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 24
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 24
 
 
  511:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Set Base Priority with condition
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
  565:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Set Fault Mask (non-secure)
  566:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Assigns the given value to the non-secure Fault Mask register when in secure state.
  567:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    faultMask  Fault Mask value to set
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 25
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 25
 
 
  568:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
  622:Drivers/CMSIS/Include/cmsis_gcc.h ****   return result;
  623:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
  624:Drivers/CMSIS/Include/cmsis_gcc.h **** }
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 26
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 26
 
 
  625:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
  679:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __get_MSPLIM(void)
  680:Drivers/CMSIS/Include/cmsis_gcc.h **** {
  681:Drivers/CMSIS/Include/cmsis_gcc.h **** #if (!(defined (__ARM_ARCH_8M_MAIN__ ) && (__ARM_ARCH_8M_MAIN__ == 1)) && \
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 27
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 27
 
 
  682:Drivers/CMSIS/Include/cmsis_gcc.h ****     (!defined (__ARM_FEATURE_CMSE) || (__ARM_FEATURE_CMSE < 3)))
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
  736:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  737:Drivers/CMSIS/Include/cmsis_gcc.h **** #if (defined (__ARM_FEATURE_CMSE  ) && (__ARM_FEATURE_CMSE   == 3))
  738:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 28
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 28
 
 
  739:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Set Main Stack Pointer Limit (non-secure)
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
  793:Drivers/CMSIS/Include/cmsis_gcc.h **** {
  794:Drivers/CMSIS/Include/cmsis_gcc.h **** #if ((defined (__FPU_PRESENT) && (__FPU_PRESENT == 1U)) && \
  795:Drivers/CMSIS/Include/cmsis_gcc.h ****      (defined (__FPU_USED   ) && (__FPU_USED    == 1U))     )
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 29
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 29
 
 
  796:Drivers/CMSIS/Include/cmsis_gcc.h **** #if __has_builtin(__builtin_arm_set_fpscr)
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
  850:Drivers/CMSIS/Include/cmsis_gcc.h **** #define __WFE()                             __ASM volatile ("wfe")
  851:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  852:Drivers/CMSIS/Include/cmsis_gcc.h **** 
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 30
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 30
 
 
  853:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
  907:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("rev %0, %1" : __CMSIS_GCC_OUT_REG (result) : __CMSIS_GCC_USE_REG (value) );
  908:Drivers/CMSIS/Include/cmsis_gcc.h ****   return result;
  909:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 31
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 31
 
 
  910:Drivers/CMSIS/Include/cmsis_gcc.h **** }
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
  964:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  965:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
  966:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Breakpoint
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 32
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 32
 
 
  967:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Causes the processor to enter Debug state.
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
  449 001a DBB2     		uxtb	r3, r3
  450 001c 1A46     		mov	r2, r3
  451 001e 054B     		ldr	r3, .L27
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 33
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 33
 
 
  452 0020 1344     		add	r3, r3, r2
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
  497 0004 00AF     		add	r7, sp, #0
  498              		.cfi_def_cfa_register 7
  499 0006 7860     		str	r0, [r7, #4]
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 34
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 34
 
 
  500 0008 7B68     		ldr	r3, [r7, #4]
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
  549              		.global	HAL_PWR_EnterSLEEPMode
  550              		.syntax unified
  551              		.thumb
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 35
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 35
 
 
  552              		.thumb_func
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
  580 001a 012B     		cmp	r3, #1
  581 001c 01D1     		bne	.L34
  431:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c ****   {
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 36
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 36
 
 
  432:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c ****     /* Request Wait For Interrupt */
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
  622 0034 00ED00E0 		.word	-536810240
  623              		.cfi_endproc
  624              	.LFE74:
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 37
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 37
 
 
  626              		.section	.text.HAL_PWR_EnterSTOPMode,"ax",%progbits
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
  653 000e 1B68     		ldr	r3, [r3]
  654 0010 124A     		ldr	r2, .L42
  655 0012 23F00203 		bic	r3, r3, #2
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 38
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 38
 
 
  656 0016 1360     		str	r3, [r2]
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
  692 0040 FFF7FEFF 		bl	PWR_OverloadWfe
  489:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c ****     PWR_OverloadWfe(); /* WFE redefine locally */
  693              		.loc 1 489 5
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 39
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 39
 
 
  694 0044 FFF7FEFF 		bl	PWR_OverloadWfe
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
  735              		.cfi_offset 7, -4
  736 0002 00AF     		add	r7, sp, #0
  737              		.cfi_def_cfa_register 7
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 40
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 40
 
 
  505:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c ****   /* Select Standby mode */
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
  780              		.fpu softvfp
  782              	HAL_PWR_EnableSleepOnExit:
  783              	.LFB77:
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 41
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 41
 
 
  518:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c **** 
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
  825              	.LFB78:
  533:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c **** 
  534:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c **** 
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 42
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 42
 
 
  535:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c **** /**
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
  549:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c ****   * @brief Enables CORTEX M3 SEVONPEND bit. 
  550:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c ****   * @note Sets SEVONPEND bit of SCR register. When this bit is set, this causes 
  551:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c ****   *       WFE to wake up when an interrupt moves from inactive to pended.
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 43
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 43
 
 
  552:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c ****   * @retval None
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
  566:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c ****   */
  567:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c **** void HAL_PWR_DisableSEVOnPend(void)
  568:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c **** {
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 44
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 44
 
 
  910              		.loc 1 568 1
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
  953              		.cfi_startproc
  954              		@ args = 0, pretend = 0, frame = 0
  955              		@ frame_needed = 1, uses_anonymous_args = 0
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 45
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 45
 
 
  956 0000 80B5     		push	{r7, lr}
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
  598:./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c **** {
  996              		.loc 1 598 1
  997              		.cfi_startproc
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 46
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 46
 
 
  998              		@ args = 0, pretend = 0, frame = 0
@@ -2734,67 +2734,67 @@ ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 1
  1025              		.file 8 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h"
  1026              		.file 9 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h"
  1027              		.file 10 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 47
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 47
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 stm32f1xx_hal_pwr.c
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:16     .text.PWR_OverloadWfe:0000000000000000 $t
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:23     .text.PWR_OverloadWfe:0000000000000000 PWR_OverloadWfe
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:60     .text.HAL_PWR_DeInit:0000000000000000 $t
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:67     .text.HAL_PWR_DeInit:0000000000000000 HAL_PWR_DeInit
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:103    .text.HAL_PWR_DeInit:0000000000000024 $d
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:108    .text.HAL_PWR_EnableBkUpAccess:0000000000000000 $t
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:115    .text.HAL_PWR_EnableBkUpAccess:0000000000000000 HAL_PWR_EnableBkUpAccess
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:144    .text.HAL_PWR_EnableBkUpAccess:0000000000000014 $d
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:149    .text.HAL_PWR_DisableBkUpAccess:0000000000000000 $t
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:156    .text.HAL_PWR_DisableBkUpAccess:0000000000000000 HAL_PWR_DisableBkUpAccess
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:185    .text.HAL_PWR_DisableBkUpAccess:0000000000000014 $d
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:190    .text.HAL_PWR_ConfigPVD:0000000000000000 $t
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:197    .text.HAL_PWR_ConfigPVD:0000000000000000 HAL_PWR_ConfigPVD
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:319    .text.HAL_PWR_ConfigPVD:00000000000000b4 $d
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:325    .text.HAL_PWR_EnablePVD:0000000000000000 $t
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:332    .text.HAL_PWR_EnablePVD:0000000000000000 HAL_PWR_EnablePVD
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:361    .text.HAL_PWR_EnablePVD:0000000000000014 $d
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:366    .text.HAL_PWR_DisablePVD:0000000000000000 $t
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:373    .text.HAL_PWR_DisablePVD:0000000000000000 HAL_PWR_DisablePVD
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:402    .text.HAL_PWR_DisablePVD:0000000000000014 $d
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:407    .text.HAL_PWR_EnableWakeUpPin:0000000000000000 $t
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:414    .text.HAL_PWR_EnableWakeUpPin:0000000000000000 HAL_PWR_EnableWakeUpPin
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:473    .text.HAL_PWR_EnableWakeUpPin:0000000000000034 $d
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:478    .text.HAL_PWR_DisableWakeUpPin:0000000000000000 $t
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:485    .text.HAL_PWR_DisableWakeUpPin:0000000000000000 HAL_PWR_DisableWakeUpPin
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:543    .text.HAL_PWR_DisableWakeUpPin:0000000000000034 $d
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:548    .text.HAL_PWR_EnterSLEEPMode:0000000000000000 $t
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:555    .text.HAL_PWR_EnterSLEEPMode:0000000000000000 HAL_PWR_EnterSLEEPMode
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:622    .text.HAL_PWR_EnterSLEEPMode:0000000000000034 $d
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:627    .text.HAL_PWR_EnterSTOPMode:0000000000000000 $t
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:634    .text.HAL_PWR_EnterSTOPMode:0000000000000000 HAL_PWR_EnterSTOPMode
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:713    .text.HAL_PWR_EnterSTOPMode:000000000000005c $d
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:719    .text.HAL_PWR_EnterSTANDBYMode:0000000000000000 $t
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:726    .text.HAL_PWR_EnterSTANDBYMode:0000000000000000 HAL_PWR_EnterSTANDBYMode
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:769    .text.HAL_PWR_EnterSTANDBYMode:0000000000000028 $d
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:775    .text.HAL_PWR_EnableSleepOnExit:0000000000000000 $t
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:782    .text.HAL_PWR_EnableSleepOnExit:0000000000000000 HAL_PWR_EnableSleepOnExit
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:812    .text.HAL_PWR_EnableSleepOnExit:0000000000000018 $d
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:817    .text.HAL_PWR_DisableSleepOnExit:0000000000000000 $t
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:824    .text.HAL_PWR_DisableSleepOnExit:0000000000000000 HAL_PWR_DisableSleepOnExit
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:854    .text.HAL_PWR_DisableSleepOnExit:0000000000000018 $d
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:859    .text.HAL_PWR_EnableSEVOnPend:0000000000000000 $t
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:866    .text.HAL_PWR_EnableSEVOnPend:0000000000000000 HAL_PWR_EnableSEVOnPend
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:896    .text.HAL_PWR_EnableSEVOnPend:0000000000000018 $d
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:901    .text.HAL_PWR_DisableSEVOnPend:0000000000000000 $t
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:908    .text.HAL_PWR_DisableSEVOnPend:0000000000000000 HAL_PWR_DisableSEVOnPend
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:938    .text.HAL_PWR_DisableSEVOnPend:0000000000000018 $d
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:943    .text.HAL_PWR_PVD_IRQHandler:0000000000000000 $t
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:950    .text.HAL_PWR_PVD_IRQHandler:0000000000000000 HAL_PWR_PVD_IRQHandler
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:994    .text.HAL_PWR_PVDCallback:0000000000000000 HAL_PWR_PVDCallback
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:982    .text.HAL_PWR_PVD_IRQHandler:0000000000000020 $d
-C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s:987    .text.HAL_PWR_PVDCallback:0000000000000000 $t
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:16     .text.PWR_OverloadWfe:0000000000000000 $t
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:23     .text.PWR_OverloadWfe:0000000000000000 PWR_OverloadWfe
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:60     .text.HAL_PWR_DeInit:0000000000000000 $t
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:67     .text.HAL_PWR_DeInit:0000000000000000 HAL_PWR_DeInit
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:103    .text.HAL_PWR_DeInit:0000000000000024 $d
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:108    .text.HAL_PWR_EnableBkUpAccess:0000000000000000 $t
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:115    .text.HAL_PWR_EnableBkUpAccess:0000000000000000 HAL_PWR_EnableBkUpAccess
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:144    .text.HAL_PWR_EnableBkUpAccess:0000000000000014 $d
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:149    .text.HAL_PWR_DisableBkUpAccess:0000000000000000 $t
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:156    .text.HAL_PWR_DisableBkUpAccess:0000000000000000 HAL_PWR_DisableBkUpAccess
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:185    .text.HAL_PWR_DisableBkUpAccess:0000000000000014 $d
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:190    .text.HAL_PWR_ConfigPVD:0000000000000000 $t
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:197    .text.HAL_PWR_ConfigPVD:0000000000000000 HAL_PWR_ConfigPVD
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:319    .text.HAL_PWR_ConfigPVD:00000000000000b4 $d
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:325    .text.HAL_PWR_EnablePVD:0000000000000000 $t
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:332    .text.HAL_PWR_EnablePVD:0000000000000000 HAL_PWR_EnablePVD
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:361    .text.HAL_PWR_EnablePVD:0000000000000014 $d
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:366    .text.HAL_PWR_DisablePVD:0000000000000000 $t
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:373    .text.HAL_PWR_DisablePVD:0000000000000000 HAL_PWR_DisablePVD
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:402    .text.HAL_PWR_DisablePVD:0000000000000014 $d
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:407    .text.HAL_PWR_EnableWakeUpPin:0000000000000000 $t
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:414    .text.HAL_PWR_EnableWakeUpPin:0000000000000000 HAL_PWR_EnableWakeUpPin
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:473    .text.HAL_PWR_EnableWakeUpPin:0000000000000034 $d
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:478    .text.HAL_PWR_DisableWakeUpPin:0000000000000000 $t
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:485    .text.HAL_PWR_DisableWakeUpPin:0000000000000000 HAL_PWR_DisableWakeUpPin
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:543    .text.HAL_PWR_DisableWakeUpPin:0000000000000034 $d
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:548    .text.HAL_PWR_EnterSLEEPMode:0000000000000000 $t
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:555    .text.HAL_PWR_EnterSLEEPMode:0000000000000000 HAL_PWR_EnterSLEEPMode
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:622    .text.HAL_PWR_EnterSLEEPMode:0000000000000034 $d
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:627    .text.HAL_PWR_EnterSTOPMode:0000000000000000 $t
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:634    .text.HAL_PWR_EnterSTOPMode:0000000000000000 HAL_PWR_EnterSTOPMode
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:713    .text.HAL_PWR_EnterSTOPMode:000000000000005c $d
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:719    .text.HAL_PWR_EnterSTANDBYMode:0000000000000000 $t
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:726    .text.HAL_PWR_EnterSTANDBYMode:0000000000000000 HAL_PWR_EnterSTANDBYMode
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:769    .text.HAL_PWR_EnterSTANDBYMode:0000000000000028 $d
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:775    .text.HAL_PWR_EnableSleepOnExit:0000000000000000 $t
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:782    .text.HAL_PWR_EnableSleepOnExit:0000000000000000 HAL_PWR_EnableSleepOnExit
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:812    .text.HAL_PWR_EnableSleepOnExit:0000000000000018 $d
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:817    .text.HAL_PWR_DisableSleepOnExit:0000000000000000 $t
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:824    .text.HAL_PWR_DisableSleepOnExit:0000000000000000 HAL_PWR_DisableSleepOnExit
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:854    .text.HAL_PWR_DisableSleepOnExit:0000000000000018 $d
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:859    .text.HAL_PWR_EnableSEVOnPend:0000000000000000 $t
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:866    .text.HAL_PWR_EnableSEVOnPend:0000000000000000 HAL_PWR_EnableSEVOnPend
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:896    .text.HAL_PWR_EnableSEVOnPend:0000000000000018 $d
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:901    .text.HAL_PWR_DisableSEVOnPend:0000000000000000 $t
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:908    .text.HAL_PWR_DisableSEVOnPend:0000000000000000 HAL_PWR_DisableSEVOnPend
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:938    .text.HAL_PWR_DisableSEVOnPend:0000000000000018 $d
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:943    .text.HAL_PWR_PVD_IRQHandler:0000000000000000 $t
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:950    .text.HAL_PWR_PVD_IRQHandler:0000000000000000 HAL_PWR_PVD_IRQHandler
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:994    .text.HAL_PWR_PVDCallback:0000000000000000 HAL_PWR_PVDCallback
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:982    .text.HAL_PWR_PVD_IRQHandler:0000000000000020 $d
+C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s:987    .text.HAL_PWR_PVDCallback:0000000000000000 $t
                            .group:0000000000000000 wm4.0.e890922d021f7fff2fbf219cb2b38f03
                            .group:0000000000000000 wm4.stm32f1xx_hal_conf.h.21.185fa7e4004c86f1f34627ab1091dd60
                            .group:0000000000000000 wm4.stm32f1xx.h.39.208bb8a61c892b7c37d899c49a031330
-ARM GAS  C:\Users\nguye\AppData\Local\Temp\cc3lPtBT.s 			page 48
+ARM GAS  C:\Users\xanlo\AppData\Local\Temp\ccbwAAw1.s 			page 48
 
 
                            .group:0000000000000000 wm4.stm32f103xb.h.38.ec967d5ad9d3269cb0788eebda048e38

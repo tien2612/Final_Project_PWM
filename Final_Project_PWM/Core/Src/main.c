@@ -138,10 +138,10 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  if (timer3_flag == 1) {
-		updateDisplay();
-		setTimer3(200);
-	  }
+//	  if (timer3_flag == 1) {
+//		updateDisplay();
+//		setTimer3(200);
+//	  }
 	  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
 	  fsm_simple_button_run();
 	  traffic_processing();

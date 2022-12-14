@@ -11,11 +11,14 @@
 #include "input_processing.h"
 #include "global.h"
 #include "software_timer.h"
-#include "displayuart.h"
+#include "displayUart.h"
 #include "traffic_light.h"
 
 enum ButtonState{BUTTON_RELEASED, BUTTON_PRESSED, BUTTON_PRESSED_MORE_THAN_1_SECOND} ;
 enum ButtonState buttonState = BUTTON_RELEASED;
+
+extern UART_HandleTypeDef huart2;
+char str[50];
 
 int WhichButtonIsPressed() {
 	if (is_button_pressed(0)) return 1;
@@ -120,22 +123,18 @@ void reset() {
 	SEG7_CLOCK[HOR_LED] = LED_TIME[CURRENT_STATE[HOR_LED]];
 }
 
-void restart(){
-	status = 0;
-}
 
-void confirm_action(int mode) {
+void confirm_action(int mode, int time_inc) {
+//	HAL_UART_Transmit(&huart2, (uint8_t*)str, sprintf(str, "!7SEG:%d#\r\n",TIMES_INC), 1000);
 	switch (mode) {
-	case 0: //Normal mode -> do nothing
-		return;
-	case 1: // Inc red time mode
-		LED_TIME[RED_STATUS] = LED_TIME[RED_STATUS] + (TIMES_INC * TIME_UNIT);
+	case 0: // Inc red time mode
+		LED_TIME[RED_STATUS] = LED_TIME[RED_STATUS] + (time_inc * TIME_UNIT);
 		break;
-	case 2: // Inc yellow time mode
-		LED_TIME[YELLOW_STATUS] = LED_TIME[YELLOW_STATUS] + (TIMES_INC * TIME_UNIT);
+	case 1: // Inc yellow time mode
+		LED_TIME[YELLOW_STATUS] = LED_TIME[YELLOW_STATUS] + (time_inc * TIME_UNIT);
 		break;
-	case 3: // Inc green time
-		LED_TIME [GREEN_STATUS] = LED_TIME[GREEN_STATUS] + (TIMES_INC * TIME_UNIT);
+	case 2: // Inc green time
+		LED_TIME [GREEN_STATUS] = LED_TIME[GREEN_STATUS] + (time_inc * TIME_UNIT);
 		break;
 	default:
 		break;
@@ -231,11 +230,11 @@ void input_processing() {
 	// Confirm button
 	if (is_button_pressed(2) && index_mode != -1) {
 		if (TIMES_INC != 0) {
-			confirm_action(index_mode);
+			confirm_action(index_mode, TIMES_INC);
 		}
 		TIMES_INC = 0;
 		index_mode = -1;
-		restart();
+		status = 0;
 	}
 
 	// RESET when start

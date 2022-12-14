@@ -25,7 +25,7 @@ build/main.o: Core/Src/main.c Core/Inc/main.h \
  Core/Inc/scheduler.h Core/Inc/software_timer.h Core/Inc/sche_task.h \
  Core/Inc/global.h Core/Inc/input_processing.h Core/Inc/software_timer.h \
  Core/Inc/input_reading.h Core/Inc/main.h Core/Inc/traffic_light.h \
- Core/Inc/global.h
+ Core/Inc/global.h Core/Inc/displayUart.h
 
 Core/Inc/main.h:
 
@@ -98,3 +98,5 @@ Core/Inc/main.h:
 Core/Inc/traffic_light.h:
 
 Core/Inc/global.h:
+
+Core/Inc/displayUart.h:
