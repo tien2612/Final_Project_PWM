@@ -154,7 +154,7 @@ void state_handle() {
 		}
 		SEG7_CLOCK[VER_LED] = LED_TIME[0] + TIMES_INC * TIME_UNIT;
 		SEG7_CLOCK[HOR_LED] = 0;
-		updateDisplay();
+//		updateDisplay();
 		break;
 	case 1:							//YELLOW MODE
 		if (timer1_flag == 1) {
@@ -166,7 +166,7 @@ void state_handle() {
 		}
 		SEG7_CLOCK[VER_LED] = LED_TIME[1] + TIMES_INC * TIME_UNIT;
 		SEG7_CLOCK[HOR_LED] = 0;
-		updateDisplay();
+//		updateDisplay();
 		break;
 	case 2:							//GREEN MODE
 		if (timer1_flag == 1) {
@@ -178,7 +178,7 @@ void state_handle() {
 		}
 		SEG7_CLOCK[VER_LED] = LED_TIME[2] + TIMES_INC * TIME_UNIT;
 		SEG7_CLOCK[HOR_LED] = 0;
-		updateDisplay();
+//		updateDisplay();
 		break;
 	default:
 		break;
@@ -220,11 +220,15 @@ void input_processing() {
 			status = 0;
 			index_mode = -1;
 		}
+		state_handle();
+		updateDisplay();
 	}
 
 	// Add button
 	if (is_button_pressed(1) && index_mode != -1) {
 		TIMES_INC++;
+		state_handle();
+		updateDisplay();
 	}
 
 	// Confirm button
