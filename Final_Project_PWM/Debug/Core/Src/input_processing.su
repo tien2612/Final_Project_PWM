@@ -11,4 +11,4 @@ input_processing.c:127:6:confirm_action	16	static
 input_processing.c:145:6:state_handle	8	static
 input_processing.c:188:6:traffic_processing	8	static
 input_processing.c:211:6:input_processing	8	static
-input_processing.c:247:6:fsm_simple_button_run	8	static
+input_processing.c:251:6:fsm_simple_button_run	8	static
