@@ -152,7 +152,7 @@ void state_handle() {
 			HAL_GPIO_TogglePin(Traffic_2_1_GPIO_Port, Traffic_2_1_Pin);
 			setTimer1(500);
 		}
-		SEG7_CLOCK[VER_LED] = LED_TIME[0] + TIMES_INC * TIME_UNIT;
+		SEG7_CLOCK[VER_LED] = ((LED_TIME[0] / TIME_UNIT + TIMES_INC) % 99) * TIME_UNIT;
 		SEG7_CLOCK[HOR_LED] = 0;
 //		updateDisplay();
 		break;
@@ -164,7 +164,7 @@ void state_handle() {
 			HAL_GPIO_TogglePin(Traffic_2_2_GPIO_Port, Traffic_2_2_Pin);
 			setTimer1(500);
 		}
-		SEG7_CLOCK[VER_LED] = LED_TIME[1] + TIMES_INC * TIME_UNIT;
+		SEG7_CLOCK[VER_LED] = ((LED_TIME[1]/TIME_UNIT + TIMES_INC) % 99) * TIME_UNIT;
 		SEG7_CLOCK[HOR_LED] = 0;
 //		updateDisplay();
 		break;
@@ -176,7 +176,7 @@ void state_handle() {
 			HAL_GPIO_TogglePin(Traffic_2_2_GPIO_Port, Traffic_2_2_Pin);
 			setTimer1(500);
 		}
-		SEG7_CLOCK[VER_LED] = LED_TIME[2] + TIMES_INC * TIME_UNIT;
+		SEG7_CLOCK[VER_LED] = ((LED_TIME[2]/TIME_UNIT + TIMES_INC) % 99) * TIME_UNIT;
 		SEG7_CLOCK[HOR_LED] = 0;
 //		updateDisplay();
 		break;
