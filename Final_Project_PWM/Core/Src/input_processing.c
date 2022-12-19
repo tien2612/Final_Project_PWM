@@ -152,9 +152,11 @@ void state_handle() {
 			HAL_GPIO_TogglePin(Traffic_2_1_GPIO_Port, Traffic_2_1_Pin);
 			setTimer1(500);
 		}
-		SEG7_CLOCK[VER_LED] = ((LED_TIME[0] / TIME_UNIT + TIMES_INC) % 99) * TIME_UNIT;
+		if (LED_TIME[0] + TIMES_INC * TIME_UNIT > 99000) {
+			TIMES_INC = 0;
+		}
+		SEG7_CLOCK[VER_LED] = LED_TIME[0] + TIMES_INC * TIME_UNIT;
 		SEG7_CLOCK[HOR_LED] = 0;
-//		updateDisplay();
 		break;
 	case 1:							//YELLOW MODE
 		if (timer1_flag == 1) {
@@ -164,9 +166,11 @@ void state_handle() {
 			HAL_GPIO_TogglePin(Traffic_2_2_GPIO_Port, Traffic_2_2_Pin);
 			setTimer1(500);
 		}
-		SEG7_CLOCK[VER_LED] = ((LED_TIME[1]/TIME_UNIT + TIMES_INC) % 99) * TIME_UNIT;
+		if (LED_TIME[1] + TIMES_INC * TIME_UNIT > 99000) {
+			TIMES_INC = 0;
+		}
+		SEG7_CLOCK[VER_LED] = LED_TIME[1] + TIMES_INC * TIME_UNIT;
 		SEG7_CLOCK[HOR_LED] = 0;
-//		updateDisplay();
 		break;
 	case 2:							//GREEN MODE
 		if (timer1_flag == 1) {
@@ -176,9 +180,11 @@ void state_handle() {
 			HAL_GPIO_TogglePin(Traffic_2_2_GPIO_Port, Traffic_2_2_Pin);
 			setTimer1(500);
 		}
-		SEG7_CLOCK[VER_LED] = ((LED_TIME[2]/TIME_UNIT + TIMES_INC) % 99) * TIME_UNIT;
+		if (LED_TIME[2] + TIMES_INC * TIME_UNIT > 99000) {
+			TIMES_INC = 0;
+		}
+		SEG7_CLOCK[VER_LED] = LED_TIME[2] + TIMES_INC * TIME_UNIT;
 		SEG7_CLOCK[HOR_LED] = 0;
-//		updateDisplay();
 		break;
 	default:
 		break;
@@ -196,6 +202,7 @@ void traffic_processing() {
 		vertical_processing();
 		horizontal_processing();
 		status = 1;
+	    setTimer2(1000);
 		break;
 	case 1: // Normal state
 		update_clock();
@@ -226,9 +233,11 @@ void input_processing() {
 
 	// Add button
 	if (is_button_pressed(1) && index_mode != -1) {
-		TIMES_INC++;
-		state_handle();
-		updateDisplay();
+		TIMES_INC = TIMES_INC + 1;
+		if (start != 0) {
+			state_handle();
+			updateDisplay();
+		}
 	}
 
 	// Confirm button
