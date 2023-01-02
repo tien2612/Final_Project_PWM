@@ -21,9 +21,31 @@ extern UART_HandleTypeDef huart2;
 char str[50];
 
 int WhichButtonIsPressed() {
-	if (is_button_pressed(0)) return 1;
-	if (is_button_pressed(1)) return 2;
-	if (is_button_pressed(2)) return 3;
+	if (is_button_pressed(2)){
+		return 3;
+	}
+	if (is_button_pressed(1)){
+		return 2;
+	}
+	if (is_button_pressed(0)){
+//		HAL_UART_Transmit(&huart2, (uint8_t*)str, sprintf(str, "BUTTON 3 is pressed\r\n"), 1000);
+		return 1;
+	}
+
+	return 0; // None of these buttons are pressed
+}
+
+int WhichButtonIsPressedMoreThan1S() {
+	if (is_button_pressed_1s(2)){
+		return 3;
+	}
+	if (is_button_pressed_1s(1)){
+		return 2;
+	}
+	if (is_button_pressed_1s(0)){
+//		HAL_UART_Transmit(&huart2, (uint8_t*)str, sprintf(str, "BUTTON 3 is pressed\r\n"), 1000);
+		return 1;
+	}
 
 	return 0; // None of these buttons are pressed
 }
@@ -125,21 +147,59 @@ void reset() {
 
 
 void confirm_action(int mode, int time_inc) {
-//	HAL_UART_Transmit(&huart2, (uint8_t*)str, sprintf(str, "!7SEG:%d#\r\n",TIMES_INC), 1000);
 	switch (mode) {
 	case 0: // Inc red time mode
-		LED_TIME[RED_STATUS] = LED_TIME[RED_STATUS] + (time_inc * TIME_UNIT);
+		LED_TIME[RED_STATUS] = tmpBuffer[RED_STATUS];
+		LED_TIME [GREEN_STATUS] = tmpBuffer[GREEN_STATUS];
 		break;
 	case 1: // Inc yellow time mode
-		LED_TIME[YELLOW_STATUS] = LED_TIME[YELLOW_STATUS] + (time_inc * TIME_UNIT);
+		LED_TIME[YELLOW_STATUS] = tmpBuffer[YELLOW_STATUS];
+		LED_TIME[RED_STATUS] = tmpBuffer[RED_STATUS];
 		break;
 	case 2: // Inc green time
-		LED_TIME [GREEN_STATUS] = LED_TIME[GREEN_STATUS] + (time_inc * TIME_UNIT);
+		LED_TIME [GREEN_STATUS] = tmpBuffer[GREEN_STATUS];
+		LED_TIME[RED_STATUS] = tmpBuffer[RED_STATUS];
 		break;
 	default:
 		break;
 	}
+}
 
+void add_clock(){
+	switch (index_mode) {
+	case 0:
+		tmpBuffer[RED_STATUS] = tmpBuffer[RED_STATUS] + TIME_UNIT;
+		tmpBuffer[GREEN_STATUS] = tmpBuffer[GREEN_STATUS] + TIME_UNIT;
+		if (tmpBuffer[RED_STATUS] > 99000) {
+			tmpBuffer[RED_STATUS] = 0;
+		}
+		if (tmpBuffer[GREEN_STATUS] > 99000) {
+			tmpBuffer[GREEN_STATUS] = 0;
+		}
+		break;
+	case 1:
+		tmpBuffer[YELLOW_STATUS] = tmpBuffer[YELLOW_STATUS] + TIME_UNIT;
+		tmpBuffer[RED_STATUS] = tmpBuffer[RED_STATUS] + TIME_UNIT;
+		if (tmpBuffer[YELLOW_STATUS] > 99000) {
+			tmpBuffer[YELLOW_STATUS] = 0;
+		}
+		if (tmpBuffer[RED_STATUS] > 99000) {
+			tmpBuffer[RED_STATUS] = 0;
+		}
+		break;
+	case 2:
+		tmpBuffer[GREEN_STATUS] = tmpBuffer[GREEN_STATUS] + TIME_UNIT;
+		tmpBuffer[RED_STATUS] = tmpBuffer[RED_STATUS] + TIME_UNIT;
+		if (tmpBuffer[GREEN_STATUS] > 99000) {
+			tmpBuffer[GREEN_STATUS] = 0;
+		}
+		if (tmpBuffer[RED_STATUS] > 99000) {
+			tmpBuffer[RED_STATUS] = 0;
+		}
+		break;
+	default:
+		break;
+	}
 }
 
 void state_handle() {
@@ -152,10 +212,7 @@ void state_handle() {
 			HAL_GPIO_TogglePin(Traffic_2_1_GPIO_Port, Traffic_2_1_Pin);
 			setTimer1(500);
 		}
-		if (LED_TIME[0] + TIMES_INC * TIME_UNIT > 99000) {
-			TIMES_INC = 0;
-		}
-		SEG7_CLOCK[VER_LED] = LED_TIME[0] + TIMES_INC * TIME_UNIT;
+		SEG7_CLOCK[VER_LED] = tmpBuffer[0];
 		SEG7_CLOCK[HOR_LED] = 0;
 		break;
 	case 1:							//YELLOW MODE
@@ -166,10 +223,7 @@ void state_handle() {
 			HAL_GPIO_TogglePin(Traffic_2_2_GPIO_Port, Traffic_2_2_Pin);
 			setTimer1(500);
 		}
-		if (LED_TIME[1] + TIMES_INC * TIME_UNIT > 99000) {
-			TIMES_INC = 0;
-		}
-		SEG7_CLOCK[VER_LED] = LED_TIME[1] + TIMES_INC * TIME_UNIT;
+		SEG7_CLOCK[VER_LED] = tmpBuffer[1];
 		SEG7_CLOCK[HOR_LED] = 0;
 		break;
 	case 2:							//GREEN MODE
@@ -180,10 +234,7 @@ void state_handle() {
 			HAL_GPIO_TogglePin(Traffic_2_2_GPIO_Port, Traffic_2_2_Pin);
 			setTimer1(500);
 		}
-		if (LED_TIME[2] + TIMES_INC * TIME_UNIT > 99000) {
-			TIMES_INC = 0;
-		}
-		SEG7_CLOCK[VER_LED] = LED_TIME[2] + TIMES_INC * TIME_UNIT;
+		SEG7_CLOCK[VER_LED] = tmpBuffer[2];
 		SEG7_CLOCK[HOR_LED] = 0;
 		break;
 	default:
@@ -192,6 +243,11 @@ void state_handle() {
 }
 
 void traffic_processing() {
+	if (timer4_flag == 1) {
+		status = 0;
+		index_mode = -1;
+		clearTimer4();
+	}
 	switch (status) {
 	case 0: //INIT
 		CURRENT_STATE[VER_LED] = RED_STATUS;
@@ -202,7 +258,8 @@ void traffic_processing() {
 		vertical_processing();
 		horizontal_processing();
 		status = 1;
-	    setTimer2(1000);
+		clearTimer2();
+	    setTimer2(1000);	//Update clock after each 1s
 		break;
 	case 1: // Normal state
 		update_clock();
@@ -216,6 +273,11 @@ void traffic_processing() {
 }
 
 void input_processing() {
+
+	if (timer3_flag != 1) {
+		return;
+	}
+
 	// Switch button
 	if (is_button_pressed(0)) {
 		clear_vertical();
@@ -227,34 +289,50 @@ void input_processing() {
 			status = 0;
 			index_mode = -1;
 		}
-		state_handle();
-		updateDisplay();
+		if (index_mode != -1) {
+			clearTimer4(); // After 10s auto switch to auto mode
+			setTimer4(10000);
+			tmpBuffer[0] = LED_TIME[0];
+			tmpBuffer[1] = LED_TIME[1];
+			tmpBuffer[2] = LED_TIME[2];
+			state_handle();
+			updateDisplay();
+		}
 	}
 
 	// Add button
 	if (is_button_pressed(1) && index_mode != -1) {
 		TIMES_INC = TIMES_INC + 1;
-		if (start != 0) {
-			state_handle();
-			updateDisplay();
-		}
+		clearTimer4();
+		setTimer4(10000);
+		add_clock();
+		state_handle();
+		updateDisplay();
 	}
+
+//	if (is_button_pressed_1s(1) && index_mode != -1) {
+//		if (timer3_flag == 1) {
+//			clearTimer4();
+//			setTimer4(10000);
+//			add_clock();
+//			state_handle();
+//			updateDisplay();
+//			setTimer3(100);
+//		}
+//	}
 
 	// Confirm button
 	if (is_button_pressed(2) && index_mode != -1) {
 		if (TIMES_INC != 0) {
 			confirm_action(index_mode, TIMES_INC);
 		}
+		clearTimer4();
 		TIMES_INC = 0;
 		index_mode = -1;
 		status = 0;
 	}
 
-	// RESET when start
-	if (start == 0) {
-		reset();
-		start = 1;
-	}
+
 }
 
 void fsm_simple_button_run() {
@@ -268,6 +346,14 @@ void fsm_simple_button_run() {
 		if (!WhichButtonIsPressed()) {
 			buttonState = BUTTON_RELEASED;
 		}
+//		if (WhichButtonIsPressedMoreThan1S()) {
+//			buttonState = BUTTON_PRESSED_MORE_THAN_1_SECOND;
+//			setTimer3(100);
+//		}
+//	case BUTTON_PRESSED_MORE_THAN_1_SECOND:
+//		if (!WhichButtonIsPressed()) {
+//			buttonState = BUTTON_RELEASED;
+//		}
 	default:
 		break;
 	}

@@ -125,8 +125,8 @@ int main(void)
 //  find_new_min_task();
   setTimer1(500);
   setTimer2(1000);
-  setTimer3(10);
-
+  setTimer3(100);
+  setTimer5(200);
   while (1)
   {
 

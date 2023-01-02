@@ -49,6 +49,7 @@ extern int led_seg_buffer[4];
 extern int LED_TIME[3];
 extern int TIMES_INC;
 extern int start;
+extern int tmpBuffer[3];
 
 
 #define RED 		12

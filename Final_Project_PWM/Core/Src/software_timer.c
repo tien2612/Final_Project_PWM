@@ -78,3 +78,24 @@ void clearTimer1() {
 	timer1_counter = 0;
 	timer1_flag = 0;
 }
+
+void clearTimer2() {
+	timer2_counter = 0;
+	timer2_flag = 0;
+}
+
+void clearTimer3() {
+	timer3_counter = 0;
+	timer3_flag = 0;
+}
+
+void clearTimer4() {
+	timer4_counter = 0;
+	timer4_flag = 0;
+}
+void clearTimer5() {
+	timer5_counter = 0;
+	timer5_flag = 0;
+}
+
+
