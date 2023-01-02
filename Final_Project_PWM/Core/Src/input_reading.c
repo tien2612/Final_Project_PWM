@@ -46,6 +46,8 @@ static uint16_t counterForButtonPress1s[N0_OF_BUTTONS];
 static uint16_t counterForButtonPressOneQuarterSecond[N0_OF_BUTTONS];
 
 void button_reading(void) {
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 1);
+
 	for (int i = 0; i < N0_OF_BUTTONS; i++) {
 		debounceButtonBuffer2[i] = debounceButtonBuffer1[i];
 		debounceButtonBuffer1[i] = HAL_GPIO_ReadPin(buttonPort[i], buttonPin[i]);

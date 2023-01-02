@@ -21,31 +21,24 @@ extern UART_HandleTypeDef huart2;
 char str[50];
 
 int WhichButtonIsPressed() {
-	if (is_button_pressed(2)){
-		return 3;
-	}
-	if (is_button_pressed(1)){
-		return 2;
-	}
-	if (is_button_pressed(0)){
-//		HAL_UART_Transmit(&huart2, (uint8_t*)str, sprintf(str, "BUTTON 3 is pressed\r\n"), 1000);
-		return 1;
-	}
-
+	if (is_button_pressed(2)) return 3;
+	if (is_button_pressed(1)) return 2;
+	if (is_button_pressed(0)) return 1;
+	if (is_button_pressed(3)) return 4;
 	return 0; // None of these buttons are pressed
 }
 
 int WhichButtonIsPressedMoreThan1S() {
-	if (is_button_pressed_1s(2)){
-		return 3;
-	}
-	if (is_button_pressed_1s(1)){
-		return 2;
-	}
-	if (is_button_pressed_1s(0)){
-//		HAL_UART_Transmit(&huart2, (uint8_t*)str, sprintf(str, "BUTTON 3 is pressed\r\n"), 1000);
-		return 1;
-	}
+//	if (is_button_pressed_1s(2)){
+//		return 3;
+//	}
+//	if (is_button_pressed_1s(1)){
+//		return 2;
+//	}
+//	if (is_button_pressed_1s(0)){
+////		HAL_UART_Transmit(&huart2, (uint8_t*)str, sprintf(str, "BUTTON 3 is pressed\r\n"), 1000);
+//		return 1;
+//	}
 
 	return 0; // None of these buttons are pressed
 }
@@ -336,6 +329,7 @@ void input_processing() {
 }
 
 void fsm_simple_button_run() {
+
 	switch (buttonState) {
 	case BUTTON_RELEASED:
 		if (WhichButtonIsPressed()) {

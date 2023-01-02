@@ -6,7 +6,10 @@
  */
 
 #include "scheduler.h"
+#include "sche_task.h"
 #include "global.h"
+#include "input_processing.h"
+#include "input_reading.h"
 #include <stdio.h>
 
 sTasks SCH_tasks_G[SCH_MAX_TASKS];

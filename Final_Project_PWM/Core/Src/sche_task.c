@@ -11,6 +11,7 @@
 #include "input_reading.h"
 #include "traffic_light.h"
 #include "software_timer.h"
+#include "input_processing.h"
 
 int pedestrian_active = 0;
 int delay = TIME_UNIT;
@@ -26,7 +27,9 @@ extern TIM_HandleTypeDef htim3;
 float extra_step = 1;
 
 void pedestrian_scramble() {
-		if (is_button_pressed(3)) {
+		//if (status != 0) return;
+
+		if (WhichButtonIsPressed() == 4) {
 			pedestrian_wanna_go = 1;
 			if (get_led_color(TRAFFIC_1_LED) == RED_COLOR) {
 				pedestrian_active = 1;
@@ -41,9 +44,13 @@ void pedestrian_scramble() {
 			DELAY_STEP = 400 / (SEG7_CLOCK[0] / TIME_UNIT);
 			time_allow_pedestrian = SEG7_CLOCK[0];
 		}
-		else {
+		else if (pedestrian_wanna_go) {
 			pedestrian_active = 0;
 			set_led_color(PEDESTRIAN_LED, RED_COLOR);
+
+		} else {
+			pedestrian_active = 0;
+			clear_led(PEDESTRIAN_LED);
 		}
 
 		if (pedestrian_active) {
@@ -55,12 +62,16 @@ void pedestrian_scramble() {
 			/* If 2/3 time has passed, need more extra step*/
 			if (SEG7_CLOCK[0] >= 2 * time_allow_pedestrian / 3) {
 				extra_step += 0.09;
-				__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1, FREQ += FREQ_STEP);
+//				__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1, FREQ += FREQ_STEP);
+				FREQ += FREQ_STEP;
+				TIM3->CCR1 = FREQ;
 				if (delay > extra_step * DELAY_STEP) HAL_Delay(delay -= extra_step * DELAY_STEP);
 				else HAL_Delay(delay);
 			} else {
 				extra_step += 0.3;
-				__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1, FREQ += extra_step * FREQ_STEP);
+//				__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1, FREQ += extra_step * FREQ_STEP);
+				FREQ += extra_step * FREQ_STEP;
+				TIM3->CCR1 = FREQ;
 				if (delay > extra_step * DELAY_STEP) HAL_Delay(delay -= extra_step * DELAY_STEP);
 				else if (delay > extra_step * 10) HAL_Delay(delay = - extra_step * 20);
 				else HAL_Delay(delay);
@@ -68,7 +79,7 @@ void pedestrian_scramble() {
 			trigger_pedestrian_func = 1;
 
 		} else {
-			set_led_color(PEDESTRIAN_LED, RED_COLOR);
+			//clear_led(PEDESTRIAN_LED);
 			__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1, 0);
 			/* Reset delay & start freq */
 			delay = TIME_UNIT;

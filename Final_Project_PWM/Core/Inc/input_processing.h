@@ -15,5 +15,5 @@ void traffic_processing();
 void input_processing();
 void test_func();
 void reset();
-
+int WhichButtonIsPressed();
 #endif /* INC_INPUT_PROCESSING_H_ */
