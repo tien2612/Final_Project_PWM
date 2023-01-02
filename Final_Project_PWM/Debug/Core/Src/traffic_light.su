@@ -2,5 +2,5 @@ traffic_light.c:11:6:helper_set_led_color	24	static
 traffic_light.c:28:6:set_led_color	24	static
 traffic_light.c:45:5:helper_get_led_color	32	static
 traffic_light.c:62:5:get_led_color	16	static
-traffic_light.c:84:6:helper_clear_led	16	static
-traffic_light.c:87:6:clear_led	16	static
+traffic_light.c:84:6:helper_clear_led	24	static
+traffic_light.c:88:6:clear_led	16	static

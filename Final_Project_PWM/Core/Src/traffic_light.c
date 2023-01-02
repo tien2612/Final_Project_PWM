@@ -81,19 +81,20 @@ int get_led_color(int led) {
 	return UNDEFINED_COLOR;
 }
 
-void helper_clear_led(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin) {
+void helper_clear_led(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin, GPIO_TypeDef *GPIOy, uint16_t GPIO_Pin2) {
 	GPIOx->BSRR = (uint32_t)GPIO_Pin << 16u;
+	GPIOy->BSRR = (uint32_t)GPIO_Pin2 << 16u;
 }
 void clear_led(int led) {
 	switch(led) {
 	case TRAFFIC_1_LED:
-		helper_clear_led(Traffic_1_1_GPIO_Port, Traffic_1_1_Pin);
+		helper_clear_led(Traffic_1_1_GPIO_Port, Traffic_1_1_Pin, Traffic_1_2_GPIO_Port, Traffic_1_2_Pin);
 		break;
 	case TRAFFIC_2_LED:
-		helper_clear_led(Traffic_2_1_GPIO_Port, Traffic_2_1_Pin);
+		helper_clear_led(Traffic_2_1_GPIO_Port, Traffic_2_1_Pin, Traffic_2_2_GPIO_Port, Traffic_2_2_Pin);
 		break;
 	case PEDESTRIAN_LED:
-		helper_clear_led(Traffic_Pedes_1_GPIO_Port, Traffic_Pedes_1_Pin);
+		helper_clear_led(Traffic_Pedes_1_GPIO_Port, Traffic_Pedes_1_Pin, Traffic_Pedes_2_GPIO_Port, Traffic_Pedes_2_Pin);
 		break;
 	}
 }

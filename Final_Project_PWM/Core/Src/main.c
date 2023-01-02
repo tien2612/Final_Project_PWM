@@ -117,23 +117,23 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-//  SCH_Init();
-//  SCH_Add_Task(fsm_simple_button_run, 0, 10);
-//  SCH_Add_Task(traffic_processing, 0, 1000);
-//  SCH_Add_Task(button_reading, 40, 10);
-//  SCH_Add_Task(pedestrian_scramble, 30, 10);
-//  find_new_min_task();
+  SCH_Init();
+  SCH_Add_Task(button_reading, 0, 10);
+  SCH_Add_Task(fsm_simple_button_run, 10, 10);
+  SCH_Add_Task(traffic_processing, 20, 10);
+  SCH_Add_Task(pedestrian_scramble, 30, 10);
+
+  find_new_min_task();
   setTimer1(500);
   setTimer2(1000);
   setTimer3(10);
-
+  //TIM3->CCR1 = 700;
   while (1)
   {
-
-//	  SCH_Dispatch_Tasks();
-//	  // turn on LED for indicate when not in sleep mode
-//	  // SCH go to sleep, wait for any interrupt.
-//	  SCH_Go_To_Sleep();
+	  SCH_Dispatch_Tasks();
+	  // turn on LED for indicate when not in sleep mode
+	  // SCH go to sleep, wait for any interrupt.
+	  SCH_Go_To_Sleep();
 //	  turn of LED for indicate while MCU is sleeping.
     /* USER CODE END WHILE */
 
@@ -142,10 +142,11 @@ int main(void)
 //		updateDisplay();
 //		setTimer3(200);
 //	  }
-	  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
-	  fsm_simple_button_run();
-	  traffic_processing();
-	  pedestrian_scramble();
+//	  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
+//	  fsm_simple_button_run();
+//	  traffic_processing();
+//	  pedestrian_scramble();
+//	  HAL_Delay(500);
 
   }
   /* USER CODE END 3 */

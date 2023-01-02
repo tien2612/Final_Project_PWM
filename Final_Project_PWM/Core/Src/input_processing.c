@@ -19,11 +19,19 @@ enum ButtonState buttonState = BUTTON_RELEASED;
 
 extern UART_HandleTypeDef huart2;
 char str[50];
-
+int flag_t = 0;
 int WhichButtonIsPressed() {
-	if (is_button_pressed(0)) return 1;
-	if (is_button_pressed(1)) return 2;
+
+	if (flag_t == 0) {
+		flag_t++;
+		return 0;
+	}
+
 	if (is_button_pressed(2)) return 3;
+	if (is_button_pressed(1)) return 2;
+
+	if (is_button_pressed(0)) return 1;
+	if (is_button_pressed(3)) return 4;
 
 	return 0; // None of these buttons are pressed
 }
@@ -217,7 +225,7 @@ void traffic_processing() {
 
 void input_processing() {
 	// Switch button
-	if (is_button_pressed(0)) {
+	if (WhichButtonIsPressed() == 1) {
 		clear_vertical();
 		clear_horizontal();
 		status = 2;
@@ -232,7 +240,7 @@ void input_processing() {
 	}
 
 	// Add button
-	if (is_button_pressed(1) && index_mode != -1) {
+	if (WhichButtonIsPressed() == 2 && index_mode != -1) {
 		TIMES_INC = TIMES_INC + 1;
 		if (start != 0) {
 			state_handle();
@@ -264,6 +272,7 @@ void fsm_simple_button_run() {
 			buttonState = BUTTON_PRESSED;
 			input_processing();
 		}
+
 	case BUTTON_PRESSED:
 		if (!WhichButtonIsPressed()) {
 			buttonState = BUTTON_RELEASED;
