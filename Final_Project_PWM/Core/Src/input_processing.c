@@ -28,7 +28,6 @@ int WhichButtonIsPressed() {
 		return 2;
 	}
 	if (is_button_pressed(0)){
-//		HAL_UART_Transmit(&huart2, (uint8_t*)str, sprintf(str, "BUTTON 3 is pressed\r\n"), 1000);
 		return 1;
 	}
 
@@ -43,7 +42,6 @@ int WhichButtonIsPressedMoreThan1S() {
 		return 2;
 	}
 	if (is_button_pressed_1s(0)){
-//		HAL_UART_Transmit(&huart2, (uint8_t*)str, sprintf(str, "BUTTON 3 is pressed\r\n"), 1000);
 		return 1;
 	}
 
@@ -310,16 +308,17 @@ void input_processing() {
 		updateDisplay();
 	}
 
-//	if (is_button_pressed_1s(1) && index_mode != -1) {
-//		if (timer3_flag == 1) {
-//			clearTimer4();
-//			setTimer4(10000);
-//			add_clock();
-//			state_handle();
-//			updateDisplay();
-//			setTimer3(100);
-//		}
-//	}
+	// Long press add button
+	if (is_button_pressed_1s(1) && index_mode != -1) {
+		if (timer3_flag == 1) {
+			clearTimer4();
+			setTimer4(10000);
+			add_clock();
+			state_handle();
+			updateDisplay();
+			setTimer3(100);
+		}
+	}
 
 	// Confirm button
 	if (is_button_pressed(2) && index_mode != -1) {
@@ -346,14 +345,17 @@ void fsm_simple_button_run() {
 		if (!WhichButtonIsPressed()) {
 			buttonState = BUTTON_RELEASED;
 		}
-//		if (WhichButtonIsPressedMoreThan1S()) {
-//			buttonState = BUTTON_PRESSED_MORE_THAN_1_SECOND;
-//			setTimer3(100);
-//		}
-//	case BUTTON_PRESSED_MORE_THAN_1_SECOND:
-//		if (!WhichButtonIsPressed()) {
-//			buttonState = BUTTON_RELEASED;
-//		}
+		if (WhichButtonIsPressedMoreThan1S()) {
+			buttonState = BUTTON_PRESSED_MORE_THAN_1_SECOND;
+			setTimer3(100);
+		}
+	case BUTTON_PRESSED_MORE_THAN_1_SECOND:
+		if (!WhichButtonIsPressed()) {
+			buttonState = BUTTON_RELEASED;
+		}
+		if (WhichButtonIsPressedMoreThan1S()) {
+			input_processing();
+		}
 	default:
 		break;
 	}
