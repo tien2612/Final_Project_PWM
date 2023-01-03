@@ -117,12 +117,14 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-//  SCH_Init();
-//  SCH_Add_Task(fsm_simple_button_run, 0, 10);
-//  SCH_Add_Task(traffic_processing, 0, 1000);
-//  SCH_Add_Task(button_reading, 40, 10);
-//  SCH_Add_Task(pedestrian_scramble, 30, 10);
-//  find_new_min_task();
+  SCH_Init();
+  SCH_Add_Task(button_reading, 30, 10);
+  SCH_Add_Task(fsm_simple_button_run, 30, 10);
+  SCH_Add_Task(traffic_processing, 50, 10);
+  SCH_Add_Task(pedestrian_scramble, 70, 10);
+
+  find_new_min_task();
+
   setTimer1(500);
   setTimer2(1000);
   setTimer3(100);
@@ -142,10 +144,15 @@ int main(void)
 //		updateDisplay();
 //		setTimer3(200);
 //	  }
-	  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
-	  fsm_simple_button_run();
-	  traffic_processing();
-	  pedestrian_scramble();
+//	  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
+//	  fsm_simple_button_run();
+//	  traffic_processing();
+//	  pedestrian_scramble();
+	 //HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
+	  SCH_Dispatch_Tasks();
+	  // turn on LED for indicate when not in sleep mode
+	  // SCH go to sleep, wait for any interrupt.
+	  SCH_Go_To_Sleep();
 
   }
   /* USER CODE END 3 */
@@ -390,14 +397,12 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 	// timerRun()
 	if (htim->Instance == TIM2) {
 		//timestamp++; // increase timestamp by 10ms
-		timerRun();
 		SCH_Update();
 		button_reading();
+		timerRun();
+
 	}
 
-	if (htim->Instance == TIM3) {
-		// do something
-	}
 }
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
